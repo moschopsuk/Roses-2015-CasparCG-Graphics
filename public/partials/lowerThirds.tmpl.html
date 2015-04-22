@@ -1,0 +1,55 @@
+<div class="ui form segment">
+  <h2>Lower Thirds</h2>
+  <form name="lowerThirdsForm" method="post">
+    <div class="two fields">
+      <div class="field">
+        <label for="Heading">Heading</label>
+        <input id="Heading" placeholder="Heading" type="text" ng-trim="true" ng-model="lowerThird.heading"/>
+      </div>
+
+      <div class="field">
+        <label for="SubHeading">Sub-Heading</label>
+        <input id="SubHeading" placeholder="Sub Heading" type="text" ng-trim="true" ng-model="lowerThird.subHeading">
+      </div>
+    </div>
+
+    <div class="right floated right aligned six wide column">
+      <button class="ui blue button" ng-click="add(lowerThird)" ng-disabled="lowerThirdsForm.$invalid" >Add</button>
+      <button class="ui red button" ng-click="hide()">Hide</button>
+    </div>
+  </form>
+</div>
+
+<div class="ui segment" ng-repeat="third in queuedThirds">
+  <div class="ui grid">
+    <div class="six wide column">
+      <h2 class="left aligned ui header">
+          <i class="list layout icon"></i>
+          <div class="content">
+              {{third.heading}}
+              <div class="sub header">{{third.subHeading}}</div>
+          </div>
+        </h2>
+    </div>
+
+    <div class="two wide column">
+      
+    </div>
+
+    <div class="two wide column">
+
+    </div>
+
+    <div class="right aligned six wide column">
+      <div class="ui small buttons">
+        <div class="ui positive button" ng-click="show('left', third)" >Left</div>
+        <div class="or"></div>
+        <div class="ui positive button" ng-click="show('right', third)" >Right</div>
+      </div>
+
+      <div class="ui icon red small button">
+        <i class="delete icon" ng-click='remove($index)'></i>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,145 @@
+@field_color: #52AA00;
+@line_width: 3px;
+@center_spot_diameter: 14px;
+@center_circle_diameter: 180px;
+
+.corner_arc {
+	width: 30px;
+	height: 30px;
+	border: @line_width solid white;
+}
+
+.top {	border-top: 0px; }
+
+.bottom {
+	border-bottom: 0px;
+	position: absolute;
+	bottom:0;
+}
+.left {
+	border-left: 0px;
+	float: left;
+}
+.right {
+	border-right: 0px;
+	float: right;
+}
+
+.halves {
+	width: 600px;
+	height: 450px;
+	border: @line_width solid white;
+	box-sizing: border-box;
+}
+
+.center_spot {
+	position: absolute;
+	width: @center_spot_diameter;
+	height: @center_spot_diameter;
+	border-radius: 50%;
+	background-color: white;
+	left: 50%;
+	top: 50%;
+	margin-left: -@center_spot_diameter/2;
+	margin-top: -@center_spot_diameter/2;
+}
+
+.center_circle {
+	position: absolute;
+	width: @center_circle_diameter;
+	height: @center_circle_diameter;
+	border-radius: 50%;
+	border: @line_width solid white;
+	left: 50%;
+	top: 50%;
+	margin-left: -@center_circle_diameter/2;
+	margin-top: -@center_circle_diameter/2;
+	box-sizing: border-box;
+}
+
+.penalty_box {
+    width: 400px;
+    height: 160px;
+    box-sizing: border-box;
+    border: @line_width solid white;
+    left: 50%;
+    position: absolute;
+    margin-left: -200px;
+
+}
+
+.goalbox {
+    width: 180px;  
+    height: 55px;  
+	box-sizing: border-box;  
+    border: @line_width solid white;  
+	left: 50%;  
+	position: absolute;  
+    margin-left: -90px;
+}
+
+
+.formation_marker {
+	position: absolute;
+	width: 3px;
+	height: 3px;
+	background-color: rgb(0, 255, 41);
+}
+
+
+.nametags div {
+	position: absolute;
+	width: 200px;
+	height: 35px;
+	opacity: 1;
+	margin-left: -100px;
+	margin-top: -35px;
+	p {
+		font-family: Arial;
+		font-weight: bold;
+		text-align: center;
+		line-height: 35px;
+		font-size: 20px;
+	}
+}
+
+.nametags div:before {
+	transform: translateZ(-1px) rotateY(50deg);
+}
+
+/*.nametags div:before {
+	position: absolute;
+	width: 200px;
+	height: 35px;
+	-webkit-transform: translateZ(-1px) rotateY(180deg);
+	font-family: Arial;
+	font-weight: bold;
+	text-align: center;
+	line-height: 35px;
+	font-size: 20px;
+}*/
+
+.nametags .lanc {
+	transform-origin: 50% 50%;
+	transform: translateZ(22px) rotateX(-90deg) rotateY(0deg);
+	transform-style: preserve-3d;
+    color: #fff;
+    background-color: #cd1d18;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+.nametags .york {
+	transform-origin: 50% 50%;
+	transform: translateZ(22px) rotateX(-90deg) rotateY(180deg);
+	transform-style: preserve-3d;
+	color: #efbb39;
+	background-color: #000 !important;
+	background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+
+.dirt_sidepanel {
+	position:absolute;
+	background-color: #33cc33;  
+	-webkit-transform-origin: 0% 0%;
+}

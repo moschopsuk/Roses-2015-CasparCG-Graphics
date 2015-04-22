@@ -1,0 +1,95 @@
+<div class="ui form segment">
+  <h2>Boxing</h2>
+
+  <div class="ui grid">
+
+  <div class="four wide column">
+    <div class="inline field">
+      <label>Round</label>
+      <dropdown title="Current Round" ng-model="boxing.currRound" on-change="roundChanged()">
+        <dropdown-group>1st</dropdown-group>
+        <dropdown-group>2nd</dropdown-group>
+        <dropdown-group>3rd</dropdown-group>
+        <dropdown-group>4th</dropdown-group>
+        <dropdown-group>5th</dropdown-group>
+        <dropdown-group>6th</dropdown-group>
+        <dropdown-group>7th</dropdown-group>
+        <dropdown-group>8th</dropdown-group>
+      </dropdown>   
+      </div> 
+    </div>
+
+    <div class="six wide column">
+      <div class="field"><checkbox ng-model="boxing.showScore" size="large" type="toggle">Show Score</checkbox></div>
+    </div>
+
+    <div class="six wide column">
+      <div class="field"><checkbox ng-model="boxing.showTime" size="large" type="toggle">Show Clock</checkbox></div>
+    </div>
+  </div>
+
+  <div class="ui divider"></div>
+
+  <div class="ui grid">
+
+    <div class="four wide column center aligned">
+      <h2 class="ui header">{{clock}}</h2>
+    </div>
+
+    <div class="five wide column"> 
+      <div class="ui action input">
+        <input type="text" placeholder="mm:ss" ng-model="time" >
+        <div class="ui button" ng-click="setClock(time)">Set</div>
+      </div>
+    </div>
+
+    <div class="seven wide column">
+      <div class="ui">
+        <div class="ui icon red button" ng-click="upClock()">
+          <i class="up arrow icon"></i>
+        </div>
+
+        <div class="ui icon blue button" ng-click="pauseClock()">
+          <i class="pause icon"></i>
+        </div>
+
+        <div class="ui icon green button" ng-click="downClock()">
+          <i class="down arrow icon"></i>
+        </div>
+
+        <div class="ui button" ng-click="resetClock()" >Reset</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui divider"></div>
+
+  <div class="ui grid center aligned">
+    <div class="eight wide column">
+      <h3>Lancaster</h3>
+      <h1>{{boxing.lancScore}}</h1>
+      <div class="ui icon buttons">
+        <button class="ui green button" ng-click="boxing.lancScore = boxing.lancScore + 1; updateScore();">
+          <i class="plus icon"></i>
+        </button>
+        <button class="ui red button" ng-click="boxing.lancScore = boxing.lancScore - 1; updateScore();" ng-disabled="boxing.lancScore == 0">
+          <i class="minus icon"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="eight wide column">
+      <h3>York</h3>
+      <h1>{{boxing.yorkScore}}</h1>
+      <div class="ui icon buttons">
+        <button class="ui green button" ng-click="boxing.yorkScore = boxing.yorkScore + 1; updateScore();">
+          <i class="plus icon"></i>
+        </button>
+        <button class="ui red button" ng-click="boxing.yorkScore = boxing.yorkScore - 1; updateScore();" ng-disabled="boxing.yorkScore == 0">
+          <i class="minus icon"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,22 @@
+html, body {
+    height: 100%;
+    font-size: 15px;
+    background-color: #eee;
+}
+
+html, body {
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif !important;
+}
+
+#brand {
+	margin-top: 2em;
+    margin-bottom: 0.5em;
+}
+
+.pad-20 {
+	padding-top: 20px;
+}
+
+.cap-width {
+	max-width: 800px;
+}

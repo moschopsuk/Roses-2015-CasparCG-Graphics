@@ -1,0 +1,26 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background:transparent;                          /* The HTML consumer actually makes your background transparent by default, unless a color or image is specified - but this might be usefull when debugging in browsers */
+    overflow:hidden;                                 /* Hide any overflowing elements - to disable scollbars */ 
+}
+
+#pos-wrapper {
+	-webkit-perspective: 1500px;
+	-webkit-transform-origin: 50% 50%;
+	width: 620px;
+	height: 900px;
+	margin-left: 600px;
+}
+
+#field {
+	display:none;
+	width: 600px;
+	height: 900px;
+	background-image: url(http://i.imgur.com/bh9ahq3.png);
+	background-size: 332px;
+	padding: 20px;
+	position:relative;
+	-webkit-transition: 3s ease;
+	-webkit-transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(0.1);
+	-webkit-transform-style: preserve-3d;
+}

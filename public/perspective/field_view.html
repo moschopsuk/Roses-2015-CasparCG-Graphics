@@ -1,0 +1,93 @@
+<!doctype html>
+
+<html>
+	<head>
+		<link rel="stylesheet" href="http://meyerweb.com/eric/tools/css/reset/reset.css" />
+		<link rel="stylesheet"  type="text/css" href="./base.css" />
+		<link rel="stylesheet/less" type="text/css" href="./style.less" />
+		<script src="./less-1.4.1.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+		
+		<script src="./sylvester.js"></script>
+		<script src="./perspective-app.js"></script>
+
+		<script>		
+			$(document).ready(function() {
+				fadeToggleNametags(BOTTOM);
+				fadeToggleNametags(TOP);
+
+				beginAnimation();
+			});
+		</script>
+	</head>
+
+	
+	<body>
+		<div id="pos-wrapper">
+			<div id="field">
+			
+				<div class='center_spot'></div>
+				<div class='center_circle'></div>
+
+				<div class='halves' style="border-bottom:2.5px solid white;">
+					<div class='corner_arc top left' style="border-bottom-right-radius: 100%;"></div>
+					<div class='corner_arc top right' style="border-bottom-left-radius: 100%;"></div>
+					<img id='top_logo' src="http://roseslive.co.uk/assets/games/york.png" style="width: 125px;left: 50%;position: absolute;margin-left: -65px;top: 22%;-webkit-transform:rotate(180deg);">
+					<div class="penalty_box" style='border-top:0px;'>
+						<div class='goalbox' style="border-top: 0px;"></div>
+					</div>
+				</div>
+				
+				
+				<div  class='halves' style='border-top:2.5px solid white;position:relative;'>
+					<div class='corner_arc bottom left' style="border-top-right-radius: 100%;"></div>
+					<div class='corner_arc bottom right' style="border-top-left-radius: 100%;right:0;"></div>
+					<img id='bottom_logo' src="http://roseslive.co.uk/assets/games/lancaster.png" style="width: 125px;left: 50%;position: absolute;margin-left: -65px;top: 26%;">
+					<div class="penalty_box" style="border-bottom:0px;bottom:0;">
+						<div class="goalbox" style="border-bottom:0px;bottom:0;"></div>
+					</div>
+				</div>
+				
+				
+				<div class="nametags">
+					<div class="lanc" style='top: 22%;left: 15%;'>  <p>Luke Moscrop</p>  </div>
+					<div class="lanc" style='top: 22%;left: 85%;'>  <p>Luke Moscrop</p>  </div>
+					<div class="lanc" style='top: 47%;left: 15%;'>  <p>Luke Moscrop</p>  </div>
+					<div class="lanc" style='top: 36%;left: 50%;'>  <p>Luke Moscrop</p>  </div>
+					<div class="lanc" style='top: 47%;left: 85%;'>  <p>Luke Moscrop</p>  </div>
+					<div class="lanc" style='top: 70%;left: 15%;'>  <p>Luke Moscrop</p>  </div>
+					<div class="lanc" style='top: 62%;left: 50%;'>  <p>Luke Moscrop</p>  </div>
+					<div class="lanc" style='top: 70%;left: 85%;'>  <p>Luke Moscrop</p>  </div>
+					<div class="lanc" style='top: 86%;left: 25%;'>  <p>Luke Moscrop</p>  </div>
+					<div class="lanc" style='top: 86%;left: 75%;'> <p>Luke Moscrop</p>  </div>
+					<div class="lanc" style='top: 96%;left: 50%;'> <p>Luke Moscrop</p>  </div>
+				</div>
+				
+				<div class="nametags">
+					<div class="york" style='top: 78%;left: 85%;'>  <p>Chris Osborn</p>  </div>
+					<div class="york" style='top: 78%;left: 15%;'>  <p>Chris Osborn</p>  </div>
+					<div class="york" style='top: 53%;left: 85%;'>  <p>Chris Osborn</p>  </div>
+					<div class="york" style='top: 64%;left: 50%;'>  <p>Chris Osborn</p>  </div>
+					<div class="york" style='top: 53%;left: 15%;'>  <p>Chris Osborn</p>  </div>
+					<div class="york" style='top: 30%;left: 85%;'>  <p>Chris Osborn</p>  </div>
+					<div class="york" style='top: 38%;left: 50%;'>  <p>Chris Osborn</p>  </div>
+					<div class="york" style='top: 30%;left: 15%;'>  <p>Chris Osborn</p>  </div>
+					<div class="york" style='top: 14%;left: 75%;'>  <p>Chris Osborn</p>  </div>
+					<div class="york" style='top: 14%;left: 25%;'> <p>Chris Osborn</p>  </div>
+					<div class="york" style='top: 4%; left: 50%;'> <p>Chris Osborn</p>  </div>
+				</div>
+				
+				<div class='dirt_sidepanel' style="width: 640px;height: 14px;margin-left: -20px;margin-top: 20px; -webkit-transform: translateZ(0px) rotateX(-90deg);"></div>
+				<div class='dirt_sidepanel' style="width: 14px;top: 0;left: 640px;height: 940px; -webkit-transform: translateZ(-14px) rotateY(-90deg);"></div>
+				<div class='dirt_sidepanel' style="width: 14px;top: 0;margin-left: -20px;height: 940px; -webkit-transform: translateZ(-14px) rotateY(-90deg);"></div>
+				<div class='dirt_sidepanel' style="width: 640px;height: 14px;margin-left: -20px;top: 0; -webkit-transform: translateZ(0px) rotateX(-90deg);"></div>
+			</div>
+		</div>
+
+	</body>
+	
+	
+</html>
+
+
