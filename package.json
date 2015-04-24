@@ -4,6 +4,6 @@
 	"dependencies": {
 		"express": "*",
 		"socket.io": "*",
-		"underscore": "*",
+		"underscore": "*"
 	}
 }
