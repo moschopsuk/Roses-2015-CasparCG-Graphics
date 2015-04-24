@@ -67,6 +67,7 @@
   <div class="ui grid center aligned">
     <div class="eight wide column">
       <h3>Lancaster</h3>
+      <input type="text" ng-model="boxing.name1" >
       <h1>{{boxing.lancScore}}</h1>
       <div class="ui icon buttons">
         <button class="ui green button" ng-click="boxing.lancScore = boxing.lancScore + 1; updateScore();">
@@ -80,6 +81,7 @@
 
     <div class="eight wide column">
       <h3>York</h3>
+      <input type="text" ng-model="boxing.name2" >
       <h1>{{boxing.yorkScore}}</h1>
       <div class="ui icon buttons">
         <button class="ui green button" ng-click="boxing.yorkScore = boxing.yorkScore + 1; updateScore();">
