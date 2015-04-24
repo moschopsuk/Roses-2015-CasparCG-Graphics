@@ -105,10 +105,10 @@ app.controller('lowerThirdsCGController', ['$scope', 'localStorageService', 'soc
 
         var stored = localStorageService.get('lower_thirds');
 
-        if(stored.length > 0) {
-            $scope.queuedThirds = stored;
-        } else {
+        if(stored === null) {
             $scope.queuedThirds = [];
+        } else {
+            $scope.queuedThirds = stored;
         }
 
         $scope.add = function(item) {
