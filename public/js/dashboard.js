@@ -81,6 +81,10 @@ app.config(['$routeProvider', 'localStorageServiceProvider',
                 templateUrl: '/partials/football.tmpl.html',
                 controller: 'footballCGController'
             })
+            .when("/darts", {
+                templateUrl: '/partials/darts.tmpl.html',
+                controller: 'dartsCGController'
+            })
             .otherwise({redirectTo: '/general'});
     }
 ]);
@@ -262,6 +266,66 @@ app.controller('footballCGController', ['$scope', 'localStorageService', 'socket
 
         $scope.$on("$destroy", function() {
             localStorageService.set('football', $scope.football);
+        });
+    }
+]);
+
+
+app.controller('dartsCGController', ['$scope', 'localStorageService', 'socket',
+    function($scope, localStorageService, socket) {
+
+        var stored = localStorageService.get('dart');
+
+        if (stored === null) {
+            $scope.dart = {};
+        } else {
+            $scope.dart = stored;
+        }
+
+        $scope.$watch('dart', function() {
+            socket.emit("dart", $scope.dart);
+        }, true);
+
+        $scope.reset1 = function() {
+            $scope.dart.score1 = 501;
+        };
+
+        $scope.reset2 = function() {
+            $scope.dart.score2 = 501;
+        };
+
+        $scope.take1 = function(val) {
+            if( val > 180) {
+                $scope.last1 = "";
+                return;
+            }
+
+            var tmp = $scope.dart.score1;
+            var newScore = (tmp - val);
+
+            if(newScore > 0) {
+                $scope.dart.score1 = newScore;
+                $scope.last1 = "";
+            }
+        };
+
+        $scope.take2 = function(val) {
+            if( val > 180) {
+                $scope.last2 = "";
+                return;
+            }
+
+            var tmp = $scope.dart.score2;
+            var newScore = (tmp - val);
+
+            if(newScore > 0) {
+                $scope.dart.score2 = newScore;
+                $scope.last2 = "";
+            }
+        };
+
+        $scope.$on("$destroy", function() {
+            localStorageService.set('dart', $scope.dart);
         });
     }
 ]);

@@ -87,6 +87,14 @@ io.on('connection', function(socket) {
 	 socket.on("football", function(msg) {
 		io.sockets.emit("football", msg);
 	});
+
+
+	/*
+	 * 		Darts
+	 */
+	 socket.on("dart", function(msg) {
+		io.sockets.emit("dart", msg);
+	});
 });
 
 //Serve the puplic dir

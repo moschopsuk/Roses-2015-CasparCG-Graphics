@@ -100,6 +100,8 @@ app.controller('footballCtrl', ['$scope', 'socket',
 
 app.controller('dartsCtrl', ['$scope', 'socket',
     function($scope, socket){
-
+        socket.on("dart", function (msg) {
+            $scope.darts = msg;
+        });
     }
 ]);

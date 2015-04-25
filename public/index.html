@@ -98,26 +98,26 @@
             </div>
         </div>
 
-        <div ng-controller="footballCtrl" class="right bottom darts scale-fade" ng-show="darts.show">
+        <div ng-controller="dartsCtrl" class="right bottom darts scale-fade" ng-show="darts.show">
             <div class="row header">
                 <div class="name">&nbsp;</div>
                 <div class="leg">LEGS</div>
             </div>
 
             <div class="row">
-                <div class="name lanc">Bloggs</div>
-                <div class="legs">00</div>
-                <div class="score">501</div>
+                <div class="name lanc">{{darts.player1}}</div>
+                <div class="legs">{{darts.leg1}}</div>
+                <div class="score">{{darts.score1}}</div>
             </div>
 
             <div class="row">
-                <div class="name york">Johnson</div>
-                <div class="legs">00</div>
-                <div class="score">501</div>
+                <div class="name york">{{darts.player2}}</div>
+                <div class="legs">{{darts.leg2}}</div>
+                <div class="score">{{darts.score2}}</div>
             </div>
 
             <div class="row">
-                 <div class="footer">first to 00 legs</div>
+                 <div class="footer">first to 3 legs</div>
             </div>
         </div>
 

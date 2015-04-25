@@ -335,7 +335,7 @@ h1, h2, h3, h4 {
 /**************************************************/
 
 .darts {
-  width: 351px;
+  width: 357px;
   background-color: rgba(0, 0, 0, 0.5);
   text-align: left;
   font-size: 25px;
@@ -368,7 +368,7 @@ h1, h2, h3, h4 {
 }
 
 .darts .legs {
-  width: 40px;
+  width: 46px;
   color: #fff;
   background-color: #00d;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
@@ -376,7 +376,7 @@ h1, h2, h3, h4 {
 }
 
 .darts .score {
-  width: 50px;
+  width: 55px;
   color: #fff;
   background-color: #00d;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
@@ -386,7 +386,7 @@ h1, h2, h3, h4 {
 .darts .header .name {
   background-color: #fff;
   color: #000;
-  width: 233px
+  width: 234px
 }
 
 .darts .header .leg {
@@ -400,7 +400,7 @@ h1, h2, h3, h4 {
   background-color: #fff;
   color: #000;
   text-transform: uppercase;
-  width: 345px;
+  width: 341px;
   font-size: 20px; 
   line-height: 30px;
 }
