@@ -115,6 +115,7 @@ io.on('connection', function(socket) {
         for(i = 1; i <= 8; i++){
             swimming['pos' + i + 'name'] = eval('swimming.lane' + (swimming.order).charAt(i-1) + 'name');
             swimming['pos' + i + 'team'] = eval('swimming.lane' + (swimming.order).charAt(i-1) + 'team');
+            swimming['pos' + i + 'lane'] = (swimming.order).charAt(i-1);
         }
         
 		io.sockets.emit("swimming", msg);

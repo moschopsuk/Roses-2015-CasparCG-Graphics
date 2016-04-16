@@ -448,3 +448,51 @@ h1, h2, h3, h4 {
   font-size: 20px; 
   line-height: 30px;
 }
+
+.swimmingsplits {
+    top: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px; 
+    border: 5px solid rgba(0, 0, 0, 0.5);
+    background-clip: padding-box;
+}
+
+.swimmingsplits .row {
+    width: 275px;
+    max-height: 25px;
+    font-size: 15px;
+    line-height: 25px;
+    overflow: hidden;
+}
+
+.swimmingsplits .row.lanc {
+    color: #fff;
+    background-color: #cd1d18;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+.swimmingsplits .row.york {
+    color: #efbb39;
+    background-color: #000;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+.swimmingsplits .row .lane {
+    float: left;
+    margin-right: 5px;
+    paddding: 5px;
+    width: 25px;
+    text-align: center;
+    color: #000;
+    background-color: #fff;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+.swimmingsplits .row .splittime {
+    float: right;
+    margin-left: 5px;
+    padding: 0px 10px;
+    color: #000;
+    background-color: #fff;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
