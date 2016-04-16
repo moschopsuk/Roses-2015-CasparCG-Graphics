@@ -95,6 +95,13 @@ io.on('connection', function(socket) {
 	 socket.on("dart", function(msg) {
 		io.sockets.emit("dart", msg);
 	});
+    
+    /*
+	 * 		Swimming
+	 */
+	 socket.on("swimming", function(msg) {
+		io.sockets.emit("swimming", msg);
+	});
 });
 
 //Serve the puplic dir

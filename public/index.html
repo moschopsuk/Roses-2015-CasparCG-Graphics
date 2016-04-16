@@ -120,6 +120,18 @@
                  <div class="footer">first to 3 legs</div>
             </div>
         </div>
+        
+        <div ng-controller="swimmingCtrl">
+            <div class="right bottom swimmingclock scale-fade" ng-show="swimming.showclock">
+                <div class="row">
+                    <div class="clock">{{clock}}</div>
+                </div>
+
+                <div class="row">
+                    <div class="footer">{{swimming.distance}}</div>
+                </div>
+            </div>
+        </div>
 
         <script src="/js/socket.io.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>

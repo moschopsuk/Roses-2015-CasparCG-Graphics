@@ -49,6 +49,13 @@ app.controller('AppCtrl', ['$scope', '$location',
             type: 'link',
             icon: 'bullseye',
         });
+        
+        $scope.menu.push({
+            name: 'Swimming',
+            url: '/swimming',
+            type: 'link',
+            icon: 'life-saver',
+        });
 
     }
 ]);
@@ -84,6 +91,10 @@ app.config(['$routeProvider', 'localStorageServiceProvider',
             .when("/darts", {
                 templateUrl: '/partials/darts.tmpl.html',
                 controller: 'dartsCGController'
+            })
+            .when("/swimming", {
+                templateUrl: '/partials/swimming.tmpl.html',
+                controller: 'swimmingCGController'
             })
             .otherwise({redirectTo: '/general'});
     }
@@ -326,6 +337,53 @@ app.controller('dartsCGController', ['$scope', 'localStorageService', 'socket',
 
         $scope.$on("$destroy", function() {
             localStorageService.set('dart', $scope.dart);
+        });
+    }
+]);
+
+app.controller('swimmingCGController', ['$scope', 'localStorageService', 'socket',
+    function($scope, localStorageService, socket) {
+        var stored = localStorageService.get('swimming');
+        
+        if (stored === null) {
+            $scope.swimming = {};
+        } else {
+            $scope.swimming = stored;
+        }
+        
+        //Clock Functions
+        $scope.clock    = "00:00";
+
+        socket.on("clock:tick", function (msg) {
+            $scope.clock = msg;
+        });
+
+        $scope.pauseClock = function() {
+            socket.emit("clock:pause");
+        };
+
+        $scope.resetClock = function() {
+            socket.emit("clock:reset");
+        };
+
+        $scope.setClock = function(val) {
+            socket.emit("clock:set", val);
+        };
+
+        $scope.downClock = function() {
+            socket.emit("clock:down");
+        };
+
+        $scope.upClock = function() {
+            socket.emit("clock:up");
+        };
+
+        $scope.$watch('swimming', function() {
+            socket.emit("swimming", $scope.swimming);
+        }, true);
+
+        $scope.$on("$destroy", function() {
+            localStorageService.set('swimming', $scope.swimming);
         });
     }
 ]);

@@ -404,3 +404,39 @@ h1, h2, h3, h4 {
   font-size: 20px; 
   line-height: 30px;
 }
+
+/**************************************************/
+/*              [Swimming]                        */
+/**************************************************/
+
+.swimmingclock {
+  width: 257px;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: left;
+  font-size: 25px;
+
+  border-radius: 5px; 
+  border: 8px solid rgba(0, 0, 0, 0.5);
+  background-clip: padding-box;
+}
+
+.swimmingclock .clock, .swimmingclock .footer {
+  float: left;
+  line-height: 45px;
+  padding-right: 5px;
+  width: 241px;
+  text-align: right;
+}
+
+.swimmingclock .clock {
+  color: #fff;
+  background-color: #00d;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+.swimmingclock .footer {
+  background-color: #fff;
+  color: #000;
+  font-size: 20px; 
+  line-height: 30px;
+}

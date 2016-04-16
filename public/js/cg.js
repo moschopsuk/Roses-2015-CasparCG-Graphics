@@ -105,3 +105,15 @@ app.controller('dartsCtrl', ['$scope', 'socket',
         });
     }
 ]);
+
+app.controller('swimmingCtrl', ['$scope', 'socket',
+    function($scope, socket){
+        socket.on("swimming", function (msg) {
+            $scope.swimming = msg;
+        });
+        
+        socket.on("clock:tick", function (msg) {
+            $scope.clock = msg;
+        });
+    }
+]);
