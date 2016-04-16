@@ -366,6 +366,24 @@ app.controller('swimmingCGController', ['$scope', 'socket',
         $scope.upClock = function() {
             socket.emit("clock:up");
         };
+        
+        $scope.resetOrder = function(val) {
+                $scope.swimming.showsplits = false;
+                setTimeout(function() {
+                    $scope.swimming.order = '';
+                    $scope.swimming.showsplits = true;
+                    socket.emit("swimming", $scope.swimming);
+                }, 600);
+        };
+        
+        $scope.resetLanes = function() {
+            $scope.swimming.order = '';
+
+            for(i = 1; i <= 8; i++){
+                $scope.swimming['lane' + i + 'name'] = '';
+                $scope.swimming['lane' + i + 'team'] = '';
+            }
+        }
 
         socket.on("swimming", function (msg) {
             $scope.swimming = msg;

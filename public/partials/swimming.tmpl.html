@@ -2,9 +2,15 @@
   <h2>Swimming</h2>
 
 	<div class="ui grid center aligned">
-    	<div class="eight wide column">
+    	<div class="five wide column">
     		<div class="field"><checkbox ng-model="swimming.showclock" size="large" type="toggle">Show Clock</checkbox></div>
     	</div>
+        <div class="five wide column">
+            <div class="field"><checkbox ng-model="swimming.showsplits" size="large" type="toggle">Show Splits</checkbox></div>
+        </div>
+        <div class="five wide column">
+            <div class="field"><checkbox ng-model="swimming.showlist" size="large" type="toggle">Show Start/Results</checkbox></div>
+        </div>
     </div>
 
   	<div class="ui divider"></div>
@@ -37,27 +43,29 @@
     <div class="ui divider"></div>
     
     <div class="ui grid center aligned">
-  
-        <div class="sizteen wide column">
-            <div class="fields">
-                <div class="five wide field">
-                    <checkbox ng-model="swimming.showsplits" size="large" type="toggle">Show Splits</checkbox>
-                </div>
-                <div class="five wide field">
-                    <input placeholder="Order" ng-model="swimming.order">
-                </div>
-            </div>
+        <div class="three wide column">
+            <input placeholder="Order" ng-model="swimming.order" ng-keypress="($event.which === 13)?resetOrder($event):0">
+        </div>
+        <div class="two wide column">
+            <div class="ui button" ng-click="resetOrder()" >Clear</div>
+        </div>
+        <div class="six wide column">
+            Type numbers 1-8 in the order of the swimmers. [Enter] clears the splits.
+        </div>
+        <div class="four wide column">
+            <div class="ui button" ng-click="resetLanes()" >Reset Lanes</div>
         </div>
     </div>
                 
     <div class="ui divider"></div>
 
-
+<!-- This could do with being in some sort of loop. -->
     <div class="ui grid center aligned">
   
-        <div class="sizteen wide column">
+        <div class="sixteen wide column">
             <div class="fields">
-                <div class="six wide field">
+                <div class="two wide field"><h3>Lane 1</h3></div>
+                <div class="nine wide field">
                     <input type="text" placeholder="Lane 1 Name" ng-model="swimming.lane1name">
                 </div>
                 
@@ -78,9 +86,10 @@
     </div>
     <div class="ui grid center aligned">
         
-        <div class="sizteen wide column">
+        <div class="sixteen wide column">
             <div class="fields">
-                <div class="six wide field">
+                <div class="two wide field"><h3>Lane 2</h3></div>
+                <div class="nine wide field">
                     <input type="text" placeholder="Lane 2 Name" ng-model="swimming.lane2name">
                 </div>
                 
@@ -101,9 +110,10 @@
     </div>
     <div class="ui grid center aligned">
         
-        <div class="sizteen wide column">
+        <div class="sixteen wide column">
             <div class="fields">
-                <div class="six wide field">
+                <div class="two wide field"><h3>Lane 3</h3></div>
+                <div class="nine wide field">
                     <input type="text" placeholder="Lane 3 Name" ng-model="swimming.lane3name">
                 </div>
                 
@@ -124,9 +134,10 @@
     </div>
     <div class="ui grid center aligned">
         
-        <div class="sizteen wide column">
+        <div class="sixteen wide column">
             <div class="fields">
-                <div class="six wide field">
+                <div class="two wide field"><h3>Lane 4</h3></div>
+                <div class="nine wide field">
                     <input type="text" placeholder="Lane 4 Name" ng-model="swimming.lane4name">
                 </div>
                 
@@ -147,9 +158,10 @@
     </div>
     <div class="ui grid center aligned">
         
-        <div class="sizteen wide column">
+        <div class="sixteen wide column">
             <div class="fields">
-                <div class="six wide field">
+                <div class="two wide field"><h3>Lane 5</h3></div>
+                <div class="nine wide field">
                     <input type="text" placeholder="Lane 5 Name" ng-model="swimming.lane5name">
                 </div>
                 
@@ -170,9 +182,10 @@
     </div>
     <div class="ui grid center aligned">
         
-        <div class="sizteen wide column">
+        <div class="sixteen wide column">
             <div class="fields">
-                <div class="six wide field">
+                <div class="two wide field"><h3>Lane 6</h3></div>
+                <div class="nine wide field">
                     <input type="text" placeholder="Lane 6 Name" ng-model="swimming.lane6name">
                 </div>
                 
@@ -193,9 +206,10 @@
     </div>
     <div class="ui grid center aligned">
         
-        <div class="sizteen wide column">
+        <div class="sixteen wide column">
             <div class="fields">
-                <div class="six wide field">
+                <<div class="two wide field"><h3>Lane 7</h3></div>
+                <div class="nine wide field">
                     <input type="text" placeholder="Lane 7 Name" ng-model="swimming.lane7name">
                 </div>
                 
@@ -216,9 +230,10 @@
     </div>
     <div class="ui grid center aligned">
         
-        <div class="sizteen wide column">
+        <div class="sixteen wide column">
             <div class="fields">
-                <div class="six wide field">
+                <div class="two wide field"><h3>Lane 8</h3></div>
+                <div class="nine wide field">
                     <input type="text" placeholder="Lane 8 Name" ng-model="swimming.lane8name">
                 </div>
                 
