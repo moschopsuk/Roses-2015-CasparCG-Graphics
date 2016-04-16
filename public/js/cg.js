@@ -117,9 +117,9 @@ app.controller('swimmingCtrl', ['$scope', 'socket',
         $scope.clockDec = "0";
         
         socket.on("clock:tick", function (msg) {
-            $scope.clockMin = msg.slice(0,2).replace(/^0/, '');
-            $scope.clockSec = msg.slice(3,5);
-            $scope.clockDec = msg.slice(6);
+            $scope.clockMin = msg.slice(0,msg.indexOf(":")).replace(/^0/, '');
+            $scope.clockSec = msg.slice(msg.indexOf(":")+1,msg.indexOf("."));
+            $scope.clockDec = msg.slice(msg.indexOf(".")+1);
         });
     }
 ]);

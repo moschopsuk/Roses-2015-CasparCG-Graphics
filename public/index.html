@@ -134,6 +134,10 @@
                     <div class="footer">{{swimming.distance}}</div>
                 </div>
             </div>
+            
+            <div class="left top swimmingsplits slide-left" ng-show="swimming.showsplits">
+                <div class="row {{swimming.pos1team}}">{{swimming.pos1name}}</div>
+            </div>
         </div>
 
         <script src="/js/socket.io.js"></script>

@@ -9,20 +9,13 @@
 
   	<div class="ui divider"></div>
 
-  	<div class="ui grid">
+  	<div class="ui grid center aligned">
 
         <div class="four wide column center aligned">
           <h2 class="ui header">{{clock}}</h2>
         </div>
 
-        <div class="five wide column"> 
-          <div class="ui action input">
-            <input type="text" placeholder="mm:ss" ng-model="time" >
-            <div class="ui button" ng-click="setClock(time)">Set</div>
-          </div>
-        </div>
-
-        <div class="seven wide column">
+        <div class="five wide column">
           <div class="ui">
             <div class="ui icon red button" ng-click="upClock()">
               <i class="up arrow icon"></i>
@@ -35,19 +28,198 @@
           </div>
         </div>
         
+        <div class="five wide column">
+          <input type="text" placeholder="Distance/Event" ng-model="swimming.distance">
+        </div>
+        
     </div>
 
     <div class="ui divider"></div>
 
     <div class="ui grid center aligned">
   
-        <div class="four wide column">
-          <h3 class="ui header">Distance/Event</h3>
+        <div class="sizteen wide column">
+            <div class="fields">
+                <div class="six wide field">
+                    <input type="text" placeholder="Lane 1 Name" ng-model="swimming.lane1name">
+                </div>
+                
+                <div class="two wide inline field">
+                     <div class="ui selection dropdown">
+                        <input type="hidden" name="lane1team">
+                        <div class="text">{{swimming.lane1team}}</div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <div class="item" data-value="Lancaster" ng-click="swimming.lane1team = 'lanc';" ng-class="{'active selected' : 'lanc' == swimming.lane1team}">Lancaster</div>
+                            <div class="item" data-value="York" ng-click="swimming.lane1team = 'york';" ng-class="{'active selected' : 'york' == swimming.lane1team}">York</div>
+                        </div>
+                    </div> 
+                </div> 
+            </div>
         </div>
         
-        <div class="eight wide column">
-          <input type="text" ng-model="swimming.distance">
+    </div>
+    <div class="ui grid center aligned">
+        
+        <div class="sizteen wide column">
+            <div class="fields">
+                <div class="six wide field">
+                    <input type="text" placeholder="Lane 2 Name" ng-model="swimming.lane2name">
+                </div>
+                
+                <div class="two wide inline field">
+                     <div class="ui selection dropdown">
+                        <input type="hidden" name="lane2team">
+                        <div class="text">{{swimming.lane2team}}</div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <div class="item" data-value="Lancaster" ng-click="swimming.lane2team = 'lanc';" ng-class="{'active selected' : 'lanc' == swimming.lane2team}">Lancaster</div>
+                            <div class="item" data-value="York" ng-click="swimming.lane2team = 'york';" ng-class="{'active selected' : 'york' == swimming.lane2team}">York</div>
+                        </div>
+                    </div> 
+                </div> 
+            </div>
         </div>
-    
+        
+    </div>
+    <div class="ui grid center aligned">
+        
+        <div class="sizteen wide column">
+            <div class="fields">
+                <div class="six wide field">
+                    <input type="text" placeholder="Lane 3 Name" ng-model="swimming.lane3name">
+                </div>
+                
+                <div class="two wide inline field">
+                     <div class="ui selection dropdown">
+                        <input type="hidden" name="lane3team">
+                        <div class="text">{{swimming.lane3team}}</div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <div class="item" data-value="Lancaster" ng-click="swimming.lane3team = 'lanc';" ng-class="{'active selected' : 'lanc' == swimming.lane3team}">Lancaster</div>
+                            <div class="item" data-value="York" ng-click="swimming.lane3team = 'york';" ng-class="{'active selected' : 'york' == swimming.lane3team}">York</div>
+                        </div>
+                    </div> 
+                </div> 
+            </div>
+        </div>
+        
+    </div>
+    <div class="ui grid center aligned">
+        
+        <div class="sizteen wide column">
+            <div class="fields">
+                <div class="six wide field">
+                    <input type="text" placeholder="Lane 4 Name" ng-model="swimming.lane4name">
+                </div>
+                
+                <div class="two wide inline field">
+                     <div class="ui selection dropdown">
+                        <input type="hidden" name="lane4team">
+                        <div class="text">{{swimming.lane4team}}</div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <div class="item" data-value="Lancaster" ng-click="swimming.lane4team = 'lanc';" ng-class="{'active selected' : 'lanc' == swimming.lane4team}">Lancaster</div>
+                            <div class="item" data-value="York" ng-click="swimming.lane4team = 'york';" ng-class="{'active selected' : 'york' == swimming.lane4team}">York</div>
+                        </div>
+                    </div> 
+                </div> 
+            </div>
+        </div>
+        
+    </div>
+    <div class="ui grid center aligned">
+        
+        <div class="sizteen wide column">
+            <div class="fields">
+                <div class="six wide field">
+                    <input type="text" placeholder="Lane 5 Name" ng-model="swimming.lane5name">
+                </div>
+                
+                <div class="two wide inline field">
+                     <div class="ui selection dropdown">
+                        <input type="hidden" name="lane5team">
+                        <div class="text">{{swimming.lane5team}}</div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <div class="item" data-value="Lancaster" ng-click="swimming.lane5team = 'lanc';" ng-class="{'active selected' : 'lanc' == swimming.lane5team}">Lancaster</div>
+                            <div class="item" data-value="York" ng-click="swimming.lane5team = 'york';" ng-class="{'active selected' : 'york' == swimming.lane5team}">York</div>
+                        </div>
+                    </div> 
+                </div> 
+            </div>
+        </div>
+        
+    </div>
+    <div class="ui grid center aligned">
+        
+        <div class="sizteen wide column">
+            <div class="fields">
+                <div class="six wide field">
+                    <input type="text" placeholder="Lane 6 Name" ng-model="swimming.lane6name">
+                </div>
+                
+                <div class="two wide inline field">
+                     <div class="ui selection dropdown">
+                        <input type="hidden" name="lane6team">
+                        <div class="text">{{swimming.lane6team}}</div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <div class="item" data-value="Lancaster" ng-click="swimming.lane6team = 'lanc';" ng-class="{'active selected' : 'lanc' == swimming.lane6team}">Lancaster</div>
+                            <div class="item" data-value="York" ng-click="swimming.lane6team = 'york';" ng-class="{'active selected' : 'york' == swimming.lane6team}">York</div>
+                        </div>
+                    </div> 
+                </div> 
+            </div>
+        </div>
+        
+    </div>
+    <div class="ui grid center aligned">
+        
+        <div class="sizteen wide column">
+            <div class="fields">
+                <div class="six wide field">
+                    <input type="text" placeholder="Lane 7 Name" ng-model="swimming.lane7name">
+                </div>
+                
+                <div class="two wide inline field">
+                     <div class="ui selection dropdown">
+                        <input type="hidden" name="lane7team">
+                        <div class="text">{{swimming.lane7team}}</div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <div class="item" data-value="Lancaster" ng-click="swimming.lane7team = 'lanc';" ng-class="{'active selected' : 'lanc' == swimming.lane7team}">Lancaster</div>
+                            <div class="item" data-value="York" ng-click="swimming.lane7team = 'yprk';" ng-class="{'active selected' : 'york' == swimming.lane7team}">York</div>
+                        </div>
+                    </div> 
+                </div> 
+            </div>
+        </div>
+        
+    </div>
+    <div class="ui grid center aligned">
+        
+        <div class="sizteen wide column">
+            <div class="fields">
+                <div class="six wide field">
+                    <input type="text" placeholder="Lane 8 Name" ng-model="swimming.lane8name">
+                </div>
+                
+                <div class="two wide inline field">
+                     <div class="ui selection dropdown">
+                        <input type="hidden" name="lane8team">
+                        <div class="text">{{swimming.lane8team}}</div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <div class="item" data-value="Lancaster" ng-click="swimming.lane8team = 'lanc';" ng-class="{'active selected' : 'lanc' == swimming.lane8team}">Lancaster</div>
+                            <div class="item" data-value="York" ng-click="swimming.lane8team = 'york';" ng-class="{'active selected' : 'york' == swimming.lane8team}">York</div>
+                        </div>
+                    </div> 
+                </div> 
+            </div>
+        </div>
+        
+    </div>
+        
     </div>
  </div>

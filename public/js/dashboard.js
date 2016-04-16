@@ -54,7 +54,7 @@ app.controller('AppCtrl', ['$scope', '$location',
             name: 'Swimming',
             url: '/swimming',
             type: 'link',
-            icon: 'life-saver',
+            icon: 'life ring',
         });
 
     }
@@ -384,6 +384,9 @@ app.controller('swimmingCGController', ['$scope', 'localStorageService', 'socket
 
         $scope.$on("$destroy", function() {
             localStorageService.set('swimming', $scope.swimming);
+        
+        $(function () {
+          $('.ui.dropdown').dropdown();
         });
     }
 ]);
