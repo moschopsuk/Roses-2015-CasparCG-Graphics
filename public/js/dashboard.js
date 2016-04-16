@@ -159,7 +159,7 @@ app.controller('boxingCGController', ['$scope', 'localStorageService', 'socket',
         $scope.clock    = "00:00";
 
         socket.on("clock:tick", function (msg) {
-            $scope.clock = msg;
+            $scope.clock = msg.slice(0, msg.indexOf("."));
         });
 
         $scope.pauseClock = function() {
@@ -248,7 +248,7 @@ app.controller('footballCGController', ['$scope', 'localStorageService', 'socket
         $scope.clock    = "00:00";
 
         socket.on("clock:tick", function (msg) {
-            $scope.clock = msg;
+            $scope.clock = msg.slice(0, msg.indexOf("."));
         });
 
         $scope.pauseClock = function() {

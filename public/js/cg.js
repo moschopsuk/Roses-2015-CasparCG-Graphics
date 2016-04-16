@@ -35,7 +35,7 @@ app.controller('boxingCtrl', ['$scope', 'socket',
         });
 
         socket.on("clock:tick", function (msg) {
-            $scope.clock = msg;
+            $scope.clock = msg.slice(0, msg.indexOf("."));
         });
     }
 ]);
@@ -93,7 +93,7 @@ app.controller('footballCtrl', ['$scope', 'socket',
         });
 
         socket.on("clock:tick", function (msg) {
-            $scope.clock = msg;
+            $scope.clock = msg.slice(0, msg.indexOf("."));
         });
     }
 ]);

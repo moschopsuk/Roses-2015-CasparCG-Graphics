@@ -13,6 +13,7 @@ function Stopwatch() {
     this.hour = 3600000;
     this.minute = 60000;
     this.second = 1000;
+    this.decisecond = 100;
     this.time = 0;
     this.interval = undefined;
     this.setCountMode = "up";
@@ -41,7 +42,7 @@ Stopwatch.prototype.start = function() {
     // note the use of _.bindAll in the constructor
     // with bindAll we can pass one of our methods to
     // setInterval and have it called with the proper 'this' value
-    this.interval = setInterval(this.onTick, this.second);
+    this.interval = setInterval(this.onTick, this.decisecond);
     this.emit('start:stopwatch');
 };
 
@@ -72,10 +73,10 @@ Stopwatch.prototype.countDown = function() {
 }
 
 Stopwatch.prototype.setValue = function(val) {
-    var pattern = /^(?:(?:(\d+):)?(\d+):)?(\d+)$/;
+    var pattern = /^(?:(?:(?:(\d+):)?(\d+):)?(\d+)(?:\.(\d))?)$/;
     var match = pattern.exec(val);
 
-    this.time = (this.hour * parseInt(match[1])|0) + (this.minute * parseInt(match[2])|0) + (this.second * parseInt(match[3])|0);
+    this.time = (this.hour * parseInt(match[1])|0) + (this.minute * parseInt(match[2])|0) + (this.second * parseInt(match[3])|0) + (this.decisecond * parseInt(match[4])|0);
 }
 
 Stopwatch.prototype.reset = function() {
@@ -86,9 +87,9 @@ Stopwatch.prototype.reset = function() {
 
 Stopwatch.prototype.onTick = function() {
     if (this.setCountMode === "down") {
-        this.time = this.time - this.second;
+        this.time = this.time - this.decisecond;
     } else {
-        this.time += this.second;
+        this.time += this.decisecond;
     }
     
     var formattedTime = this.formatTime(this.time);
@@ -104,6 +105,7 @@ Stopwatch.prototype.formatTime = function(time) {
         numHours,
         numMinutes,
         numSeconds,
+        numDeciseconds,
         output = "";
 
     //numHours = String(parseInt(remainder / this.hour, 10));
@@ -113,6 +115,9 @@ Stopwatch.prototype.formatTime = function(time) {
     remainder -= this.minute * numMinutes;
     
     numSeconds = String(parseInt(remainder / this.second, 10));
+    remainder -= this.second * numSeconds;
+    
+    numDeciseconds = String(parseInt(remainder / this.decisecond, 10));
     
     output = _.map([numMinutes, numSeconds], function(str) {
         if (str.length === 1) {
@@ -120,6 +125,8 @@ Stopwatch.prototype.formatTime = function(time) {
         }
         return str;
     }).join(":");
+    
+    output = [output, numDeciseconds].join(".");
 
     return output;
 };
