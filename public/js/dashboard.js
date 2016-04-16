@@ -341,19 +341,8 @@ app.controller('dartsCGController', ['$scope', 'localStorageService', 'socket',
     }
 ]);
 
-app.controller('swimmingCGController', ['$scope', 'localStorageService', 'socket',
-    function($scope, localStorageService, socket) {
-        var stored = localStorageService.get('swimming');
-        
-        if (stored === null) {
-            $scope.swimming = {};
-        } else {
-            $scope.swimming = stored;
-        }
-        
-        //Clock Functions
-        $scope.clock    = "0:00.0";
-
+app.controller('swimmingCGController', ['$scope', 'socket',
+    function($scope, socket) {
         socket.on("clock:tick", function (msg) {
             $scope.clock = msg.replace(/^0/, '');
         });
@@ -378,12 +367,22 @@ app.controller('swimmingCGController', ['$scope', 'localStorageService', 'socket
             socket.emit("clock:up");
         };
 
+        socket.on("swimming", function (msg) {
+            $scope.swimming = msg;
+        });
+ 
         $scope.$watch('swimming', function() {
-            socket.emit("swimming", $scope.swimming);
+            if ($scope.swimming) {
+                socket.emit("swimming", $scope.swimming);
+            } else {
+                getSwimmingData();
+            }
         }, true);
-
-        $scope.$on("$destroy", function() {
-            localStorageService.set('swimming', $scope.swimming);
+        
+        function getSwimmingData() {
+            socket.emit("swimming:get");
+            socket.emit("clock:get")
+        }
         
         $(function () {
           $('.ui.dropdown').dropdown();

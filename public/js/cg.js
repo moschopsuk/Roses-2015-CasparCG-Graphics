@@ -121,5 +121,16 @@ app.controller('swimmingCtrl', ['$scope', 'socket',
             $scope.clockSec = msg.slice(msg.indexOf(":")+1,msg.indexOf("."));
             $scope.clockDec = msg.slice(msg.indexOf(".")+1);
         });
+        
+        $scope.$watch('swimming', function() {
+            if (!$scope.swimming) {
+                getCGData();
+            }
+        }, true);
+        
+        function getSwimmingData() {
+            socket.emit("swimming:get");
+            socket.emit("clock:get");
+        };
     }
 ]);

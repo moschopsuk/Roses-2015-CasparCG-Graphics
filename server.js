@@ -6,6 +6,7 @@ var app = express();
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
 
+var swimming = {};
 
 //Clock Functions
 var stopwatch = new Stopwatch();
@@ -41,6 +42,10 @@ io.on('connection', function(socket) {
 	socket.on("clock:set", function(msg) {
 		stopwatch.setValue(msg);
 	});
+    
+    socket.on("clock:get", function() {
+        io.sockets.emit("clock:tick", stopwatch.getTime());
+    });
 
 
 	/*
@@ -97,9 +102,14 @@ io.on('connection', function(socket) {
     /*
 	 * 		Swimming
 	 */
-	 socket.on("swimming", function(msg) {
+	socket.on("swimming", function(msg) {
+        swimming = msg;
 		io.sockets.emit("swimming", msg);
 	});
+    
+    socket.on("swimming:get", function(msg) {
+        io.sockets.emit("swimming", swimming);
+    });
 });
 
 //Serve the puplic dir
