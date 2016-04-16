@@ -124,7 +124,10 @@
         <div ng-controller="swimmingCtrl">
             <div class="right bottom swimmingclock scale-fade" ng-show="swimming.showclock">
                 <div class="row">
-                    <div class="clock">{{clock}}</div>
+                    <div class="clock">
+                        <div class="deciseconds">{{clockDec}}</div>
+                        <div>{{clockMin}}:{{clockSec}}.</div>
+                    </div>
                 </div>
 
                 <div class="row">

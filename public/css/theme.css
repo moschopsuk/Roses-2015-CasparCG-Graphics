@@ -434,6 +434,14 @@ h1, h2, h3, h4 {
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
+.swimmingclock .clock * {
+    float: right;
+}
+
+.swimmingclock .clock .deciseconds {
+    width: 16px;
+}
+
 .swimmingclock .footer {
   background-color: #fff;
   color: #000;
