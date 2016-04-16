@@ -112,8 +112,14 @@ app.controller('swimmingCtrl', ['$scope', 'socket',
             $scope.swimming = msg;
         });
         
+        $scope.clockMin = "0";
+        $scope.clockSec = "00";
+        $scope.clockDec = "0";
+        
         socket.on("clock:tick", function (msg) {
-            $scope.clock = msg;
+            $scope.clockMin = msg.slice(0,2).replace(/^0/, '');
+            $scope.clockSec = msg.slice(3,5);
+            $scope.clockDec = msg.slice(6);
         });
     }
 ]);

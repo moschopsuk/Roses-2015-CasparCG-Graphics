@@ -352,10 +352,10 @@ app.controller('swimmingCGController', ['$scope', 'localStorageService', 'socket
         }
         
         //Clock Functions
-        $scope.clock    = "00:00";
+        $scope.clock    = "0:00.0";
 
         socket.on("clock:tick", function (msg) {
-            $scope.clock = msg;
+            $scope.clock = msg.replace(/^0/, '');
         });
 
         $scope.pauseClock = function() {

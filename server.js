@@ -10,8 +10,6 @@ var io = require('socket.io').listen(server);
 //Clock Functions
 var stopwatch = new Stopwatch();
 
-stopwatch.start();
-
 stopwatch.on('tick:stopwatch', function(time) {
 	io.sockets.emit("clock:tick", time);
 });

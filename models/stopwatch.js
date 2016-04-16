@@ -77,12 +77,13 @@ Stopwatch.prototype.setValue = function(val) {
     var match = pattern.exec(val);
 
     this.time = (this.hour * parseInt(match[1])|0) + (this.minute * parseInt(match[2])|0) + (this.second * parseInt(match[3])|0) + (this.decisecond * parseInt(match[4])|0);
+    this.emit('tick:stopwatch', this.formatTime(this.time));
 }
 
 Stopwatch.prototype.reset = function() {
     console.log('Resetting Stopwatch!');
     this.time = 0;
-    this.emit('reset:stopwatch', this.formatTime(this.time));
+    this.emit('tick:stopwatch', this.formatTime(this.time));
 };
 
 Stopwatch.prototype.onTick = function() {
