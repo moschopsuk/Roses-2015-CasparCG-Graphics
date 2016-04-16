@@ -6,7 +6,7 @@ var app = express();
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
 
-var swimming = {};
+var swimming = {order: ''};
 
 //Clock Functions
 var stopwatch = new Stopwatch();
@@ -104,6 +104,19 @@ io.on('connection', function(socket) {
 	 */
 	socket.on("swimming", function(msg) {
         swimming = msg;
+        
+        swimming.order = (swimming.order).replace(/[^1-8]+/, '');
+        swimming.order = (swimming.order).replace(/(.).*\1/, function (x) {return x.substring(0, x.length - 1)})
+        
+        if(!('pos1name' in swimming) && swimming.order != '') {
+            swimming.splittime = stopwatch.getTime().replace(/^0/, '');
+        }
+        
+        for(i = 1; i <= 8; i++){
+            swimming['pos' + i + 'name'] = eval('swimming.lane' + (swimming.order).charAt(i-1) + 'name');
+            swimming['pos' + i + 'team'] = eval('swimming.lane' + (swimming.order).charAt(i-1) + 'team');
+        }
+        
 		io.sockets.emit("swimming", msg);
 	});
     

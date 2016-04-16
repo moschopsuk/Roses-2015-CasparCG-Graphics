@@ -124,7 +124,7 @@ app.controller('swimmingCtrl', ['$scope', 'socket',
         
         $scope.$watch('swimming', function() {
             if (!$scope.swimming) {
-                getCGData();
+                getSwimmingData();
             }
         }, true);
         
