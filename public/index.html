@@ -135,7 +135,7 @@
                 </div>
             </div>
             
-            <div class="left top slide-left swimmingsplits" ng-show="swimming.showsplits && swimming.pos1name">
+            <div class="left top slide-left swimmingsplits" ng-show="swimming.showsplits && swimming.order">
                 <div class="row {{swimming.pos1team}}" ng-show="swimming.pos1name"><span class="lane">{{swimming.pos1lane}}</span>{{swimming.pos1name}}<span class="splittime">{{swimming.splittime}}</span></div>
                 <div class="row {{swimming.pos2team}}" ng-show="swimming.pos2name"><span class="lane">{{swimming.pos2lane}}</span>{{swimming.pos2name}}</div>
                 <div class="row {{swimming.pos3team}}" ng-show="swimming.pos3name"><span class="lane">{{swimming.pos3lane}}</span>{{swimming.pos3name}}</div>
@@ -144,6 +144,31 @@
                 <div class="row {{swimming.pos6team}}" ng-show="swimming.pos6name"><span class="lane">{{swimming.pos6lane}}</span>{{swimming.pos6name}}</div>
                 <div class="row {{swimming.pos7team}}" ng-show="swimming.pos7name"><span class="lane">{{swimming.pos7lane}}</span>{{swimming.pos7name}}</div>
                 <div class="row {{swimming.pos8team}}" ng-show="swimming.pos8name"><span class="lane">{{swimming.pos8lane}}</span>{{swimming.pos8name}}</div>
+            </div>
+            
+            <div class="middle center scale-fade swimminglist" ng-show="swimming.showlist">
+                <div ng-show="swimming.order">
+                    <div class="header">Results - {{swimming.distance}}</div>
+                    <div class="row {{swimming.pos1team}}" ng-show="swimming.pos1name"><span class="lane">1</span>{{swimming.pos1name}}</div>
+                    <div class="row {{swimming.pos2team}}" ng-show="swimming.pos2name"><span class="lane">2</span>{{swimming.pos2name}}</div>
+                    <div class="row {{swimming.pos3team}}" ng-show="swimming.pos3name"><span class="lane">3</span>{{swimming.pos3name}}</div>
+                    <div class="row {{swimming.pos4team}}" ng-show="swimming.pos4name"><span class="lane">4</span>{{swimming.pos4name}}</div>
+                    <div class="row {{swimming.pos5team}}" ng-show="swimming.pos5name"><span class="lane">5</span>{{swimming.pos5name}}</div>
+                    <div class="row {{swimming.pos6team}}" ng-show="swimming.pos6name"><span class="lane">6</span>{{swimming.pos6name}}</div>
+                    <div class="row {{swimming.pos7team}}" ng-show="swimming.pos7name"><span class="lane">7</span>{{swimming.pos7name}}</div>
+                    <div class="row {{swimming.pos8team}}" ng-show="swimming.pos8name"><span class="lane">8</span>{{swimming.pos8name}}</div>
+                </div>
+                <div ng-show="!swimming.order">
+                    <div class="header">Start List - {{swimming.distance}}</div>
+                    <div class="row {{swimming.lane1team}}" ng-show="swimming.lane1name"><span class="lane">1</span>{{swimming.lane1name}}</div>
+                    <div class="row {{swimming.lane2team}}" ng-show="swimming.lane2name"><span class="lane">2</span>{{swimming.lane2name}}</div>
+                    <div class="row {{swimming.lane3team}}" ng-show="swimming.lane3name"><span class="lane">3</span>{{swimming.lane3name}}</div>
+                    <div class="row {{swimming.lane4team}}" ng-show="swimming.lane4name"><span class="lane">4</span>{{swimming.lane4name}}</div>
+                    <div class="row {{swimming.lane5team}}" ng-show="swimming.lane5name"><span class="lane">5</span>{{swimming.lane5name}}</div>
+                    <div class="row {{swimming.lane6team}}" ng-show="swimming.lane6name"><span class="lane">6</span>{{swimming.lane6name}}</div>
+                    <div class="row {{swimming.lane7team}}" ng-show="swimming.lane7name"><span class="lane">7</span>{{swimming.lane7name}}</div>
+                    <div class="row {{swimming.lane8team}}" ng-show="swimming.lane8name"><span class="lane">8</span>{{swimming.lane8name}}</div>
+                </div>
             </div>
         </div>
 
