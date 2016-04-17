@@ -6,6 +6,11 @@ var app = express();
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
 
+var bug = {};
+var boxing = {lancScore: 0, yorkScore: 0, currRound: ''};
+var score = {};
+var football = {lancScore: 0, yorkScore: 0};
+var dart = {};
 var swimming = {order: ''};
 
 //Clock Functions
@@ -52,7 +57,12 @@ io.on('connection', function(socket) {
 	 * 		General Functions
 	 */
 	socket.on("bug", function(msg) {
+        bug = msg;
 		io.sockets.emit("bug", msg);
+	});
+    
+    socket.on("bug:get", function(msg) {
+		io.sockets.emit("bug", bug);
 	});
 
 	/*
@@ -74,30 +84,50 @@ io.on('connection', function(socket) {
 	 * 		Boxing
 	 */
 	socket.on("boxing", function(msg) {
+        boxing = msg;
 		io.sockets.emit("boxing", msg);
+	});
+    
+    socket.on("boxing:get", function(msg) {
+		io.sockets.emit("boxing", boxing);
 	});
 
 	/*
-	 * 		Score
+	 * 		Roses Score
 	 */
-	 socket.on("score", function(msg) {
+	socket.on("score", function(msg) {
+        score = msg;
 		io.sockets.emit("score", msg);
+	});
+    
+    socket.on("score:get", function(msg) {
+		io.sockets.emit("score", score);
 	});
 
 	 /*
-	 * 		Score
+	 * 		Football
 	 */
-	 socket.on("football", function(msg) {
+	socket.on("football", function(msg) {
+        football = msg;
 		io.sockets.emit("football", msg);
+	});
+    
+    socket.on("football:get", function(msg) {
+		io.sockets.emit("football", football);
 	});
 
 
 	/*
 	 * 		Darts
 	 */
-	 socket.on("dart", function(msg) {
+	socket.on("dart", function(msg) {
+        dart = msg;
 		io.sockets.emit("dart", msg);
 	});
+    
+    socket.on("dart:get", function(msg) {
+        io.sockets.emit("dart", dart);
+    });
     
     /*
 	 * 		Swimming
