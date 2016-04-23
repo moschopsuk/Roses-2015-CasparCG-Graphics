@@ -13,8 +13,8 @@
 
         <div ng-controller="bugCtrl">
             <div class="wrapper">
-                 <div class="bug left top">
-                        <h1 class="rotate-in" ng-show="state.showLive">Live</h1><h1 class="black rotate-in" ng-show="state.showClock">{{clock | date: "hh:mm"}}</h1><h1 ng-show="state.bugText">{{bugText}}</h1>
+                 <div class="bug left top scale-fade" ng-show="state.showLive">
+                        <h1>Live</h1><h1 class="black" ng-show="state.showClock">{{clock | date: "HH:mm"}}</h1><h1 ng-show="state.bugText">{{bugText}}</h1>
                 </div>
 
                 <div class="logo right top toggle" ng-show="state.showLogo">
@@ -24,14 +24,14 @@
         </div>
 
         <div ng-controller="lowerThirdsCtrl">
-            <div class="lowerthird left bottom bouncy-slide-left" ng-show="showLeft">
+            <div class="lowerthird left bottom slide-left" ng-show="showLeft">
                 <div class="gradient-overlay">
                     <h1>{{left.heading}}</h1>
                 </div>
                 <h2 ng-show="left.subHeading">{{left.subHeading}}</h2>
             </div>
 
-            <div class="lowerthird right bottom bouncy-slide-right" ng-show="showRight">
+            <div class="lowerthird right bottom slide-right" ng-show="showRight">
                 <div class="gradient-overlay">
                     <h1>{{right.heading}}</h1>
                 </div>
