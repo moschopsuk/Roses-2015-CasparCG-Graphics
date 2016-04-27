@@ -35,8 +35,19 @@ app.controller('boxingCtrl', ['$scope', 'socket',
         });
 
         socket.on("clock:tick", function (msg) {
-            $scope.clock = msg;
+            $scope.clock = msg.slice(0, msg.indexOf("."));
         });
+        
+        $scope.$watch('boxing', function() {
+            if (!$scope.boxing) {
+                getBoxingData();
+            }
+        }, true);
+        
+        function getBoxingData() {
+            socket.emit("boxing:get");
+            socket.emit("clock:get");
+        };
     }
 ]);
 
@@ -47,6 +58,16 @@ app.controller('bugCtrl', ['$scope', '$timeout', 'socket',
         socket.on("bug", function (state) {
             $scope.state = state;
         });
+        
+        $scope.$watch('bug', function() {
+            if (!$scope.state) {
+                getBugData();
+            }
+        }, true);
+        
+        function getBugData() {
+            socket.emit("bug:get");
+        };
 
         var tick = function () {
             $scope.clock = Date.now() // get the current time
@@ -77,6 +98,16 @@ app.controller('scoringCtrl', ['$scope', '$timeout', '$http', 'socket',
             console.log(state);
             $scope.showScore = state.showScore;
         });
+        
+        $scope.$watch('score', function() {
+            if (!$scope.score) {
+                getScoreData();
+            }
+        }, true);
+        
+        function getScoreData() {
+            socket.emit("score:get");
+        };
 
         //Intial fetch
         fetchScore();
@@ -93,8 +124,19 @@ app.controller('footballCtrl', ['$scope', 'socket',
         });
 
         socket.on("clock:tick", function (msg) {
-            $scope.clock = msg;
+            $scope.clock = msg.slice(0, msg.indexOf("."));
         });
+        
+        $scope.$watch('football', function() {
+            if (!$scope.football) {
+                getFootballData();
+            }
+        }, true);
+        
+        function getFootballData() {
+            socket.emit("football:get");
+            socket.emit("clock:get");
+        };
     }
 ]);
 
@@ -103,5 +145,44 @@ app.controller('dartsCtrl', ['$scope', 'socket',
         socket.on("dart", function (msg) {
             $scope.darts = msg;
         });
+        
+        $scope.$watch('dart', function() {
+            if (!$scope.dart) {
+                getDartData();
+            }
+        }, true);
+        
+        function getDartData() {
+            socket.emit("dart:get");
+        };
+    }
+]);
+
+app.controller('swimmingCtrl', ['$scope', 'socket',
+    function($scope, socket){
+        socket.on("swimming", function (msg) {
+            $scope.swimming = msg;
+        });
+        
+        $scope.clockMin = "0";
+        $scope.clockSec = "00";
+        $scope.clockDec = "0";
+        
+        socket.on("clock:tick", function (msg) {
+            $scope.clockMin = msg.slice(0,msg.indexOf(":")).replace(/^0/, '');
+            $scope.clockSec = msg.slice(msg.indexOf(":")+1,msg.indexOf("."));
+            $scope.clockDec = msg.slice(msg.indexOf(".")+1);
+        });
+        
+        $scope.$watch('swimming', function() {
+            if (!$scope.swimming) {
+                getSwimmingData();
+            }
+        }, true);
+        
+        function getSwimmingData() {
+            socket.emit("swimming:get");
+            socket.emit("clock:get");
+        };
     }
 ]);

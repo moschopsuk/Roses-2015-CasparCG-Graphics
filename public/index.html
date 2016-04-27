@@ -13,8 +13,8 @@
 
         <div ng-controller="bugCtrl">
             <div class="wrapper">
-                 <div class="bug left top">
-                        <h1 class="rotate-in" ng-show="state.showLive">Live</h1><h1 class="black rotate-in" ng-show="state.showClock">{{clock | date: "hh:mm"}}</h1><h1 ng-show="state.bugText">{{bugText}}</h1>
+                 <div class="bug left top scale-fade" ng-show="state.showLive">
+                        <h1>Live</h1><h1 class="black" ng-show="state.showClock">{{clock | date: "HH:mm"}}</h1><h1 ng-show="state.bugText">{{bugText}}</h1>
                 </div>
 
                 <div class="logo right top toggle" ng-show="state.showLogo">
@@ -24,14 +24,14 @@
         </div>
 
         <div ng-controller="lowerThirdsCtrl">
-            <div class="lowerthird left bottom bouncy-slide-left" ng-show="showLeft">
+            <div class="lowerthird left bottom slide-left" ng-show="showLeft">
                 <div class="gradient-overlay">
                     <h1>{{left.heading}}</h1>
                 </div>
                 <h2 ng-show="left.subHeading">{{left.subHeading}}</h2>
             </div>
 
-            <div class="lowerthird right bottom bouncy-slide-right" ng-show="showRight">
+            <div class="lowerthird right bottom slide-right" ng-show="showRight">
                 <div class="gradient-overlay">
                     <h1>{{right.heading}}</h1>
                 </div>
@@ -118,6 +118,52 @@
 
             <div class="row">
                  <div class="footer">first to 3 legs</div>
+            </div>
+        </div>
+        
+        <div ng-controller="swimmingCtrl">
+            <div class="right bottom swimmingclock scale-fade" ng-show="swimming.showclock">
+                <div class="row">
+                    <div class="clock">
+                        <div class="deciseconds">{{clockDec}}</div>
+                        <div>{{clockMin}}:{{clockSec}}.</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="footer">{{swimming.distance}}</div>
+                </div>
+            </div>
+            
+            <div class="left top slide-left swimmingsplits" ng-show="swimming.showsplits && swimming.order">
+                <div class="row {{swimming.pos1team}}" ng-show="swimming.pos1name"><span class="lane">{{swimming.pos1lane}}</span>{{swimming.pos1name}}<span class="splittime">{{swimming.splittime}}</span></div>
+                <div class="row {{swimming.pos2team}}" ng-show="swimming.pos2name"><span class="lane">{{swimming.pos2lane}}</span>{{swimming.pos2name}}</div>
+                <div class="row {{swimming.pos3team}}" ng-show="swimming.pos3name"><span class="lane">{{swimming.pos3lane}}</span>{{swimming.pos3name}}</div>
+            </div>
+            
+            <div class="middle center scale-fade swimminglist" ng-show="swimming.showlist">
+                <div ng-show="swimming.order">
+                    <div class="header">Results - {{swimming.distance}}</div>
+                    <div class="row {{swimming.pos1team}}" ng-show="swimming.pos1name"><span class="lane">1</span>{{swimming.pos1name}}</div>
+                    <div class="row {{swimming.pos2team}}" ng-show="swimming.pos2name"><span class="lane">2</span>{{swimming.pos2name}}</div>
+                    <div class="row {{swimming.pos3team}}" ng-show="swimming.pos3name"><span class="lane">3</span>{{swimming.pos3name}}</div>
+                    <div class="row {{swimming.pos4team}}" ng-show="swimming.pos4name"><span class="lane">4</span>{{swimming.pos4name}}</div>
+                    <div class="row {{swimming.pos5team}}" ng-show="swimming.pos5name"><span class="lane">5</span>{{swimming.pos5name}}</div>
+                    <div class="row {{swimming.pos6team}}" ng-show="swimming.pos6name"><span class="lane">6</span>{{swimming.pos6name}}</div>
+                    <div class="row {{swimming.pos7team}}" ng-show="swimming.pos7name"><span class="lane">7</span>{{swimming.pos7name}}</div>
+                    <div class="row {{swimming.pos8team}}" ng-show="swimming.pos8name"><span class="lane">8</span>{{swimming.pos8name}}</div>
+                </div>
+                <div ng-show="!swimming.order">
+                    <div class="header">Start List - {{swimming.distance}}</div>
+                    <div class="row {{swimming.lane1team}}" ng-show="swimming.lane1name"><span class="lane">1</span>{{swimming.lane1name}}</div>
+                    <div class="row {{swimming.lane2team}}" ng-show="swimming.lane2name"><span class="lane">2</span>{{swimming.lane2name}}</div>
+                    <div class="row {{swimming.lane3team}}" ng-show="swimming.lane3name"><span class="lane">3</span>{{swimming.lane3name}}</div>
+                    <div class="row {{swimming.lane4team}}" ng-show="swimming.lane4name"><span class="lane">4</span>{{swimming.lane4name}}</div>
+                    <div class="row {{swimming.lane5team}}" ng-show="swimming.lane5name"><span class="lane">5</span>{{swimming.lane5name}}</div>
+                    <div class="row {{swimming.lane6team}}" ng-show="swimming.lane6name"><span class="lane">6</span>{{swimming.lane6name}}</div>
+                    <div class="row {{swimming.lane7team}}" ng-show="swimming.lane7name"><span class="lane">7</span>{{swimming.lane7name}}</div>
+                    <div class="row {{swimming.lane8team}}" ng-show="swimming.lane8name"><span class="lane">8</span>{{swimming.lane8name}}</div>
+                </div>
             </div>
         </div>
 
