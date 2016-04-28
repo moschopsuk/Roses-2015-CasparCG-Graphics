@@ -1,4 +1,4 @@
-var express 	= require('express'), 
+var express 	= require('express'),
 	http 		= require('http'),
 	Stopwatch 	= require('./models/stopwatch');
 
@@ -12,6 +12,7 @@ var score = {};
 var football = {lancScore: 0, yorkScore: 0};
 var dart = {};
 var swimming = {order: ''};
+var grid = {};
 
 //Clock Functions
 var stopwatch = new Stopwatch();
@@ -42,16 +43,21 @@ io.on('connection', function(socket) {
 
 	socket.on("clock:down", function() {
 		stopwatch.countDown();
-	});	
+	});
 
 	socket.on("clock:set", function(msg) {
 		stopwatch.setValue(msg);
 	});
-    
+
     socket.on("clock:get", function() {
         io.sockets.emit("clock:tick", stopwatch.getTime());
     });
 
+		socket.on("grid", function(payload) {
+        grid = payload;
+        io.sockets.emit("grid", payload);
+        console.log("Updating: grid");
+    });
 
 	/*
 	 * 		General Functions
@@ -60,14 +66,14 @@ io.on('connection', function(socket) {
         bug = msg;
 		io.sockets.emit("bug", msg);
 	});
-    
+
     socket.on("bug:get", function(msg) {
 		io.sockets.emit("bug", bug);
 	});
 
 	/*
 	 * 		Lower Thirds
-	 */ 
+	 */
 	socket.on("lowerthird:left", function(msg) {
 		io.sockets.emit("lowerthird:left", msg);
 	});
@@ -87,7 +93,7 @@ io.on('connection', function(socket) {
         boxing = msg;
 		io.sockets.emit("boxing", msg);
 	});
-    
+
     socket.on("boxing:get", function(msg) {
 		io.sockets.emit("boxing", boxing);
 	});
@@ -99,7 +105,7 @@ io.on('connection', function(socket) {
         score = msg;
 		io.sockets.emit("score", msg);
 	});
-    
+
     socket.on("score:get", function(msg) {
 		io.sockets.emit("score", score);
 	});
@@ -111,7 +117,7 @@ io.on('connection', function(socket) {
         football = msg;
 		io.sockets.emit("football", msg);
 	});
-    
+
     socket.on("football:get", function(msg) {
 		io.sockets.emit("football", football);
 	});
@@ -124,33 +130,33 @@ io.on('connection', function(socket) {
         dart = msg;
 		io.sockets.emit("dart", msg);
 	});
-    
+
     socket.on("dart:get", function(msg) {
         io.sockets.emit("dart", dart);
     });
-    
+
     /*
 	 * 		Swimming
 	 */
 	socket.on("swimming", function(msg) {
         swimming = msg;
-        
+
         swimming.order = (swimming.order).replace(/[^1-8]+/, '');
         swimming.order = (swimming.order).replace(/(.).*\1/, function (x) {return x.substring(0, x.length - 1)})
-        
+
         if(!('pos1name' in swimming) && swimming.order != '') {
             swimming.splittime = stopwatch.getTime().replace(/^0/, '');
         }
-        
+
         for(i = 1; i <= 8; i++){
             swimming['pos' + i + 'name'] = eval('swimming.lane' + (swimming.order).charAt(i-1) + 'name');
             swimming['pos' + i + 'team'] = eval('swimming.lane' + (swimming.order).charAt(i-1) + 'team');
             swimming['pos' + i + 'lane'] = (swimming.order).charAt(i-1);
         }
-        
+
 		io.sockets.emit("swimming", msg);
 	});
-    
+
     socket.on("swimming:get", function(msg) {
         io.sockets.emit("swimming", swimming);
     });

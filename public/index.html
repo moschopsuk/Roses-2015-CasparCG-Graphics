@@ -10,7 +10,6 @@
     </head>
 
     <body>
-
         <div ng-controller="bugCtrl">
             <div class="wrapper">
                  <div class="bug left top scale-fade" ng-show="state.showLive">
@@ -94,7 +93,7 @@
             <div class="row">
                 <div class="clock">{{clock}}</div>
                 <div class="score lanc">LANCS {{football.lancScore}}</div>
-                <div class="score york">{{football.yorkScore}} YORK</div>                  
+                <div class="score york">{{football.yorkScore}} YORK</div>
             </div>
         </div>
 
@@ -120,7 +119,22 @@
                  <div class="footer">first to 3 legs</div>
             </div>
         </div>
-        
+
+        <div ng-controller="gridCtrl">
+          <div class="center-page scale-fade" ng-show="show">
+            <div class="grid center center">
+              <div class="gradient-overlay">
+                <h1>{{ grid.header }}</h1>
+              </div>
+
+              <div class="row animate-repeat" ng-repeat="row in grid.rows">
+                <div class="name float-left">{{ row.left }}</div>
+                <div class="time float-right">{{ row.right }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div ng-controller="swimmingCtrl">
             <div class="right bottom swimmingclock scale-fade" ng-show="swimming.showclock">
                 <div class="row">
@@ -134,13 +148,13 @@
                     <div class="footer">{{swimming.distance}}</div>
                 </div>
             </div>
-            
+
             <div class="left top slide-left swimmingsplits" ng-show="swimming.showsplits && swimming.order">
                 <div class="row {{swimming.pos1team}}" ng-show="swimming.pos1name"><span class="lane">{{swimming.pos1lane}}</span>{{swimming.pos1name}}<span class="splittime">{{swimming.splittime}}</span></div>
                 <div class="row {{swimming.pos2team}}" ng-show="swimming.pos2name"><span class="lane">{{swimming.pos2lane}}</span>{{swimming.pos2name}}</div>
                 <div class="row {{swimming.pos3team}}" ng-show="swimming.pos3name"><span class="lane">{{swimming.pos3lane}}</span>{{swimming.pos3name}}</div>
             </div>
-            
+
             <div class="middle center scale-fade swimminglist" ng-show="swimming.showlist">
                 <div ng-show="swimming.order">
                     <div class="header">Results - {{swimming.distance}}</div>
@@ -175,6 +189,3 @@
 
     </body>
 </html>
-
-
-

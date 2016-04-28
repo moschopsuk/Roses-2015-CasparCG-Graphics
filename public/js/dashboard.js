@@ -4,7 +4,7 @@ app.controller('AppCtrl', ['$scope', '$location',
     function($scope, $location){
         $scope.menu = [];
 
-        $scope.isActive = function (viewLocation) { 
+        $scope.isActive = function (viewLocation) {
             return viewLocation === $location.path();
         };
 
@@ -19,7 +19,14 @@ app.controller('AppCtrl', ['$scope', '$location',
             name: 'Lower Thirds',
             url: '/lowerThirds',
             type: 'link',
-            icon: 'tasks'
+            icon: 'list layout'
+        });
+
+        $scope.menu.push({
+            name: 'Grid',
+            url: '/grid',
+            type: 'link',
+            icon: 'grid layout',
         });
 
         $scope.menu.push({
@@ -49,14 +56,13 @@ app.controller('AppCtrl', ['$scope', '$location',
             type: 'link',
             icon: 'bullseye',
         });
-        
+
         $scope.menu.push({
             name: 'Swimming',
             url: '/swimming',
             type: 'link',
             icon: 'life ring',
         });
-
     }
 ]);
 
@@ -96,6 +102,10 @@ app.config(['$routeProvider', 'localStorageServiceProvider',
                 templateUrl: '/partials/swimming.tmpl.html',
                 controller: 'swimmingCGController'
             })
+            .when("/grid", {
+                templateUrl: '/partials/grid.tmpl.html',
+                controller: 'gridCGController'
+            })
             .otherwise({redirectTo: '/general'});
     }
 ]);
@@ -105,7 +115,7 @@ app.controller('generalCGController', ['$scope', 'socket',
         socket.on("bug", function (msg) {
             $scope.general = msg;
         });
- 
+
         $scope.$watch('general', function() {
             if ($scope.general) {
                 socket.emit("bug", $scope.general);
@@ -113,7 +123,7 @@ app.controller('generalCGController', ['$scope', 'socket',
                 getBugData();
             }
         }, true);
-        
+
         function getBugData() {
             socket.emit("bug:get");
         }
@@ -156,6 +166,32 @@ app.controller('lowerThirdsCGController', ['$scope', 'localStorageService', 'soc
     }
 ]);
 
+app.controller('gridCGController', ['$scope', 'socket',
+function($scope, socket){
+  $scope.grid = {};
+  $scope.grid.rows = [];
+  $scope.add = function() {
+            $scope.grid.rows.push({left:'', right:''});
+        };
+
+        $scope.remove = function(index){
+            $scope.grid.rows.splice(index, 1);
+        };
+
+        $scope.show = function() {
+            socket.emit('grid', $scope.grid);
+            $log.info("grid.show()");
+            $log.info($scope.grid);
+        };
+
+        $scope.hide = function() {
+            socket.emit('grid', 'hide');
+            $log.info("grid.hide()");
+        };
+
+
+}])
+
 app.controller('boxingCGController', ['$scope', 'socket',
     function($scope, socket){
         socket.on("clock:tick", function (msg) {
@@ -193,7 +229,7 @@ app.controller('boxingCGController', ['$scope', 'socket',
         socket.on("boxing", function (msg) {
             $scope.boxing = msg;
         });
- 
+
         $scope.$watch('boxing', function() {
             if ($scope.boxing) {
                 socket.emit("boxing", $scope.boxing);
@@ -201,7 +237,7 @@ app.controller('boxingCGController', ['$scope', 'socket',
                 getBoxingData();
             }
         }, true);
-        
+
         function getBoxingData() {
             socket.emit("boxing:get");
             socket.emit("clock:get");
@@ -215,7 +251,7 @@ app.controller('rosesCGController', ['$scope', 'socket',
         socket.on("score", function (msg) {
             $scope.roses = msg;
         });
- 
+
         $scope.$watch('roses', function() {
             if ($scope.roses) {
                 socket.emit("score", $scope.roses);
@@ -223,7 +259,7 @@ app.controller('rosesCGController', ['$scope', 'socket',
                 getScoreData();
             }
         }, true);
-        
+
         function getScoreData() {
             socket.emit("score:get");
         }
@@ -260,7 +296,7 @@ app.controller('footballCGController', ['$scope', 'socket',
         socket.on("football", function (msg) {
             $scope.football = msg;
         });
- 
+
         $scope.$watch('football', function() {
             if ($scope.football) {
                 socket.emit("football", $scope.football);
@@ -268,7 +304,7 @@ app.controller('footballCGController', ['$scope', 'socket',
                 getFootballData();
             }
         }, true);
-        
+
         function getFootballData() {
             socket.emit("football:get");
             socket.emit("clock:get");
@@ -282,7 +318,7 @@ app.controller('dartsCGController', ['$scope', 'socket',
         socket.on("dart", function (msg) {
             $scope.dart = msg;
         });
- 
+
         $scope.$watch('dart', function() {
             if ($scope.dart) {
                 socket.emit("dart", $scope.dart);
@@ -290,7 +326,7 @@ app.controller('dartsCGController', ['$scope', 'socket',
                 getDartData();
             }
         }, true);
-        
+
         function getDartData() {
             socket.emit("dart:get");
         }
@@ -360,7 +396,7 @@ app.controller('swimmingCGController', ['$scope', 'socket',
         $scope.upClock = function() {
             socket.emit("clock:up");
         };
-        
+
         $scope.resetOrder = function(val) {
                 $scope.swimming.showsplits = false;
                 setTimeout(function() {
@@ -369,7 +405,7 @@ app.controller('swimmingCGController', ['$scope', 'socket',
                     socket.emit("swimming", $scope.swimming);
                 }, 600);
         };
-        
+
         $scope.resetLanes = function() {
             $scope.swimming.order = '';
 
@@ -382,7 +418,7 @@ app.controller('swimmingCGController', ['$scope', 'socket',
         socket.on("swimming", function (msg) {
             $scope.swimming = msg;
         });
- 
+
         $scope.$watch('swimming', function() {
             if ($scope.swimming) {
                 socket.emit("swimming", $scope.swimming);
@@ -390,12 +426,12 @@ app.controller('swimmingCGController', ['$scope', 'socket',
                 getSwimmingData();
             }
         }, true);
-        
+
         function getSwimmingData() {
             socket.emit("swimming:get");
             socket.emit("clock:get");
         }
-        
+
         $(function () {
           $('.ui.dropdown').dropdown();
         });
