@@ -10,7 +10,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     background:transparent;                          /* The HTML consumer actually makes your background transparent by default, unless a color or image is specified - but this might be usefull when debugging in browsers */
     overflow:hidden;                                 /* Hide any overflowing elements - to disable scollbars */
-    -webkit-font-smoothing:antialiased !important;   
+    -webkit-font-smoothing:antialiased !important;
 }
 
 
@@ -22,9 +22,9 @@ body {
 .moving {
     height: 40px;
     width: 500%;
-    
+
     background: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 71%, rgba(125,125,125,1) 85%, rgba(0,0,0,1) 98%, rgba(0,0,0,1) 100%) repeat;
-    
+
     -webkit-background-size: 50% 100%;
     -webkit-animation-name: moving-gradient;
     -webkit-animation-duration: 20s;
@@ -33,19 +33,19 @@ body {
 }
 
 .bar {
-  overflow-x: hidden; 
-  overflow-y:hidden; 
+  overflow-x: hidden;
+  overflow-y:hidden;
   width: 100%;
   border-radius: 2px;
-  
+
   box-shadow: inset 0px 1px 0px #666, 0px 5px 0px 0px #000;
-} 
+}
 
 .bar .gradient-overlay {
     position: absolute;
     width: inherit;
     height: 40px;
-    
+
     background: linear-gradient(
         to bottom,
         rgba(255, 255, 255, .2) 0%,
@@ -59,7 +59,7 @@ body {
     box-shadow: inset 0px 1px 0px #666, 0px 5px 0px 0px #600;
 }
 
-.gradient-overlay > span { 
+.gradient-overlay > span {
     position:relative;
     padding-top: 8px;
     padding-left: 8px;
@@ -145,8 +145,8 @@ h1, h2, h3, h4 {
 .lowerthird {
     min-width: 30%;
     width: 40%;
-    
-    border-radius: 5px; 
+
+    border-radius: 5px;
     border: 8px solid rgba(0, 0, 0, 0.5);
     background-clip: padding-box;
 }
@@ -200,9 +200,9 @@ h1, h2, h3, h4 {
 .red-moving {
     height: 40px;
     width: 500%;
-    
+
     background: linear-gradient(to left, rgba(225,0,0,1) 0%, rgba(225,0,0,1) 71%, rgba(225,25,25,1) 85%, rgba(225,0,0,1) 98%, rgba(225,0,0,1) 100%) repeat;
-    
+
     -webkit-background-size: 50% 100%;
     -webkit-animation-name: moving-gradient;
     -webkit-animation-duration: 20s;
@@ -219,7 +219,7 @@ h1, h2, h3, h4 {
     white-space: nowrap;
     clear:none;
     background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 3px; 
+    border-radius: 3px;
     border: 5px solid rgba(0, 0, 0, 0.5);
     background-clip: padding-box;
 }
@@ -266,7 +266,7 @@ h1, h2, h3, h4 {
 .total-score {
     width: 30%;
     text-align: center;
-    border-radius: 8px; 
+    border-radius: 8px;
     border: 8px solid rgba(0, 0, 0, 0.5);
     background-clip: padding-box;
 }
@@ -308,7 +308,7 @@ h1, h2, h3, h4 {
 
 .football {
   width: 30%;
-  border-radius: 3px; 
+  border-radius: 3px;
   border: 5px solid rgba(0, 0, 0, 0.5);
   background-clip: padding-box;
   background-color: rgba(0, 0, 0, 0.5);
@@ -319,7 +319,7 @@ h1, h2, h3, h4 {
 
 .football .clock, .football .score.lanc, .football .score.york {
   padding: 3px;
-  float: left; 
+  float: left;
 }
 
 .football .clock {
@@ -356,7 +356,7 @@ h1, h2, h3, h4 {
   font-size: 25px;
   font-size: 1.8vw;
 
-  border-radius: 5px; 
+  border-radius: 5px;
   border: 8px solid rgba(0, 0, 0, 0.5);
   background-clip: padding-box;
 }
@@ -413,7 +413,7 @@ h1, h2, h3, h4 {
   color: #000;
   background-color: #fff;
   width: 36%;
-  font-size: 20px; 
+  font-size: 20px;
   font-size: 1.3vw;
   line-height: 30px;
   line-height: 2.5vw;
@@ -430,6 +430,63 @@ h1, h2, h3, h4 {
   line-height: 2.2vw;
 }
 
+/*
+ *===================================
+ *         Grid
+ *===================================
+ */
+ .grid {
+
+    width: 650px;
+    text-align: center;
+
+    border-radius: 5px;
+    border: 8px solid rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.4);
+    background-clip: padding-box;
+  }
+    .grid h1 {
+        color:  #ffffff;
+        text-shadow:1px -1px 0px #000;
+        font-size: 40px;
+        font-size: 2.5vw;
+        font-weight: normal;
+        padding: 5px;
+
+        background-color: #00d;
+        background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+    }
+
+    .grid .name, .grid .time {
+        float: left;
+        line-height: 40px;
+        padding-left: 5px;
+        background-color: #00d;
+        background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+        font-size: 25px;
+    }
+
+    .grid .name {
+        padding-left: 10px;
+        text-align: left;
+        width: 498px;
+    }
+
+    .grid .time {
+        width: 130px;
+        margin-left: 5px;
+    }
+
+    .grid .row {
+        color: #fff;
+        margin-top: 5px;
+    }
+
+    .grid .row:last-child {
+        margin-bottom: 5px;
+    }
+
+
 /**************************************************/
 /*              [Swimming]                        */
 /**************************************************/
@@ -438,7 +495,7 @@ h1, h2, h3, h4 {
   width: 20%;
   background-color: rgba(0, 0, 0, 0.5);
   text-align: left;
-  border-radius: 5px; 
+  border-radius: 5px;
   border: 8px solid rgba(0, 0, 0, 0.5);
   background-clip: padding-box;
 }
@@ -480,7 +537,7 @@ h1, h2, h3, h4 {
 
 .swimmingsplits {
     background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 3px; 
+    border-radius: 3px;
     border: 5px solid rgba(0, 0, 0, 0.5);
     background-clip: padding-box;
     width: 25%;
@@ -531,7 +588,7 @@ h1, h2, h3, h4 {
     top: 12%;
     width: 60%;
     background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 5px; 
+    border-radius: 5px;
     border: 8px solid rgba(0, 0, 0, 0.5);
     background-clip: padding-box;
 }
