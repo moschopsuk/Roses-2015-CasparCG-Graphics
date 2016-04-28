@@ -4,7 +4,7 @@ app.controller('AppCtrl', ['$scope', '$location',
     function($scope, $location){
         $scope.menu = [];
 
-        $scope.isActive = function (viewLocation) { 
+        $scope.isActive = function (viewLocation) {
             return viewLocation === $location.path();
         };
 
@@ -19,7 +19,14 @@ app.controller('AppCtrl', ['$scope', '$location',
             name: 'Lower Thirds',
             url: '/lowerThirds',
             type: 'link',
-            icon: 'tasks'
+            icon: 'list layout'
+        });
+
+        $scope.menu.push({
+            name: 'Grid',
+            url: '/grid',
+            type: 'link',
+            icon: 'grid layout',
         });
 
         $scope.menu.push({
@@ -50,6 +57,12 @@ app.controller('AppCtrl', ['$scope', '$location',
             icon: 'bullseye',
         });
 
+        $scope.menu.push({
+            name: 'Swimming',
+            url: '/swimming',
+            type: 'link',
+            icon: 'life ring',
+        });
     }
 ]);
 
@@ -85,22 +98,35 @@ app.config(['$routeProvider', 'localStorageServiceProvider',
                 templateUrl: '/partials/darts.tmpl.html',
                 controller: 'dartsCGController'
             })
+            .when("/swimming", {
+                templateUrl: '/partials/swimming.tmpl.html',
+                controller: 'swimmingCGController'
+            })
+            .when("/grid", {
+                templateUrl: '/partials/grid.tmpl.html',
+                controller: 'gridCGController'
+            })
             .otherwise({redirectTo: '/general'});
     }
 ]);
 
-app.controller('generalCGController', ['$scope', 'localStorageService', 'socket',
-    function($scope, localStorageService, socket){
-
-        $scope.general = localStorageService.get('general');
+app.controller('generalCGController', ['$scope', 'socket',
+    function($scope, socket){
+        socket.on("bug", function (msg) {
+            $scope.general = msg;
+        });
 
         $scope.$watch('general', function() {
-            socket.emit("bug", $scope.general);
+            if ($scope.general) {
+                socket.emit("bug", $scope.general);
+            } else {
+                getBugData();
+            }
         }, true);
 
-        $scope.$on("$destroy", function() {
-            localStorageService.set('general', $scope.general);
-        });
+        function getBugData() {
+            socket.emit("bug:get");
+        }
     }
 ]);
 
@@ -140,15 +166,36 @@ app.controller('lowerThirdsCGController', ['$scope', 'localStorageService', 'soc
     }
 ]);
 
-app.controller('boxingCGController', ['$scope', 'localStorageService', 'socket',
-    function($scope, localStorageService, socket){
-        var stored = localStorageService.get('boxing');
+app.controller('gridCGController', ['$scope', 'socket',
+function($scope, socket){
+  $scope.grid = {};
+  $scope.grid.rows = [];
+  $scope.add = function() {
+            $scope.grid.rows.push({left:'', right:''});
+        };
 
-        //Clock Functions
-        $scope.clock    = "00:00";
+        $scope.remove = function(index){
+            $scope.grid.rows.splice(index, 1);
+        };
 
+        $scope.show = function() {
+            socket.emit('grid', $scope.grid);
+            $log.info("grid.show()");
+            $log.info($scope.grid);
+        };
+
+        $scope.hide = function() {
+            socket.emit('grid', 'hide');
+            $log.info("grid.hide()");
+        };
+
+
+}])
+
+app.controller('boxingCGController', ['$scope', 'socket',
+    function($scope, socket){
         socket.on("clock:tick", function (msg) {
-            $scope.clock = msg;
+            $scope.clock = msg.slice(0, msg.indexOf("."));
         });
 
         $scope.pauseClock = function() {
@@ -170,14 +217,6 @@ app.controller('boxingCGController', ['$scope', 'localStorageService', 'socket',
         $scope.upClock = function() {
             socket.emit("clock:up");
         };
-
-        if (stored === null) {
-            $scope.boxing = { 
-                lancScore: 0, yorkScore: 0, currRound: '', showScore: false, showTime: false,
-            };
-        } else {
-            $scope.boxing = stored;
-        }
 
         $scope.updateScore = function() {
             console.log("Score");
@@ -187,57 +226,51 @@ app.controller('boxingCGController', ['$scope', 'localStorageService', 'socket',
             console.log("Round");
         };
 
+        socket.on("boxing", function (msg) {
+            $scope.boxing = msg;
+        });
+
         $scope.$watch('boxing', function() {
-            socket.emit("boxing", $scope.boxing);
+            if ($scope.boxing) {
+                socket.emit("boxing", $scope.boxing);
+            } else {
+                getBoxingData();
+            }
         }, true);
 
-        $scope.$on("$destroy", function() {
-            localStorageService.set('boxing', $scope.boxing);
-        });
+        function getBoxingData() {
+            socket.emit("boxing:get");
+            socket.emit("clock:get");
+        }
     }
 ]);
 
 
-app.controller('rosesCGController', ['$scope', 'localStorageService', 'socket',
-    function($scope, localStorageService, socket){
-        var stored = localStorageService.get('roses');
-
-        if (stored === null) {
-            $scope.roses = { 
-                showScore: false,
-            };
-        } else {
-            $scope.roses = stored;
-        }
+app.controller('rosesCGController', ['$scope', 'socket',
+    function($scope, socket){
+        socket.on("score", function (msg) {
+            $scope.roses = msg;
+        });
 
         $scope.$watch('roses', function() {
-            socket.emit("score", $scope.roses);
+            if ($scope.roses) {
+                socket.emit("score", $scope.roses);
+            } else {
+                getScoreData();
+            }
         }, true);
 
-        $scope.$on("$destroy", function() {
-            localStorageService.set('roses', $scope.roses);
-        });
+        function getScoreData() {
+            socket.emit("score:get");
+        }
     }
 ]);
 
 
-app.controller('footballCGController', ['$scope', 'localStorageService', 'socket',
-    function($scope, localStorageService, socket){
-        var stored = localStorageService.get('football');
-
-        if (stored === null) {
-            $scope.football = { 
-                lancScore: 0, yorkScore: 0, showScore: false, showTime: false,
-            };
-        } else {
-            $scope.football = stored;
-        }
-
-        //Clock Functions
-        $scope.clock    = "00:00";
-
+app.controller('footballCGController', ['$scope', 'socket',
+    function($scope, socket){
         socket.on("clock:tick", function (msg) {
-            $scope.clock = msg;
+            $scope.clock = msg.slice(0, msg.indexOf("."));
         });
 
         $scope.pauseClock = function() {
@@ -260,31 +293,43 @@ app.controller('footballCGController', ['$scope', 'localStorageService', 'socket
             socket.emit("clock:up");
         };
 
+        socket.on("football", function (msg) {
+            $scope.football = msg;
+        });
+
         $scope.$watch('football', function() {
-            socket.emit("football", $scope.football);
+            if ($scope.football) {
+                socket.emit("football", $scope.football);
+            } else {
+                getFootballData();
+            }
         }, true);
 
-        $scope.$on("$destroy", function() {
-            localStorageService.set('football', $scope.football);
-        });
+        function getFootballData() {
+            socket.emit("football:get");
+            socket.emit("clock:get");
+        }
     }
 ]);
 
 
-app.controller('dartsCGController', ['$scope', 'localStorageService', 'socket',
-    function($scope, localStorageService, socket) {
-
-        var stored = localStorageService.get('dart');
-
-        if (stored === null) {
-            $scope.dart = {};
-        } else {
-            $scope.dart = stored;
-        }
+app.controller('dartsCGController', ['$scope', 'socket',
+    function($scope, socket) {
+        socket.on("dart", function (msg) {
+            $scope.dart = msg;
+        });
 
         $scope.$watch('dart', function() {
-            socket.emit("dart", $scope.dart);
+            if ($scope.dart) {
+                socket.emit("dart", $scope.dart);
+            } else {
+                getDartData();
+            }
         }, true);
+
+        function getDartData() {
+            socket.emit("dart:get");
+        }
 
         $scope.reset1 = function() {
             $scope.dart.score1 = 501;
@@ -323,9 +368,72 @@ app.controller('dartsCGController', ['$scope', 'localStorageService', 'socket',
                 $scope.last2 = "";
             }
         };
+    }
+]);
 
-        $scope.$on("$destroy", function() {
-            localStorageService.set('dart', $scope.dart);
+app.controller('swimmingCGController', ['$scope', 'socket',
+    function($scope, socket) {
+        socket.on("clock:tick", function (msg) {
+            $scope.clock = msg.replace(/^0/, '');
+        });
+
+        $scope.pauseClock = function() {
+            socket.emit("clock:pause");
+        };
+
+        $scope.resetClock = function() {
+            socket.emit("clock:reset");
+        };
+
+        $scope.setClock = function(val) {
+            socket.emit("clock:set", val);
+        };
+
+        $scope.downClock = function() {
+            socket.emit("clock:down");
+        };
+
+        $scope.upClock = function() {
+            socket.emit("clock:up");
+        };
+
+        $scope.resetOrder = function(val) {
+                $scope.swimming.showsplits = false;
+                setTimeout(function() {
+                    $scope.swimming.order = '';
+                    $scope.swimming.showsplits = true;
+                    socket.emit("swimming", $scope.swimming);
+                }, 600);
+        };
+
+        $scope.resetLanes = function() {
+            $scope.swimming.order = '';
+
+            for(i = 1; i <= 8; i++){
+                $scope.swimming['lane' + i + 'name'] = '';
+                $scope.swimming['lane' + i + 'team'] = '';
+            }
+        }
+
+        socket.on("swimming", function (msg) {
+            $scope.swimming = msg;
+        });
+
+        $scope.$watch('swimming', function() {
+            if ($scope.swimming) {
+                socket.emit("swimming", $scope.swimming);
+            } else {
+                getSwimmingData();
+            }
+        }, true);
+
+        function getSwimmingData() {
+            socket.emit("swimming:get");
+            socket.emit("clock:get");
+        }
+
+        $(function () {
+          $('.ui.dropdown').dropdown();
         });
     }
 ]);

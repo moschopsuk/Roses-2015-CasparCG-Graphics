@@ -20,3 +20,8 @@ html, body {
 .cap-width {
 	max-width: 800px;
 }
+
+.ui.form .fields .field,
+.ui.form .field {
+    margin-bottom: 0px;
+}
