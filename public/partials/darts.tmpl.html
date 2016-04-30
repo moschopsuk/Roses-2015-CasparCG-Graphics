@@ -23,8 +23,8 @@
 
                 <div class="three wide field">    
                     <div class="ui icon buttons">
-                        <button class="ui green button" ng-click="dart.leg1 = dart.leg1 + 1;"><i class="plus icon"></i></button>
-                        <button class="ui red button"  ng-click="dart.leg1 = dart.leg1 - 1" ng-disabled="dart.leg1 == 0"><i class="minus icon"></i></button>
+                        <button class="ui green button" ng-click="dart.leg1 = parseInt(dart.leg1) + 1;"><i class="plus icon"></i></button>
+                        <button class="ui red button"  ng-click="dart.leg1 = parseInt(dart.leg1) - 1" ng-disabled="dart.leg1 == 0"><i class="minus icon"></i></button>
                     </div>
                 </div>
 
