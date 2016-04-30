@@ -397,7 +397,7 @@ app.controller('dartsCGController', ['$scope', 'socket',
             var tmp = $scope.dart.score1;
             var newScore = (tmp - val);
 
-            if(newScore > 0) {
+            if(newScore >= 0) {
                 $scope.dart.score1 = newScore;
                 $scope.last1 = "";
             }
@@ -412,7 +412,7 @@ app.controller('dartsCGController', ['$scope', 'socket',
             var tmp = $scope.dart.score2;
             var newScore = (tmp - val);
 
-            if(newScore > 0) {
+            if(newScore >= 0) {
                 $scope.dart.score2 = newScore;
                 $scope.last2 = "";
             }
