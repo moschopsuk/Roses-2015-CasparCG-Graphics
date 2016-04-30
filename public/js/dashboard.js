@@ -190,7 +190,7 @@ function($scope, socket){
         };
 
 
-}])
+}]);
 
 app.controller('boxingCGController', ['$scope', 'socket',
     function($scope, socket){
@@ -267,8 +267,23 @@ app.controller('rosesCGController', ['$scope', 'socket',
 ]);
 
 
-app.controller('footballCGController', ['$scope', 'socket',
-    function($scope, socket){
+app.controller('footballCGController', ['$scope', 'localStorageService', 'socket',
+    function($scope, localStorageService, socket){
+        var storedLancs = localStorageService.get('lancs_football');
+        var storedYork = localStorageService.get('york_football');
+
+        if(storedLancs === null) {
+            $scope.lancsPlayers = [];
+        } else {
+            $scope.lancsPlayers = storedLancs;
+        }
+
+        if(storedYork === null) {
+            $scope.yorksPlayers = [];
+        } else {
+            $scope.yorksPlayers = storedYork;
+        }
+
         socket.on("clock:tick", function (msg) {
             $scope.clock = msg.slice(0, msg.indexOf("."));
         });
@@ -293,6 +308,25 @@ app.controller('footballCGController', ['$scope', 'socket',
             socket.emit("clock:up");
         };
 
+        $scope.addLancsPlayer = function() {
+            $scope.lancsPlayers.push($scope.lancs);
+            $scope.lancs = {};
+        };
+
+        $scope.addYorksPlayer = function() {
+            $scope.yorksPlayers.push($scope.york);
+            $scope.york = {};
+        };
+
+        $scope.delete = function(team, index) {
+            console.log('delete');
+            if(team === 'york') {
+                $scope.yorksPlayers.splice(index, 1);
+            } else if (team === 'lancs') {
+                $scope.lancsPlayers.splice(index, 1);
+            }
+        };
+
         socket.on("football", function (msg) {
             $scope.football = msg;
         });
@@ -304,6 +338,11 @@ app.controller('footballCGController', ['$scope', 'socket',
                 getFootballData();
             }
         }, true);
+
+        $scope.$on("$destroy", function() {
+            localStorageService.set('york_football', $scope.yorksPlayers);
+            localStorageService.set('lancs_football', $scope.lancsPlayers);
+        });
 
         function getFootballData() {
             socket.emit("football:get");
@@ -413,7 +452,7 @@ app.controller('swimmingCGController', ['$scope', 'socket',
                 $scope.swimming['lane' + i + 'name'] = '';
                 $scope.swimming['lane' + i + 'team'] = '';
             }
-        }
+        };
 
         socket.on("swimming", function (msg) {
             $scope.swimming = msg;
