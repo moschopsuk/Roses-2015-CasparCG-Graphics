@@ -47,7 +47,7 @@ app.controller('boxingCtrl', ['$scope', 'socket',
         function getBoxingData() {
             socket.emit("boxing:get");
             socket.emit("clock:get");
-        };
+        }
     }
 ]);
 
@@ -67,20 +67,20 @@ app.controller('bugCtrl', ['$scope', '$timeout', 'socket',
 
         function getBugData() {
             socket.emit("bug:get");
-        };
+        }
 
         var tick = function () {
-            $scope.clock = Date.now() // get the current time
+            $scope.clock = Date.now(); // get the current time
             $timeout(tick, $scope.tickInterval); // reset the timer
-        }
+        };
 
         // Start the timer
         $timeout(tick, $scope.tickInterval);
     }
 ]);
 
-app.controller('scoringCtrl', ['$scope', '$timeout', '$http', 'socket',
-    function($scope, $timeout, $http, socket){
+app.controller('scoringCtrl', ['$scope', '$interval', '$http', 'socket',
+    function($scope, $interval, $http, socket){
         $scope.tickInterval = 5000;
         $scope.yorkScore = "";
         $scope.lancScore = "";
@@ -92,7 +92,7 @@ app.controller('scoringCtrl', ['$scope', '$timeout', '$http', 'socket',
                     $scope.lancScore = data.lancs;
                 }
             );
-        }
+        };
 
         socket.on("score", function (state) {
             $scope.showScore = state.showScore;
@@ -106,7 +106,7 @@ app.controller('scoringCtrl', ['$scope', '$timeout', '$http', 'socket',
 
         function getScoreData() {
             socket.emit("score:get");
-        };
+        }
 
         //Intial fetch
         fetchScore();
@@ -135,7 +135,7 @@ app.controller('footballCtrl', ['$scope', 'socket',
         function getFootballData() {
             socket.emit("football:get");
             socket.emit("clock:get");
-        };
+        }
     }
 ]);
 
@@ -153,7 +153,7 @@ app.controller('dartsCtrl', ['$scope', 'socket',
 
         function getDartData() {
             socket.emit("dart:get");
-        };
+        }
     }
 ]);
 
@@ -170,7 +170,7 @@ app.controller('gridCtrl', ['$scope', 'socket',
             }
         });
     }
-])
+]);
 
 app.controller('swimmingCtrl', ['$scope', 'socket',
     function($scope, socket){
@@ -197,6 +197,6 @@ app.controller('swimmingCtrl', ['$scope', 'socket',
         function getSwimmingData() {
             socket.emit("swimming:get");
             socket.emit("clock:get");
-        };
+        }
     }
 ]);
