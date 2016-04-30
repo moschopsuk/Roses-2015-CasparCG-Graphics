@@ -166,11 +166,19 @@ app.controller('lowerThirdsCGController', ['$scope', 'localStorageService', 'soc
     }
 ]);
 
-app.controller('gridCGController', ['$scope', 'socket',
-function($scope, socket){
-  $scope.grid = {};
-  $scope.grid.rows = [];
-  $scope.add = function() {
+app.controller('gridCGController', ['$scope', '$log', 'localStorageService', 'socket',
+    function($scope, $log, localStorageService, socket){
+
+        var stored = localStorageService.get('grid');
+
+        if(stored === null) {
+            $scope.grid = {};
+            $scope.grid.rows = [];
+        } else {
+            $scope.grid = stored;
+        }
+
+        $scope.add = function() {
             $scope.grid.rows.push({left:'', right:''});
         };
 
@@ -189,7 +197,9 @@ function($scope, socket){
             $log.info("grid.hide()");
         };
 
-
+        $scope.$on("$destroy", function() {
+            localStorageService.set('grid', $scope.grid);
+        });
 }]);
 
 app.controller('boxingCGController', ['$scope', 'socket',
