@@ -95,7 +95,6 @@ app.controller('scoringCtrl', ['$scope', '$timeout', '$http', 'socket',
         }
 
         socket.on("score", function (state) {
-            console.log(state);
             $scope.showScore = state.showScore;
         });
 
@@ -112,7 +111,7 @@ app.controller('scoringCtrl', ['$scope', '$timeout', '$http', 'socket',
         //Intial fetch
         fetchScore();
         // Start the timer
-        $timeout(fetchScore, $scope.tickInterval);
+        $interval(fetchScore, $scope.tickInterval);
     }
 ]);
 
