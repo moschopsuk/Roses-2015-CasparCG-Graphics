@@ -1,0 +1,93 @@
+<div class="ui form segment">
+  <h2>Archery</h2>
+
+    <div class="ui grid center aligned">
+        <div class="4 wide column">
+            <div class="field"><checkbox ng-model="archery.show" size="large" type="toggle">Show Archery Score</checkbox></div>
+        </div>
+    </div>
+
+    <div class="ui grid">
+
+        <div class="sizteen wide column">
+
+            <div class="fields">
+
+                <div class="four wide field">
+                    <input type="text" placeholder="Team 1" ng-model="archery.team1">
+                </div>
+
+                <div class="three wide field">
+                  <input type="text" ng-model="archery.shots1">
+                </div>
+
+                <div class="four wide field">
+                    <div class="ui icon buttons">
+                        <div class="ui yellow button" ng-click="archeryHit1()">Hit</div>
+                        <div class="ui red button" ng-click="archeryMiss1()">Miss</div>
+                        <div class="ui blue button" ng-click="archeryHitsReset1()">Reset</div>
+                    </div>
+                </div>
+
+                <div class="two wide field">
+                    <input type="text" placeholder="Score" ng-model="archery.score1">
+                </div>
+
+                <div class="one wide field">
+                    <h2>{{archery.score1}}</h2>
+                </div>
+
+                <div class="two wide field">
+                    <div class="ui icon buttons">
+                        <div class="ui blue button" ng-click="archeryReset1()">Reset</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="ui grid">
+
+        <div class="sizteen wide column">
+
+            <div class="fields">
+
+                <div class="four wide field">
+                    <input type="text" placeholder="Team 2" ng-model="archery.team2">
+                </div>
+
+                <div class="three wide field">
+                  <input type="text" ng-model="archery.shots2">
+                </div>
+
+                <div class="four wide field">
+                    <div class="ui icon buttons">
+                        <div class="ui yellow button" ng-click="archeryHit2()">Hit</div>
+                        <div class="ui red button" ng-click="archeryMiss2()">Miss</div>
+                        <div class="ui blue button" ng-click="archeryHitsReset2()">Reset</div>
+                    </div>
+                </div>
+
+                <div class="two wide field">
+                    <input type="text" placeholder="Score" ng-model="archery.score2">
+                </div>
+
+                <div class="one wide field">
+                    <h2>{{archery.score2}}</h2>
+                </div>
+
+                <div class="two wide field">
+                    <div class="ui icon buttons">
+                        <div class="ui blue button" ng-click="archeryReset2()">Reset</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

@@ -63,6 +63,13 @@ app.controller('AppCtrl', ['$scope', '$location',
             type: 'link',
             icon: 'life ring',
         });
+
+        $scope.menu.push({
+            name: 'Archery',
+            url: '/archery',
+            type: 'link',
+            icon: 'bullseye',
+        });
     }
 ]);
 
@@ -106,8 +113,80 @@ app.config(['$routeProvider', 'localStorageServiceProvider',
                 templateUrl: '/partials/grid.tmpl.html',
                 controller: 'gridCGController'
             })
+            .when("/archery", {
+                templateUrl: '/partials/archery.tmpl.html',
+                controller: 'archeryCGController'
+            })
             .otherwise({redirectTo: '/general'});
     }
+]);
+
+app.controller('archeryCGController', ['$scope', 'socket',
+  function($scope, socket) {
+      socket.on("archery", function (msg) {
+          $scope.archery = msg;
+      });
+
+      $scope.$watch('archery', function() {
+          if ($scope.archery) {
+              socket.emit("archery", $scope.archery);
+          } else {
+              getArcheryData();
+          }
+      }, true);
+
+
+      function getArcheryData() {
+          socket.emit("archery:get");
+      }
+
+      $scope.archeryReset1 = function() {
+          $scope.archery.score1 = 0;
+      };
+
+      $scope.archeryHit1 = function(){
+        if($scope.archery.shots1.length < 6) {
+          $scope.archery.shots1 += "H";
+          var tmp = Number($scope.archery.score1);
+          var newScore = (tmp + 1);
+          $scope.archery.score1 = newScore;
+          debugger
+        }
+      }
+
+      $scope.archeryHit2 = function(){
+        if($scope.archery.shots2.length < 6) {
+          $scope.archery.shots2 += "H";
+          var tmp = Number($scope.archery.score2);
+          var newScore = (tmp + 1);
+          $scope.archery.score2 = newScore;
+        }
+      }
+
+      $scope.archeryMiss1 = function(){
+        if($scope.archery.shots1.length < 6) {
+          $scope.archery.shots1 += "M";
+        }
+      }
+
+      $scope.archeryMiss2 = function(){
+        if($scope.archery.shots2.length < 6) {
+          $scope.archery.shots2 += "M";
+        }
+      }
+
+      $scope.archeryReset2 = function() {
+          $scope.archery.score2 = 0;
+      };
+
+      $scope.archeryHitsReset1 = function() {
+          $scope.archery.shots1 = [];
+      };
+
+      $scope.archeryHitsReset2 = function() {
+          $scope.archery.shots2 = [];
+      };
+  }
 ]);
 
 app.controller('generalCGController', ['$scope', 'socket',

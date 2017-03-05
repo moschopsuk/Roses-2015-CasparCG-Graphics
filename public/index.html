@@ -120,6 +120,36 @@
             </div>
         </div>
 
+        <div ng-controller="archeryCtrl" class="left bottom darts scale-fade" ng-show="archery.show" style="width: 50%">
+            <div class="row header">
+                <div class="name" style="width: 40%">&nbsp;</div>
+                <div class="leg" style="width: 45%">HITS</div>
+                <div class="leg" style="width: 15%">TOTAL</div>
+            </div>
+
+            <div class="row">
+                <div class="name lanc" style="width: 40%; height: 3.2vw">{{archery.team1}}</div>
+                <div class="score" style="width: 45%; height: 3.2vw; padding: 0px; background-color: #ffffff">
+                  <div ng-repeat="letter in archery.shots1.split('')  track by $index" style="width: 16.66%; height: 3.2vw; display: inline-block; padding: 2px">
+                    <div ng-if="letter == 'H'" class="archery-hit" style="width: 100%; height: 100%;"></div>
+                    <div ng-if="letter == 'M'" class="archery-miss" style="width: 100%; height: 100%;"></div>
+                  </div>
+                </div>
+                <div class="score" style="width: 15%;">{{archery.score1}}</div>
+            </div>
+
+            <div class="row">
+                <div class="name york" style="width: 40%; height: 3.2vw">{{archery.team2}}</div>
+                <div class="score" style="width: 45%; height: 3.2vw; padding: 0px; background-color: #ffffff">
+                  <div ng-repeat="letter in archery.shots2.split('')  track by $index" style="width: 16.66%; height: 3.2vw; display: inline-block; padding: 2px">
+                    <div ng-if="letter == 'H'" class="archery-hit" style="width: 100%; height: 100%;"></div>
+                    <div ng-if="letter == 'M'" class="archery-miss" style="width: 100%; height: 100%;"></div>
+                  </div>
+                </div>
+                <div class="score" style="width: 15%;">{{archery.score2}}</div>
+            </div>
+        </div>
+
         <div ng-controller="gridCtrl">
           <div class="center-page scale-fade" ng-show="show">
             <div class="grid center center">

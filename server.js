@@ -13,6 +13,7 @@ var football = {lancScore: 0, yorkScore: 0};
 var dart = {};
 var swimming = {order: ''};
 var grid = {};
+var archery = {};
 
 //Clock Functions
 var stopwatch = new Stopwatch();
@@ -160,6 +161,17 @@ io.on('connection', function(socket) {
     socket.on("swimming:get", function(msg) {
         io.sockets.emit("swimming", swimming);
     });
+
+	socket.on("archery", function(msg) {
+        archery = msg;
+		io.sockets.emit("archery", msg);
+	});
+
+		socket.on("archery:get", function(msg) {
+				io.sockets.emit("archery", archery);
+		});
+
+
 });
 
 //Serve the puplic dir
