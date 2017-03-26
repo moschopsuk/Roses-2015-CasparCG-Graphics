@@ -200,3 +200,27 @@ app.controller('swimmingCtrl', ['$scope', 'socket',
         }
     }
 ]);
+
+app.controller('basketballCtrl', ['$scope', 'socket',
+    function($scope, socket){
+
+        socket.on("basketball", function (msg) {
+            $scope.basketball = msg;
+        });
+
+        socket.on("clock:tick", function (msg) {
+            $scope.clock = msg.slice(0, msg.indexOf("."));
+        });
+
+        $scope.$watch('basketball', function() {
+            if (!$scope.basketball) {
+                getBasketballData();
+            }
+        }, true);
+
+        function getBasketballData() {
+            socket.emit("basketball:get");
+            socket.emit("clock:get");
+        }
+    }
+]);

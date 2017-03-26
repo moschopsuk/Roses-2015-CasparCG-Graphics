@@ -10,6 +10,7 @@ var bug = {};
 var boxing = {lancScore: 0, yorkScore: 0, currRound: ''};
 var score = {};
 var football = {lancScore: 0, yorkScore: 0};
+var basketball = {lancScore: 0, yorkScore: 0};
 var dart = {};
 var swimming = {order: ''};
 var grid = {};
