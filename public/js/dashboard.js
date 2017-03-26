@@ -63,6 +63,13 @@ app.controller('AppCtrl', ['$scope', '$location',
             type: 'link',
             icon: 'life ring',
         });
+
+        $scope.menu.push({
+            name: 'Basketball',
+            url: '/basketball',
+            type: 'link',
+            icon: 'life ring',
+        });
     }
 ]);
 
