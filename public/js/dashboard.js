@@ -82,39 +82,39 @@ app.config(['$routeProvider', 'localStorageServiceProvider',
 
         $routeProvider
             .when("/general", {
-                templateUrl: '/partials/general.tmpl.html',
+                templateUrl: '/admin/templates/general.tmpl.html',
                 controller: 'generalCGController'
             })
             .when("/lowerThirds", {
-                templateUrl: '/partials/lowerThirds.tmpl.html',
+                templateUrl: '/admin/templates/lowerThirds.tmpl.html',
                 controller: 'lowerThirdsCGController'
             })
             .when("/boxing", {
-                templateUrl: '/partials/boxing.tmpl.html',
+                templateUrl: '/admin/templates/boxing.tmpl.html',
                 controller: 'boxingCGController'
             })
             .when("/roses", {
-                templateUrl: '/partials/roses.tmpl.html',
+                templateUrl: '/admin/templates/roses.tmpl.html',
                 controller: 'rosesCGController'
             })
             .when("/football", {
-                templateUrl: '/partials/football.tmpl.html',
+                templateUrl: '/admin/templates/football.tmpl.html',
                 controller: 'footballCGController'
             })
             .when("/darts", {
-                templateUrl: '/partials/darts.tmpl.html',
+                templateUrl: '/admin/templates/darts.tmpl.html',
                 controller: 'dartsCGController'
             })
             .when("/swimming", {
-                templateUrl: '/partials/swimming.tmpl.html',
+                templateUrl: '/admin/templates/swimming.tmpl.html',
                 controller: 'swimmingCGController'
             })
             .when("/grid", {
-                templateUrl: '/partials/grid.tmpl.html',
+                templateUrl: '/admin/templates/grid.tmpl.html',
                 controller: 'gridCGController'
             })
             .when("/basketball", {
-                templateUrl: '/partials/basketball.tmpl.html',
+                templateUrl: '/admin/templates/basketball.tmpl.html',
                 controller: 'basketballCGController'
             })
             .otherwise({redirectTo: '/general'});
