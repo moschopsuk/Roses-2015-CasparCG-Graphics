@@ -11,13 +11,13 @@
 
     <body>
         <div ng-controller="bugCtrl">
-            <div class="wrapper">
-                 <div class="bug left top scale-fade" ng-show="state.showLive">
-                        <h1>Live</h1><h1 class="black" ng-show="state.showClock">{{clock | date: "HH:mm"}}</h1><h1 ng-show="state.bugText">{{bugText}}</h1>
+            <div class="wrapper slide-left">
+                 <div class="bug left top scale-fade" ng-show="state.showClock">
+                        <h1 class="black">{{clock | date: "HH:mm"}}</h1><h1 ng-show="state.showLive">Live</h1><h1 ng-show="state.bugText">{{bugText}}</h1>
                 </div>
 
                 <div class="logo right top toggle" ng-show="state.showLogo">
-                    <img src="/images/logo.png" />
+                    <img src="/images/roses2017logo.png" />
                 </div>
             </div>
         </div>
@@ -88,12 +88,19 @@
             </div>
         </div>
 
-
         <div ng-controller="footballCtrl" class="football left top scale-fade" ng-show="football.show">
             <div class="row">
                 <div class="clock">{{clock}}</div>
                 <div class="score lanc">LANCS {{football.lancScore}}</div>
                 <div class="score york">{{football.yorkScore}} YORK</div>
+            </div>
+        </div>
+
+        <div ng-controller="basketballCtrl" class="basketball left top scale-fade" ng-show="basketball.show">
+            <div class="row">
+                <div class="clock">{{clock}}</div>
+                <div class="score lanc">LANCS {{basketball.lancScore}}</div>
+                <div class="score york">{{basketball.yorkScore}} YORK</div>
             </div>
         </div>
 

@@ -10,6 +10,7 @@ var bug = {};
 var boxing = {lancScore: 0, yorkScore: 0, currRound: ''};
 var score = {};
 var football = {lancScore: 0, yorkScore: 0};
+var basketball = {lancScore: 0, yorkScore: 0};
 var dart = {};
 var swimming = {order: ''};
 var grid = {};
@@ -160,6 +161,18 @@ io.on('connection', function(socket) {
     socket.on("swimming:get", function(msg) {
         io.sockets.emit("swimming", swimming);
     });
+
+		/*
+ 	 * 		Basketball
+ 	 */
+ 	socket.on("basketball", function(msg) {
+      basketball = msg;
+ 		io.sockets.emit("basketball", msg);
+ 	});
+
+  socket.on("basketball:get", function(msg) {
+ 		io.sockets.emit("basketball", basketball);
+ 	});
 });
 
 //Serve the puplic dir
