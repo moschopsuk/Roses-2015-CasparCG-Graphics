@@ -1,5 +1,5 @@
 <div class="ui form segment">
-    <h2>basketball</h2>
+    <h2>Basketball</h2>
 
     <div class="ui grid center aligned">
         <div class="eight wide column">
@@ -52,8 +52,14 @@
                 <button class="ui green button" ng-click="basketball.lancScore = basketball.lancScore + 3;">
                     <i class="plus icon"></i>3
                 </button>
+                <button class="ui yellow button" ng-click="basketball.lancScore = basketball.lancScore + 2;">
+                    <i class="plus icon"></i>2
+                </button>
+                <button class="ui orange button" ng-click="basketball.lancScore = basketball.lancScore + 1;">
+                    <i class="plus icon"></i>1
+                </button>
                 <button class="ui red button" ng-click="basketball.lancScore = basketball.lancScore - 1;" ng-disabled="basketball.lancScore == 0">
-                    <i class="minus icon"></i>
+                    <i class="minus icon"></i>1
                 </button>
             </div>
         </div>
@@ -65,8 +71,14 @@
                 <button class="ui green button" ng-click="basketball.yorkScore = basketball.yorkScore + 3;">
                     <i class="plus icon"></i>3
                 </button>
+                <button class="ui yellow button" ng-click="basketball.yorkScore = basketball.yorkScore + 2;">
+                    <i class="plus icon"></i>2
+                </button>
+                <button class="ui orange button" ng-click="basketball.yorkScore = basketball.yorkScore + 1;">
+                    <i class="plus icon"></i>1
+                </button>
                 <button class="ui red button" ng-click="basketball.yorkScore = basketball.yorkScore - 1;" ng-disabled="basketball.yorkScore == 0">
-                    <i class="minus icon"></i>
+                    <i class="minus icon"></i>1
                 </button>
             </div>
         </div>
