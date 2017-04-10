@@ -350,7 +350,7 @@ h1, h2, h3, h4 {
 /**************************************************/
 
 .darts {
-  width: 35%;
+  width: 30%;
   background-color: rgba(0, 0, 0, 0.5);
   text-align: center;
   font-size: 25px;
@@ -372,10 +372,11 @@ h1, h2, h3, h4 {
   line-height: 3.2vw;
 
   padding-left: 5px;
+  padding-right: 5px;
 }
 
 .darts .name {
-  width: 64%;
+  width: 50%;
 }
 
 .darts .name.lanc {
@@ -391,7 +392,15 @@ h1, h2, h3, h4 {
 }
 
 .darts .legs {
-  width: 17%;
+  width: 15%;
+  color: #fff;
+  background-color: #00d;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+  border-left: 2px solid #fff;
+}
+
+.darts .sets {
+  width: 15%;
   color: #fff;
   background-color: #00d;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
@@ -399,7 +408,7 @@ h1, h2, h3, h4 {
 }
 
 .darts .score {
-  width: 19%;
+  width: 20%;
   color: #fff;
   background-color: #00d;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
@@ -409,7 +418,14 @@ h1, h2, h3, h4 {
 .darts .header .name {
   background-color: #fff;
   color: #000;
-  width: 64%;
+  width: 50%%;
+  line-height: 30px;
+  line-height: 2.5vw;
+}
+.darts .header .name2 {
+  background-color: #fff;
+  color: #000;
+  width: 20%%;
   line-height: 30px;
   line-height: 2.5vw;
 }
@@ -417,7 +433,16 @@ h1, h2, h3, h4 {
 .darts .header .leg {
   color: #000;
   background-color: #fff;
-  width: 36%;
+  width: 15%;
+  font-size: 20px;
+  font-size: 1.3vw;
+  line-height: 30px;
+  line-height: 2.5vw;
+}
+.darts .header .set {
+  color: #000;
+  background-color: #fff;
+  width: 15%;
   font-size: 20px;
   font-size: 1.3vw;
   line-height: 30px;
