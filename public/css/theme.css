@@ -296,9 +296,9 @@ h1, h2, h3, h4 {
     width: 50%;
     font-size: 40px;
     font-size: 2.5vw;
-    color: #efbb39;
+    color: #000 ;
     padding: 6px;
-    background-color: #000 !important;
+    background-color: #efbb39 !important;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
@@ -340,8 +340,8 @@ h1, h2, h3, h4 {
 
 .football .score.york {
   width: 38%;
-  color: #efbb39;
-  background-color: #000;
+  color: #000;
+  background-color: #efbb39;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
@@ -350,9 +350,9 @@ h1, h2, h3, h4 {
 /**************************************************/
 
 .darts {
-  width: 25%;
+  width: 35%;
   background-color: rgba(0, 0, 0, 0.5);
-  text-align: left;
+  text-align: center;
   font-size: 25px;
   font-size: 1.8vw;
 
@@ -361,7 +361,12 @@ h1, h2, h3, h4 {
   background-clip: padding-box;
 }
 
-.darts .name, .darts .legs, .darts .score, .darts .leg, .darts .footer {
+.darts .name {
+  text-align: left;
+}
+
+
+.darts .name, .darts .legs, .darts .score, .darts .leg, .darts .footer, .darts .set, .darts .sets {
   float: left;
   line-height: 45px;
   line-height: 3.2vw;
@@ -380,8 +385,8 @@ h1, h2, h3, h4 {
 }
 
 .darts .name.york {
-  color: #efbb39;
-  background-color: #000;
+  color: #000;
+  background-color: #efbb39;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
@@ -559,8 +564,8 @@ h1, h2, h3, h4 {
 }
 
 .swimmingsplits .row.york {
-    color: #efbb39;
-    background-color: #000;
+    color: #000;
+    background-color: #efbb39;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
@@ -623,8 +628,8 @@ h1, h2, h3, h4 {
 }
 
 .swimminglist .row.york {
-    color: #efbb39;
-    background-color: #000;
+    color: #000;
+    background-color: #efbb39;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
@@ -678,7 +683,7 @@ h1, h2, h3, h4 {
 
 .basketball .score.york {
   width: 38%;
-  color: #efbb39;
-  background-color: #000;
+  color: #000;
+  background-color: #efbb39;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
