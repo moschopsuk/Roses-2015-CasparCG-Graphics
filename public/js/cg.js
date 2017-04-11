@@ -27,6 +27,14 @@ app.controller('lowerThirdsCtrl', ['$scope', 'socket',
     }
 ]);
 
+app.controller('archeryCtrl', ['$scope', 'socket',
+    function($scope, socket){
+        socket.on("archery", function (msg) {
+            $scope.archery = msg;
+        });
+    }
+]);
+
 app.controller('boxingCtrl', ['$scope', 'socket',
     function($scope, socket){
 

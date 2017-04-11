@@ -14,6 +14,7 @@ var basketball = {lancScore: 0, yorkScore: 0};
 var dart = {};
 var swimming = {order: ''};
 var grid = {};
+var archery = {};
 
 //Clock Functions
 var stopwatch = new Stopwatch();
@@ -173,6 +174,17 @@ io.on('connection', function(socket) {
   socket.on("basketball:get", function(msg) {
  		io.sockets.emit("basketball", basketball);
  	});
+
+	socket.on("archery", function(msg) {
+        archery = msg;
+		io.sockets.emit("archery", msg);
+	});
+
+		socket.on("archery:get", function(msg) {
+				io.sockets.emit("archery", archery);
+		});
+
+
 });
 
 //Serve the puplic dir
