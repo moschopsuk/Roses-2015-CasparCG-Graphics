@@ -125,7 +125,7 @@ app.config(['$routeProvider', 'localStorageServiceProvider',
                 controller: 'basketballCGController'
             })
             .when("/archery", {
-                templateUrl: '/partials/archery.tmpl.html',
+                templateUrl: '/admin/templates/archery.tmpl.html',
                 controller: 'archeryCGController'
             })
             .otherwise({redirectTo: '/general'});
