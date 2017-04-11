@@ -10,7 +10,7 @@ Double click
 
 For the [admin](http://127.0.0.1:3000/admin) page, navigate to http://127.0.0.1:3000/admin
 
-For the [graphics](http://127.0.0.1:3000/cg) output, navigate to http://127.0.0.1:3000/cg
+For the [graphics](http://127.0.0.1:3000) output, navigate to http://127.0.0.1:3000
 
 ### Linux / Mac
 Run from the directory this readme is in:
@@ -21,4 +21,4 @@ node server.js
 
 For the [admin](http://127.0.0.1:3000/admin) page, navigate to http://127.0.0.1:3000/admin
 
-For the [graphics](http://127.0.0.1:3000/cg) output, navigate to http://127.0.0.1:3000/cg
+For the [graphics](http://127.0.0.1:3000) output, navigate to http://127.0.0.1:3000
