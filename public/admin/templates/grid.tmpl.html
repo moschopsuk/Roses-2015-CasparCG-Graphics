@@ -1,46 +1,51 @@
-<div class="ui grid segment">
-  <h1>Grid</h1>
+<div class="ui form segment">
+  <h2>Grid</h2>
 
-  <div class="ui divider"></div>
-<div class="ui grid center aligned">
-  <div class="five wide column">
-    <div class="ui form">
-      <div class="field">
-        <h2>Grid Title</h2>
-        <input name="heading" placeholder="Heading" type="text" ng-model="grid.header" />
-      </div>
-      <button class="ui green button" ng-click="show()" ng-class="grid.rows <= 1 ? 'disabled' : '' ">Show</button>
-      <div class="ui red button" ng-click="hide()">Hide</div>
-    </div>
-  </div>
+  <div class="ui grid center aligned">
 
-  <div class="eleven wide column">
-    <h2>Grid Rows</h2>
 
-    <div class="ui error form segment">
-      <div class="fields slide-left" ng-repeat="row in grid.rows">
-        <div class="eight wide field">
-          <input type="text" ng-model="row.left" placeholder="Left Colmun">
-        </div>
 
-        <div class="six wide field">
-          <input type="text" ng-model="row.right" placeholder="Right Colmun">
-        </div>
-
-        <div class="two wide field">
-          <div class="ui icon red button" ng-click="remove($index)"> <i class="minus icon"></i></div>
-        </div>
-      </div>
-
+    <div class="sixteen wide column">
+      <div class="ui divider"></div>
       <div class="fields">
-        <!-- Must be better way to align from right -->
-        <div class="fourteen wide field"></div>
+        <div class="five wide field">
+            <div class="ui form">
+              <h2>Grid Title</h2>
+              <input name="heading" placeholder="Heading" type="text" ng-model="grid.header" />
+            </div>
+            <button class="ui green button" ng-click="show()" ng-class="grid.rows <= 1 ? 'disabled' : '' ">Show</button>
+            <div class="ui red button" ng-click="hide()">Hide</div>
+        </div>
 
-        <div class="two wide field">
-          <div class="ui icon green button" ng-click="add()"> <i class="plus icon"></i></div>
+        <div class="eleven wide field">
+          <h2>Grid Rows</h2>
+
+          <div class="ui error form segment">
+            <div class="fields slide-left" ng-repeat="row in grid.rows">
+              <div class="eight wide field">
+                <input type="text" ng-model="row.left" placeholder="Left Colmun">
+              </div>
+
+              <div class="six wide field">
+                <input type="text" ng-model="row.right" placeholder="Right Colmun">
+              </div>
+
+              <div class="two wide field">
+                <div class="ui icon red button" ng-click="remove($index)"> <i class="minus icon"></i></div>
+              </div>
+            </div>
+
+            <div class="fields">
+              <!-- Must be better way to align from right -->
+              <div class="fourteen wide field"></div>
+
+              <div class="two wide field">
+                <div class="ui icon green button" ng-click="add()"> <i class="plus icon"></i></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>
