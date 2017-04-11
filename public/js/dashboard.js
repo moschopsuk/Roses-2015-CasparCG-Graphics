@@ -19,28 +19,28 @@ app.controller('AppCtrl', ['$scope', '$location',
             name: 'Lower Thirds',
             url: '/lowerThirds',
             type: 'link',
-            icon: 'list layout'
+            icon: 'violet list layout'
         });
 
         $scope.menu.push({
             name: 'Grid',
             url: '/grid',
             type: 'link',
-            icon: 'grid layout',
+            icon: 'teal grid layout',
         });
 
         $scope.menu.push({
             name: 'Roses',
             url: '/roses',
             type: 'link',
-            icon: 'trophy',
+            icon: 'yellow trophy',
         });
 
         $scope.menu.push({
             name: 'Boxing',
             url: '/boxing',
             type: 'link',
-            icon: 'users',
+            icon: 'olive users',
         });
 
         $scope.menu.push({
@@ -54,21 +54,21 @@ app.controller('AppCtrl', ['$scope', '$location',
             name: 'Darts',
             url: '/darts',
             type: 'link',
-            icon: 'bullseye',
+            icon: 'red bullseye',
         });
 
         $scope.menu.push({
             name: 'Swimming',
             url: '/swimming',
             type: 'link',
-            icon: 'life ring',
+            icon: 'blue life ring',
         });
 
         $scope.menu.push({
             name: 'Basketball',
             url: '/basketball',
             type: 'link',
-            icon: 'life ring',
+            icon: 'orange clockwise rotated loading life ring',
         });
     }
 ]);
