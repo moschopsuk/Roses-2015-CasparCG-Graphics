@@ -537,10 +537,11 @@ app.controller('swimmingCGController', ['$scope', 'socket',
         };
 
         $scope.resetOrder = function(val) {
+                var splits = $scope.swimming.showsplits;
                 $scope.swimming.showsplits = false;
                 setTimeout(function() {
                     $scope.swimming.order = '';
-                    $scope.swimming.showsplits = true;
+                    $scope.swimming.showsplits = splits;
                     socket.emit("swimming", $scope.swimming);
                 }, 600);
         };
