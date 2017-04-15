@@ -19,49 +19,71 @@ app.controller('AppCtrl', ['$scope', '$location',
             name: 'Lower Thirds',
             url: '/lowerThirds',
             type: 'link',
-            icon: 'list layout'
+            icon: 'violet list layout'
         });
 
         $scope.menu.push({
             name: 'Grid',
             url: '/grid',
             type: 'link',
-            icon: 'grid layout',
+            icon: 'teal grid layout',
         });
 
         $scope.menu.push({
             name: 'Roses',
             url: '/roses',
             type: 'link',
-            icon: 'trophy',
+            icon: 'yellow trophy',
         });
 
         $scope.menu.push({
             name: 'Boxing',
             url: '/boxing',
             type: 'link',
-            icon: 'users',
+            icon: 'olive users',
         });
 
         $scope.menu.push({
-            name: 'Football/Rugby',
+            name: 'Football',
             url: '/football',
             type: 'link',
             icon: 'soccer',
         });
 
         $scope.menu.push({
+            name: 'Rugby',
+            url: '/rugby',
+            type: 'link',
+            icon: 'orange soccer',
+        });
+
+        $scope.menu.push({
             name: 'Darts',
             url: '/darts',
             type: 'link',
-            icon: 'bullseye',
+            icon: 'red bullseye',
+            // live: $scope.dart.show,
         });
 
         $scope.menu.push({
             name: 'Swimming',
             url: '/swimming',
             type: 'link',
-            icon: 'life ring',
+            icon: 'blue life ring',
+        });
+
+        $scope.menu.push({
+            name: 'Basketball',
+            url: '/basketball',
+            type: 'link',
+            icon: 'orange clockwise rotated loading life ring',
+        });
+
+        $scope.menu.push({
+            name: 'Archery',
+            url: '/archery',
+            type: 'link',
+            icon: 'bullseye',
         });
     }
 ]);
@@ -75,39 +97,119 @@ app.config(['$routeProvider', 'localStorageServiceProvider',
 
         $routeProvider
             .when("/general", {
-                templateUrl: '/partials/general.tmpl.html',
+                templateUrl: '/admin/templates/general.tmpl.html',
                 controller: 'generalCGController'
             })
             .when("/lowerThirds", {
-                templateUrl: '/partials/lowerThirds.tmpl.html',
+                templateUrl: '/admin/templates/lowerThirds.tmpl.html',
                 controller: 'lowerThirdsCGController'
             })
             .when("/boxing", {
-                templateUrl: '/partials/boxing.tmpl.html',
+                templateUrl: '/admin/templates/boxing.tmpl.html',
                 controller: 'boxingCGController'
             })
             .when("/roses", {
-                templateUrl: '/partials/roses.tmpl.html',
+                templateUrl: '/admin/templates/roses.tmpl.html',
                 controller: 'rosesCGController'
             })
             .when("/football", {
-                templateUrl: '/partials/football.tmpl.html',
+                templateUrl: '/admin/templates/football.tmpl.html',
                 controller: 'footballCGController'
             })
+            .when("/rugby", {
+                templateUrl: '/admin/templates/rugby.tmpl.html',
+                controller: 'rugbyCGController'
+            })
             .when("/darts", {
-                templateUrl: '/partials/darts.tmpl.html',
+                templateUrl: '/admin/templates/darts.tmpl.html',
                 controller: 'dartsCGController'
             })
             .when("/swimming", {
-                templateUrl: '/partials/swimming.tmpl.html',
+                templateUrl: '/admin/templates/swimming.tmpl.html',
                 controller: 'swimmingCGController'
             })
             .when("/grid", {
-                templateUrl: '/partials/grid.tmpl.html',
+                templateUrl: '/admin/templates/grid.tmpl.html',
                 controller: 'gridCGController'
+            })
+            .when("/basketball", {
+                templateUrl: '/admin/templates/basketball.tmpl.html',
+                controller: 'basketballCGController'
+            })
+            .when("/archery", {
+                templateUrl: '/admin/templates/archery.tmpl.html',
+                controller: 'archeryCGController'
             })
             .otherwise({redirectTo: '/general'});
     }
+]);
+
+app.controller('archeryCGController', ['$scope', 'socket',
+  function($scope, socket) {
+      socket.on("archery", function (msg) {
+          $scope.archery = msg;
+      });
+
+      $scope.$watch('archery', function() {
+          if ($scope.archery) {
+              socket.emit("archery", $scope.archery);
+          } else {
+              getArcheryData();
+          }
+      }, true);
+
+
+      function getArcheryData() {
+          socket.emit("archery:get");
+      }
+
+      $scope.archeryReset1 = function() {
+          $scope.archery.score1 = 0;
+      };
+
+      $scope.archeryHit1 = function(){
+        if($scope.archery.shots1.length < 6) {
+          $scope.archery.shots1 += "H";
+          var tmp = Number($scope.archery.score1);
+          var newScore = (tmp + 1);
+          $scope.archery.score1 = newScore;
+          debugger
+        }
+      }
+
+      $scope.archeryHit2 = function(){
+        if($scope.archery.shots2.length < 6) {
+          $scope.archery.shots2 += "H";
+          var tmp = Number($scope.archery.score2);
+          var newScore = (tmp + 1);
+          $scope.archery.score2 = newScore;
+        }
+      }
+
+      $scope.archeryMiss1 = function(){
+        if($scope.archery.shots1.length < 6) {
+          $scope.archery.shots1 += "M";
+        }
+      }
+
+      $scope.archeryMiss2 = function(){
+        if($scope.archery.shots2.length < 6) {
+          $scope.archery.shots2 += "M";
+        }
+      }
+
+      $scope.archeryReset2 = function() {
+          $scope.archery.score2 = 0;
+      };
+
+      $scope.archeryHitsReset1 = function() {
+          $scope.archery.shots1 = [];
+      };
+
+      $scope.archeryHitsReset2 = function() {
+          $scope.archery.shots2 = [];
+      };
+  }
 ]);
 
 app.controller('generalCGController', ['$scope', 'socket',
@@ -166,11 +268,19 @@ app.controller('lowerThirdsCGController', ['$scope', 'localStorageService', 'soc
     }
 ]);
 
-app.controller('gridCGController', ['$scope', 'socket',
-function($scope, socket){
-  $scope.grid = {};
-  $scope.grid.rows = [];
-  $scope.add = function() {
+app.controller('gridCGController', ['$scope', '$log', 'localStorageService', 'socket',
+    function($scope, $log, localStorageService, socket){
+
+        var stored = localStorageService.get('grid');
+
+        if(stored === null) {
+            $scope.grid = {};
+            $scope.grid.rows = [];
+        } else {
+            $scope.grid = stored;
+        }
+
+        $scope.add = function() {
             $scope.grid.rows.push({left:'', right:''});
         };
 
@@ -189,8 +299,10 @@ function($scope, socket){
             $log.info("grid.hide()");
         };
 
-
-}])
+        $scope.$on("$destroy", function() {
+            localStorageService.set('grid', $scope.grid);
+        });
+}]);
 
 app.controller('boxingCGController', ['$scope', 'socket',
     function($scope, socket){
@@ -267,8 +379,23 @@ app.controller('rosesCGController', ['$scope', 'socket',
 ]);
 
 
-app.controller('footballCGController', ['$scope', 'socket',
-    function($scope, socket){
+app.controller('footballCGController', ['$scope', 'localStorageService', 'socket',
+    function($scope, localStorageService, socket){
+        var storedLancs = localStorageService.get('lancs_football');
+        var storedYork = localStorageService.get('york_football');
+
+        if(storedLancs === null) {
+            $scope.lancsPlayers = [];
+        } else {
+            $scope.lancsPlayers = storedLancs;
+        }
+
+        if(storedYork === null) {
+            $scope.yorksPlayers = [];
+        } else {
+            $scope.yorksPlayers = storedYork;
+        }
+
         socket.on("clock:tick", function (msg) {
             $scope.clock = msg.slice(0, msg.indexOf("."));
         });
@@ -293,6 +420,25 @@ app.controller('footballCGController', ['$scope', 'socket',
             socket.emit("clock:up");
         };
 
+        $scope.addLancsPlayer = function() {
+            $scope.lancsPlayers.push($scope.lancs);
+            $scope.lancs = {};
+        };
+
+        $scope.addYorksPlayer = function() {
+            $scope.yorksPlayers.push($scope.york);
+            $scope.york = {};
+        };
+
+        $scope.delete = function(team, index) {
+            console.log('delete');
+            if(team === 'york') {
+                $scope.yorksPlayers.splice(index, 1);
+            } else if (team === 'lancs') {
+                $scope.lancsPlayers.splice(index, 1);
+            }
+        };
+
         socket.on("football", function (msg) {
             $scope.football = msg;
         });
@@ -305,6 +451,11 @@ app.controller('footballCGController', ['$scope', 'socket',
             }
         }, true);
 
+        $scope.$on("$destroy", function() {
+            localStorageService.set('york_football', $scope.yorksPlayers);
+            localStorageService.set('lancs_football', $scope.lancsPlayers);
+        });
+
         function getFootballData() {
             socket.emit("football:get");
             socket.emit("clock:get");
@@ -312,6 +463,88 @@ app.controller('footballCGController', ['$scope', 'socket',
     }
 ]);
 
+app.controller('rugbyCGController', ['$scope', 'localStorageService', 'socket',
+    function($scope, localStorageService, socket){
+        var storedLancs = localStorageService.get('lancs_rugby');
+        var storedYork = localStorageService.get('york_rugby');
+
+        if(storedLancs === null) {
+            $scope.lancsPlayers = [];
+        } else {
+            $scope.lancsPlayers = storedLancs;
+        }
+
+        if(storedYork === null) {
+            $scope.yorksPlayers = [];
+        } else {
+            $scope.yorksPlayers = storedYork;
+        }
+
+        socket.on("clock:tick", function (msg) {
+            $scope.clock = msg.slice(0, msg.indexOf("."));
+        });
+
+        $scope.pauseClock = function() {
+            socket.emit("clock:pause");
+        };
+
+        $scope.resetClock = function() {
+            socket.emit("clock:reset");
+        };
+
+        $scope.setClock = function(val) {
+            socket.emit("clock:set", val);
+        };
+
+        $scope.downClock = function() {
+            socket.emit("clock:down");
+        };
+
+        $scope.upClock = function() {
+            socket.emit("clock:up");
+        };
+
+        $scope.addLancsPlayer = function() {
+            $scope.lancsPlayers.push($scope.lancs);
+            $scope.lancs = {};
+        };
+
+        $scope.addYorksPlayer = function() {
+            $scope.yorksPlayers.push($scope.york);
+            $scope.york = {};
+        };
+
+        $scope.delete = function(team, index) {
+            if(team === 'york') {
+                $scope.yorksPlayers.splice(index, 1);
+            } else if (team === 'lancs') {
+                $scope.lancsPlayers.splice(index, 1);
+            }
+        };
+
+        socket.on("rugby", function (msg) {
+            $scope.rugby = msg;
+        });
+
+        $scope.$watch('rugby', function() {
+            if ($scope.rugby) {
+                socket.emit("rugby", $scope.rugby);
+            } else {
+                getRugbyData();
+            }
+        }, true);
+
+        $scope.$on("$destroy", function() {
+            localStorageService.set('york_Rugby', $scope.yorksPlayers);
+            localStorageService.set('lancs_Rugby', $scope.lancsPlayers);
+        });
+
+        function getRugbyData() {
+            socket.emit("Rugby:get");
+            socket.emit("clock:get");
+        }
+    }
+]);
 
 app.controller('dartsCGController', ['$scope', 'socket',
     function($scope, socket) {
@@ -348,7 +581,7 @@ app.controller('dartsCGController', ['$scope', 'socket',
             var tmp = $scope.dart.score1;
             var newScore = (tmp - val);
 
-            if(newScore > 0) {
+            if(newScore >= 0) {
                 $scope.dart.score1 = newScore;
                 $scope.last1 = "";
             }
@@ -363,7 +596,7 @@ app.controller('dartsCGController', ['$scope', 'socket',
             var tmp = $scope.dart.score2;
             var newScore = (tmp - val);
 
-            if(newScore > 0) {
+            if(newScore >= 0) {
                 $scope.dart.score2 = newScore;
                 $scope.last2 = "";
             }
@@ -398,10 +631,11 @@ app.controller('swimmingCGController', ['$scope', 'socket',
         };
 
         $scope.resetOrder = function(val) {
+                var splits = $scope.swimming.showsplits;
                 $scope.swimming.showsplits = false;
                 setTimeout(function() {
                     $scope.swimming.order = '';
-                    $scope.swimming.showsplits = true;
+                    $scope.swimming.showsplits = splits;
                     socket.emit("swimming", $scope.swimming);
                 }, 600);
         };
@@ -413,7 +647,7 @@ app.controller('swimmingCGController', ['$scope', 'socket',
                 $scope.swimming['lane' + i + 'name'] = '';
                 $scope.swimming['lane' + i + 'team'] = '';
             }
-        }
+        };
 
         socket.on("swimming", function (msg) {
             $scope.swimming = msg;
@@ -435,5 +669,89 @@ app.controller('swimmingCGController', ['$scope', 'socket',
         $(function () {
           $('.ui.dropdown').dropdown();
         });
+    }
+]);
+
+app.controller('basketballCGController', ['$scope', 'localStorageService', 'socket',
+    function($scope, localStorageService, socket){
+        var storedLancs = localStorageService.get('lancs_basketball');
+        var storedYork = localStorageService.get('york_basketball');
+
+        if(storedLancs === null) {
+            $scope.lancsPlayers = [];
+        } else {
+            $scope.lancsPlayers = storedLancs;
+        }
+
+        if(storedYork === null) {
+            $scope.yorksPlayers = [];
+        } else {
+            $scope.yorksPlayers = storedYork;
+        }
+
+        socket.on("clock:tick", function (msg) {
+            $scope.clock = msg.slice(0, msg.indexOf("."));
+        });
+
+        $scope.pauseClock = function() {
+            socket.emit("clock:pause");
+        };
+
+        $scope.resetClock = function() {
+            socket.emit("clock:reset");
+        };
+
+        $scope.setClock = function(val) {
+            socket.emit("clock:set", val);
+        };
+
+        $scope.downClock = function() {
+            socket.emit("clock:down");
+        };
+
+        $scope.upClock = function() {
+            socket.emit("clock:up");
+        };
+
+        $scope.addLancsPlayer = function() {
+            $scope.lancsPlayers.push($scope.lancs);
+            $scope.lancs = {};
+        };
+
+        $scope.addYorksPlayer = function() {
+            $scope.yorksPlayers.push($scope.york);
+            $scope.york = {};
+        };
+
+        $scope.delete = function(team, index) {
+            console.log('delete');
+            if(team === 'york') {
+                $scope.yorksPlayers.splice(index, 1);
+            } else if (team === 'lancs') {
+                $scope.lancsPlayers.splice(index, 1);
+            }
+        };
+
+        socket.on("basketball", function (msg) {
+            $scope.basketball = msg;
+        });
+
+        $scope.$watch('basketball', function() {
+            if ($scope.basketball) {
+                socket.emit("basketball", $scope.basketball);
+            } else {
+                getBasketballData();
+            }
+        }, true);
+
+        $scope.$on("$destroy", function() {
+            localStorageService.set('york_basketball', $scope.yorksPlayers);
+            localStorageService.set('lancs_basketball', $scope.lancsPlayers);
+        });
+
+        function getBasketballData() {
+            socket.emit("football:get");
+            socket.emit("clock:get");
+        }
     }
 ]);
