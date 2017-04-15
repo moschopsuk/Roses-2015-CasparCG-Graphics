@@ -10,6 +10,7 @@ var bug = {};
 var boxing = {lancScore: 0, yorkScore: 0, currRound: ''};
 var score = {};
 var football = {homeTeam: "Lancaster", awayTeam: "York", lancScore: 0, yorkScore: 0};
+var rugby = {homeTeam: "Lancaster", awayTeam: "York", lancScore: 0, yorkScore: 0};
 var basketball = {homeTeam: "Lancaster", awayTeam: "York", lancScore: 0, yorkScore: 0};
 var dart = {match: "Darts", player1: "Lancaster", player2: "York", set1: 0, set2:0, leg1: 0, leg2: 0, score1:501, score2:501 };
 var swimming = {order: ''};
@@ -124,6 +125,17 @@ io.on('connection', function(socket) {
 		io.sockets.emit("football", football);
 	});
 
+	/*
+	* 		Rugby
+	*/
+ socket.on("rugby", function(msg) {
+			 rugby = msg;
+	 io.sockets.emit("rugby", msg);
+ });
+
+	 socket.on("rugby:get", function(msg) {
+	 io.sockets.emit("rugby", rugby);
+ });
 
 	/*
 	 * 		Darts

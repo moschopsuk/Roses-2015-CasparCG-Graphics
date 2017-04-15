@@ -1,0 +1,144 @@
+<div class="ui form segment">
+    <h2>Rugby</h2>
+
+    <div class="ui grid center aligned">
+        <div class="eight wide column">
+            <div class="field">
+                <checkbox ng-model="rugby.show" size="large" type="toggle">Show Score Bar</checkbox>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui divider"></div>
+
+    <div class="ui grid">
+        <div class="three wide column center aligned">
+            <h2 class="ui header">{{clock}}</h2>
+        </div>
+
+        <div class="five wide column">
+            <div class="ui action input">
+                <input type="text" placeholder="mm:ss" ng-model="time" size="10">
+                <div class="ui button" ng-click="setClock(time)">Set</div>
+            </div>
+        </div>
+
+        <div class="seven wide column">
+            <div class="ui">
+                <div class="ui icon red button" ng-click="upClock()">
+                    <i class="up arrow icon"></i>
+                </div>
+
+                <div class="ui icon blue button" ng-click="pauseClock()">
+                    <i class="pause icon"></i>
+                </div>
+
+                <div class="ui icon green button" ng-click="downClock()">
+                    <i class="down arrow icon"></i>
+                </div>
+
+                <div class="ui button" ng-click="resetClock()">Reset</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui divider"></div>
+
+    <div class="ui grid center aligned">
+      <div class="eight wide column">
+        <h2>Rugby Union</h2>
+      </div>
+    </div>
+
+    <div class="ui grid center aligned">
+        <div class="eight wide column">
+            <h3>Lancaster</h3>
+            <h1>{{rugby.lancScore}}</h1>
+            <div class="ui icon buttons">
+                <button class="ui green button" ng-click="rugby.lancScore = rugby.lancScore + 5;">
+                    <i class="plus icon"></i>5
+                </button>
+                <button class="ui yellow button" ng-click="rugby.lancScore = rugby.lancScore + 3;">
+                    <i class="plus icon"></i>3
+                </button>
+                <button class="ui orange button" ng-click="rugby.lancScore = rugby.lancScore + 2;">
+                    <i class="plus icon"></i>2
+                </button>
+                <button class="ui red button" ng-click="rugby.lancScore = rugby.lancScore - 1;" ng-disabled="rugby.lancScore == 0">
+                    <i class="minus icon"></i>1
+                </button>
+            </div>
+        </div>
+
+        <div class="eight wide column">
+            <h3>York</h3>
+            <h1>{{rugby.yorkScore}}</h1>
+            <div class="ui icon buttons">
+                <button class="ui green button" ng-click="rugby.yorkScore = rugby.yorkScore + 5;">
+                    <i class="plus icon"></i>5
+                </button>
+                <button class="ui yellow button" ng-click="rugby.yorkScore = rugby.yorkScore + 3;">
+                    <i class="plus icon"></i>3
+                </button>
+                <button class="ui orange button" ng-click="rugby.yorkScore = rugby.yorkScore + 2;">
+                    <i class="plus icon"></i>2
+                </button>
+                <button class="ui red button" ng-click="rugby.yorkScore = rugby.yorkScore - 1;" ng-disabled="rugby.yorkScore == 0">
+                    <i class="minus icon"></i>1
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui divider"></div>
+
+    <div class="ui grid center aligned">
+      <div class="eight wide column">
+        <h2>Rugby League</h2>
+      </div>
+    </div>
+
+    <div class="ui grid center aligned">
+        <div class="eight wide column">
+            <h3>Lancaster</h3>
+            <h1>{{rugby.lancScore}}</h1>
+            <div class="ui icon buttons">
+                <button class="ui green button" ng-click="rugby.lancScore = rugby.lancScore + 4;">
+                    <i class="plus icon"></i>4
+                </button>
+                <button class="ui yellow button" ng-click="rugby.lancScore = rugby.lancScore + 2;">
+                    <i class="plus icon"></i>2
+                </button>
+                <button class="ui orange button" ng-click="rugby.lancScore = rugby.lancScore + 1;">
+                    <i class="plus icon"></i>1
+                </button>
+                <button class="ui red button" ng-click="rugby.lancScore = rugby.lancScore - 1;" ng-disabled="rugby.lancScore == 0">
+                    <i class="minus icon"></i>1
+                </button>
+            </div>
+        </div>
+
+        <div class="eight wide column">
+            <h3>York</h3>
+            <h1>{{rugby.yorkScore}}</h1>
+            <div class="ui icon buttons">
+                <button class="ui green button" ng-click="rugby.yorkScore = rugby.yorkScore + 4;">
+                    <i class="plus icon"></i>4
+                </button>
+                <button class="ui yellow button" ng-click="rugby.yorkScore = rugby.yorkScore + 2;">
+                    <i class="plus icon"></i>2
+                </button>
+                <button class="ui orange button" ng-click="rugby.yorkScore = rugby.yorkScore + 1;">
+                    <i class="plus icon"></i>1
+                </button>
+                <button class="ui red button" ng-click="rugby.yorkScore = rugby.yorkScore - 1;" ng-disabled="rugby.yorkScore == 0">
+                    <i class="minus icon"></i>1
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('.menu .item').tab();
+    </script>
+</div>
