@@ -515,7 +515,6 @@ app.controller('rugbyCGController', ['$scope', 'localStorageService', 'socket',
         };
 
         $scope.delete = function(team, index) {
-            console.log('delete');
             if(team === 'york') {
                 $scope.yorksPlayers.splice(index, 1);
             } else if (team === 'lancs') {
@@ -529,7 +528,7 @@ app.controller('rugbyCGController', ['$scope', 'localStorageService', 'socket',
 
         $scope.$watch('rugby', function() {
             if ($scope.rugby) {
-                socket.emit("football", $scope.rugby);
+                socket.emit("rugby", $scope.rugby);
             } else {
                 getRugbyData();
             }
