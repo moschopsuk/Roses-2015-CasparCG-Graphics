@@ -153,6 +153,30 @@ app.controller('footballCtrl', ['$scope', 'socket',
     }
 ]);
 
+app.controller('rugbyCtrl', ['$scope', 'socket',
+    function($scope, socket){
+
+        socket.on("rugby", function (msg) {
+            $scope.rugby = msg;
+        });
+
+        socket.on("clock:tick", function (msg) {
+            $scope.clock = msg.slice(0, msg.indexOf("."));
+        });
+
+        $scope.$watch('rugby', function() {
+            if (!$scope.rugby) {
+                getRugbyData();
+            }
+        }, true);
+
+        function getRugbyData() {
+            socket.emit("rugby:get");
+            socket.emit("clock:get");
+        }
+    }
+]);
+
 app.controller('dartsCtrl', ['$scope', 'socket',
     function($scope, socket){
         socket.on("dart", function (msg) {
