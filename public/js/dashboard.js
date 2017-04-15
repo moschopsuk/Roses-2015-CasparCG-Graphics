@@ -55,6 +55,7 @@ app.controller('AppCtrl', ['$scope', '$location',
             url: '/darts',
             type: 'link',
             icon: 'red bullseye',
+            // live: $scope.dart.show,
         });
 
         $scope.menu.push({
