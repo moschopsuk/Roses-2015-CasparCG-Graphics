@@ -85,6 +85,13 @@ app.controller('AppCtrl', ['$scope', '$location',
             type: 'link',
             icon: 'bullseye',
         });
+
+        $scope.menu.push({
+            name: 'Badminton',
+            url: '/badminton',
+            type: 'link',
+            icon: 'green neuter',
+        });
     }
 ]);
 
@@ -139,6 +146,10 @@ app.config(['$routeProvider', 'localStorageServiceProvider',
             .when("/archery", {
                 templateUrl: '/admin/templates/archery.tmpl.html',
                 controller: 'archeryCGController'
+            })
+            .when("/badminton", {
+              templateUrl: '/admin/templates/badminton.tmpl.html',
+              controller: 'badmintonCGController'
             })
             .otherwise({redirectTo: '/general'});
     }
@@ -753,5 +764,63 @@ app.controller('basketballCGController', ['$scope', 'localStorageService', 'sock
             socket.emit("football:get");
             socket.emit("clock:get");
         }
+    }
+]);
+
+app.controller('badmintonCGController', ['$scope', 'socket',
+    function($scope, socket) {
+        socket.on("badminton", function (msg) {
+            $scope.badminton = msg;
+        });
+
+        $scope.$watch('badminton', function() {
+            if ($scope.badminton) {
+                socket.emit("badminton", $scope.badminton);
+            } else {
+                getBadmintonData();
+            }
+        }, true);
+
+        function getBadmintonData() {
+            socket.emit("badminton:get");
+        }
+
+        $scope.reset1 = function() {
+            $scope.badminton.score1 = 0;
+        };
+
+        $scope.reset2 = function() {
+            $scope.badminton.score2 = 0;
+        };
+
+        $scope.take1 = function(val) {
+            if( val > 180) {
+                $scope.last1 = "";
+                return;
+            }
+
+            var tmp = $scope.badminton.score1;
+            var newScore = (tmp - val);
+
+            if(newScore >= 0) {
+                $scope.badminton.score1 = newScore;
+                $scope.last1 = "";
+            }
+        };
+
+        $scope.take2 = function(val) {
+            if( val > 180) {
+                $scope.last2 = "";
+                return;
+            }
+
+            var tmp = $scope.badminton.score2;
+            var newScore = (tmp - val);
+
+            if(newScore >= 0) {
+                $scope.badminton.score2 = newScore;
+                $scope.last2 = "";
+            }
+        };
     }
 ]);

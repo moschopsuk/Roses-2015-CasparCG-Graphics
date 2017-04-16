@@ -487,6 +487,136 @@ h1, h2, h3, h4 {
   line-height: 2.2vw;
 }
 
+/**************************************************/
+/*                [Darts]                         */
+/**************************************************/
+
+.badminton {
+  width: 35%;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  font-size: 25px;
+  font-size: 1.8vw;
+
+  border-radius: 5px;
+  border: 8px solid rgba(0, 0, 0, 0.5);
+  background-clip: padding-box;
+}
+
+.badminton .name {
+  text-align: left;
+}
+
+
+.badminton .name, .badminton .matches, .badminton .score, .badminton .match, .badminton .footer, .badminton .game, .badminton .games {
+  float: left;
+  line-height: 40px;
+  line-height: 2.9vw;
+
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.badminton .name {
+  width: 57%;
+}
+
+.badminton .name.lanc {
+  color: #fff;
+  background-color: #cd1d18;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+.badminton .name.york {
+  color: #000;
+  background-color: #efbb39;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+.badminton .matches {
+  width: 21%;
+  color: #fff;
+  background-color: #00d;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+  border-left: 2px solid #fff;
+}
+
+.badminton .games {
+  width: 22%;
+  color: #fff;
+  background-color: #00d;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+  border-left: 2px solid #fff;
+}
+
+.badminton .score {
+  width: 17%;
+  color: #fff;
+  background-color: #00d;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+  border-left: 2px solid #fff;
+}
+
+.badminton .footer {
+  text-align: left;
+}
+
+.badminton .footer {
+  background-color: #fff;
+  color: #000;
+  text-transform: uppercase;
+  width: 100%;
+  font-size: 20px;
+  font-size: 1.3vw;
+  line-height: 30px;
+  line-height: 2.2vw;
+}
+
+.badminton .header .name {
+  background-color: #fff;
+  color: #000;
+  width: 57%%;
+  line-height: 30px;
+  line-height: 2.5vw;
+}
+.badminton .header .name2 {
+  background-color: #fff;
+  color: #000;
+  width: 17%%;
+  line-height: 30px;
+  line-height: 2.5vw;
+}
+
+.badminton .header .match {
+  color: #000;
+  background-color: #fff;
+  width: 21%;
+  font-size: 20px;
+  font-size: 1.3vw;
+  line-height: 30px;
+  line-height: 2.5vw;
+}
+.badminton .header .game {
+  color: #000;
+  background-color: #fff;
+  width: 22%;
+  font-size: 20px;
+  font-size: 1.3vw;
+  line-height: 30px;
+  line-height: 2.5vw;
+}
+
+.badminton .footer {
+  background-color: #fff;
+  color: #000;
+  text-transform: uppercase;
+  width: 100%;
+  font-size: 20px;
+  font-size: 1.3vw;
+  line-height: 30px;
+  line-height: 2.2vw;
+}
+
 /*
  *===================================
  *         Grid

@@ -1,0 +1,137 @@
+<div class="ui form segment">
+  <h2>Badminton</h2>
+
+    <div class="ui grid center aligned">
+        <div class="4 wide column">
+            <div class="field"><checkbox ng-model="badminton.show" size="large" type="toggle">Show Badminton Score</checkbox></div>
+        </div>
+    </div>
+
+    <div class="ui divider"></div>
+
+    <br>
+
+    <div class="ui grid center aligned">
+        <div class="four wide field">
+            <input style="text-align: center;"  type="text" placeholder="Match Name" ng-model="badminton.match">
+        </div>
+    </div>
+
+    <br>
+
+    <div class="ui divider"></div>
+
+    <br>
+
+    <div class="ui grid center aligned">
+      <h2>Game</h2>
+    </div>
+
+    <div class="ui grid center aligned">
+      <div class="eight wide column">
+        <h3>Lancaster</h3>
+        <h1>{{badminton.set1}}</h1>
+        <div class="ui icon buttons">
+          <button class="ui green button" ng-click="badminton.set1 = badminton.set1 + 1;">
+            <i class="plus icon"></i>
+          </button>
+          <button class="ui red button" ng-click="badminton.set1 = badminton.set1 - 1;" ng-disabled="badminton.set1 == 0">
+            <i class="minus icon"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="eight wide column">
+        <h3>York</h3>
+        <h1>{{badminton.set2}}</h1>
+        <div class="ui icon buttons">
+          <button class="ui green button" ng-click="badminton.set2 = badminton.set2 + 1;">
+            <i class="plus icon"></i>
+          </button>
+          <button class="ui red button" ng-click="badminton.set2 = badminton.set2 - 1;" ng-disabled="badminton.set2 == 0">
+            <i class="minus icon"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="ui divider"></div>
+
+    <div class="ui grid center aligned">
+
+        <div class="sixteen wide column">
+
+            <div class="fields">
+
+                <div class="five wide field">
+                  <h3>Player Name</h3>
+                </div>
+
+                <div class="two wide field">
+                  <h3>Match</h3>
+                </div>
+
+                <div class="two wide field">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="ui grid center aligned">
+
+        <div class="sizteen wide column">
+
+            <div class="fields">
+
+                <div class="five wide field">
+                    <input type="text" placeholder="Lancaster Player" ng-model="badminton.player1">
+                </div>
+
+                <div class="two wide field">
+                  <h2>{{badminton.leg1}}</h2>
+                </div>
+
+                <div class="two wide field">
+                    <div class="ui icon buttons">
+                        <button class="ui green button" ng-click="badminton.leg1 = badminton.leg1 + 1;"><i class="plus icon"></i></button>
+                        <button class="ui red button"  ng-click="badminton.leg1 = badminton.leg1 - 1" ng-disabled="badminton.leg1 == 0"><i class="minus icon"></i></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="ui grid center aligned">
+
+        <div class="sizteen wide column">
+            <div class="fields">
+
+                <div class="five wide field">
+                    <input type="text" placeholder="York Player" ng-model="badminton.player2">
+                </div>
+
+                <div class="two wide field">
+                  <h2>{{badminton.leg2}}</h2>
+                </div>
+
+                <div class="two wide field">
+                    <div class="ui icon buttons">
+                        <button class="ui green button" ng-click="badminton.leg2 = badminton.leg2 + 1;"><i class="plus icon"></i></button>
+                        <button class="ui red button"  ng-click="badminton.leg2 = badminton.leg2 - 1" ng-disabled="badminton.leg2 == 0"><i class="minus icon"></i></button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
