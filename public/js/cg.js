@@ -262,3 +262,21 @@ app.controller('basketballCtrl', ['$scope', 'socket',
         }
     }
 ]);
+
+app.controller('badmintonCtrl', ['$scope', 'socket',
+    function($scope, socket){
+        socket.on("badminton", function (msg) {
+            $scope.badminton = msg;
+        });
+
+        $scope.$watch('badminton', function() {
+            if (!$scope.badminton) {
+                getBadmintonData();
+            }
+        }, true);
+
+        function getBadmintonData() {
+            socket.emit("badminton:get");
+        }
+    }
+]);
