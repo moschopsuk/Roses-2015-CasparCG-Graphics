@@ -30,12 +30,12 @@
     <div class="ui grid center aligned">
       <div class="eight wide column">
         <h3>Lancaster</h3>
-        <h1>{{badminton.set1}}</h1>
+        <h1>{{badminton.game1}}</h1>
         <div class="ui icon buttons">
-          <button class="ui green button" ng-click="badminton.set1 = badminton.set1 + 1;">
+          <button class="ui green button" ng-click="badminton.game1 = badminton.game1 + 1;">
             <i class="plus icon"></i>
           </button>
-          <button class="ui red button" ng-click="badminton.set1 = badminton.set1 - 1;" ng-disabled="badminton.set1 == 0">
+          <button class="ui red button" ng-click="badminton.game1 = badminton.game1 - 1;" ng-disabled="badminton.game1 == 0">
             <i class="minus icon"></i>
           </button>
         </div>
@@ -43,12 +43,12 @@
 
       <div class="eight wide column">
         <h3>York</h3>
-        <h1>{{badminton.set2}}</h1>
+        <h1>{{badminton.game2}}</h1>
         <div class="ui icon buttons">
-          <button class="ui green button" ng-click="badminton.set2 = badminton.set2 + 1;">
+          <button class="ui green button" ng-click="badminton.game2 = badminton.game2 + 1;">
             <i class="plus icon"></i>
           </button>
-          <button class="ui red button" ng-click="badminton.set2 = badminton.set2 - 1;" ng-disabled="badminton.set2 == 0">
+          <button class="ui red button" ng-click="badminton.game2 = badminton.game2 - 1;" ng-disabled="badminton.game2 == 0">
             <i class="minus icon"></i>
           </button>
         </div>
@@ -97,8 +97,8 @@
 
                 <div class="two wide field">
                     <div class="ui icon buttons">
-                        <button class="ui green button" ng-click="badminton.leg1 = badminton.leg1 + 1;"><i class="plus icon"></i></button>
-                        <button class="ui red button"  ng-click="badminton.leg1 = badminton.leg1 - 1" ng-disabled="badminton.leg1 == 0"><i class="minus icon"></i></button>
+                        <button class="ui green button" ng-click="badminton.match1 = badminton.match1 + 1;"><i class="plus icon"></i></button>
+                        <button class="ui red button"  ng-click="badminton.match1 = badminton.match1 - 1" ng-disabled="badminton.match1 == 0"><i class="minus icon"></i></button>
                     </div>
                 </div>
             </div>
@@ -123,8 +123,8 @@
 
                 <div class="two wide field">
                     <div class="ui icon buttons">
-                        <button class="ui green button" ng-click="badminton.leg2 = badminton.leg2 + 1;"><i class="plus icon"></i></button>
-                        <button class="ui red button"  ng-click="badminton.leg2 = badminton.leg2 - 1" ng-disabled="badminton.leg2 == 0"><i class="minus icon"></i></button>
+                        <button class="ui green button" ng-click="badminton.match2 = badminton.match2 + 1;"><i class="plus icon"></i></button>
+                        <button class="ui red button"  ng-click="badminton.match2 = badminton.match2 - 1" ng-disabled="badminton.match2 == 0"><i class="minus icon"></i></button>
                     </div>
                 </div>
 

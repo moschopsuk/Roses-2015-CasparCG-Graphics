@@ -16,6 +16,7 @@ var dart = {match: "Darts", player1: "Lancaster", player2: "York", set1: 0, set2
 var swimming = {order: ''};
 var grid = {};
 var archery = {};
+var badminton = {match: "Badminton", player1: "Lancaster", player2: "York", game1: 0, game2:0, match1: 0, match2: 0 };
 
 //Clock Functions
 var stopwatch = new Stopwatch();
@@ -195,6 +196,18 @@ io.on('connection', function(socket) {
 		socket.on("archery:get", function(msg) {
 				io.sockets.emit("archery", archery);
 		});
+
+		/*
+		* Badminton
+		*/
+		socket.on("badminton", function(msg) {
+	        badminton = msg;
+			io.sockets.emit("badminton", msg);
+		});
+
+    socket.on("badminton:get", function(msg) {
+        io.sockets.emit("badminton", badminton);
+    });
 
 
 });
