@@ -773,6 +773,16 @@ app.controller('badmintonCGController', ['$scope', 'socket',
             $scope.badminton = msg;
         });
 
+        $scope.reset1 = function() {
+            $scope.badminton.match1 = 0;
+            $scope.badminton.game1 = 0;
+        };
+
+        $scope.reset2 = function() {
+          $scope.badminton.match2 = 0;
+          $scope.badminton.game2 = 0;
+        };
+
         $scope.$watch('badminton', function() {
             if ($scope.badminton) {
                 socket.emit("badminton", $scope.badminton);
