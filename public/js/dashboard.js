@@ -236,7 +236,11 @@ app.controller('generalCGController', ['$scope', 'socket',
                 getBugData();
             }
         }, true);
-
+        
+        socket.on("bug", function (msg) {
+            $scope.bug = msg;
+        });
+        
         function getBugData() {
             socket.emit("bug:get");
         }

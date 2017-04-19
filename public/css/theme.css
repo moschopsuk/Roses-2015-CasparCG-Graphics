@@ -219,8 +219,6 @@ h1, h2, h3, h4 {
     white-space: nowrap;
     clear:none;
     background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 3px;
-    border: 5px solid rgba(0, 0, 0, 0.5);
     background-clip: padding-box;
 }
 
@@ -233,16 +231,20 @@ h1, h2, h3, h4 {
     float: left;
     padding: 3px 10px;
     margin-right: 0px;
-
-    background-color: #cd1d18;
+    background-color: #BC204B;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .black {
-    background-color: #000 !important;
+    background-color: #1f1a34 !important;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
+.white {	
+	background-color: #eee !important;
+	color: #000 !important;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
 /**************************************************/
 /*              [Logo]                            */
 /**************************************************/
