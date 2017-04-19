@@ -2,6 +2,9 @@ var app = angular.module('StarterApp', ['ngRoute', 'LocalStorageModule', 'angula
 
 app.controller('AppCtrl', ['$scope', '$location',
     function($scope, $location){
+
+      console.log($scope.dart);
+
         $scope.menu = [];
 
         $scope.isActive = function (viewLocation) {
@@ -13,13 +16,15 @@ app.controller('AppCtrl', ['$scope', '$location',
             url: '/general',
             type: 'link',
             icon: 'settings',
+            live: false,
         });
 
         $scope.menu.push({
             name: 'Lower Thirds',
             url: '/lowerThirds',
             type: 'link',
-            icon: 'violet list layout'
+            icon: 'violet list layout',
+            live: false,
         });
 
         $scope.menu.push({
@@ -27,6 +32,7 @@ app.controller('AppCtrl', ['$scope', '$location',
             url: '/grid',
             type: 'link',
             icon: 'teal grid layout',
+            live: false,
         });
 
         $scope.menu.push({
@@ -34,6 +40,7 @@ app.controller('AppCtrl', ['$scope', '$location',
             url: '/roses',
             type: 'link',
             icon: 'yellow trophy',
+            live: false,
         });
 
         $scope.menu.push({
@@ -41,6 +48,7 @@ app.controller('AppCtrl', ['$scope', '$location',
             url: '/boxing',
             type: 'link',
             icon: 'olive users',
+            live: false,
         });
 
         $scope.menu.push({
@@ -48,6 +56,7 @@ app.controller('AppCtrl', ['$scope', '$location',
             url: '/football',
             type: 'link',
             icon: 'soccer',
+            live: false,
         });
 
         $scope.menu.push({
@@ -55,7 +64,7 @@ app.controller('AppCtrl', ['$scope', '$location',
             url: '/darts',
             type: 'link',
             icon: 'red bullseye',
-            // live: $scope.dart.show,
+            live: false,
         });
 
         $scope.menu.push({
@@ -63,6 +72,7 @@ app.controller('AppCtrl', ['$scope', '$location',
             url: '/swimming',
             type: 'link',
             icon: 'blue life ring',
+            live: false,
         });
 
         $scope.menu.push({
@@ -70,6 +80,7 @@ app.controller('AppCtrl', ['$scope', '$location',
             url: '/basketball',
             type: 'link',
             icon: 'orange clockwise rotated loading life ring',
+            live: false,
         });
 
         $scope.menu.push({
@@ -77,6 +88,7 @@ app.controller('AppCtrl', ['$scope', '$location',
             url: '/archery',
             type: 'link',
             icon: 'bullseye',
+            live: true,
         });
     }
 ]);
