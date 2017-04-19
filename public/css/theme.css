@@ -19,59 +19,6 @@ body {
     100% { background-position: right bottom; }
 }
 
-.moving {
-    height: 40px;
-    width: 500%;
-
-    background: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 71%, rgba(125,125,125,1) 85%, rgba(0,0,0,1) 98%, rgba(0,0,0,1) 100%) repeat;
-
-    -webkit-background-size: 50% 100%;
-    -webkit-animation-name: moving-gradient;
-    -webkit-animation-duration: 20s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
-}
-
-.bar {
-  overflow-x: hidden;
-  overflow-y:hidden;
-  width: 100%;
-  border-radius: 2px;
-
-  box-shadow: inset 0px 1px 0px #666, 0px 5px 0px 0px #000;
-}
-
-.bar .gradient-overlay {
-    position: absolute;
-    width: inherit;
-    height: 40px;
-
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, .2) 0%,
-        rgba(255, 255, 255, .4) 50%,
-        rgba(255, 255, 255, 0) 50%,
-        rgba(255, 255, 255, .2) 100%
-    );
-}
-
-.bar.red {
-    box-shadow: inset 0px 1px 0px #666, 0px 5px 0px 0px #600;
-}
-
-.gradient-overlay > span {
-    position:relative;
-    padding-top: 8px;
-    padding-left: 8px;
-    text-align: center;
-    text-transform:uppercase;
-    z-index:1;
-    display:block;
-    color:#fff;
-    font-size:23px;
-    text-shadow:1px -1px 0px #000;
-}
-
 h1, h2, h3, h4 {
     margin:0;
     padding:0;
@@ -143,11 +90,8 @@ h1, h2, h3, h4 {
 /**************************************************/
 
 .lowerthird {
-    min-width: 30%;
-    width: 40%;
-
+    min-width: 20%;
     border-radius: 5px;
-    border: 8px solid rgba(0, 0, 0, 0.5);
     background-clip: padding-box;
 }
 
@@ -157,8 +101,7 @@ h1, h2, h3, h4 {
     font-size: 2.5vw;
     font-weight: normal;
     padding: 5px 8px;
-
-    background-color: #cd1d18;
+    background-color: #BC204B;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
@@ -169,7 +112,7 @@ h1, h2, h3, h4 {
     font-weight: normal;
     padding: 5px 8px;
 
-    background-color: #000;
+    background-color: #1f1a34;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
@@ -177,13 +120,12 @@ h1, h2, h3, h4 {
 /*              [Boxing Score]                    */
 /**************************************************/
 .boxing-score {
-    background-color: rgba(0,0,0,0.5);
+    background-color: #BC204B;
     width: 15%;
 }
 
 .score-inner {
     color: #fff;
-    text-shadow:1px -1px 0px #000;
     text-align: center;
     padding: 15px 60px 15px 60px;
 }
@@ -197,17 +139,40 @@ h1, h2, h3, h4 {
     font-size: 35px;
 }
 
-.red-moving {
+.red-moving, .moving {
     height: 40px;
     width: 500%;
 
-    background: linear-gradient(to left, rgba(225,0,0,1) 0%, rgba(225,0,0,1) 71%, rgba(225,25,25,1) 85%, rgba(225,0,0,1) 98%, rgba(225,0,0,1) 100%) repeat;
+    background: linear-gradient(to left, rgba(31,26,52,1) 0%, rgba(31,26,52,1) 71%, rgba(75,64,127,1) 85%, rgba(31,26,52,1) 98%, rgba(31,26,52,1) 100%) repeat;
+}
 
-    -webkit-background-size: 50% 100%;
-    -webkit-animation-name: moving-gradient;
-    -webkit-animation-duration: 20s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
+.bar {
+  overflow-x: hidden;
+  overflow-y:hidden;
+  width: 100%;
+  border-radius: 2px;
+}
+
+.bar .gradient-overlay {
+    position: absolute;
+    width: inherit;
+    height: 40px;
+	background-color: #1f1a34;
+	background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+
+}
+
+.gradient-overlay > span {
+    position:relative;
+    padding-top: 8px;
+    padding-left: 8px;
+    text-align: center;
+    text-transform:uppercase;
+    z-index:1;
+    display:block;
+    color:#fff;
+    font-size:23px;
+    text-shadow:1px -1px 0px #000;
 }
 
 
@@ -219,8 +184,6 @@ h1, h2, h3, h4 {
     white-space: nowrap;
     clear:none;
     background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 3px;
-    border: 5px solid rgba(0, 0, 0, 0.5);
     background-clip: padding-box;
 }
 
@@ -233,16 +196,20 @@ h1, h2, h3, h4 {
     float: left;
     padding: 3px 10px;
     margin-right: 0px;
-
-    background-color: #cd1d18;
+    background-color: #BC204B;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .black {
-    background-color: #000 !important;
+    background-color: #1f1a34 !important;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
+.white {	
+	background-color: #eee !important;
+	color: #000 !important;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
 /**************************************************/
 /*              [Logo]                            */
 /**************************************************/
@@ -267,7 +234,6 @@ h1, h2, h3, h4 {
     width: 30%;
     text-align: center;
     border-radius: 8px;
-    border: 8px solid rgba(0, 0, 0, 0.5);
     background-clip: padding-box;
 }
 
@@ -277,7 +243,8 @@ h1, h2, h3, h4 {
     font-size: 2vw;
     padding: 6px;
     text-transform: uppercase;
-    background-color: #fff !important;
+    background-color: #eee !important;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .total-score .lanc {
@@ -309,7 +276,6 @@ h1, h2, h3, h4 {
 .football {
   width: 30%;
   border-radius: 3px;
-  border: 5px solid rgba(0, 0, 0, 0.5);
   background-clip: padding-box;
   background-color: rgba(0, 0, 0, 0.5);
   font-size: 30px;
@@ -323,7 +289,8 @@ h1, h2, h3, h4 {
 }
 
 .football .clock {
-  background-color: #fff;
+  background-color: #eee;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
   width: 24%;
 }
 
@@ -351,13 +318,11 @@ h1, h2, h3, h4 {
 
 .darts {
   width: 35%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #1f1a34;
   text-align: center;
   font-size: 25px;
   font-size: 1.8vw;
-
   border-radius: 5px;
-  border: 8px solid rgba(0, 0, 0, 0.5);
   background-clip: padding-box;
 }
 
@@ -386,7 +351,7 @@ h1, h2, h3, h4 {
 }
 
 .darts .name.york {
-  color: #000;
+  color: #fff;
   background-color: #efbb39;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
@@ -394,7 +359,7 @@ h1, h2, h3, h4 {
 .darts .legs {
   width: 13%;
   color: #fff;
-  background-color: #00d;
+  background-color: #BC204B;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
   border-left: 2px solid #fff;
 }
@@ -402,7 +367,7 @@ h1, h2, h3, h4 {
 .darts .sets {
   width: 13%;
   color: #fff;
-  background-color: #00d;
+  background-color: #BC204B;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
   border-left: 2px solid #fff;
 }
@@ -410,13 +375,58 @@ h1, h2, h3, h4 {
 .darts .score {
   width: 17%;
   color: #fff;
-  background-color: #00d;
+  background-color: #BC204B;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
   border-left: 2px solid #fff;
 }
 
 .darts .footer {
   text-align: left;
+}
+
+.darts .header .name {
+  background-color: #1f1a34;
+  color: #fff;
+  width: 57%%;
+  line-height: 30px;
+  line-height: 2.5vw;
+}
+.darts .header .name2 {
+  background-color: #1f1a34;
+  color: #fff;
+  width: 17%%;
+  line-height: 30px;
+  line-height: 2.5vw;
+}
+
+.darts .header .leg {
+  color: #fff;
+  background-color: #1f1a34;
+  width: 13%;
+  font-size: 20px;
+  font-size: 1.3vw;
+  line-height: 30px;
+  line-height: 2.5vw;
+}
+.darts .header .set {
+  color: #fff;
+  background-color: #1f1a34;
+  width: 13%;
+  font-size: 20px;
+  font-size: 1.3vw;
+  line-height: 30px;
+  line-height: 2.5vw;
+}
+
+.darts .footer {
+  background-color: #1f1a34;
+  color: #fff;
+  text-transform: uppercase;
+  width: 100%;
+  font-size: 20px;
+  font-size: 1.3vw;
+  line-height: 30px;
+  line-height: 2.2vw;
 }
 
 /**************************************************/
@@ -442,53 +452,9 @@ h1, h2, h3, h4 {
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
-.darts .header .name {
-  background-color: #fff;
-  color: #000;
-  width: 57%%;
-  line-height: 30px;
-  line-height: 2.5vw;
-}
-.darts .header .name2 {
-  background-color: #fff;
-  color: #000;
-  width: 17%%;
-  line-height: 30px;
-  line-height: 2.5vw;
-}
-
-.darts .header .leg {
-  color: #000;
-  background-color: #fff;
-  width: 13%;
-  font-size: 20px;
-  font-size: 1.3vw;
-  line-height: 30px;
-  line-height: 2.5vw;
-}
-.darts .header .set {
-  color: #000;
-  background-color: #fff;
-  width: 13%;
-  font-size: 20px;
-  font-size: 1.3vw;
-  line-height: 30px;
-  line-height: 2.5vw;
-}
-
-.darts .footer {
-  background-color: #fff;
-  color: #000;
-  text-transform: uppercase;
-  width: 100%;
-  font-size: 20px;
-  font-size: 1.3vw;
-  line-height: 30px;
-  line-height: 2.2vw;
-}
 
 /**************************************************/
-/*                [Darts]                         */
+/*                [Badminton]                     */
 /**************************************************/
 
 .badminton {
@@ -626,29 +592,22 @@ h1, h2, h3, h4 {
 
     width: 650px;
     text-align: center;
-
-    border-radius: 5px;
-    border: 8px solid rgba(0, 0, 0, 0.4);
-    background: rgba(0, 0, 0, 0.4);
     background-clip: padding-box;
   }
     .grid h1 {
         color:  #ffffff;
-        text-shadow:1px -1px 0px #000;
         font-size: 40px;
         font-size: 2.5vw;
         font-weight: normal;
         padding: 5px;
-
-        background-color: #00d;
+        background-color: #BC204B;
         background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
     }
 
     .grid .name, .grid .time {
         float: left;
         line-height: 40px;
-        padding-left: 5px;
-        background-color: #00d;
+        background-color: #1f1a34;
         background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
         font-size: 25px;
     }
@@ -656,17 +615,17 @@ h1, h2, h3, h4 {
     .grid .name {
         padding-left: 10px;
         text-align: left;
-        width: 498px;
+        width: 80%;
     }
 
     .grid .time {
-        width: 130px;
-        margin-left: 5px;
+        width: 20%;
+        border-left: 3px solid #fff;
     }
 
     .grid .row {
         color: #fff;
-        margin-top: 5px;
+        border-top: 3px solid #fff;
     }
 
     .grid .row:last-child {
@@ -680,10 +639,9 @@ h1, h2, h3, h4 {
 
 .swimmingclock {
   width: 20%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #BC204B;
   text-align: left;
   border-radius: 5px;
-  border: 8px solid rgba(0, 0, 0, 0.5);
   background-clip: padding-box;
 }
 
@@ -700,7 +658,7 @@ h1, h2, h3, h4 {
   line-height: 45px;
   line-height: 3.3vw;
   color: #fff;
-  background-color: #00d;
+  background-color: #BC204B;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
@@ -713,7 +671,7 @@ h1, h2, h3, h4 {
 }
 
 .swimmingclock .footer {
-  background-color: #fff;
+  background-color: #eee;
   color: #000;
   font-size: 20px;
   font-size: 1.5vw;
@@ -725,7 +683,6 @@ h1, h2, h3, h4 {
 .swimmingsplits {
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 3px;
-    border: 5px solid rgba(0, 0, 0, 0.5);
     background-clip: padding-box;
     width: 25%;
 }
@@ -746,7 +703,7 @@ h1, h2, h3, h4 {
 }
 
 .swimmingsplits .row.york {
-    color: #000;
+    color: #fff;
     background-color: #efbb39;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
@@ -757,8 +714,9 @@ h1, h2, h3, h4 {
     width: 30px;
     width: 2.2vw;
     text-align: center;
+    border-right: 2px solid #eee; 
     color: #fff;
-    background-color: #00d;
+    background-color: #BC204B;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
@@ -776,7 +734,6 @@ h1, h2, h3, h4 {
     width: 60%;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 5px;
-    border: 8px solid rgba(0, 0, 0, 0.5);
     background-clip: padding-box;
 }
 
@@ -789,8 +746,9 @@ h1, h2, h3, h4 {
     overflow: hidden;
     text-align: center;
     text-transform: uppercase;
-    color: #000;
-    background-color: #fff;
+    border-bottom: 3px solid #eee; 
+    color: #fff;
+    background-color: #1f1a34;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
@@ -805,12 +763,12 @@ h1, h2, h3, h4 {
 
 .swimminglist .row.lanc {
     color: #fff;
-    background-color: #cd1d18;
+	background-color: #cd1d18;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .swimminglist .row.york {
-    color: #000;
+    color: #fff;
     background-color: #efbb39;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
@@ -818,12 +776,13 @@ h1, h2, h3, h4 {
 .swimminglist .row .lane {
     float: left;
     margin-right: 15px;
+    border-right: 3px solid #eee; 
     paddding: 15px;
     width: 50px;
     width: 3.8vw;
     text-align: center;
     color: #fff;
-    background-color: #00d;
+    background-color: #BC204B;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
@@ -834,9 +793,8 @@ h1, h2, h3, h4 {
 .basketball {
   width: 30%;
   border-radius: 3px;
-  border: 5px solid rgba(0, 0, 0, 0.5);
   background-clip: padding-box;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #eee;
   font-size: 30px;
   font-size: 1.8vw;
   text-align: center;
@@ -848,7 +806,8 @@ h1, h2, h3, h4 {
 }
 
 .basketball .clock {
-  background-color: #fff;
+  background-color: #eee;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
   width: 24%;
 }
 
