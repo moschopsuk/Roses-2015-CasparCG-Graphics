@@ -19,59 +19,6 @@ body {
     100% { background-position: right bottom; }
 }
 
-.moving {
-    height: 40px;
-    width: 500%;
-
-    background: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 71%, rgba(125,125,125,1) 85%, rgba(0,0,0,1) 98%, rgba(0,0,0,1) 100%) repeat;
-
-    -webkit-background-size: 50% 100%;
-    -webkit-animation-name: moving-gradient;
-    -webkit-animation-duration: 20s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
-}
-
-.bar {
-  overflow-x: hidden;
-  overflow-y:hidden;
-  width: 100%;
-  border-radius: 2px;
-
-  box-shadow: inset 0px 1px 0px #666, 0px 5px 0px 0px #000;
-}
-
-.bar .gradient-overlay {
-    position: absolute;
-    width: inherit;
-    height: 40px;
-
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, .2) 0%,
-        rgba(255, 255, 255, .4) 50%,
-        rgba(255, 255, 255, 0) 50%,
-        rgba(255, 255, 255, .2) 100%
-    );
-}
-
-.bar.red {
-    box-shadow: inset 0px 1px 0px #666, 0px 5px 0px 0px #600;
-}
-
-.gradient-overlay > span {
-    position:relative;
-    padding-top: 8px;
-    padding-left: 8px;
-    text-align: center;
-    text-transform:uppercase;
-    z-index:1;
-    display:block;
-    color:#fff;
-    font-size:23px;
-    text-shadow:1px -1px 0px #000;
-}
-
 h1, h2, h3, h4 {
     margin:0;
     padding:0;
@@ -179,7 +126,6 @@ h1, h2, h3, h4 {
 
 .score-inner {
     color: #fff;
-    text-shadow:1px -1px 0px #000;
     text-align: center;
     padding: 15px 60px 15px 60px;
 }
@@ -193,17 +139,40 @@ h1, h2, h3, h4 {
     font-size: 35px;
 }
 
-.red-moving {
+.red-moving, .moving {
     height: 40px;
     width: 500%;
 
-    background: linear-gradient(to left, rgba(225,0,0,1) 0%, rgba(225,0,0,1) 71%, rgba(225,25,25,1) 85%, rgba(225,0,0,1) 98%, rgba(225,0,0,1) 100%) repeat;
+    background: linear-gradient(to left, rgba(31,26,52,1) 0%, rgba(31,26,52,1) 71%, rgba(75,64,127,1) 85%, rgba(31,26,52,1) 98%, rgba(31,26,52,1) 100%) repeat;
+}
 
-    -webkit-background-size: 50% 100%;
-    -webkit-animation-name: moving-gradient;
-    -webkit-animation-duration: 20s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
+.bar {
+  overflow-x: hidden;
+  overflow-y:hidden;
+  width: 100%;
+  border-radius: 2px;
+}
+
+.bar .gradient-overlay {
+    position: absolute;
+    width: inherit;
+    height: 40px;
+	background-color: #1f1a34;
+	background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+
+}
+
+.gradient-overlay > span {
+    position:relative;
+    padding-top: 8px;
+    padding-left: 8px;
+    text-align: center;
+    text-transform:uppercase;
+    z-index:1;
+    display:block;
+    color:#fff;
+    font-size:23px;
+    text-shadow:1px -1px 0px #000;
 }
 
 
