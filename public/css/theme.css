@@ -623,29 +623,22 @@ h1, h2, h3, h4 {
 
     width: 650px;
     text-align: center;
-
-    border-radius: 5px;
-    border: 8px solid rgba(0, 0, 0, 0.4);
-    background: rgba(0, 0, 0, 0.4);
     background-clip: padding-box;
   }
     .grid h1 {
         color:  #ffffff;
-        text-shadow:1px -1px 0px #000;
         font-size: 40px;
         font-size: 2.5vw;
         font-weight: normal;
         padding: 5px;
-
-        background-color: #00d;
+        background-color: #BC204B;
         background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
     }
 
     .grid .name, .grid .time {
         float: left;
         line-height: 40px;
-        padding-left: 5px;
-        background-color: #00d;
+        background-color: #1f1a34;
         background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
         font-size: 25px;
     }
@@ -653,17 +646,17 @@ h1, h2, h3, h4 {
     .grid .name {
         padding-left: 10px;
         text-align: left;
-        width: 498px;
+        width: 80%;
     }
 
     .grid .time {
-        width: 130px;
-        margin-left: 5px;
+        width: 20%;
+        border-left: 3px solid #fff;
     }
 
     .grid .row {
         color: #fff;
-        margin-top: 5px;
+        border-top: 3px solid #fff;
     }
 
     .grid .row:last-child {
