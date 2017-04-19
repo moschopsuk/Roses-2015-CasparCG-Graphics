@@ -143,11 +143,8 @@ h1, h2, h3, h4 {
 /**************************************************/
 
 .lowerthird {
-    min-width: 30%;
-    width: 40%;
-
+    min-width: 20%;
     border-radius: 5px;
-    border: 8px solid rgba(0, 0, 0, 0.5);
     background-clip: padding-box;
 }
 
@@ -157,8 +154,7 @@ h1, h2, h3, h4 {
     font-size: 2.5vw;
     font-weight: normal;
     padding: 5px 8px;
-
-    background-color: #cd1d18;
+    background-color: #BC204B;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
@@ -169,7 +165,7 @@ h1, h2, h3, h4 {
     font-weight: normal;
     padding: 5px 8px;
 
-    background-color: #000;
+    background-color: #1f1a34;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
@@ -177,7 +173,7 @@ h1, h2, h3, h4 {
 /*              [Boxing Score]                    */
 /**************************************************/
 .boxing-score {
-    background-color: rgba(0,0,0,0.5);
+    background-color: #BC204B;
     width: 15%;
 }
 
@@ -269,7 +265,6 @@ h1, h2, h3, h4 {
     width: 30%;
     text-align: center;
     border-radius: 8px;
-    border: 8px solid rgba(0, 0, 0, 0.5);
     background-clip: padding-box;
 }
 
@@ -279,7 +274,8 @@ h1, h2, h3, h4 {
     font-size: 2vw;
     padding: 6px;
     text-transform: uppercase;
-    background-color: #fff !important;
+    background-color: #eee !important;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .total-score .lanc {
@@ -311,7 +307,6 @@ h1, h2, h3, h4 {
 .football {
   width: 30%;
   border-radius: 3px;
-  border: 5px solid rgba(0, 0, 0, 0.5);
   background-clip: padding-box;
   background-color: rgba(0, 0, 0, 0.5);
   font-size: 30px;
@@ -325,7 +320,8 @@ h1, h2, h3, h4 {
 }
 
 .football .clock {
-  background-color: #fff;
+  background-color: #eee;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
   width: 24%;
 }
 
@@ -353,13 +349,11 @@ h1, h2, h3, h4 {
 
 .darts {
   width: 35%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #1f1a34;
   text-align: center;
   font-size: 25px;
   font-size: 1.8vw;
-
   border-radius: 5px;
-  border: 8px solid rgba(0, 0, 0, 0.5);
   background-clip: padding-box;
 }
 
@@ -388,7 +382,7 @@ h1, h2, h3, h4 {
 }
 
 .darts .name.york {
-  color: #000;
+  color: #fff;
   background-color: #efbb39;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
@@ -396,7 +390,7 @@ h1, h2, h3, h4 {
 .darts .legs {
   width: 13%;
   color: #fff;
-  background-color: #00d;
+  background-color: #BC204B;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
   border-left: 2px solid #fff;
 }
@@ -404,7 +398,7 @@ h1, h2, h3, h4 {
 .darts .sets {
   width: 13%;
   color: #fff;
-  background-color: #00d;
+  background-color: #BC204B;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
   border-left: 2px solid #fff;
 }
@@ -412,13 +406,58 @@ h1, h2, h3, h4 {
 .darts .score {
   width: 17%;
   color: #fff;
-  background-color: #00d;
+  background-color: #BC204B;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
   border-left: 2px solid #fff;
 }
 
 .darts .footer {
   text-align: left;
+}
+
+.darts .header .name {
+  background-color: #1f1a34;
+  color: #fff;
+  width: 57%%;
+  line-height: 30px;
+  line-height: 2.5vw;
+}
+.darts .header .name2 {
+  background-color: #1f1a34;
+  color: #fff;
+  width: 17%%;
+  line-height: 30px;
+  line-height: 2.5vw;
+}
+
+.darts .header .leg {
+  color: #fff;
+  background-color: #1f1a34;
+  width: 13%;
+  font-size: 20px;
+  font-size: 1.3vw;
+  line-height: 30px;
+  line-height: 2.5vw;
+}
+.darts .header .set {
+  color: #fff;
+  background-color: #1f1a34;
+  width: 13%;
+  font-size: 20px;
+  font-size: 1.3vw;
+  line-height: 30px;
+  line-height: 2.5vw;
+}
+
+.darts .footer {
+  background-color: #1f1a34;
+  color: #fff;
+  text-transform: uppercase;
+  width: 100%;
+  font-size: 20px;
+  font-size: 1.3vw;
+  line-height: 30px;
+  line-height: 2.2vw;
 }
 
 /**************************************************/
@@ -444,53 +483,9 @@ h1, h2, h3, h4 {
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
-.darts .header .name {
-  background-color: #fff;
-  color: #000;
-  width: 57%%;
-  line-height: 30px;
-  line-height: 2.5vw;
-}
-.darts .header .name2 {
-  background-color: #fff;
-  color: #000;
-  width: 17%%;
-  line-height: 30px;
-  line-height: 2.5vw;
-}
-
-.darts .header .leg {
-  color: #000;
-  background-color: #fff;
-  width: 13%;
-  font-size: 20px;
-  font-size: 1.3vw;
-  line-height: 30px;
-  line-height: 2.5vw;
-}
-.darts .header .set {
-  color: #000;
-  background-color: #fff;
-  width: 13%;
-  font-size: 20px;
-  font-size: 1.3vw;
-  line-height: 30px;
-  line-height: 2.5vw;
-}
-
-.darts .footer {
-  background-color: #fff;
-  color: #000;
-  text-transform: uppercase;
-  width: 100%;
-  font-size: 20px;
-  font-size: 1.3vw;
-  line-height: 30px;
-  line-height: 2.2vw;
-}
 
 /**************************************************/
-/*                [Darts]                         */
+/*                [Badminton]                     */
 /**************************************************/
 
 .badminton {
@@ -682,10 +677,9 @@ h1, h2, h3, h4 {
 
 .swimmingclock {
   width: 20%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #BC204B;
   text-align: left;
   border-radius: 5px;
-  border: 8px solid rgba(0, 0, 0, 0.5);
   background-clip: padding-box;
 }
 
@@ -702,7 +696,7 @@ h1, h2, h3, h4 {
   line-height: 45px;
   line-height: 3.3vw;
   color: #fff;
-  background-color: #00d;
+  background-color: #BC204B;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
@@ -715,7 +709,7 @@ h1, h2, h3, h4 {
 }
 
 .swimmingclock .footer {
-  background-color: #fff;
+  background-color: #eee;
   color: #000;
   font-size: 20px;
   font-size: 1.5vw;
@@ -727,7 +721,6 @@ h1, h2, h3, h4 {
 .swimmingsplits {
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 3px;
-    border: 5px solid rgba(0, 0, 0, 0.5);
     background-clip: padding-box;
     width: 25%;
 }
@@ -748,7 +741,7 @@ h1, h2, h3, h4 {
 }
 
 .swimmingsplits .row.york {
-    color: #000;
+    color: #fff;
     background-color: #efbb39;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
@@ -759,8 +752,9 @@ h1, h2, h3, h4 {
     width: 30px;
     width: 2.2vw;
     text-align: center;
+    border-right: 2px solid #eee; 
     color: #fff;
-    background-color: #00d;
+    background-color: #BC204B;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
@@ -778,7 +772,6 @@ h1, h2, h3, h4 {
     width: 60%;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 5px;
-    border: 8px solid rgba(0, 0, 0, 0.5);
     background-clip: padding-box;
 }
 
@@ -791,8 +784,9 @@ h1, h2, h3, h4 {
     overflow: hidden;
     text-align: center;
     text-transform: uppercase;
-    color: #000;
-    background-color: #fff;
+    border-bottom: 3px solid #eee; 
+    color: #fff;
+    background-color: #1f1a34;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
@@ -807,12 +801,12 @@ h1, h2, h3, h4 {
 
 .swimminglist .row.lanc {
     color: #fff;
-    background-color: #cd1d18;
+	background-color: #cd1d18;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .swimminglist .row.york {
-    color: #000;
+    color: #fff;
     background-color: #efbb39;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
@@ -820,12 +814,13 @@ h1, h2, h3, h4 {
 .swimminglist .row .lane {
     float: left;
     margin-right: 15px;
+    border-right: 3px solid #eee; 
     paddding: 15px;
     width: 50px;
     width: 3.8vw;
     text-align: center;
     color: #fff;
-    background-color: #00d;
+    background-color: #BC204B;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
@@ -836,9 +831,8 @@ h1, h2, h3, h4 {
 .basketball {
   width: 30%;
   border-radius: 3px;
-  border: 5px solid rgba(0, 0, 0, 0.5);
   background-clip: padding-box;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #eee;
   font-size: 30px;
   font-size: 1.8vw;
   text-align: center;
@@ -850,7 +844,8 @@ h1, h2, h3, h4 {
 }
 
 .basketball .clock {
-  background-color: #fff;
+  background-color: #eee;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
   width: 24%;
 }
 
