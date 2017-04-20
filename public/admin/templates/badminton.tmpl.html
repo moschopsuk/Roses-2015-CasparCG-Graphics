@@ -38,6 +38,9 @@
           <button class="ui red button" ng-click="badminton.game1 = badminton.game1 - 1;" ng-disabled="badminton.game1 == 0">
             <i class="minus icon"></i>
           </button>
+          <button class="ui orange button" ng-click="resetGame1();">
+            Reset
+          </button>
         </div>
       </div>
 
@@ -51,7 +54,11 @@
           <button class="ui red button" ng-click="badminton.game2 = badminton.game2 - 1;" ng-disabled="badminton.game2 == 0">
             <i class="minus icon"></i>
           </button>
+          <button class="ui orange button" ng-click="resetGame2();">
+            Reset
+          </button>
         </div>
+
       </div>
     </div>
 
@@ -99,12 +106,7 @@
                     <div class="ui icon buttons">
                         <button class="ui green button" ng-click="badminton.match1 = badminton.match1 + 1;"><i class="plus icon"></i></button>
                         <button class="ui red button"  ng-click="badminton.match1 = badminton.match1 - 1" ng-disabled="badminton.match1 == 0"><i class="minus icon"></i></button>
-                    </div>
-                </div>
-
-                <div class="three wide field">
-                    <div class="ui icon buttons">
-                        <div class="ui orange button" ng-click="reset1()">Reset</div>
+                        <button class="ui orange button"  ng-click="resetMatch1();">Reset</button>
                     </div>
                 </div>
             </div>
@@ -131,12 +133,7 @@
                     <div class="ui icon buttons">
                         <button class="ui green button" ng-click="badminton.match2 = badminton.match2 + 1;"><i class="plus icon"></i></button>
                         <button class="ui red button"  ng-click="badminton.match2 = badminton.match2 - 1" ng-disabled="badminton.match2 == 0"><i class="minus icon"></i></button>
-                    </div>
-                </div>
-
-                <div class="three wide field">
-                    <div class="ui icon buttons">
-                        <div class="ui orange button" ng-click="reset2()">Reset</div>
+                        <button class="ui orange button"  ng-click="resetMatch2();">Reset</button>
                     </div>
                 </div>
 
