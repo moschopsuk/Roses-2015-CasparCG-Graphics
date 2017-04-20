@@ -12,8 +12,13 @@
     <body>
         <div ng-controller="bugCtrl">
             <div class="wrapper slide-left">
-                 <div class="bug left top scale-fade" ng-show="state.showClock">
-                        <h1 class="black">{{clock | date: "HH:mm"}}</h1><h1 ng-show="state.showLive">Live</h1><h1 ng-show="state.bugText">{{bugText}}</h1>
+                 <div class="bug top scale-fade" ng-show="state.showClock">
+                        <h1 class="black">{{clock | date: "HH:mm"}}</h1>
+                 </div>
+                 <div class="bug top scale-fade" ng-show="state.showLive">
+                 <h1 ng-show="state.showLive">{{bug.livetext}}</h1>
+                 </div>
+                 <div class="bug top scale-fade" ng-show="state.showLocation"><h1 class="white" ng-show="state.showLocation">{{bug.locationtext}}</h1></div>
                 </div>
 
                 <div class="logo right top toggle" ng-show="state.showLogo">
@@ -63,7 +68,7 @@
                     <div class="clearfix"></div>
                 </div>
 
-                <div class="bar red">
+                <div class="bar">
                     <div class="gradient-overlay"><span>{{boxing.currRound}} Round</span></div>
                     <div class="red-moving"></div>
                 </div>
@@ -133,7 +138,7 @@
 
         <div ng-controller="archeryCtrl" class="left bottom darts scale-fade" ng-show="archery.show" style="width: 50%">
             <div class="row header">
-                <div class="name" style="width: 40%">&nbsp;</div>
+                <div class="name" style="width: 40%">Archery</div>
                 <div class="leg" style="width: 45%">HITS</div>
                 <div class="leg" style="width: 15%">TOTAL</div>
             </div>
