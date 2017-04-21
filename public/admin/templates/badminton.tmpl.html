@@ -30,28 +30,35 @@
     <div class="ui grid center aligned">
       <div class="eight wide column">
         <h3>Lancaster</h3>
-        <h1>{{badminton.set1}}</h1>
+        <h1>{{badminton.game1}}</h1>
         <div class="ui icon buttons">
-          <button class="ui green button" ng-click="badminton.set1 = badminton.set1 + 1;">
+          <button class="ui green button" ng-click="badminton.game1 = badminton.game1 + 1;">
             <i class="plus icon"></i>
           </button>
-          <button class="ui red button" ng-click="badminton.set1 = badminton.set1 - 1;" ng-disabled="badminton.set1 == 0">
+          <button class="ui red button" ng-click="badminton.game1 = badminton.game1 - 1;" ng-disabled="badminton.game1 == 0">
             <i class="minus icon"></i>
+          </button>
+          <button class="ui orange button" ng-click="resetGame1();">
+            Reset
           </button>
         </div>
       </div>
 
       <div class="eight wide column">
         <h3>York</h3>
-        <h1>{{badminton.set2}}</h1>
+        <h1>{{badminton.game2}}</h1>
         <div class="ui icon buttons">
-          <button class="ui green button" ng-click="badminton.set2 = badminton.set2 + 1;">
+          <button class="ui green button" ng-click="badminton.game2 = badminton.game2 + 1;">
             <i class="plus icon"></i>
           </button>
-          <button class="ui red button" ng-click="badminton.set2 = badminton.set2 - 1;" ng-disabled="badminton.set2 == 0">
+          <button class="ui red button" ng-click="badminton.game2 = badminton.game2 - 1;" ng-disabled="badminton.game2 == 0">
             <i class="minus icon"></i>
           </button>
+          <button class="ui orange button" ng-click="resetGame2();">
+            Reset
+          </button>
         </div>
+
       </div>
     </div>
 
@@ -68,7 +75,7 @@
                 </div>
 
                 <div class="two wide field">
-                  <h3>Match</h3>
+                  <h3>Points</h3>
                 </div>
 
                 <div class="two wide field">
@@ -92,13 +99,14 @@
                 </div>
 
                 <div class="two wide field">
-                  <h2>{{badminton.leg1}}</h2>
+                  <h2>{{badminton.point1}}</h2>
                 </div>
 
                 <div class="two wide field">
                     <div class="ui icon buttons">
-                        <button class="ui green button" ng-click="badminton.leg1 = badminton.leg1 + 1;"><i class="plus icon"></i></button>
-                        <button class="ui red button"  ng-click="badminton.leg1 = badminton.leg1 - 1" ng-disabled="badminton.leg1 == 0"><i class="minus icon"></i></button>
+                        <button class="ui green button" ng-click="badminton.point1 = badminton.point1 + 1;"><i class="plus icon"></i></button>
+                        <button class="ui red button"  ng-click="badminton.point1 = badminton.point1 - 1" ng-disabled="badminton.point1 == 0"><i class="minus icon"></i></button>
+                        <button class="ui orange button"  ng-click="resetPoint1();">Reset</button>
                     </div>
                 </div>
             </div>
@@ -118,13 +126,14 @@
                 </div>
 
                 <div class="two wide field">
-                  <h2>{{badminton.leg2}}</h2>
+                  <h2>{{badminton.point2}}</h2>
                 </div>
 
                 <div class="two wide field">
                     <div class="ui icon buttons">
-                        <button class="ui green button" ng-click="badminton.leg2 = badminton.leg2 + 1;"><i class="plus icon"></i></button>
-                        <button class="ui red button"  ng-click="badminton.leg2 = badminton.leg2 - 1" ng-disabled="badminton.leg2 == 0"><i class="minus icon"></i></button>
+                        <button class="ui green button" ng-click="badminton.point2 = badminton.point2 + 1;"><i class="plus icon"></i></button>
+                        <button class="ui red button"  ng-click="badminton.point2 = badminton.point2 - 1" ng-disabled="badminton.point2 == 0"><i class="minus icon"></i></button>
+                        <button class="ui orange button"  ng-click="resetPoint2();">Reset</button>
                     </div>
                 </div>
 

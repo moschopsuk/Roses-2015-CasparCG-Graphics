@@ -777,6 +777,22 @@ app.controller('badmintonCGController', ['$scope', 'socket',
             $scope.badminton = msg;
         });
 
+        $scope.resetGame1 = function() {
+          $scope.badminton.game1 = 0;
+        };
+
+        $scope.resetGame2 = function() {
+          $scope.badminton.game2 = 0;
+        };
+
+        $scope.resetPoint1 = function() {
+          $scope.badminton.point1 = 0;
+        };
+
+        $scope.resetPoint2 = function() {
+          $scope.badminton.point2 = 0;
+        };
+
         $scope.$watch('badminton', function() {
             if ($scope.badminton) {
                 socket.emit("badminton", $scope.badminton);
@@ -788,43 +804,5 @@ app.controller('badmintonCGController', ['$scope', 'socket',
         function getBadmintonData() {
             socket.emit("badminton:get");
         }
-
-        $scope.reset1 = function() {
-            $scope.badminton.score1 = 0;
-        };
-
-        $scope.reset2 = function() {
-            $scope.badminton.score2 = 0;
-        };
-
-        $scope.take1 = function(val) {
-            if( val > 180) {
-                $scope.last1 = "";
-                return;
-            }
-
-            var tmp = $scope.badminton.score1;
-            var newScore = (tmp - val);
-
-            if(newScore >= 0) {
-                $scope.badminton.score1 = newScore;
-                $scope.last1 = "";
-            }
-        };
-
-        $scope.take2 = function(val) {
-            if( val > 180) {
-                $scope.last2 = "";
-                return;
-            }
-
-            var tmp = $scope.badminton.score2;
-            var newScore = (tmp - val);
-
-            if(newScore >= 0) {
-                $scope.badminton.score2 = newScore;
-                $scope.last2 = "";
-            }
-        };
     }
 ]);
