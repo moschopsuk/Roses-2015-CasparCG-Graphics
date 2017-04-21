@@ -16,7 +16,7 @@ var dart = {match: "Darts", player1: "Lancaster", player2: "York", set1: 0, set2
 var swimming = {order: ''};
 var grid = {};
 var archery = {};
-var badminton = {match: "Badminton", player1: "Lancaster", player2: "York", game1: 0, game2:0, match1: 0, match2: 0 };
+var badminton = {match: "Badminton", player1: "Lancaster", player2: "York", game1: 0, game2:0, point1: 0, point2: 0 };
 
 //Clock Functions
 var stopwatch = new Stopwatch();
