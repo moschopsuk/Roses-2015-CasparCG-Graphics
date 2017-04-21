@@ -66,17 +66,21 @@ app.controller('bugCtrl', ['$scope', '$timeout', 'socket',
         socket.on("bug", function (state) {
             $scope.state = state;
         });
-
+        
         $scope.$watch('bug', function() {
-            if (!$scope.state) {
+            if (!$scope.bug) {
                 getBugData();
             }
         }, true);
-
+		
+		socket.on("bug", function (msg) {
+            $scope.bug = msg;
+        });
+        
         function getBugData() {
             socket.emit("bug:get");
-        }
-
+        };
+        
         var tick = function () {
             $scope.clock = Date.now(); // get the current time
             $timeout(tick, $scope.tickInterval); // reset the timer
