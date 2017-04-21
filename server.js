@@ -90,9 +90,20 @@ io.on('connection', function(socket) {
 		io.sockets.emit("lowerthird:full", msg);
 	});
 
+	socket.on("lowerthird:hidefull", function() {
+		io.sockets.emit("lowerthird:hidefull");
+	});
+	
+	socket.on("lowerthird:hideleft", function() {
+		io.sockets.emit("lowerthird:hideleft");
+	});
+	
+	socket.on("lowerthird:hideright", function() {
+		io.sockets.emit("lowerthird:hideright");
+	});
 
-	socket.on("lowerthird:hide", function() {
-		io.sockets.emit("lowerthird:hide");
+	socket.on("lowerthird:hideall", function() {
+		io.sockets.emit("lowerthird:hideall");
 	});
 
 	/*

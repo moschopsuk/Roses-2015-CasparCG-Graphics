@@ -4,10 +4,22 @@ app.controller('lowerThirdsCtrl', ['$scope', 'socket',
     function($scope, socket){
         $scope.showLeft = false;
 
-        socket.on("lowerthird:hide", function (msg) {
+        socket.on("lowerthird:hideall", function (msg) {
             $scope.showLeft = false;
             $scope.showRight = false;
             $scope.showFull = false;
+        });
+        
+        socket.on("lowerthird:hidefull", function (msg) {
+            $scope.showFull = false;
+        });
+        
+        socket.on("lowerthird:hideleft", function (msg) {
+            $scope.showLeft = false;
+        });
+        
+        socket.on("lowerthird:hideright", function (msg) {
+            $scope.showRight = false;
         });
 
         socket.on("lowerthird:left", function (msg) {
