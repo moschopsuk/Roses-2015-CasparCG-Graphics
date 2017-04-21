@@ -230,7 +230,7 @@ h1, h2, h3, h4 {
 /*              [Total Score]                     */
 /**************************************************/
 
-.total-score {
+.total-score, .football-score {
     width: 35%;
     text-align: center;
     border-radius: 8px;
@@ -247,7 +247,7 @@ h1, h2, h3, h4 {
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
-.total-score .lanc {
+.total-score .lanc, .football-score .lanc {
     display: block;
     width: 50%;
     font-size: 40px;
@@ -258,7 +258,7 @@ h1, h2, h3, h4 {
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
-.total-score .york {
+.total-score .york, .football-score .york {
     display: block;
     width: 50%;
     font-size: 40px;
@@ -300,6 +300,27 @@ h1, h2, h3, h4 {
   font-size: 30px;
   font-size: 1.8vw;
   text-align: center;
+}
+
+.football-score h1 {
+    font-size: 18px;
+    padding: 6px;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+    text-transform: uppercase;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+.footballtop h1 {
+	color: #000;
+	border-bottom: 3px solid white;
+	background-color: #eee !important;
+}
+
+.footballbottom h1 {
+	color: #fff;
+	border-top: 3px solid white;
+	background-color: #1f1a34 !important;
 }
 
 .football .clock, .football .score.lanc, .football .score.york {

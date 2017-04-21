@@ -2,12 +2,31 @@
     <h2>Football</h2>
 
     <div class="ui grid center aligned">
-        <div class="eight wide column">
+        <div class="sixteen wide column">
             <div class="field">
-                <checkbox ng-model="football.show" size="large" type="toggle">Show Score Bar</checkbox>
+                <checkbox ng-model="football.show" style="margin-right:10px;" size="large" type="toggle">Show Score Bar</checkbox>
+                <checkbox ng-model="football.showpre" style="margin-right:10px;" size="large" type="toggle">Pre-Match Bar</checkbox>
+                <checkbox ng-model="football.showpost" style="margin-right:10px;" size="large" type="toggle">Post-Match Bar</checkbox>
+                
             </div>
         </div>
-    </div>
+    </div>   
+    <br> 
+            <div class="fields sixteen wide column">
+            	<div class="field six wide">
+        	 		<input  type="text" placeholder="Match Name (Top)" ng-model="football.matchname">
+        	 	</div>
+        	 	<div class="field two wide">	
+        	 		<checkbox ng-model="football.showtop" type="toggle">Top</checkbox>
+        	 	</div>
+        	 	<div class="field two wide">
+        	 		<checkbox ng-model="football.showbottom" size="large" type="toggle">Bottom</checkbox>
+        	 	</div>	
+        	 	<div class="field six wide">	
+        	 		<input type="text" placeholder="Start Time or Half/Full Time (Bottom)" ng-model="football.starttime">
+        	 	</div>
+       	  </div>
+
 
     <div class="ui divider"></div>
 
