@@ -12,7 +12,7 @@
         <input id="SubHeading" placeholder="Sub Heading" type="text" ng-trim="true" ng-model="lowerThird.subHeading">
       </div>
     </div>
-
+	<br>
     <div class="right floated right aligned six wide column">
       <div class="ui blue button" ng-click="add(lowerThird)" ng-disabled="lowerThirdsForm.$invalid" >Add</div>
       <div class="ui red button" ng-click="hide()">Hide</div>
@@ -45,6 +45,8 @@
         <div class="ui positive button" ng-click="show('left', third)" >Left</div>
         <div class="or"></div>
         <div class="ui positive button" ng-click="show('right', third)" >Right</div>
+        <div class="or"></div>
+        <div class="ui positive button" ng-click="show('full', third)" >Full Width</div>
       </div>
 
       <div class="ui icon red small button">

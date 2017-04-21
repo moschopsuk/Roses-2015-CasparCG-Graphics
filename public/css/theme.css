@@ -47,6 +47,10 @@ h1, h2, h3, h4 {
     bottom: 50px;
 }
 
+.fullwidth {
+	width: 1180px;
+	}
+
 .top {
     top: 50px;
 }
@@ -115,6 +119,11 @@ h1, h2, h3, h4 {
     background-color: #1f1a34;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
+
+.lowerthird.bottom {
+    position: absolute;
+    left: 50px;
+} 
 
 /**************************************************/
 /*              [Boxing Score]                    */

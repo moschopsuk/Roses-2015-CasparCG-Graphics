@@ -85,6 +85,11 @@ io.on('connection', function(socket) {
 	socket.on("lowerthird:right", function(msg) {
 		io.sockets.emit("lowerthird:right", msg);
 	});
+	
+	socket.on("lowerthird:full", function(msg) {
+		io.sockets.emit("lowerthird:full", msg);
+	});
+
 
 	socket.on("lowerthird:hide", function() {
 		io.sockets.emit("lowerthird:hide");

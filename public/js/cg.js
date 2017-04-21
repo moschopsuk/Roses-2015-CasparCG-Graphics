@@ -7,6 +7,7 @@ app.controller('lowerThirdsCtrl', ['$scope', 'socket',
         socket.on("lowerthird:hide", function (msg) {
             $scope.showLeft = false;
             $scope.showRight = false;
+            $scope.showFull = false;
         });
 
         socket.on("lowerthird:left", function (msg) {
@@ -23,6 +24,14 @@ app.controller('lowerThirdsCtrl', ['$scope', 'socket',
             }
             $scope.right = msg;
             $scope.showRight = true;
+        });
+        
+        socket.on("lowerthird:full", function (msg) {
+            if($scope.showFull) {
+                $scope.showFull = false;
+            }
+            $scope.full = msg;
+            $scope.showFull = true;
         });
     }
 ]);
