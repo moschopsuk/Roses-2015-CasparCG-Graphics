@@ -231,7 +231,7 @@ h1, h2, h3, h4 {
 /**************************************************/
 
 .total-score {
-    width: 30%;
+    width: 35%;
     text-align: center;
     border-radius: 8px;
     background-clip: padding-box;
@@ -267,6 +267,25 @@ h1, h2, h3, h4 {
     padding: 6px;
     background-color: #efbb39 !important;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+
+.leftLogo, .rightLogo {
+    height: 175px;
+    width: 175px;
+    z-index: 100;
+    bottom: 30px;
+}
+
+.leftLogo {
+	position: absolute;
+	left: 300px;
+}
+
+.rightLogo {
+	position: absolute;
+	right: 300px;
+
 }
 
 /**************************************************/
