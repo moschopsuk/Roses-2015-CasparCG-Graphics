@@ -305,8 +305,8 @@ h1, h2, h3, h4 {
 .football-score h1 {
     font-size: 18px;
     padding: 6px;
-    padding-left: 40px !important;
-    padding-right: 40px !important;
+    padding-left: 58px !important;
+    padding-right: 44px !important;
     text-transform: uppercase;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
