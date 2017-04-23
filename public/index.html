@@ -12,13 +12,14 @@
     <body>
         <div ng-controller="bugCtrl">
             <div class="wrapper slide-left">
-                 <div class="bug top scale-fade" ng-show="state.showClock">
+                 <div class="bug top scale-fade-in" ng-show="state.showClock">
                         <h1 class="black">{{clock | date: "HH:mm"}}</h1>
                  </div>
-                 <div class="bug top scale-fade" ng-show="state.showLive">
+                 <div class="bug top scale-fade-in" ng-show="state.showLive">
                  <h1 ng-show="state.showLive">{{bug.livetext}}</h1>
                  </div>
-                 <div class="bug top scale-fade" ng-show="state.showLocation"><h1 class="white" ng-show="state.showLocation">{{bug.locationtext}}</h1></div>
+                 <div class="bug top scale-fade-in" ng-show="state.showLocation">
+                 <h1 class="white" ng-show="state.showLocation">{{bug.locationtext}}</h1></div>
                 </div>
 
                 <div class="logo right top toggle" ng-show="state.showLogo">
@@ -28,6 +29,13 @@
         </div>
 
         <div ng-controller="lowerThirdsCtrl">
+        	<div class="lowerthird bottom fullwidth scale-fade" ng-show="showFull">
+                <div class="gradient-overlay">
+                    <h1>{{full.heading}}</h1>
+                </div>
+                <h2 ng-show="full.subHeading">{{full.subHeading}}</h2>
+            </div>
+        
             <div class="lowerthird left bottom slide-left" ng-show="showLeft">
                 <div class="gradient-overlay">
                     <h1>{{left.heading}}</h1>
