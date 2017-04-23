@@ -76,7 +76,7 @@ Stopwatch.prototype.setValue = function(val) {
     var pattern = /^(?:(?:(?:(\d+):)?(\d+):)?(\d+)(?:\.(\d))?)$/;
     var match = pattern.exec(val);
 
-    this.time = (this.hour * parseInt(match[1])|0) + (this.minute * parseInt(match[2])|0) + (this.second * parseInt(match[3])|0) + (this.decisecond * parseInt(match[4])|0);
+    this.time = (this.hour * parseInt(match[1])||0) + (this.minute * parseInt(match[2])||0) + (this.second * parseInt(match[3])||0) + (this.decisecond * parseInt(match[4])||0);
     this.emit('tick:stopwatch', this.formatTime(this.time));
 }
 
