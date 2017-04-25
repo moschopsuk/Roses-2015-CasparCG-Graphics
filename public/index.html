@@ -226,12 +226,12 @@
           <div class="center-page scale-fade" ng-show="show">
             <div class="grid center center">
               <div class="gradient-overlay">
-                <h1>{{ grid.header }}</h1>
+                <h1 style="background-color: {{grid.headingcolor}} !important;">{{ grid.header }}</h1>
               </div>
 
               <div class="row animate-repeat" ng-repeat="row in grid.rows">
-                <div class="name float-left">{{ row.left }}</div>
-                <div class="time float-right">{{ row.right }}</div>
+                <div style="background-color: {{grid.leftcolor}} !important;" class="gridleft float-left">{{ row.left }}</div>
+                <div style="background-color: {{grid.rightcolor}} !important;" class="gridright float-right">{{ row.right }}</div>
               </div>
             </div>
           </div>
