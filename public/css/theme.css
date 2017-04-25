@@ -286,7 +286,6 @@ h1, h2, h3, h4 {
   width: 30%;
   border-radius: 3px;
   background-clip: padding-box;
-  background-color: rgba(0, 0, 0, 0.5);
   font-size: 30px;
   font-size: 1.8vw;
   text-align: center;
@@ -301,6 +300,15 @@ h1, h2, h3, h4 {
   background-color: #eee;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
   width: 24%;
+}
+
+.football .extratime {
+  background-color: #bc204b;;
+  color: #fff;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+  width: 12%;
+  padding: 3px;
+  margin-left: 23px; 
 }
 
 .football .score.lanc {
