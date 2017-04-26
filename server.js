@@ -125,6 +125,12 @@ io.on('connection', function(socket) {
         score = msg;
 		io.sockets.emit("score", msg);
 	});
+	socket.on("lancScore", function(msg){
+		io.sockets.emit("lancScore", msg);
+	});
+	socket.on("yorkScore", function(msg){
+		io.sockets.emit("yorkScore", msg);
+	});
 
     socket.on("score:get", function(msg) {
 		io.sockets.emit("score", score);

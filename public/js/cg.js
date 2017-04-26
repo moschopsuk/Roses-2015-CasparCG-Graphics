@@ -129,6 +129,8 @@ app.controller('scoringCtrl', ['$scope', '$interval', '$http', 'socket',
             .success(function(data) {
                 $scope.yorkScore = data.york;
                 $scope.lancScore = data.lancs;
+                socket.emit('lancScore', data.lancs);
+                socket.emit('yorkScore', data.york);
             }
           );
         };
