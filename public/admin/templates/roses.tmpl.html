@@ -4,10 +4,28 @@
 	<div class="ui visible info message">
 		<i class="close icon"></i>
 		<div class="header">Automated Scores</div>
-		<p>Please note roses scores are pulled from the master score server.</p>
+		<p>Roses scores are pulled from the master score server, but this is subject to crashing.</p>
+    <p>Latest score from Roses Live: York {{rosesYorkScore}}, Lancaster {{rosesLancScore}}.
 	</div>
 
   <div class="inline field">
     <checkbox size="large" ng-model="roses.showScore" type="toggle">Show Overall Score</checkbox>
   </div>
+  <div class="ui divider"></div>
+  <div class="inline field">
+    <checkbox size="large" ng-model="roses.manualScore" type="toggle">Manual Score</checkbox>
+  </div>
+  <br />
+  <div class="two fields">
+    <div class="field">
+      <label for="York">York</label>
+      <input id="York" placeholder="York" type="text" ng-disabled="!roses.manualScore" ng-trim="true" ng-model="roses.yorkScore"/>
+    </div>
+
+    <div class="field">
+      <label for="Lancs">Lancaster</label>
+      <input id="Lancs" placeholder="Lancaster" type="text" ng-trim="true" ng-disabled="!roses.manualScore" ng-model="roses.lancScore">
+    </div>
+  </div>
+
 </div>

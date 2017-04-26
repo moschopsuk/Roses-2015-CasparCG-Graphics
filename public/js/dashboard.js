@@ -391,6 +391,12 @@ app.controller('rosesCGController', ['$scope', 'socket',
             $scope.roses = msg;
         });
 
+        socket.on('lancScore', function(msg){
+          $scope.rosesLancScore = msg
+        });
+        socket.on('yorkScore', function(msg){
+          $scope.rosesYorkScore = msg
+        });
         $scope.$watch('roses', function() {
             if ($scope.roses) {
                 socket.emit("score", $scope.roses);
