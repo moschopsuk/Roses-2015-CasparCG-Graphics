@@ -238,7 +238,7 @@ app.controller('gridCtrl', ['$scope', 'socket',
         socket.on("grid", function (payload) {
             if (payload === "hide") {
                 //We first remove every element with a delay
-                $scope.grid = {};
+                setTimeout(function(){$scope.grid = {};}, 1000);
                 $scope.show = false;
             } else {
                 $scope.show = true;
