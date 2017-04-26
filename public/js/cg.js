@@ -131,8 +131,10 @@ app.controller('scoringCtrl', ['$scope', '$interval', '$http', 'socket',
                 console.log("Roses live is giving us nonsense");
                 return;
               };
+              if(!$scope.manualScore){
                 $scope.yorkScore = data.york;
                 $scope.lancScore = data.lancs;
+              };
                 socket.emit('lancScore', data.lancs);
                 socket.emit('yorkScore', data.york);
             }
@@ -141,6 +143,11 @@ app.controller('scoringCtrl', ['$scope', '$interval', '$http', 'socket',
 
         socket.on("score", function (state) {
             $scope.showScore = state.showScore;
+            $scope.manualScore = state.manualScore;
+            if(state.manualScore){
+              $scope.yorkScore = state.yorkScore;
+              $scope.lancScore = state.lancScore;
+            };
         });
 
         $scope.$watch('score', function() {
