@@ -134,6 +134,7 @@
 	              	</div>	
             	</div>
         </div>
+        
         <div ng-controller="footballCtrl" ng-show="football.showpre">
         		<img ng-src="images/YorkSport250.png" ng-show="football.showpre" class="bottom leftLogo scale-fade"/>
 				<img ng-src="images/LancasterSport250.png" ng-show="football.showpre" class="bottom rightLogo scale-fade"/>
@@ -154,9 +155,19 @@
 					</div>
                 	<div class="clearfix"></div>
             	</div>
-        </div>		
+        </div>
+                
+        
+        <div ng-controller="rugbyCtrl" class="football left top scale-fade" ng-show="rugby.show">
+            <div class="row">
+                <div class="clock">{{clock}}</div>
+                <div class="score lanc">LANCS {{rugby.lancScore}}</div>
+                <div class="score york">{{rugby.yorkScore}} YORK</div>
+            </div>
+            	<div ng-show="rugby.showextratime" class="extratime scale-fade">ET</div>
+        </div>
 
-
+        
         <div ng-controller="basketballCtrl" class="basketball left top scale-fade" ng-show="basketball.show">
             <div class="row">
                 <div class="clock">{{clock}}</div>
