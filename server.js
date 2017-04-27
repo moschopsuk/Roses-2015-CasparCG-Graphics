@@ -151,14 +151,14 @@ io.on('connection', function(socket) {
 	/*
 	* 		Rugby
 	*/
- socket.on("rugby", function(msg) {
+ 	socket.on("rugby", function(msg) {
 			 rugby = msg;
 	 io.sockets.emit("rugby", msg);
- });
+ 	});
 
 	 socket.on("rugby:get", function(msg) {
 	 io.sockets.emit("rugby", rugby);
- });
+	 });
 
 	/*
 	 * 		Darts

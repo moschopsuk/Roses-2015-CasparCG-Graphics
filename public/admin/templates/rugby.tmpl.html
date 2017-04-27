@@ -38,6 +38,7 @@
                 </div>
 
                 <div class="ui button" ng-click="resetClock()">Reset</div>
+                <checkbox ng-model="rugby.showextratime" size="large" type="toggle">Extra Time</checkbox>
             </div>
         </div>
     </div>
@@ -68,6 +69,13 @@
                     <i class="minus icon"></i>1
                 </button>
             </div>
+            <br>
+            <br> 
+            <div class="ui icon buttons">
+                <button class="ui red button" ng-click="rugby.lancScore = 0">
+                    <i class="ban icon"></i>Reset
+                </button>
+            </div>
         </div>
 
         <div class="eight wide column">
@@ -85,6 +93,13 @@
                 </button>
                 <button class="ui red button" ng-click="rugby.yorkScore = rugby.yorkScore - 1;" ng-disabled="rugby.yorkScore == 0">
                     <i class="minus icon"></i>1
+                </button>
+            </div>
+            <br>
+            <br> 
+            <div class="ui icon buttons">
+                <button class="ui red button" ng-click="rugby.yorkScore = 0">
+                    <i class="ban icon"></i>Reset
                 </button>
             </div>
         </div>
@@ -116,6 +131,13 @@
                     <i class="minus icon"></i>1
                 </button>
             </div>
+            <br>
+            <br> 
+            <div class="ui icon buttons">
+                <button class="ui red button" ng-click="rugby.lancScore = 0">
+                    <i class="ban icon"></i>Reset
+                </button>
+            </div>
         </div>
 
         <div class="eight wide column">
@@ -133,6 +155,13 @@
                 </button>
                 <button class="ui red button" ng-click="rugby.yorkScore = rugby.yorkScore - 1;" ng-disabled="rugby.yorkScore == 0">
                     <i class="minus icon"></i>1
+                </button>
+            </div>
+            <br>
+            <br> 
+            <div class="ui icon buttons">
+                <button class="ui red button" ng-click="rugby.yorkScore = 0">
+                    <i class="ban icon"></i>Reset
                 </button>
             </div>
         </div>
