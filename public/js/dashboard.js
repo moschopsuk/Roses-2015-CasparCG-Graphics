@@ -92,6 +92,13 @@ app.controller('AppCtrl', ['$scope', '$location',
             type: 'link',
             icon: 'green neuter',
         });
+        
+        $scope.menu.push({
+            name: 'Tennis',
+            url: '/tennis',
+            type: 'link',
+            icon: 'olive circle',
+        });
     }
 ]);
 
@@ -150,6 +157,10 @@ app.config(['$routeProvider', 'localStorageServiceProvider',
             .when("/badminton", {
               templateUrl: '/admin/templates/badminton.tmpl.html',
               controller: 'badmintonCGController'
+            })
+            .when("/tennis", {
+              templateUrl: '/admin/templates/tennis.tmpl.html',
+              controller: 'tennisCGController'
             })
             .otherwise({redirectTo: '/general'});
     }
@@ -821,6 +832,158 @@ app.controller('badmintonCGController', ['$scope', 'socket',
 
         function getBadmintonData() {
             socket.emit("badminton:get");
+        }
+    }
+]);
+
+app.controller('tennisCGController', ['$scope', 'socket',
+    function($scope, socket) {
+        // to make maths easier, we'll calculate points linearly and then map them to this array of tennis scores. Arrays start at 0!
+        var pointNames = ['0', '15', '30', '40', 'AD']
+        
+        // usual functions to recieve/send data to the server
+        socket.on("tennis", function (msg) {
+            $scope.tennis = msg;
+        });
+        
+        $scope.$watch('tennis', function() {
+            if ($scope.tennis) {
+                socket.emit("tennis", $scope.tennis);
+            } else {
+                getTennisData();
+            }
+        }, true);
+        
+        // point scoring function - does all the complicated math for the user
+        $scope.scorePoint = function(player) {
+            // given the scoring player, get their opponent
+            var opponent = (player == 1 ? 2 : 1);
+            
+            if ($scope.tennis.tiebreak == true) {
+                // tiebreak
+                if ($scope.tennis['point' + player] >= 6 && ($scope.tennis['point' + player] - $scope.tennis['point' + opponent]) >= 1) {
+                    // player already won at least 6 points, and now has 2 point advantage, so wins game
+                    winGame(player);
+                } else {
+                    $scope.tennis['point' + player] = $scope.tennis['point' + player] + 1;
+                    $scope.tennis.pointName1 = $scope.tennis.point1;
+                    $scope.tennis.pointName2 = $scope.tennis.point2;
+                    
+                    // change server after every odd-numbered point played
+                    if ((($scope.tennis['point' + player] + $scope.tennis['point' + opponent]) % 2) == 1) {
+                        $scope.toggleServer();
+                    }
+                }
+            } else {
+                // normal game
+                if ($scope.tennis['point' + player] >= 3 && $scope.tennis['point' + opponent] >= 3) {
+                    // duece or advantage
+                    if ($scope.tennis['point' + opponent] == 4) {
+                        // opponent had advantage, so score now duece
+                        $scope.tennis['point' + opponent] = 3;
+                    } else if ($scope.tennis['point' + player] == 4) {
+                        // player had advantage, so wins game
+                        winGame(player);
+                    } else {
+                        // was duece, so player now has advantage
+                        $scope.tennis['point' + player] = 4;
+                    }
+                } else if ($scope.tennis['point' + player] == 3) {
+                    // player had 40, opponent 30 or less, so player wins game
+                    winGame(player);
+                } else {
+                    // player had 30 or less, so add a point
+                    $scope.tennis['point' + player] = $scope.tennis['point' + player] + 1;
+                }
+                $scope.tennis.pointName1 = pointNames[$scope.tennis.point1];
+                $scope.tennis.pointName2 = pointNames[$scope.tennis.point2];
+            }
+            
+            $scope.tennis.pointsPlayed ++
+            checkTiebreak();
+            checkGamePoint(player);
+        };
+
+        function winGame(player) {
+            // given the scoring player, get their opponent
+            var opponent = (player == 1 ? 2 : 1);
+            
+            if ($scope.tennis.tiebreak == true) {
+                // player won tiebreak game, so wins set
+                winSet(player);
+            } else if ($scope.tennis['game' + player] >= 5 && ($scope.tennis['game' + player] - $scope.tennis['game' + opponent]) >= 1) {
+                // player already won at least 5 games, and now has 2 game advantage, so wins set
+                winSet(player);
+            } else {
+                // player can't win set yet, so add a game and reset points
+                $scope.tennis['game' + player] = $scope.tennis['game' + player] + 1;
+                resetPoints();
+                $scope.toggleServer(); 
+            }
+        }
+        
+        function winSet(player) {
+            // given the scoring player, get their opponent
+            var opponent = (player == 1 ? 2 : 1);
+            
+            if ($scope.tennis['set' + player] == 2) {
+                // player already won 2 sets, so wins match
+            } else {
+                // player can't win match yet, so add a set and reset games
+                $scope.tennis['set' + player] = $scope.tennis['set' + player] + 1;
+                
+                // check if we are now on the last set
+                if (($scope.tennis.set1 + $scope.tennis.set2) == 4) {
+                    $scope.tennis.lastSet = true;
+                }
+                
+                resetGames();
+                $scope.toggleServer();
+            }
+        }
+        
+        function resetPoints() {
+            $scope.tennis.point1 = $scope.tennis.point2 = $scope.tennis.pointName1 = $scope.tennis.pointName2 = 0;
+        }
+        
+        function resetGames() {
+            $scope.tennis.game1 = $scope.tennis.game2 = 0;
+            resetPoints();
+        }
+        
+        $scope.toggleServer = function toggleServer() {
+            $scope.tennis.server = ($scope.tennis.server == 1 ? 2 : 1);
+        };
+                        
+        function checkTiebreak() {
+            if ($scope.tennis.lastSet == true) {
+                // this is the last set, so tiebreak is not possible
+                $scope.tennis.tiebreak = false;
+            } else if ($scope.tennis.game1 == 6 && $scope.tennis.game2 == 6 ) {
+                // not the last set, players tied on 6 games each, so tiebreak
+                $scope.tennis.tiebreak = true;
+            } else {
+                // not a tiebreak
+                $scope.tennis.tiebreak = false;
+            }
+        }
+        
+        function checkGamePoint(player) {
+            var opponent = (player == 1 ? 2 : 1);
+            
+            //Match Point check
+            //Set Point check
+            
+            //Break Point check
+            if ($scope.tennis['tiebreak'] == false && $scope.tennis['point' + player] >= 3 && ($scope.tennis['point' + player] - $scope.tennis['point' + opponent]) >= 1) {
+                
+            }
+            
+            //Generate graphic
+        }
+        
+        function getTennisData() {
+            socket.emit("tennis:get");
         }
     }
 ]);

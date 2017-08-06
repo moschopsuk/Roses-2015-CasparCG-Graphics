@@ -318,3 +318,21 @@ app.controller('badmintonCtrl', ['$scope', 'socket',
         }
     }
 ]);
+
+app.controller('tennisCtrl', ['$scope', 'socket',
+    function($scope, socket){
+        socket.on("tennis", function (msg) {
+            $scope.tennis = msg;
+        });
+
+        $scope.$watch('tennis', function() {
+            if (!$scope.tennis) {
+                getTennisData();
+            }
+        }, true);
+
+        function getTennisData() {
+            socket.emit("tennis:get");
+        }
+    }
+]);

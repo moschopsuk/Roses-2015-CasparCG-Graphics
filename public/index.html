@@ -317,6 +317,26 @@
                  <div class="footer">best of 3 games wins match</div>
             </div>
         </div>
+        
+        <div ng-controller="tennisCtrl" class="left top tennis scale-fade" ng-show="tennis.show">
+            <div class="row">
+                <div class="name lanc">{{tennis.player1}}<div class="server" ng-show="tennis.server == 1"></div></div>
+                <div class="sets">{{tennis.set1}}</div>
+                <div class="games">{{tennis.game1}}</div>
+                <div class="points">{{tennis.pointName1}}</div>
+            </div>
+
+            <div class="row">
+                <div class="name york">{{tennis.player2}}<div class="server" ng-show="tennis.server == 2"></div></div>
+                <div class="sets">{{tennis.set2}}</div>
+                <div class="games">{{tennis.game2}}</div>
+                <div class="points">{{tennis.pointName2}}</div>
+            </div>
+            
+            <div class="row" ng-show="tennis.gamePoint">
+                <div class="info">Match Point"</div>
+            </div>
+        </div>
 
         <script type="text/javascript" src="/js/socket.io.js"></script>
         <script type="text/javascript" src="/js/libs/angular.min.js"></script>

@@ -610,6 +610,89 @@ h1, h2, h3, h4 {
   line-height: 2.2vw;
 }
 
+/**************************************************/
+/*                [Tennis]                     */
+/**************************************************/
+
+.tennis {
+  width: 30%;
+  text-align: center;
+  font-size: 25px;
+  font-size: 1.8vw;
+}
+
+.tennis .name {
+  text-align: left;
+}
+
+
+.tennis .name, .tennis .points, .tennis .games, .tennis .sets {
+  float: left;
+  height: 40px;
+  height: 2.9vw;
+  line-height: 40px;
+  line-height: 2.9vw;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.tennis .name {
+  width: 65%;
+}
+
+.tennis .name.lanc {
+  color: #fff;
+  background-color: #cd1d18;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+.tennis .name.york {
+  color: #fff;
+  background-color: #efbb39;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+.tennis .points {
+  width: 15%;
+  color: #fff;
+  background-color: #BC204B;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+  border-left: 2px solid #fff;
+}
+
+.tennis .games {
+  width: 10%;
+  color: #fff;
+  background-color: #BC204B;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+  border-left: 2px solid #fff;
+}
+
+.tennis .sets {
+  width: 10%;
+  color: #fff;
+  background-color: #BC204B;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+  border-left: 2px solid #fff;
+}
+
+.tennis .server {
+  width: 0; 
+  height: 0; 
+  border-top: 14px solid transparent;
+  border-bottom: 14px solid transparent; 
+  border-right: 14px solid #fff; 
+  border-top: 1vw solid transparent;
+  border-bottom: 1vw solid transparent; 
+  border-right: 1vw solid #fff; 
+  float: right;
+  margin-top: 6px;
+  margin-top: 0.45vw;
+  margin-right: 4px;
+  margin-right: 0.3vw;
+}
+
+
 /*
  *===================================
  *         Grid

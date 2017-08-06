@@ -1,0 +1,124 @@
+<div class="ui form segment">
+  <h2>Tennis</h2>
+
+    <div class="ui grid center aligned">
+        <div class="4 wide column">
+            <div class="field"><checkbox ng-model="tennis.show" size="large" type="toggle">Show Tennis Score</checkbox></div>
+        </div>
+    </div>
+
+    <div class="ui divider"></div>
+
+    <div class="ui grid center aligned">
+
+        <div class="sixteen wide column">
+
+            <div class="fields">
+
+                <div class="one wide field">
+                </div>
+                
+                <div class="five wide field">
+                  <h3>Player Name</h3>
+                </div>
+
+                <div class="two wide field">
+                  <h3>Sets</h3>
+                </div>
+                
+                <div class="two wide field">
+                  <h3>Games</h3>
+                </div>
+                
+                <div class="two wide field">
+                  <h3>Points</h3>
+                </div>
+
+                <div class="four wide field">
+                    <div class="ui icon buttons">
+                        <button class="ui blue button" style="padding-top: 0.3em; padding-bottom: 0.3em;" ng-show="tennis.pointsPlayed == 0" ng-click="toggleServer();"><i class="exchange icon"></i> Swap Server</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="ui grid center aligned">
+
+        <div class="sixteen wide column">
+
+            <div class="fields">
+
+                <div class="one wide field">
+                    <i class="icon circle" ng-show="tennis.server == 1"></i>
+                </div>
+                
+                <div class="five wide field">
+                    <input type="text" placeholder="Lancaster Player" ng-model="tennis.player1">
+                </div>
+
+                <div class="two wide field">
+                  <h2>{{tennis.set1}}</h2>
+                </div>
+                
+                <div class="two wide field">
+                  <h2>{{tennis.game1}}</h2>
+                </div>
+                
+                <div class="two wide field">
+                  <h2>{{tennis.pointName1}}</h2>
+                </div>
+
+                <div class="two wide field">
+                    <div class="ui icon buttons">
+                        <button class="ui green button" ng-click="scorePoint(1);"><i class="plus icon"></i></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="ui grid center aligned">
+
+        <div class="sixteen wide column">
+            <div class="fields">
+
+                <div class="one wide field">
+                    <i class="icon circle" ng-show="tennis.server == 2"></i>
+                </div>
+                
+                <div class="five wide field">
+                    <input type="text" placeholder="York Player" ng-model="tennis.player2">
+                </div>
+
+                <div class="two wide field">
+                  <h2>{{tennis.set2}}</h2>
+                </div>
+                
+                <div class="two wide field">
+                  <h2>{{tennis.game2}}</h2>
+                </div>
+                
+                <div class="two wide field">
+                  <h2>{{tennis.pointName2}}</h2>
+                </div>
+
+                <div class="two wide field">
+                    <div class="ui icon buttons">
+                        <button class="ui green button" ng-click="scorePoint(2);"><i class="plus icon"></i></button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
