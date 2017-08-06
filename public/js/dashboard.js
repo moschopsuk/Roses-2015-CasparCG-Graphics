@@ -865,7 +865,7 @@ app.controller('tennisCGController', ['$scope', 'socket',
                     // player already won at least 6 points, and now has 2 point advantage, so wins game
                     winGame(player);
                 } else {
-                    $scope.tennis['point' + player] = $scope.tennis['point' + player] + 1;
+                    $scope.tennis['point' + player] ++;
                     $scope.tennis.pointName1 = $scope.tennis.point1;
                     $scope.tennis.pointName2 = $scope.tennis.point2;
                     
@@ -893,7 +893,7 @@ app.controller('tennisCGController', ['$scope', 'socket',
                     winGame(player);
                 } else {
                     // player had 30 or less, so add a point
-                    $scope.tennis['point' + player] = $scope.tennis['point' + player] + 1;
+                    $scope.tennis['point' + player] ++;
                 }
                 $scope.tennis.pointName1 = pointNames[$scope.tennis.point1];
                 $scope.tennis.pointName2 = pointNames[$scope.tennis.point2];
@@ -916,7 +916,7 @@ app.controller('tennisCGController', ['$scope', 'socket',
                 winSet(player);
             } else {
                 // player can't win set yet, so add a game and reset points
-                $scope.tennis['game' + player] = $scope.tennis['game' + player] + 1;
+                $scope.tennis['game' + player] ++;
                 resetPoints();
                 $scope.toggleServer(); 
             }
@@ -930,7 +930,7 @@ app.controller('tennisCGController', ['$scope', 'socket',
                 // player already won 2 sets, so wins match
             } else {
                 // player can't win match yet, so add a set and reset games
-                $scope.tennis['set' + player] = $scope.tennis['set' + player] + 1;
+                $scope.tennis['set' + player] ++;
                 
                 // check if we are now on the last set
                 if (($scope.tennis.set1 + $scope.tennis.set2) == 4) {
