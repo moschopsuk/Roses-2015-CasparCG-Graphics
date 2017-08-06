@@ -971,15 +971,68 @@ app.controller('tennisCGController', ['$scope', 'socket',
         function checkGamePoint(player) {
             var opponent = (player == 1 ? 2 : 1);
             
-            //Match Point check
-            //Set Point check
-            
-            //Break Point check
-            if ($scope.tennis['tiebreak'] == false && $scope.tennis['point' + player] >= 3 && ($scope.tennis['point' + player] - $scope.tennis['point' + opponent]) >= 1) {
+            // horrific (but nessesary) if/else function
+            if ($scope.tennis.tiebreak == true) {
+                
+                if ($scope.tennis['point' + player] >= 6 && ($scope.tennis['point' + player] - $scope.tennis['point' + opponent]) >= 1) {
+                    // tiebreak, so scoring player needs to have at least 6 points, with a 1 point advantage
+                    
+                    if ($scope.tennis['set' + player] == 2) {
+                        $scope.tennis.gamePoint = "Match Point";
+                    } else {
+                        $scope.tennis.gamePoint = "Set Point";
+                    }
+                    
+                } else if ($scope.tennis['point' + opponent] >= 6 && ($scope.tennis['point' + opponent] - $scope.tennis['point' + player]) >= 1) {
+                    // tiebreak, not scoring player set/match point, so opponent needs to have at least 6 points, with a 1 point advantage
+                    
+                    if ($scope.tennis['set' + opponent] == 2) {
+                        $scope.tennis.gamePoint = "Match Point";
+                    } else {
+                        $scope.tennis.gamePoint = "Set Point";
+                    }
+                    
+                } else {
+                    // tiebreak, point isn't special, so no message needed
+                    
+                    $scope.tennis.gamePoint = "";
+                    
+                }
+                
+            } else if ($scope.tennis['game' + player] >= 5 && ($scope.tennis['game' + player] - $scope.tennis['game' + opponent]) >= 1 && $scope.tennis['point' + player] >= 3 && ($scope.tennis['point' + player] - $scope.tennis['point' + opponent]) >= 1) {
+                // normal game, so scoring player needs to have at least 5 games, with a 1 game advantage; and at least 40, with a 1 point advantage
+                
+                if ($scope.tennis['set' + player] == 2) {
+                    $scope.tennis.gamePoint = "Match Point";
+                } else {
+                    $scope.tennis.gamePoint = "Set Point";
+                }
+                    
+            } else if ($scope.tennis['game' + opponent] >= 5 && ($scope.tennis['game' + opponent] - $scope.tennis['game' + player]) >= 1 && $scope.tennis['point' + opponent] >= 3 && ($scope.tennis['point' + opponent] - $scope.tennis['point' + player]) >= 1) {
+                // normal game, not scoring player set/match point, so opponent needs to have at least 5 games, with a 1 game advantage; and at least 40, with a 1 point advantage
+                
+                if ($scope.tennis['set' + opponent] == 2) {
+                    $scope.tennis.gamePoint = "Match Point";
+                } else {
+                    $scope.tennis.gamePoint = "Set Point";
+                }
+                    
+            } else if ($scope.tennis.server != player && $scope.tennis['point' + player] >= 3 && ($scope.tennis['point' + player] - $scope.tennis['point' + opponent]) >= 1) {
+                // normal game, not a set/match point, so player needs be against the serve, have at least 40, with a 1 point advantage
+                
+                $scope.tennis.gamePoint = "Break Point";
+                
+            } else if ($scope.tennis.server != opponent && $scope.tennis['point' + opponent] >= 3 && ($scope.tennis['point' + opponent] - $scope.tennis['point' + player]) >= 1) {
+                // normal game, not scoring player set/match point, so opponent needs be against the serve, have at least 40, with a 1 point advantage
+                
+                $scope.tennis.gamePoint = "Break Point";
+                
+            } else {
+                // normal game, point isn't special, so no message needed
+                
+                $scope.tennis.gamePoint = "";
                 
             }
-            
-            //Generate graphic
         }
         
         function getTennisData() {

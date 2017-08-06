@@ -621,12 +621,13 @@ h1, h2, h3, h4 {
   font-size: 1.8vw;
 }
 
-.tennis .name {
+.tennis .name, .tennis .info {
   text-align: left;
 }
 
 
-.tennis .name, .tennis .points, .tennis .games, .tennis .sets {
+.tennis .name, .tennis .points, .tennis .games, .tennis .sets, .tennis .info {
+  color: #fff;
   float: left;
   height: 40px;
   height: 2.9vw;
@@ -641,39 +642,33 @@ h1, h2, h3, h4 {
 }
 
 .tennis .name.lanc {
-  color: #fff;
   background-color: #cd1d18;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .tennis .name.york {
-  color: #fff;
   background-color: #efbb39;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
+.tennis .info {
+    width: 100%;
+    background-color: #1f1a34;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+.tennis .points, .tennis .games, .tennis .sets {
+  background-color: #BC204B;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+  border-left: 2px solid #fff;
+}
+
 .tennis .points {
   width: 15%;
-  color: #fff;
-  background-color: #BC204B;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
-  border-left: 2px solid #fff;
 }
 
-.tennis .games {
+.tennis .games, .tennis .sets {
   width: 10%;
-  color: #fff;
-  background-color: #BC204B;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
-  border-left: 2px solid #fff;
-}
-
-.tennis .sets {
-  width: 10%;
-  color: #fff;
-  background-color: #BC204B;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
-  border-left: 2px solid #fff;
 }
 
 .tennis .server {
