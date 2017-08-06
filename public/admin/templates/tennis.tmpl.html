@@ -1,14 +1,47 @@
 <div class="ui form segment">
   <h2>Tennis</h2>
 
+    <div class="ui grid center aligned" ng-show="tennis.pointsPlayed == 0" >
+    
+        <h3>Pre-match settings - These will dissapear when first point is scored, so check these before starting match</h3>
+    
+        <div class="sixteen wide column">
+            <div class="fields">
+                <div class="six wide field">
+                    <div class="ui icon buttons">
+                        <button class="ui blue button" ng-click="toggleServer();"><i class="exchange icon"></i> Swap First Server</button>
+                    </div>
+                </div>
+
+                <div class="ten wide inline field">
+                    <label>Maximum Sets:</label>
+                        <dropdown ng-attr-title="5" ng-model="tennis.maxSets">
+                        <dropdown-group>3</dropdown-group>
+                        <dropdown-group>5</dropdown-group>
+                        </dropdown>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="ui divider" ng-show="tennis.pointsPlayed == 0" ></div>
+    
     <div class="ui grid center aligned">
-        <div class="4 wide column">
-            <div class="field"><checkbox ng-model="tennis.show" size="large" type="toggle">Show Tennis Score</checkbox></div>
+        <div class="sixteen wide column">
+            <div class="fields">
+                <div class="four wide field">
+                    <div class="ui red button" ng-click="resetAll()" >Reset All</div>
+                </div>
+
+                <div class="ten wide field">
+                    <checkbox ng-model="tennis.show" size="large" type="toggle">Show Tennis Score</checkbox>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="ui divider"></div>
-
+    
     <div class="ui grid center aligned">
 
         <div class="sixteen wide column">
@@ -32,12 +65,6 @@
                 
                 <div class="two wide field">
                   <h3>Points</h3>
-                </div>
-
-                <div class="four wide field">
-                    <div class="ui icon buttons">
-                        <button class="ui blue button" style="padding-top: 0.3em; padding-bottom: 0.3em;" ng-show="tennis.pointsPlayed == 0" ng-click="toggleServer();"><i class="exchange icon"></i> Swap Server</button>
-                    </div>
                 </div>
 
             </div>
