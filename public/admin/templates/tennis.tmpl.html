@@ -1,7 +1,7 @@
 <div class="ui form segment">
   <h2>Tennis</h2>
 
-    <div class="ui grid center aligned" ng-show="tennis.pointsPlayed == 0" >
+    <div class="ui grid center aligned" ng-show="tennisScore.pointsPlayed == 0" >
     
         <h3>Pre-match settings - These will dissapear when first point is scored, so check these before starting match</h3>
     
@@ -15,7 +15,7 @@
 
                 <div class="ten wide inline field">
                     <label>Maximum Sets:</label>
-                        <dropdown ng-attr-title="5" ng-model="tennis.maxSets">
+                        <dropdown ng-attr-title="5" ng-model="tennisOptions.maxSets">
                         <dropdown-group>3</dropdown-group>
                         <dropdown-group>5</dropdown-group>
                         </dropdown>
@@ -24,7 +24,7 @@
         </div>
     </div>
     
-    <div class="ui divider" ng-show="tennis.pointsPlayed == 0" ></div>
+    <div class="ui divider" ng-show="tennisScore.pointsPlayed == 0" ></div>
     
     <div class="ui grid center aligned">
         <div class="sixteen wide column">
@@ -33,8 +33,12 @@
                     <div class="ui red button" ng-click="resetAll()" >Reset All</div>
                 </div>
 
-                <div class="ten wide field">
-                    <checkbox ng-model="tennis.show" size="large" type="toggle">Show Tennis Score</checkbox>
+                <div class="seven wide field">
+                    <checkbox ng-model="tennisOptions.show" size="large" type="toggle">Show Tennis Score</checkbox>
+                </div>
+                
+                <div class="five wide field">
+                    <div class="ui red button" ng-click="undoPoint()" >Undo Point</div>
                 </div>
             </div>
         </div>
@@ -80,23 +84,23 @@
             <div class="fields">
 
                 <div class="one wide field">
-                    <i class="icon circle" style="vertical-align: middle;" ng-show="tennis.server == 1"></i>
+                    <i class="icon circle" style="vertical-align: middle;" ng-show="tennisScore.server == 1"></i>
                 </div>
                 
                 <div class="five wide field">
-                    <input type="text" placeholder="Lancaster Player" ng-model="tennis.player1">
+                    <input type="text" placeholder="Lancaster Player" ng-model="tennisOptions.player1">
                 </div>
 
                 <div class="two wide field">
-                  <h2>{{tennis.set1}}</h2>
+                  <h2>{{tennisScore.set1}}</h2>
                 </div>
                 
                 <div class="two wide field">
-                  <h2>{{tennis.game1}}</h2>
+                  <h2>{{tennisScore.game1}}</h2>
                 </div>
                 
                 <div class="two wide field">
-                  <h2>{{tennis.pointName1}}</h2>
+                  <h2>{{tennisScore.pointName1}}</h2>
                 </div>
 
                 <div class="two wide field">
@@ -117,23 +121,23 @@
             <div class="fields">
 
                 <div class="one wide field">
-                    <i class="icon circle" style="vertical-align: middle;" ng-show="tennis.server == 2"></i>
+                    <i class="icon circle" style="vertical-align: middle;" ng-show="tennisScore.server == 2"></i>
                 </div>
                 
                 <div class="five wide field">
-                    <input type="text" placeholder="York Player" ng-model="tennis.player2">
+                    <input type="text" placeholder="York Player" ng-model="tennisOptions.player2">
                 </div>
 
                 <div class="two wide field">
-                  <h2>{{tennis.set2}}</h2>
+                  <h2>{{tennisScore.set2}}</h2>
                 </div>
                 
                 <div class="two wide field">
-                  <h2>{{tennis.game2}}</h2>
+                  <h2>{{tennisScore.game2}}</h2>
                 </div>
                 
                 <div class="two wide field">
-                  <h2>{{tennis.pointName2}}</h2>
+                  <h2>{{tennisScore.pointName2}}</h2>
                 </div>
 
                 <div class="two wide field">

@@ -321,12 +321,22 @@ app.controller('badmintonCtrl', ['$scope', 'socket',
 
 app.controller('tennisCtrl', ['$scope', 'socket',
     function($scope, socket){
-        socket.on("tennis", function (msg) {
-            $scope.tennis = msg;
+        socket.on("tennisOptions", function (msg) {
+            $scope.tennisOptions = msg;
+        });
+        
+        socket.on("tennisScore", function (msg) {
+            $scope.tennisScore = msg;
         });
 
-        $scope.$watch('tennis', function() {
-            if (!$scope.tennis) {
+        $scope.$watch('tennisOptions', function() {
+            if (!$scope.tennisScore) {
+                getTennisData();
+            }
+        }, true);
+        
+        $scope.$watch('tennisScore', function() {
+            if (!$scope.tennisScore) {
                 getTennisData();
             }
         }, true);

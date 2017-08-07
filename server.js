@@ -17,7 +17,8 @@ var swimming = {order: ''};
 var grid = {headingcolor:"#BC204B", leftcolor: "#1f1a34", rightcolor:"#1f1a34"};
 var archery = {};
 var badminton = {match: "Badminton", player1: "Lancaster", player2: "York", game1: 0, game2:0, point1: 0, point2: 0 };
-var tennis = {player1: "Lancaster", player2: "York", set1: 0, set2: 0, game1: 0, game2:0, point1: 0, point2: 0, pointName1: 0, pointName2: 0, maxSets: 5, pointsPlayed: 0, server: 1, tiebreak: false, gamePoint: ""};
+var tennisOptions = {player1: "Lancaster", player2: "York", maxSets: 5, show: false}
+var tennisScore   = [{set1: 0, set2: 0, game1: 0, game2: 0, point1: 0, point2: 0, pointName1: 0, pointName2: 0, pointsPlayed: 0, server: 1, tiebreak: false, gamePoint: ""}];
 
 //Clock Functions
 var stopwatch = new Stopwatch();
@@ -235,13 +236,35 @@ io.on('connection', function(socket) {
     /*
     * Tennis
     */
-    socket.on("tennis", function(msg) {
-        tennis = msg;
-        io.sockets.emit("tennis", msg);
+    socket.on("tennisOptions", function(msg) {
+        tennisOptions = msg;
+        io.sockets.emit("tennisOptions", msg);
+    });
+    
+    socket.on("tennisScore", function(msg) {
+        tennisScore[msg.pointsPlayed] = msg;
+        io.sockets.emit("tennisScore", msg);
     });
 
     socket.on("tennis:get", function(msg) {
-        io.sockets.emit("tennis", tennis);
+        io.sockets.emit("tennisOptions", tennisOptions);
+        io.sockets.emit("tennisScore", tennisScore.slice(-1)[0])
+    });
+    
+    socket.on("tennis:undo", function() {
+        if (tennisScore.length != 1) {
+            tennisScore.splice(-1,1);
+            console.log(tennisScore);
+            io.sockets.emit("tennisScore", tennisScore.slice(-1)[0]);
+        }
+    });
+    
+    socket.on("tennis:reset", function(msg) {
+        tennisOptions = {player1: "Lancaster", player2: "York", maxSets: 5, show: false}
+        tennisScore   = [{set1: 0, set2: 0, game1: 0, game2: 0, point1: 0, point2: 0, pointName1: 0, pointName2: 0, pointsPlayed: 0, server: 1, tiebreak: false, gamePoint: ""}];
+        
+        io.sockets.emit("tennisOptions", tennisOptions);
+        io.sockets.emit("tennisScore", tennisScore);
     });
 
 });
