@@ -318,23 +318,56 @@
             </div>
         </div>
         
-        <div ng-controller="tennisCtrl" class="left top tennis scale-fade" ng-show="tennisOptions.show">
-            <div class="row">
-                <div class="name lanc">{{tennisOptions.player1}}<div class="server" ng-show="tennisScore.server == 1"></div></div>
-                <div class="sets">{{tennisScore.set1}}</div>
-                <div class="games">{{tennisScore.game1}}</div>
-                <div class="points">{{tennisScore.pointName1}}</div>
-            </div>
+        <div ng-controller="tennisCtrl">
+            <div class="left top tennis tennisScore scale-fade" ng-show="tennisOptions.showScore">
+                <div class="row">
+                    <div class="name lanc">{{tennisOptions.player1}}<div class="server" ng-show="tennisScore.server == 1"></div></div>
+                    <div class="sets">{{tennisScore.set1}}</div>
+                    <div class="games">{{tennisScore.game1}}</div>
+                    <div class="points">{{tennisScore.pointName1}}</div>
+                </div>
 
-            <div class="row">
-                <div class="name york">{{tennisOptions.player2}}<div class="server" ng-show="tennisScore.server == 2"></div></div>
-                <div class="sets">{{tennisScore.set2}}</div>
-                <div class="games">{{tennisScore.game2}}</div>
-                <div class="points">{{tennisScore.pointName2}}</div>
+                <div class="row">
+                    <div class="name york">{{tennisOptions.player2}}<div class="server" ng-show="tennisScore.server == 2"></div></div>
+                    <div class="sets">{{tennisScore.set2}}</div>
+                    <div class="games">{{tennisScore.game2}}</div>
+                    <div class="points">{{tennisScore.pointName2}}</div>
+                </div>
+                
+                <div class="row" ng-show="tennisScore.gamePoint">
+                    <div class="info">{{tennisScore.gamePoint}}</div>
+                </div>
             </div>
             
-            <div class="row" ng-show="tennisScore.gamePoint">
-                <div class="info">{{tennisScore.gamePoint}}</div>
+            <div class="center bottom tennis tennisSets scale-fade" ng-show="tennisOptions.showSets">
+                <div class="row">
+                    <div class="header">{{tennisOptions.matchName}}</div>
+                </div>
+                <div class="row">
+                    <div class="name lanc">{{tennisOptions.player1}}</div>
+                    <div style="position: absolute; right: 0px;">
+                        <div class="sets">{{tennisScore.sets1[0]}}</div>
+                        <div class="sets">{{tennisScore.sets1[1]}}</div>
+                        <div class="sets">{{tennisScore.sets1[2]}}</div>
+                        <div class="sets" ng-show="tennisOptions.maxSets == 5">{{tennisScore.sets1[3]}}</div>
+                        <div class="sets" ng-show="tennisOptions.maxSets == 5">{{tennisScore.sets1[4]}}</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="name york">{{tennisOptions.player2}}</div>
+                    <div style="position: absolute; right: 0px;">
+                        <div class="sets">{{tennisScore.sets2[0]}}</div>
+                        <div class="sets">{{tennisScore.sets2[1]}}</div>
+                        <div class="sets">{{tennisScore.sets2[2]}}</div>
+                        <div class="sets" ng-show="tennisOptions.maxSets == 5">{{tennisScore.sets2[3]}}</div>
+                        <div class="sets" ng-show="tennisOptions.maxSets == 5">{{tennisScore.sets2[4]}}</div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="info">Best of {{tennisOptions.maxSets}} sets</div>
+                </div>
             </div>
         </div>
 

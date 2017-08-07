@@ -17,8 +17,20 @@ var swimming = {order: ''};
 var grid = {headingcolor:"#BC204B", leftcolor: "#1f1a34", rightcolor:"#1f1a34"};
 var archery = {};
 var badminton = {match: "Badminton", player1: "Lancaster", player2: "York", game1: 0, game2:0, point1: 0, point2: 0 };
-var tennisOptions = {player1: "Lancaster", player2: "York", maxSets: 5, show: false}
-var tennisScore   = [{set1: 0, set2: 0, game1: 0, game2: 0, point1: 0, point2: 0, pointName1: 0, pointName2: 0, pointsPlayed: 0, server: 1, tiebreak: false, gamePoint: ""}];
+var tennisOptions = {player1: "Lancaster", player2: "York", matchName: "", maxSets: 5, showScore: false, showSets: false}
+var tennisScore   = [{sets1: [], sets2: [],
+                      set1: 0, set2: 0,
+                      game1: 0, game2: 0,
+                      point1: 0, point2: 0,
+                      pointName1: 0, pointName2: 0,
+                      pointsServed1: 0, pointsServed2: 0,
+                      pointsWon1: 0, pointsWon2:0,
+                      firstServeWon1: 0, firstServeWon2: 0,
+                      secondServeWon1: 0, secondServeWon2: 0,
+                      ace1: 0, ace2: 0,
+                      singleFault1: 0, singleFault2: 0,
+                      doubleFault1: 0, doubleFault2: 0,
+                      pointsPlayed: 0, server: 1, tiebreak: false, gamePoint: "", firstFault: false}];
 
 //Clock Functions
 var stopwatch = new Stopwatch();
@@ -242,7 +254,7 @@ io.on('connection', function(socket) {
     });
     
     socket.on("tennisScore", function(msg) {
-        tennisScore[msg.pointsPlayed] = msg;
+        tennisScore.push(msg);
         io.sockets.emit("tennisScore", msg);
     });
 
@@ -254,17 +266,28 @@ io.on('connection', function(socket) {
     socket.on("tennis:undo", function() {
         if (tennisScore.length != 1) {
             tennisScore.splice(-1,1);
-            console.log(tennisScore);
             io.sockets.emit("tennisScore", tennisScore.slice(-1)[0]);
         }
     });
     
     socket.on("tennis:reset", function(msg) {
-        tennisOptions = {player1: "Lancaster", player2: "York", maxSets: 5, show: false}
-        tennisScore   = [{set1: 0, set2: 0, game1: 0, game2: 0, point1: 0, point2: 0, pointName1: 0, pointName2: 0, pointsPlayed: 0, server: 1, tiebreak: false, gamePoint: ""}];
+        tennisOptions = {player1: "Lancaster", player2: "York", matchName: "", maxSets: 5, showScore: false, showSets: false}
+        tennisScore   = [{sets1: [], sets2: [],
+                          set1: 0, set2: 0,
+                          game1: 0, game2: 0,
+                          point1: 0, point2: 0,
+                          pointName1: 0, pointName2: 0,
+                          pointsServed1: 0, pointsServed2: 0,
+                          pointsWon1: 0, pointsWon2:0,
+                          firstServeWon1: 0, firstServeWon2: 0,
+                          secondServeWon1: 0, secondServeWon2: 0,
+                          ace1: 0, ace2: 0,
+                          singleFault1: 0, singleFault2: 0,
+                          doubleFault1: 0, doubleFault2: 0,
+                          pointsPlayed: 0, server: 1, tiebreak: false, gamePoint: "", firstFault: false}];
         
         io.sockets.emit("tennisOptions", tennisOptions);
-        io.sockets.emit("tennisScore", tennisScore);
+        io.sockets.emit("tennisScore", tennisScore[0]);
     });
 
 });

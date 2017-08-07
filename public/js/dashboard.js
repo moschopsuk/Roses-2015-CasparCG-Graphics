@@ -870,6 +870,21 @@ app.controller('tennisCGController', ['$scope', 'socket',
         $scope.scorePoint = function(player) {
             // given the scoring player, get their opponent
             var opponent = (player == 1 ? 2 : 1);
+
+            // increment number of serves for server by 1
+            $scope.tennisScore['pointsServed' + $scope.tennisScore.server] ++;
+            
+            // if player was server, update serves won
+            if (player == $scope.tennisScore.server) {
+                if ($scope.tennisScore.firstFault) {
+                    $scope.tennisScore['secondServeWon' + player] ++;
+                } else {
+                    $scope.tennisScore['firstServeWon' + player] ++;
+                }
+            }
+            
+            // clear any faults
+            $scope.tennisScore.firstFault = false;
             
             if ($scope.tennisScore.tiebreak == true) {
                 // tiebreak
@@ -911,14 +926,48 @@ app.controller('tennisCGController', ['$scope', 'socket',
                 $scope.tennisScore.pointName2 = pointNames[$scope.tennisScore.point2];
             }
             
-            $scope.tennisScore.pointsPlayed ++
+            $scope.tennisScore.pointsPlayed ++;
+            $scope.tennisScore['pointsWon' + player] ++;
+
             checkTiebreak();
             checkGamePoint(player);
+        };
+        
+        // ace point
+        $scope.acePoint = function() {
+            $scope.tennisScore['ace' + $scope.tennisScore.server] ++;
+            $scope.scorePoint($scope.tennisScore.server);
+        };
+        
+        // fault
+        $scope.faultPoint = function() {
+            if ($scope.tennisScore.firstFault) {
+                // double fault
+                $scope.tennisScore['singleFault' + $scope.tennisScore.server] --;
+                $scope.tennisScore['doubleFault' + $scope.tennisScore.server] ++;
+                
+                // opponent scores a point
+                var opponent = ($scope.tennisScore.server == 1 ? 2 : 1);
+                $scope.scorePoint(opponent);
+            } else {
+                // first fault - set it to true
+                $scope.tennisScore.firstFault = true;
+                $scope.tennisScore['singleFault' + $scope.tennisScore.server] ++;
+            }
         };
 
         function winGame(player) {
             // given the scoring player, get their opponent
             var opponent = (player == 1 ? 2 : 1);
+            
+            // check if this is a new set, and create new entries in the sets array
+            if (($scope.tennisScore['game' + player] + $scope.tennisScore['game' + opponent]) == 0) {
+                $scope.tennisScore['sets' + player].push(0);
+                $scope.tennisScore['sets' + opponent].push(0);
+            }
+            
+            // update the sets array
+            $scope.tennisScore['sets' + player].splice(-1,1,($scope.tennisScore['game' + player] + 1));
             
             if ($scope.tennisScore.tiebreak == true) {
                 // player won tiebreak game, so wins set

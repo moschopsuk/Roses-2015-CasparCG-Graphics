@@ -614,19 +614,26 @@ h1, h2, h3, h4 {
 /*                [Tennis]                     */
 /**************************************************/
 
+
 .tennis {
-  width: 30%;
   text-align: center;
   font-size: 25px;
   font-size: 1.8vw;
 }
 
-.tennis .name, .tennis .info {
+.tennisScore {
+  width: 30%;
+}
+
+.tennisSets {
+  width: 40%;
+}
+
+.tennis .name, .tennis .info, .tennisSets .header {
   text-align: left;
 }
 
-
-.tennis .name, .tennis .points, .tennis .games, .tennis .sets, .tennis .info {
+.tennis .name, .tennis .points, .tennis .games, .tennis .sets, .tennis .info, .tennisSets .header {
   color: #fff;
   float: left;
   height: 40px;
@@ -637,8 +644,16 @@ h1, h2, h3, h4 {
   padding-right: 5px;
 }
 
-.tennis .name {
+.tennisSets .name, .tennisSets .header, .tennisSets .info {
+  padding-left: 10px;
+}
+
+.tennisScore .name {
   width: 65%;
+}
+
+.tennisSets .name {
+  width: 100%;
 }
 
 .tennis .name.lanc {
@@ -651,27 +666,32 @@ h1, h2, h3, h4 {
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
-.tennis .info {
-    width: 100%;
-    background-color: #1f1a34;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+.tennis .info, .tennisSets .header {
+  width: 100%;
+  background-color: #1f1a34;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
-.tennis .points, .tennis .games, .tennis .sets {
+.tennisScore .points, .tennisScore .games, .tennisScore .sets, .tennisSets .sets {
   background-color: #BC204B;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
   border-left: 2px solid #fff;
 }
 
-.tennis .points {
+.tennisScore .points {
   width: 15%;
 }
 
-.tennis .games, .tennis .sets {
+.tennisScore .games, .tennisScore .sets {
   width: 10%;
 }
 
-.tennis .server {
+.tennisSets .sets {
+  width: 43px;
+  width: 3vw;
+}
+
+.tennisScore .server {
   width: 0; 
   height: 0; 
   border-top: 14px solid transparent;
@@ -685,6 +705,15 @@ h1, h2, h3, h4 {
   margin-top: 0.45vw;
   margin-right: 4px;
   margin-right: 0.3vw;
+}
+
+.tennisSets .info {
+  font-size: 20px;
+  font-size: 1.3vw;
+  height: 30px;
+  height: 2.2vw;
+  line-height: 30px;
+  line-height: 2.2vw;
 }
 
 
