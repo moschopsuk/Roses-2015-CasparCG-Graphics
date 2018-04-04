@@ -329,11 +329,20 @@ h1, h2, h3, h4 {
 	background-color: #eee !important;
 }
 
+.footballtop h1:empty {
+    display: none;
+}
+
 .footballbottom h1 {
 	color: #fff;
 	border-top: 3px solid white;
 	background-color: #1f1a34 !important;
 }
+
+.footballbottom h1:empty {
+    display: none;
+}
+
 
 .football .clock, .football .score.lanc, .football .score.york {
   padding: 3px;
