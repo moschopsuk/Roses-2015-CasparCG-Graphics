@@ -16,6 +16,20 @@ var dart = {match: "Darts", player1: "Lancaster", player2: "York", set1: 0, set2
 var swimming = {order: ''};
 var grid = {headingcolor:"#BC204B", leftcolor: "#1f1a34", rightcolor:"#1f1a34"};
 var archery = {};
+var tennisOptions = {player1: "Lancaster", player2: "York", matchName: "", maxSets: 5, showScore: false, showSets: false}
+var tennisScore   = [{sets1: [], sets2: [],
+                      set1: 0, set2: 0,
+                      game1: 0, game2: 0,
+                      point1: 0, point2: 0,
+                      pointName1: 0, pointName2: 0,
+                      pointsServed1: 0, pointsServed2: 0,
+                      pointsWon1: 0, pointsWon2:0,
+                      firstServeWon1: 0, firstServeWon2: 0,
+                      secondServeWon1: 0, secondServeWon2: 0,
+                      ace1: 0, ace2: 0,
+                      singleFault1: 0, singleFault2: 0,
+                      doubleFault1: 0, doubleFault2: 0,
+                      pointsPlayed: 0, server: 1, tiebreak: false, gamePoint: "", firstFault: false}];
 var badminton = {match: "Badminton", subtitle: "Best of 3 Games Wins Match", player1: "Lancaster", player2: "York", game1: 0, game2:0, point1: 0, point2: 0 };
 
 //Clock Functions
@@ -231,6 +245,50 @@ io.on('connection', function(socket) {
         io.sockets.emit("badminton", badminton);
     });
 
+    /*
+    * Tennis
+    */
+    socket.on("tennisOptions", function(msg) {
+        tennisOptions = msg;
+        io.sockets.emit("tennisOptions", msg);
+    });
+    
+    socket.on("tennisScore", function(msg) {
+        tennisScore.push(msg);
+        io.sockets.emit("tennisScore", msg);
+    });
+
+    socket.on("tennis:get", function(msg) {
+        io.sockets.emit("tennisOptions", tennisOptions);
+        io.sockets.emit("tennisScore", tennisScore.slice(-1)[0])
+    });
+    
+    socket.on("tennis:undo", function() {
+        if (tennisScore.length != 1) {
+            tennisScore.splice(-1,1);
+            io.sockets.emit("tennisScore", tennisScore.slice(-1)[0]);
+        }
+    });
+    
+    socket.on("tennis:reset", function(msg) {
+        tennisOptions = {player1: "Lancaster", player2: "York", matchName: "", maxSets: 5, showScore: false, showSets: false}
+        tennisScore   = [{sets1: [], sets2: [],
+                          set1: 0, set2: 0,
+                          game1: 0, game2: 0,
+                          point1: 0, point2: 0,
+                          pointName1: 0, pointName2: 0,
+                          pointsServed1: 0, pointsServed2: 0,
+                          pointsWon1: 0, pointsWon2:0,
+                          firstServeWon1: 0, firstServeWon2: 0,
+                          secondServeWon1: 0, secondServeWon2: 0,
+                          ace1: 0, ace2: 0,
+                          singleFault1: 0, singleFault2: 0,
+                          doubleFault1: 0, doubleFault2: 0,
+                          pointsPlayed: 0, server: 1, tiebreak: false, gamePoint: "", firstFault: false}];
+        
+        io.sockets.emit("tennisOptions", tennisOptions);
+        io.sockets.emit("tennisScore", tennisScore[0]);
+    });
 
 });
 

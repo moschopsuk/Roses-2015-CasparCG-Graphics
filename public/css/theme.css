@@ -610,6 +610,113 @@ h1, h2, h3, h4 {
   line-height: 2.2vw;
 }
 
+/**************************************************/
+/*                [Tennis]                     */
+/**************************************************/
+
+
+.tennis {
+  text-align: center;
+  font-size: 25px;
+  font-size: 1.8vw;
+}
+
+.tennisScore {
+  width: 30%;
+}
+
+.tennisSets {
+  width: 40%;
+}
+
+.tennis .name, .tennis .info, .tennisSets .header {
+  text-align: left;
+}
+
+.tennis .name, .tennis .points, .tennis .games, .tennis .sets, .tennis .info, .tennisSets .header {
+  color: #fff;
+  float: left;
+  height: 40px;
+  height: 2.9vw;
+  line-height: 40px;
+  line-height: 2.9vw;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.tennisSets .name, .tennisSets .header, .tennisSets .info {
+  padding-left: 10px;
+}
+
+.tennisScore .name {
+  width: 65%;
+}
+
+.tennisSets .name {
+  width: 100%;
+}
+
+.tennis .name.lanc {
+  background-color: #cd1d18;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+.tennis .name.york {
+  background-color: #efbb39;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+.tennis .info, .tennisSets .header {
+  width: 100%;
+  background-color: #1f1a34;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+.tennisScore .points, .tennisScore .games, .tennisScore .sets, .tennisSets .sets {
+  background-color: #BC204B;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+  border-left: 2px solid #fff;
+}
+
+.tennisScore .points {
+  width: 15%;
+}
+
+.tennisScore .games, .tennisScore .sets {
+  width: 10%;
+}
+
+.tennisSets .sets {
+  width: 43px;
+  width: 3vw;
+}
+
+.tennisScore .server {
+  width: 0; 
+  height: 0; 
+  border-top: 14px solid transparent;
+  border-bottom: 14px solid transparent; 
+  border-right: 14px solid #fff; 
+  border-top: 1vw solid transparent;
+  border-bottom: 1vw solid transparent; 
+  border-right: 1vw solid #fff; 
+  float: right;
+  margin-top: 6px;
+  margin-top: 0.45vw;
+  margin-right: 4px;
+  margin-right: 0.3vw;
+}
+
+.tennisSets .info {
+  font-size: 20px;
+  font-size: 1.3vw;
+  height: 30px;
+  height: 2.2vw;
+  line-height: 30px;
+  line-height: 2.2vw;
+}
+
+
 /*
  *===================================
  *         Grid

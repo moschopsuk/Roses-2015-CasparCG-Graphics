@@ -318,3 +318,31 @@ app.controller('badmintonCtrl', ['$scope', 'socket',
         }
     }
 ]);
+
+app.controller('tennisCtrl', ['$scope', 'socket',
+    function($scope, socket){
+        socket.on("tennisOptions", function (msg) {
+            $scope.tennisOptions = msg;
+        });
+        
+        socket.on("tennisScore", function (msg) {
+            $scope.tennisScore = msg;
+        });
+
+        $scope.$watch('tennisOptions', function() {
+            if (!$scope.tennisScore) {
+                getTennisData();
+            }
+        }, true);
+        
+        $scope.$watch('tennisScore', function() {
+            if (!$scope.tennisScore) {
+                getTennisData();
+            }
+        }, true);
+
+        function getTennisData() {
+            socket.emit("tennis:get");
+        }
+    }
+]);

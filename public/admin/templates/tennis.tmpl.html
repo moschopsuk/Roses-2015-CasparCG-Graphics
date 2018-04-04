@@ -1,0 +1,439 @@
+<div class="ui form segment">
+  <h2>Tennis</h2>
+
+    <div class="ui grid center aligned" ng-show="(tennisScore.pointsPlayed == 0) && (!tennisScore.firstFault)" >
+    
+        <h3>Pre-match settings - These will dissappear when first point is scored, so check these before starting match</h3>
+    
+        <div class="sixteen wide column">
+            <div class="fields">
+                <div class="six wide field">
+                    <div class="ui icon buttons">
+                        <button class="ui blue button" ng-click="toggleServer();"><i class="exchange icon"></i> Swap First Server</button>
+                    </div>
+                </div>
+
+                <div class="ten wide inline field">
+                    <label>Maximum Sets:</label>
+                        <dropdown ng-model="tennisOptions.maxSets">
+                        <dropdown-group>3</dropdown-group>
+                        <dropdown-group>5</dropdown-group>
+                        </dropdown>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="ui divider" ng-show="(tennisScore.pointsPlayed == 0) && (!tennisScore.firstFault)" ></div>
+    
+    <div class="ui grid center aligned">
+        <div class="sixteen wide column">
+            <div class="fields">
+            
+                <div class="ten wide inline field">
+                    <label>Match Name:</label>
+                        <dropdown ng-model="tennisOptions.matchName">
+                        <dropdown-group>Men's 1st Singles</dropdown-group>
+                        <dropdown-group>Men's 2nd Singles</dropdown-group>
+                        <dropdown-group>Women's 1st Singles</dropdown-group>
+                        <dropdown-group>Women's 2nd Singles</dropdown-group>
+                        <dropdown-group>Mixed 1st Doubles</dropdown-group>
+                        <dropdown-group>Mixed 2nd Doubles</dropdown-group>
+                        </dropdown>
+                </div>
+                
+                <div class="six wide field">
+                    <checkbox ng-model="tennisOptions.showSets" size="large" type="toggle">Show Sets</checkbox>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <div class="ui grid center aligned">
+        <div class="sixteen wide column">
+            <div class="fields">
+                <div class="four wide field">
+                    <div class="ui red button" ng-click="resetAll()" >Reset All</div>
+                </div>
+
+                <div class="seven wide field">
+                    <checkbox ng-model="tennisOptions.showScore" size="large" type="toggle">Show Score</checkbox>
+                </div>
+                
+                <div class="five wide field">
+                    <div class="ui grey button" ng-click="undoPoint()"><i class="undo icon"></i> Undo</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui divider"></div>
+    
+    <div class="ui grid center aligned">
+
+        <div class="sixteen wide column">
+
+            <div class="fields">
+
+                <div class="one wide field">
+                </div>
+                
+                <div class="four wide field">
+                  <h3>Player Name</h3>
+                </div>
+
+                <div class="one wide field">
+                  <h3>Sets</h3>
+                </div>
+                
+                <div class="two wide field">
+                  <h3>Games</h3>
+                </div>
+                
+                <div class="two wide field">
+                  <h3>Points</h3>
+                </div>
+                
+                <div class="two wide field">
+                </div>
+                                
+                <div class="four wide field">
+                  <h3>Special Buttons</h3>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="ui grid center aligned">
+
+        <div class="sixteen wide column">
+
+            <div class="fields">
+
+                <div class="one wide field">
+                    <i class="icon circle" style="vertical-align: middle;" ng-show="tennisScore.server == 1"></i>
+                </div>
+                
+                <div class="four wide field">
+                    <input type="text" placeholder="Lancaster Player" ng-model="tennisOptions.player1">
+                </div>
+
+                <div class="one wide field">
+                  <h2>{{tennisScore.set1}}</h2>
+                </div>
+                
+                <div class="two wide field">
+                  <h2>{{tennisScore.game1}}</h2>
+                </div>
+                
+                <div class="two wide field">
+                  <h2>{{tennisScore.pointName1}}</h2>
+                </div>
+
+                <div class="two wide field">
+                    <div class="ui icon buttons">
+                        <button class="ui green button" ng-click="scorePoint(1);"><i class="plus icon"></i></button>
+                    </div>
+                </div>
+                
+                <div class="four wide field">
+                    <div class="ui green button" ng-click="acePoint()"><i class="plus icon"></i> Ace</div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="ui grid center aligned">
+
+        <div class="sixteen wide column">
+            <div class="fields">
+
+                <div class="one wide field">
+                    <i class="icon circle" style="vertical-align: middle;" ng-show="tennisScore.server == 2"></i>
+                </div>
+                
+                <div class="four wide field">
+                    <input type="text" placeholder="York Player" ng-model="tennisOptions.player2">
+                </div>
+
+                <div class="one wide field">
+                  <h2>{{tennisScore.set2}}</h2>
+                </div>
+                
+                <div class="two wide field">
+                  <h2>{{tennisScore.game2}}</h2>
+                </div>
+                
+                <div class="two wide field">
+                  <h2>{{tennisScore.pointName2}}</h2>
+                </div>
+
+                <div class="two wide field">
+                    <div class="ui icon buttons">
+                        <button class="ui green button" ng-click="scorePoint(2);"><i class="plus icon"></i></button>
+                    </div>
+                </div>
+
+                <div class="four wide field">
+                    <div class="ui orange button" ng-click="faultPoint()"><i class="remove icon"></i> <span ng-show="tennisScore.firstFault">Double </span>Fault</div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    
+    <div class="ui divider"></div>
+    
+    <div class="ui grid center aligned">
+
+        <div class="sixteen wide column">
+        
+            <h3>Game History</h3>
+            <div class="fields">
+
+                <div class="four wide field">
+                  <h3>Player Name</h3>
+                </div>
+
+                <div class="two wide field">
+                  <h3>Set 1</h3>
+                </div>
+                
+                <div class="two wide field">
+                  <h3>Set 2</h3>
+                </div>
+                
+                <div class="two wide field">
+                  <h3>Set 3</h3>
+                </div>
+                
+                <div class="two wide field" ng-show="tennisOptions.maxSets == 5">
+                  <h3>Set 4</h3>
+                </div>
+                
+                <div class="two wide field" ng-show="tennisOptions.maxSets == 5">
+                  <h3>Set 5</h3>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="ui grid center aligned">
+
+        <div class="sixteen wide column">
+            
+            <div class="fields">
+
+                <div class="four wide field">
+                  <h3>{{tennisOptions.player1}}</h2>
+                </div>
+
+                <div class="two wide field">
+                  <h2>{{tennisScore.sets1[0]}}</h2>
+                </div>
+                
+                <div class="two wide field">
+                  <h2>{{tennisScore.sets1[1]}}</h2>
+                </div>
+                
+                <div class="two wide field">
+                  <h2>{{tennisScore.sets1[2]}}</h2>
+                </div>
+                
+                <div class="two wide field" ng-show="tennisOptions.maxSets == 5">
+                  <h2>{{tennisScore.sets1[3]}}</h2>
+                </div>
+                
+                <div class="two wide field" ng-show="tennisOptions.maxSets == 5">
+                  <h2>{{tennisScore.sets1[4]}}</h2>
+                </div>
+                
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="ui grid center aligned">
+
+        <div class="sixteen wide column">
+            <div class="fields">
+
+                <div class="four wide field">
+                  <h3>{{tennisOptions.player2}}</h2>
+                </div>
+
+                <div class="two wide field">
+                  <h2>{{tennisScore.sets2[0]}}</h2>
+                </div>
+                
+                <div class="two wide field">
+                  <h2>{{tennisScore.sets2[1]}}</h2>
+                </div>
+                
+                <div class="two wide field">
+                  <h2>{{tennisScore.sets2[2]}}</h2>
+                </div>
+                
+                <div class="two wide field" ng-show="tennisOptions.maxSets == 5">
+                  <h2>{{tennisScore.sets2[3]}}</h2>
+                </div>
+                
+                <div class="two wide field" ng-show="tennisOptions.maxSets == 5">
+                  <h2>{{tennisScore.sets2[4]}}</h2>
+                </div>
+                
+            </div>
+
+        </div>
+
+    </div>
+    
+    <div class="ui divider"></div>
+    
+    <div class="ui grid center aligned">
+
+        <div class="sixteen wide column">
+        
+            <h3>Statistics</h3>
+            <div class="fields">
+
+                <div class="two wide field">
+                  <h3>Player Name</h3>
+                </div>
+
+                <div class="two wide field">
+                  <h3>Aces</h3>
+                </div>
+                
+                <div class="two wide field">
+                  <h3>Single Faults</h3>
+                </div>
+                
+                <div class="two wide field">
+                  <h3>Double Faults</h3>
+                </div>
+                
+                <div class="two wide field">
+                  <h3>Points Served</h3>
+                </div>
+                
+                <div class="two wide field">
+                  <h3>Total Points Won</h3>
+                </div>
+                
+                <div class="two wide field">
+                  <h3>First Serves Won</h3>
+                </div>
+                
+                <div class="two wide field">
+                  <h3>Second Serves Won</h3>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="ui grid center aligned">
+
+        <div class="sixteen wide column">
+            
+            <div class="fields">
+
+                <div class="two wide field">
+                  <h3>{{tennisOptions.player1}}</h2>
+                </div>
+
+                <div class="two wide field">
+                  <h2>{{tennisScore.ace1}}</h2>
+                </div>
+                
+                <div class="two wide field">
+                  <h2>{{tennisScore.singleFault1}}</h2>
+                </div>
+                
+                <div class="two wide field">
+                  <h2>{{tennisScore.doubleFault1}}</h2>
+                </div>
+                
+                <div class="two wide field">
+                  <h2>{{tennisScore.pointsServed1}}</h2>
+                </div>
+                
+                <div class="two wide field">
+                  <h2>{{tennisScore.pointsWon1}}</h2>
+                </div>
+                
+                <div class="two wide field">
+                  <h2>{{tennisScore.firstServeWon1}}</h2>
+                </div>
+                
+                <div class="two wide field">
+                  <h2>{{tennisScore.secondServeWon1}}</h2>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="ui grid center aligned">
+
+        <div class="sixteen wide column">
+            <div class="fields">
+
+                <div class="two wide field">
+                  <h3>{{tennisOptions.player2}}</h2>
+                </div>
+
+                <div class="two wide field">
+                  <h2>{{tennisScore.ace2}}</h2>
+                </div>
+                
+                <div class="two wide field">
+                  <h2>{{tennisScore.singleFault2}}</h2>
+                </div>
+                
+                <div class="two wide field">
+                  <h2>{{tennisScore.doubleFault2}}</h2>
+                </div>
+                
+                <div class="two wide field">
+                  <h2>{{tennisScore.pointsServed2}}</h2>
+                </div>
+                
+                <div class="two wide field">
+                  <h2>{{tennisScore.pointsWon2}}</h2>
+                </div>
+                
+                <div class="two wide field">
+                  <h2>{{tennisScore.firstServeWon2}}</h2>
+                </div>
+                
+                <div class="two wide field">
+                  <h2>{{tennisScore.secondServeWon2}}</h2>
+                </div>
+                
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

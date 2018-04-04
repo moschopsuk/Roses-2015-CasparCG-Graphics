@@ -74,3 +74,7 @@ Yet to get working
  #### Scoring
  Badminton is scored as 'first to 21 if you also have a two point lead'. The person who scores the 30th point wins, if it gets that far. It's best of 3 games.
  To use the graphics, it is recommended to HIDE the score when you change the Game counter and reset the POINTS counter. This is just to hide the jumpiness!
+
+ ## Tennis
+ #### Scoring
+ Scoring is incredibly simple for tennis - just fill out the player names, select who is serving first, then just incremement the scores using the plus signs. The graphics server will (hopefully) figure out all complicated scoring rules, including tiebreaks.
