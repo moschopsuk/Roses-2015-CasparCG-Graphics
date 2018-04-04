@@ -209,6 +209,10 @@ h1, h2, h3, h4 {
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
+.bug h1:empty {
+    display: none;
+}
+
 .black {
     background-color: #1f1a34 !important;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
@@ -325,11 +329,20 @@ h1, h2, h3, h4 {
 	background-color: #eee !important;
 }
 
+.footballtop h1:empty {
+    display: none;
+}
+
 .footballbottom h1 {
 	color: #fff;
 	border-top: 3px solid white;
 	background-color: #1f1a34 !important;
 }
+
+.footballbottom h1:empty {
+    display: none;
+}
+
 
 .football .clock, .football .score.lanc, .football .score.york {
   padding: 3px;
