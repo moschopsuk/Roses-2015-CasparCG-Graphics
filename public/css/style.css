@@ -25,3 +25,16 @@ html, body {
 .ui.form .field {
     margin-bottom: 0px;
 }
+
+
+
+/**************************************************/
+/*              [Fix Semantic]                    */
+/**************************************************/
+
+@media only screen and (min-width: 1920px) {
+  .ui.page.grid {
+    padding-left: 0% !important;
+    padding-right: 0% !important;
+  }
+}

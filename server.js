@@ -16,7 +16,6 @@ var dart = {match: "Darts", player1: "Lancaster", player2: "York", set1: 0, set2
 var swimming = {order: ''};
 var grid = {headingcolor:"#BC204B", leftcolor: "#1f1a34", rightcolor:"#1f1a34"};
 var archery = {};
-var badminton = {match: "Badminton", player1: "Lancaster", player2: "York", game1: 0, game2:0, point1: 0, point2: 0 };
 var tennisOptions = {player1: "Lancaster", player2: "York", matchName: "", maxSets: 5, showScore: false, showSets: false}
 var tennisScore   = [{sets1: [], sets2: [],
                       set1: 0, set2: 0,
@@ -31,6 +30,7 @@ var tennisScore   = [{sets1: [], sets2: [],
                       singleFault1: 0, singleFault2: 0,
                       doubleFault1: 0, doubleFault2: 0,
                       pointsPlayed: 0, server: 1, tiebreak: false, gamePoint: "", firstFault: false}];
+var badminton = {match: "Badminton", subtitle: "Best of 3 Games Wins Match", player1: "Lancaster", player2: "York", game1: 0, game2:0, point1: 0, point2: 0 };
 
 //Clock Functions
 var stopwatch = new Stopwatch();
