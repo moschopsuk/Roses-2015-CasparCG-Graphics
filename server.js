@@ -254,8 +254,10 @@ io.on('connection', function(socket) {
     });
     
     socket.on("tennisScore", function(msg) {
-        tennisScore.push(msg);
-        io.sockets.emit("tennisScore", msg);
+		if (!_.isEqual(msg,tennisScore.slice(-1)[0])) {
+            tennisScore.push(msg);
+		    io.sockets.emit("tennisScore", msg);
+		}
     });
 
     socket.on("tennis:get", function(msg) {
