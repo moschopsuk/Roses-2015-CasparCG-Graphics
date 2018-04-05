@@ -852,6 +852,11 @@ app.controller('tennisCGController', ['$scope', 'socket',
         
         $scope.$watch('tennisOptions', function() {
             if ($scope.tennisOptions) {
+				if (($scope.tennisOptions.matchName).includes("Mixed")) {
+					$scope.tennisOptions.player1 = "Lancaster";
+					$scope.tennisOptions.player2 = "York";
+				}
+				
                 socket.emit("tennisOptions", $scope.tennisOptions);
             } else {
                 getTennisData();
@@ -986,17 +991,18 @@ app.controller('tennisCGController', ['$scope', 'socket',
         function winSet(player) {
             // given the scoring player, get their opponent
             var opponent = (player == 1 ? 2 : 1);
+			
+			$scope.tennisScore['set' + player] ++;
+            resetGames();
             
-            if ($scope.tennisScore['set' + player] == ($scope.tennisOptions.maxSets - 1)/2) {
+            if ($scope.tennisScore['set' + player] > ($scope.tennisOptions.maxSets - 1)/2) {
                 // player already won (max - 1) sets, so wins match
-                $scope.tennisScore.show = false;
+				$scope.tennisOptions.disableInput = true;
             } else {
                 // player can't win match yet, so add a set and reset games
-                $scope.tennisScore['set' + player] ++;
-                
-                resetGames();
                 $scope.toggleServer();
             }
+			
         }
         
         function resetPoints() {
@@ -1094,6 +1100,7 @@ app.controller('tennisCGController', ['$scope', 'socket',
         
         $scope.undoPoint = function() {
             socket.emit("tennis:undo");
+			$scope.tennisOptions.disableInput = false;
         }
         
         function getTennisData() {

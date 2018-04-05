@@ -16,7 +16,7 @@ var dart = {match: "Darts", player1: "Lancaster", player2: "York", set1: 0, set2
 var swimming = {order: ''};
 var grid = {headingcolor:"#BC204B", leftcolor: "#1f1a34", rightcolor:"#1f1a34"};
 var archery = {};
-var tennisOptions = {player1: "Lancaster", player2: "York", matchName: "", maxSets: 5, showScore: false, showSets: false}
+var tennisOptions = {player1: "Lancaster", player2: "York", matchName: "", maxSets: 5, disableInput: false, showScore: false, showSets: false}
 var tennisScore   = [{sets1: [], sets2: [],
                       set1: 0, set2: 0,
                       game1: 0, game2: 0,
@@ -273,7 +273,7 @@ io.on('connection', function(socket) {
     });
     
     socket.on("tennis:reset", function(msg) {
-        tennisOptions = {player1: "Lancaster", player2: "York", matchName: "", maxSets: 5, showScore: false, showSets: false}
+        tennisOptions = {player1: "Lancaster", player2: "York", matchName: "", maxSets: 5, disableInput: false, showScore: false, showSets: false}
         tennisScore   = [{sets1: [], sets2: [],
                           set1: 0, set2: 0,
                           game1: 0, game2: 0,
