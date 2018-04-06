@@ -16,8 +16,8 @@ var dart = {match: "Darts", player1: "Lancaster", player2: "York", set1: 0, set2
 var swimming = {order: ''};
 var grid = {headingcolor:"#BC204B", leftcolor: "#1f1a34", rightcolor:"#1f1a34"};
 var archery = {};
-var tennisOptions = {player1: "Lancaster", player2: "York", matchName: "", maxSets: 5, disableInput: false, showScore: false, showSets: false}
-var tennisScore   = [{sets1: [], sets2: [],
+var tennisOptions = {player1: "Lancaster", player2: "York", matchName: "", maxSets: 5, disableInput: false, showScore: false, showSets: false, showStats: false}
+var tennisScore   = [{sets1: [0], sets2: [0],
                       set1: 0, set2: 0,
                       game1: 0, game2: 0,
                       point1: 0, point2: 0,
@@ -29,6 +29,10 @@ var tennisScore   = [{sets1: [], sets2: [],
                       ace1: 0, ace2: 0,
                       singleFault1: 0, singleFault2: 0,
                       doubleFault1: 0, doubleFault2: 0,
+					  breakPoint1: 0, breakPoint2: 0,
+					  breaksWon1: 0, breaksWon2: 0,
+					  serviceGame1: 0, serviceGame2: 0,
+					  servicesWon1: 0, servicesWon2: 0,
                       pointsPlayed: 0, server: 1, tiebreak: false, gamePoint: "", firstFault: false}];
 var badminton = {match: "Badminton", subtitle: "Best of 3 Games Wins Match", player1: "Lancaster", player2: "York", game1: 0, game2:0, point1: 0, point2: 0 };
 
@@ -273,8 +277,8 @@ io.on('connection', function(socket) {
     });
     
     socket.on("tennis:reset", function(msg) {
-        tennisOptions = {player1: "Lancaster", player2: "York", matchName: "", maxSets: 5, disableInput: false, showScore: false, showSets: false}
-        tennisScore   = [{sets1: [], sets2: [],
+        tennisOptions = {player1: "Lancaster", player2: "York", matchName: "", maxSets: 5, disableInput: false, showScore: false, showSets: false, showStats: false}
+        tennisScore   = [{sets1: [0], sets2: [0],
                           set1: 0, set2: 0,
                           game1: 0, game2: 0,
                           point1: 0, point2: 0,
@@ -286,6 +290,10 @@ io.on('connection', function(socket) {
                           ace1: 0, ace2: 0,
                           singleFault1: 0, singleFault2: 0,
                           doubleFault1: 0, doubleFault2: 0,
+						  breakPoint1: 0, breakPoint2: 0,
+					      breaksWon1: 0, breaksWon2: 0,
+						  serviceGame1: 0, serviceGame2: 0,
+					      servicesWon1: 0, servicesWon2: 0,
                           pointsPlayed: 0, server: 1, tiebreak: false, gamePoint: "", firstFault: false}];
         
         io.sockets.emit("tennisOptions", tennisOptions);
