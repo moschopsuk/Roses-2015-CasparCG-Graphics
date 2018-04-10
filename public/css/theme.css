@@ -304,7 +304,7 @@ h1, h2, h3, h4 {
 .progress-bar {
 	width: 60px;
 	height: 410px;
-	bottom: 0px;
+	bottom: 50px;
 	position: absolute;
 	border-top: 3px black solid;
 	font-weight: bold;
@@ -312,7 +312,7 @@ h1, h2, h3, h4 {
 
 .lanc-progress, .york-progress {
 	position: absolute; 
-	bottom: 50px;
+	bottom: 0px;
 	width: 29px;
 	text-align: center;
 	background-position: bottom; 
