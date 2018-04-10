@@ -235,14 +235,15 @@
 
         <div ng-controller="gridCtrl">
           <div class="center-page scale-fade" ng-show="show">
-            <div class="grid center" style="margin-top: 20px; position: absolute;" >
+            <div class="grid {{grid.position}}" >
+
               <div class="gradient-overlay">
                 <h1 style="background-color: {{grid.headingcolor}} !important;">{{ grid.header }}</h1>
               </div>
 
               <div class="row animate-repeat" ng-repeat="row in grid.rows">
-                <div style="background-color: {{grid.leftcolor}} !important;" class="gridleft float-left">{{ row.left }}</div>
-                <div style="background-color: {{grid.rightcolor}} !important;" class="gridright float-right">{{ row.right }}</div>
+                <div style="background-color: {{grid.leftcolor}} !important;" class="gridleft {{grid.split}}gridleft">{{ row.left }}</div>
+                <div style="background-color: {{grid.rightcolor}} !important;" class="gridright {{grid.split}}gridright">{{ row.right }}</div>
               </div>
             </div>
           </div>
