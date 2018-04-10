@@ -12,10 +12,10 @@
         <input id="SubHeading" placeholder="Sub Heading" type="text" ng-trim="true" ng-model="lowerThird.subHeading">
       </div>
     </div>
-
+	<br>
     <div class="right floated right aligned six wide column">
       <div class="ui blue button" ng-click="add(lowerThird)" ng-disabled="lowerThirdsForm.$invalid" >Add</div>
-      <div class="ui red button" ng-click="hide()">Hide</div>
+      <div class="ui red button" ng-click="hideall()">Hide All</div>
     </div>
   </form>
 </div>
@@ -45,6 +45,19 @@
         <div class="ui positive button" ng-click="show('left', third)" >Left</div>
         <div class="or"></div>
         <div class="ui positive button" ng-click="show('right', third)" >Right</div>
+        <div class="or"></div>
+        <div class="ui positive button" ng-click="show('full', third)" >Full Width</div>
+      </div>
+      <div class="ui icon red small button">
+        <i class="delete icon" ng-click='remove($index)'></i>
+      </div>
+
+      <div class="ui small buttons">
+        <div class="ui negative button" ng-click="hideleft()" >Left</div>
+        <div class="or"></div>
+        <div class="ui negative button" ng-click="hideright()" >Right</div>
+        <div class="or"></div>
+        <div class="ui negative button" ng-click="hidefull()" >Full Width</div>
       </div>
 
       <div class="ui icon red small button">

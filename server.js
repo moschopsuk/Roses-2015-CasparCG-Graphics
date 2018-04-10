@@ -6,13 +6,31 @@ var app = express();
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
 
-var bug = {};
+var bug = {livetext: "Live", locationtext: ''};
 var boxing = {lancScore: 0, yorkScore: 0, currRound: ''};
 var score = {};
-var football = {lancScore: 0, yorkScore: 0};
-var dart = {};
+var football = {homeTeam: "Lancaster", awayTeam: "York", lancScore: 0, yorkScore: 0};
+var rugby = {homeTeam: "Lancaster", awayTeam: "York", lancScore: 0, yorkScore: 0};
+var basketball = {homeTeam: "Lancaster", awayTeam: "York", lancScore: 0, yorkScore: 0};
+var dart = {match: "Darts", player1: "Lancaster", player2: "York", set1: 0, set2:0, leg1: 0, leg2: 0, score1:501, score2:501 };
 var swimming = {order: ''};
-var grid = {};
+var grid = {headingcolor:"#BC204B", leftcolor: "#1f1a34", rightcolor:"#1f1a34"};
+var archery = {};
+var tennisOptions = {player1: "Lancaster", player2: "York", matchName: "", maxSets: 5, showScore: false, showSets: false}
+var tennisScore   = [{sets1: [], sets2: [],
+                      set1: 0, set2: 0,
+                      game1: 0, game2: 0,
+                      point1: 0, point2: 0,
+                      pointName1: 0, pointName2: 0,
+                      pointsServed1: 0, pointsServed2: 0,
+                      pointsWon1: 0, pointsWon2:0,
+                      firstServeWon1: 0, firstServeWon2: 0,
+                      secondServeWon1: 0, secondServeWon2: 0,
+                      ace1: 0, ace2: 0,
+                      singleFault1: 0, singleFault2: 0,
+                      doubleFault1: 0, doubleFault2: 0,
+                      pointsPlayed: 0, server: 1, tiebreak: false, gamePoint: "", firstFault: false}];
+var badminton = {match: "Badminton", subtitle: "Best of 3 Games Wins Match", player1: "Lancaster", player2: "York", game1: 0, game2:0, point1: 0, point2: 0 };
 
 //Clock Functions
 var stopwatch = new Stopwatch();
@@ -81,9 +99,25 @@ io.on('connection', function(socket) {
 	socket.on("lowerthird:right", function(msg) {
 		io.sockets.emit("lowerthird:right", msg);
 	});
+	
+	socket.on("lowerthird:full", function(msg) {
+		io.sockets.emit("lowerthird:full", msg);
+	});
 
-	socket.on("lowerthird:hide", function() {
-		io.sockets.emit("lowerthird:hide");
+	socket.on("lowerthird:hidefull", function() {
+		io.sockets.emit("lowerthird:hidefull");
+	});
+	
+	socket.on("lowerthird:hideleft", function() {
+		io.sockets.emit("lowerthird:hideleft");
+	});
+	
+	socket.on("lowerthird:hideright", function() {
+		io.sockets.emit("lowerthird:hideright");
+	});
+
+	socket.on("lowerthird:hideall", function() {
+		io.sockets.emit("lowerthird:hideall");
 	});
 
 	/*
@@ -105,6 +139,12 @@ io.on('connection', function(socket) {
         score = msg;
 		io.sockets.emit("score", msg);
 	});
+	socket.on("lancScore", function(msg){
+		io.sockets.emit("lancScore", msg);
+	});
+	socket.on("yorkScore", function(msg){
+		io.sockets.emit("yorkScore", msg);
+	});
 
     socket.on("score:get", function(msg) {
 		io.sockets.emit("score", score);
@@ -122,6 +162,17 @@ io.on('connection', function(socket) {
 		io.sockets.emit("football", football);
 	});
 
+	/*
+	* 		Rugby
+	*/
+ 	socket.on("rugby", function(msg) {
+			 rugby = msg;
+	 io.sockets.emit("rugby", msg);
+ 	});
+
+	 socket.on("rugby:get", function(msg) {
+	 io.sockets.emit("rugby", rugby);
+	 });
 
 	/*
 	 * 		Darts
@@ -160,11 +211,90 @@ io.on('connection', function(socket) {
     socket.on("swimming:get", function(msg) {
         io.sockets.emit("swimming", swimming);
     });
+
+		/*
+ 	 * 		Basketball
+ 	 */
+ 	socket.on("basketball", function(msg) {
+      basketball = msg;
+ 		io.sockets.emit("basketball", msg);
+ 	});
+
+  socket.on("basketball:get", function(msg) {
+ 		io.sockets.emit("basketball", basketball);
+ 	});
+
+	socket.on("archery", function(msg) {
+        archery = msg;
+		io.sockets.emit("archery", msg);
+	});
+
+		socket.on("archery:get", function(msg) {
+				io.sockets.emit("archery", archery);
+		});
+
+		/*
+		* Badminton
+		*/
+		socket.on("badminton", function(msg) {
+	        badminton = msg;
+			io.sockets.emit("badminton", msg);
+		});
+
+    socket.on("badminton:get", function(msg) {
+        io.sockets.emit("badminton", badminton);
+    });
+
+    /*
+    * Tennis
+    */
+    socket.on("tennisOptions", function(msg) {
+        tennisOptions = msg;
+        io.sockets.emit("tennisOptions", msg);
+    });
+    
+    socket.on("tennisScore", function(msg) {
+        tennisScore.push(msg);
+        io.sockets.emit("tennisScore", msg);
+    });
+
+    socket.on("tennis:get", function(msg) {
+        io.sockets.emit("tennisOptions", tennisOptions);
+        io.sockets.emit("tennisScore", tennisScore.slice(-1)[0])
+    });
+    
+    socket.on("tennis:undo", function() {
+        if (tennisScore.length != 1) {
+            tennisScore.splice(-1,1);
+            io.sockets.emit("tennisScore", tennisScore.slice(-1)[0]);
+        }
+    });
+    
+    socket.on("tennis:reset", function(msg) {
+        tennisOptions = {player1: "Lancaster", player2: "York", matchName: "", maxSets: 5, showScore: false, showSets: false}
+        tennisScore   = [{sets1: [], sets2: [],
+                          set1: 0, set2: 0,
+                          game1: 0, game2: 0,
+                          point1: 0, point2: 0,
+                          pointName1: 0, pointName2: 0,
+                          pointsServed1: 0, pointsServed2: 0,
+                          pointsWon1: 0, pointsWon2:0,
+                          firstServeWon1: 0, firstServeWon2: 0,
+                          secondServeWon1: 0, secondServeWon2: 0,
+                          ace1: 0, ace2: 0,
+                          singleFault1: 0, singleFault2: 0,
+                          doubleFault1: 0, doubleFault2: 0,
+                          pointsPlayed: 0, server: 1, tiebreak: false, gamePoint: "", firstFault: false}];
+        
+        io.sockets.emit("tennisOptions", tennisOptions);
+        io.sockets.emit("tennisScore", tennisScore[0]);
+    });
+
 });
 
 //Serve the puplic dir
 app.use(express.static(__dirname + "/public"));
 
 server.listen(3000);
-console.log("Now listening on port 3000. Go to localhost:3000/admin to control")
+console.log("Now listening on port 3000. Go to http://127.0.0.1:3000/admin to control")
 console.log("run 'play 1-1 [html] http://127.0.0.1:3000' in CasparCG to start the graphics")

@@ -1,0 +1,102 @@
+<div class="ui form segment">
+    <h2>Basketball</h2>
+
+    <div class="ui grid center aligned">
+        <div class="eight wide column">
+            <div class="field">
+                <checkbox ng-model="basketball.show" size="large" type="toggle">Show Score Bar</checkbox>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui divider"></div>
+
+    <div class="ui grid">
+        <div class="three wide column center aligned">
+            <h2 class="ui header">{{clock}}</h2>
+        </div>
+
+        <div class="five wide column">
+            <div class="ui action input">
+                <input type="text" placeholder="mm:ss" ng-model="time" size="10">
+                <div class="ui button" ng-click="setClock(time)">Set</div>
+            </div>
+        </div>
+
+        <div class="seven wide column">
+            <div class="ui">
+                <div class="ui icon red button" ng-click="upClock()">
+                    <i class="up arrow icon"></i>
+                </div>
+
+                <div class="ui icon blue button" ng-click="pauseClock()">
+                    <i class="pause icon"></i>
+                </div>
+
+                <div class="ui icon green button" ng-click="downClock()">
+                    <i class="down arrow icon"></i>
+                </div>
+
+                <div class="ui button" ng-click="resetClock()">Reset</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui divider"></div>
+
+    <div class="ui grid center aligned">
+        <div class="eight wide column">
+            <h3>Lancaster</h3>
+            <h1>{{basketball.lancScore}}</h1>
+            <div class="ui icon buttons">
+                <button class="ui green button" ng-click="basketball.lancScore = basketball.lancScore + 3;">
+                    <i class="plus icon"></i>3
+                </button>
+                <button class="ui yellow button" ng-click="basketball.lancScore = basketball.lancScore + 2;">
+                    <i class="plus icon"></i>2
+                </button>
+                <button class="ui orange button" ng-click="basketball.lancScore = basketball.lancScore + 1;">
+                    <i class="plus icon"></i>1
+                </button>
+                <button class="ui red button" ng-click="basketball.lancScore = basketball.lancScore - 1;" ng-disabled="basketball.lancScore == 0">
+                    <i class="minus icon"></i>1
+                </button>
+            </div>
+ 		   <br>
+		   <br>
+		   <div class="ui icon buttons">
+			<button class="ui red button" ng-click="basketball.lancScore = 0">
+				<i class="ban icon"></i>Reset
+			</button>
+		   </div>
+        </div>
+
+        <div class="eight wide column">
+            <h3>York</h3>
+            <h1>{{basketball.yorkScore}}</h1>
+            <div class="ui icon buttons">
+                <button class="ui green button" ng-click="basketball.yorkScore = basketball.yorkScore + 3;">
+                    <i class="plus icon"></i>3
+                </button>
+                <button class="ui yellow button" ng-click="basketball.yorkScore = basketball.yorkScore + 2;">
+                    <i class="plus icon"></i>2
+                </button>
+                <button class="ui orange button" ng-click="basketball.yorkScore = basketball.yorkScore + 1;">
+                    <i class="plus icon"></i>1
+                </button>
+                <button class="ui red button" ng-click="basketball.yorkScore = basketball.yorkScore - 1;" ng-disabled="basketball.yorkScore == 0">
+                    <i class="minus icon"></i>1
+                </button>
+            </div>
+           <br>
+		   <br>
+		   <div class="ui icon buttons">
+			<button class="ui red button" ng-click="basketball.yorkScore = 0">
+				<i class="ban icon"></i>Reset
+			</button>
+		   </div>
+        </div>
+    </div>
+
+
+</div>
