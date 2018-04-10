@@ -125,29 +125,36 @@ app.controller('scoringCtrl', ['$scope', '$interval', '$http', 'socket',
             }
           };
 
-          $http.get('https://roseslive.co.uk/score.json', config)
-            .success(function(data) {
-              if(isNaN(data.york) || isNaN(data.lancs)){
-                console.log("Roses live is giving us nonsense");
-                return;
-              };
-              if(!$scope.manualScore){
-                $scope.yorkScore = data.york;
-                $scope.lancScore = data.lancs;
-              };
-                socket.emit('lancScore', data.lancs);
-                socket.emit('yorkScore', data.york);
-            }
-          );
-        };
+		$http.get('https://cors-anywhere.herokuapp.com/http://leedhammedia.com/score/score.json', config)
+			.success(function(data) {
+				if(isNaN(data.york) || isNaN(data.lancs)){
+					console.log("Roses live is giving us nonsense");
+					return;
+				};
+				if(!$scope.manualScore){
+					$scope.yorkScore = data.york;
+					$scope.lancScore = data.lancs;
+				};
+				
+				socket.emit('lancScore', data.lancs);
+				socket.emit('yorkScore', data.york);
+			});
+		};
 
         socket.on("score", function (state) {
             $scope.showScore = state.showScore;
             $scope.manualScore = state.manualScore;
+            $scope.showProgress = state.showProgress;
             if(state.manualScore){
               $scope.yorkScore = state.yorkScore;
               $scope.lancScore = state.lancScore;
             };
+            
+            var available = $scope.yorkScore + $scope.lancScore;
+			var toWin = 177.5;
+			
+			$scope.yorkProgress = (($scope.yorkScore / toWin)*100).toFixed(2);
+			$scope.lancProgress = (($scope.lancScore / toWin)*100).toFixed(2);
         });
 
         $scope.$watch('score', function() {
