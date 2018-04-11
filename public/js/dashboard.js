@@ -947,6 +947,11 @@ app.controller('tennisCGController', ['$scope', 'socket',
         // usual functions to recieve/send data to the server
         socket.on("tennisOptions", function (msg) {
             $scope.tennisOptions = msg;
+            $scope.menu.forEach(item => {
+                if (item.name === 'Tennis') {
+                    item.live = $scope.tennisOptions.showScore
+                }
+            })
         });
         
         socket.on("tennisScore", function (msg) {
