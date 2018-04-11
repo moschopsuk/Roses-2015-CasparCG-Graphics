@@ -111,12 +111,13 @@ app.controller('AppCtrl', ['$scope', '$location',
             icon: 'olive circle',
             live: false,
         });
-        
+
         $scope.menu.push({
             name: 'Netball',
             url: '/netball',
             type: 'link',
             icon: 'soccer',
+            live: false,
         });
     }
 ]);
@@ -479,11 +480,11 @@ app.controller('rosesCGController', ['$scope', 'socket',
         socket.on('lancScore', function(msg){
           $scope.rosesLancScore = msg
         });
-        
+
         socket.on('yorkScore', function(msg){
           $scope.rosesYorkScore = msg
         });
-        
+
         $scope.$watch('roses', function() {
             if ($scope.roses) {
                 socket.emit("score", $scope.roses);
@@ -1286,8 +1287,13 @@ app.controller('netballCGController', ['$scope', 'localStorageService', 'socket'
 
         socket.on("netball", function (msg) {
             $scope.netball = msg;
+            $scope.menu.forEach(item => {
+                if (item.name === 'Netball') {
+                    item.live = $scope.netball.show
+                }
+            })
         });
-        
+
         $scope.quarterChanged = function() {
             console.log("Quarter");
         };
