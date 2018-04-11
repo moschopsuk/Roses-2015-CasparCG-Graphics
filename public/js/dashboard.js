@@ -119,6 +119,15 @@ app.controller('AppCtrl', ['$scope', '$location',
             icon: 'soccer',
             live: false,
         });
+
+        $scope.menu.push({
+            name: 'Waterpolo',
+            url: '/waterpolo',
+            type: 'link',
+            icon: 'blue tint',
+            live: false,
+            play: true
+        });
     }
 ]);
 
@@ -185,6 +194,10 @@ app.config(['$routeProvider', 'localStorageServiceProvider',
             .when("/netball", {
               templateUrl: '/admin/templates/netball.tmpl.html',
               controller: 'netballCGController'
+            })
+            .when("/waterpolo", {
+              templateUrl: '/admin/templates/waterpolo.tmpl.html',
+              controller: 'waterpoloCGController'
             })
             .otherwise({redirectTo: '/general'});
     }
@@ -1316,4 +1329,95 @@ app.controller('netballCGController', ['$scope', 'localStorageService', 'socket'
             socket.emit("clock:get");
         }
     }
+]);
+
+app.controller('waterpoloCGController', ['$scope', 'localStorageService', 'socket',
+  function($scope, localStorageService, socket){
+    var storedLancs = localStorageService.get('lancs_waterpolo');
+    var storedYork = localStorageService.get('york_waterpolo');
+    var clockIcon = 'pause icon'
+
+    if(storedLancs === null) {
+        $scope.lancsPlayers = [];
+    } else {
+        $scope.lancsPlayers = storedLancs;
+    }
+
+    if(storedYork === null) {
+        $scope.yorksPlayers = [];
+    } else {
+        $scope.yorksPlayers = storedYork;
+    }
+
+    socket.on("clock:tick", function (msg) {
+        $scope.clock = msg.slice(0, msg.indexOf("."));
+    });
+
+    $scope.waterpoloClock = function() {
+      $scope.downClock()
+      $scope.pauseClock()
+    }
+
+    $scope.pauseClock = function() {
+        socket.emit("clock:pause");
+    };
+
+    $scope.resetClock = function() {
+        socket.emit("clock:reset");
+    };
+
+    $scope.setClock = function(val) {
+        socket.emit("clock:set", val);
+    };
+
+    $scope.downClock = function() {
+        socket.emit("clock:down");
+    };
+
+    $scope.addLancsPlayer = function() {
+        $scope.lancsPlayers.push($scope.lancs);
+        $scope.lancs = {};
+    };
+
+    $scope.addYorksPlayer = function() {
+        $scope.yorksPlayers.push($scope.york);
+        $scope.york = {};
+    };
+
+    $scope.delete = function(team, index) {
+        console.log('delete');
+        if(team === 'york') {
+            $scope.yorksPlayers.splice(index, 1);
+        } else if (team === 'lancs') {
+            $scope.lancsPlayers.splice(index, 1);
+        }
+    };
+
+    socket.on("waterpolo", function (msg) {
+        $scope.waterpolo = msg;
+        $scope.menu.forEach(item => {
+            if (item.name === 'Waterpolo') {
+                item.live = $scope.waterpolo.show
+            }
+        })
+    });
+
+    $scope.$watch('waterpolo', function() {
+        if ($scope.waterpolo) {
+            socket.emit("waterpolo", $scope.waterpolo);
+        } else {
+            getWaterpoloData();
+        }
+    }, true);
+
+    $scope.$on("$destroy", function() {
+        localStorageService.set('york_waterpolo', $scope.yorksPlayers);
+        localStorageService.set('lancs_waterpolo', $scope.lancsPlayers);
+    });
+
+    function getWaterpoloData() {
+        socket.emit("waterpolo:get");
+        socket.emit("clock:get");
+    }
+  }
 ]);
