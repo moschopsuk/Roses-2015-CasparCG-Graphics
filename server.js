@@ -32,6 +32,7 @@ var tennisScore   = [{sets1: [], sets2: [],
                       pointsPlayed: 0, server: 1, tiebreak: false, gamePoint: "", firstFault: false}];
 var badminton = {match: "Badminton", subtitle: "Best of 3 Games Wins Match", player1: "Lancaster", player2: "York", game1: 0, game2:0, point1: 0, point2: 0 };
 var netball = {homeTeam: "Lancaster", awayTeam: "York", lancScore: 0, yorkScore: 0};
+var waterpolo = {homeTeam: "Lancaster", awayTeam: "York", lancScore: 0, yorkScore: 0};
 
 //Clock Functions
 var stopwatch = new Stopwatch();
@@ -100,7 +101,7 @@ io.on('connection', function(socket) {
 	socket.on("lowerthird:right", function(msg) {
 		io.sockets.emit("lowerthird:right", msg);
 	});
-	
+
 	socket.on("lowerthird:full", function(msg) {
 		io.sockets.emit("lowerthird:full", msg);
 	});
@@ -108,11 +109,11 @@ io.on('connection', function(socket) {
 	socket.on("lowerthird:hidefull", function() {
 		io.sockets.emit("lowerthird:hidefull");
 	});
-	
+
 	socket.on("lowerthird:hideleft", function() {
 		io.sockets.emit("lowerthird:hideleft");
 	});
-	
+
 	socket.on("lowerthird:hideright", function() {
 		io.sockets.emit("lowerthird:hideright");
 	});
@@ -255,7 +256,7 @@ io.on('connection', function(socket) {
         tennisOptions = msg;
         io.sockets.emit("tennisOptions", msg);
     });
-    
+
     socket.on("tennisScore", function(msg) {
         tennisScore.push(msg);
         io.sockets.emit("tennisScore", msg);
@@ -265,14 +266,14 @@ io.on('connection', function(socket) {
         io.sockets.emit("tennisOptions", tennisOptions);
         io.sockets.emit("tennisScore", tennisScore.slice(-1)[0])
     });
-    
+
     socket.on("tennis:undo", function() {
         if (tennisScore.length != 1) {
             tennisScore.splice(-1,1);
             io.sockets.emit("tennisScore", tennisScore.slice(-1)[0]);
         }
     });
-    
+
     socket.on("tennis:reset", function(msg) {
         tennisOptions = {player1: "Lancaster", player2: "York", matchName: "", maxSets: 5, showScore: false, showSets: false}
         tennisScore   = [{sets1: [], sets2: [],
@@ -288,11 +289,11 @@ io.on('connection', function(socket) {
                           singleFault1: 0, singleFault2: 0,
                           doubleFault1: 0, doubleFault2: 0,
                           pointsPlayed: 0, server: 1, tiebreak: false, gamePoint: "", firstFault: false}];
-        
+
         io.sockets.emit("tennisOptions", tennisOptions);
         io.sockets.emit("tennisScore", tennisScore[0]);
     });
-    
+
     /*
 	 * 		Nettball
 	 */
@@ -304,6 +305,18 @@ io.on('connection', function(socket) {
     socket.on("netball:get", function(msg) {
 		io.sockets.emit("netball", netball);
 	});
+
+	/*
+ * 		Waterpolo
+ */
+socket.on("waterpolo", function(msg) {
+			netball = msg;
+	io.sockets.emit("waterpolo", msg);
+});
+
+	socket.on("waterpolo:get", function(msg) {
+	io.sockets.emit("waterpolo", netball);
+});
 
 });
 
