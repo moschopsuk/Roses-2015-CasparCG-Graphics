@@ -3,8 +3,6 @@ var app = angular.module('StarterApp', ['ngRoute', 'LocalStorageModule', 'angula
 app.controller('AppCtrl', ['$scope', '$location',
     function($scope, $location){
 
-      console.log($scope.dart);
-
         $scope.menu = [];
 
         $scope.isActive = function (viewLocation) {
@@ -271,7 +269,6 @@ app.controller('generalCGController', ['$scope', 'socket',
             $scope.bug = msg;
             $scope.menu.forEach(item => {
                 if (item.name === 'General') {
-                    console.log($scope.archery)
                     if ($scope.bug.showLive === true || $scope.bug.showLocation === true || $scope.general.showClock === true || $scope.general.showLogo === true) {
                         item.live = true
                     } else {
@@ -438,6 +435,11 @@ app.controller('boxingCGController', ['$scope', 'socket',
 
         socket.on("boxing", function (msg) {
             $scope.boxing = msg;
+            $scope.menu.forEach(item => {
+                if (item.name === 'Boxing') {
+                    item.live = $scope.boxing.showScore
+                }
+            })
         });
 
         $scope.$watch('boxing', function() {
