@@ -95,7 +95,7 @@ app.controller('AppCtrl', ['$scope', '$location',
             url: '/archery',
             type: 'link',
             icon: 'bullseye',
-            live: true,
+            live: false,
         });
 
         $scope.menu.push({
@@ -103,6 +103,7 @@ app.controller('AppCtrl', ['$scope', '$location',
             url: '/badminton',
             type: 'link',
             icon: 'green neuter',
+            live: false,
         });
         
         $scope.menu.push({
@@ -110,6 +111,7 @@ app.controller('AppCtrl', ['$scope', '$location',
             url: '/tennis',
             type: 'link',
             icon: 'olive circle',
+            live: false,
         });
     }
 ]);
@@ -182,6 +184,11 @@ app.controller('archeryCGController', ['$scope', 'socket',
   function($scope, socket) {
       socket.on("archery", function (msg) {
           $scope.archery = msg;
+          $scope.menu.forEach(item => {
+              if (item.name === 'Archery') {
+                  item.live = $scope.archery.show
+              }
+          })
       });
 
       $scope.$watch('archery', function() {
