@@ -380,11 +380,21 @@ app.controller('gridCGController', ['$scope', '$log', 'localStorageService', 'so
             socket.emit('grid', $scope.grid);
             $log.info("grid.show()");
             $log.info($scope.grid);
+            $scope.menu.forEach(item => {
+                if (item.name === 'Grid') {
+                    item.live = true
+                }
+            })
         };
 
         $scope.hide = function() {
             socket.emit('grid', 'hide');
             $log.info("grid.hide()");
+            $scope.menu.forEach(item => {
+                if (item.name === 'Grid') {
+                    item.live = false
+                }
+            })
         };
 
         $scope.$on("$destroy", function() {
