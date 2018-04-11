@@ -339,6 +339,14 @@ app.controller('lowerThirdsCGController', ['$scope', 'localStorageService', 'soc
             showLiveLowerThird($scope)
         };
 
+        $scope.edit = function(index) {
+            if (!$scope.queuedThirds[index].edit) {
+                $scope.queuedThirds[index].edit = true;
+            } else {
+                $scope.queuedThirds[index].edit = !$scope.queuedThirds[index].edit
+            }
+        }
+
         $scope.hideall = function() {
             socket.emit("lowerthird:hideall");
             hideLiveLowerThird($scope)

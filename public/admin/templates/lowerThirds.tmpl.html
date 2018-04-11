@@ -26,8 +26,10 @@
       <h2 class="left aligned ui header">
           <i class="list layout icon"></i>
           <div class="content">
-              {{third.heading}}
-              <div class="sub header">{{third.subHeading}}</div>
+              <div ng-if="!third.edit">{{third.heading}}</div>
+              <div ng-if="third.edit"><input type="text" ng-model="third.heading"></div>
+              <div ng-if="!third.edit" class="sub header">{{third.subHeading}}</div>
+              <div ng-if="third.edit"><input type="text" ng-model="third.subHeading"></div>
           </div>
         </h2>
     </div>
@@ -60,8 +62,8 @@
         <div class="ui negative button" ng-click="hidefull()" >Full Width</div>
       </div>
 
-      <div class="ui icon red small button">
-        <i class="delete icon" ng-click='remove($index)'></i>
+      <div class="ui icon blue small button">
+        <i class="edit icon" ng-click='edit($index)'></i>
       </div>
     </div>
   </div>
