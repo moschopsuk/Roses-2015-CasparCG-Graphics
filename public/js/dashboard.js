@@ -457,11 +457,15 @@ app.controller('boxingCGController', ['$scope', 'socket',
     }
 ]);
 
-
 app.controller('rosesCGController', ['$scope', 'socket',
     function($scope, socket){
         socket.on("score", function (msg) {
             $scope.roses = msg;
+            $scope.menu.forEach(item => {
+                if (item.name === 'Roses') {
+                    item.live = $scope.roses.showScore
+                }
+            })
         });
 
         socket.on('lancScore', function(msg){
