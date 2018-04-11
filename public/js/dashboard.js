@@ -292,6 +292,22 @@ app.controller('lowerThirdsCGController', ['$scope', 'localStorageService', 'soc
 
         var stored = localStorageService.get('lower_thirds');
 
+        const showLiveLT = $scope => {
+            $scope.menu.forEach(item => {
+                if (item.name === 'Lower Thirds') {
+                    item.live = true
+                }
+            })
+        }
+
+        const hideLiveLT = $scope => {
+            $scope.menu.forEach(item => {
+                if (item.name === 'Lower Thirds') {
+                    item.live = false
+                }
+            })
+        }
+
         if(stored === null) {
             $scope.queuedThirds = [];
         } else {
@@ -311,22 +327,27 @@ app.controller('lowerThirdsCGController', ['$scope', 'localStorageService', 'soc
 
         $scope.show = function(side, item) {
             socket.emit("lowerthird:" + side, item);
+            showLiveLT($scope)
         };
 
         $scope.hideall = function() {
             socket.emit("lowerthird:hideall");
+            hideLiveLT($scope)
         };
         
         $scope.hidefull = function() {
             socket.emit("lowerthird:hidefull");
+            hideLiveLT($scope)
         };
 
 		$scope.hideleft = function() {
             socket.emit("lowerthird:hideleft");
+            hideLiveLT($scope)
         };
 
 		$scope.hideright = function() {
             socket.emit("lowerthird:hideright");
+            hideLiveLT($scope)
         };
 
         $scope.$on("$destroy", function() {
