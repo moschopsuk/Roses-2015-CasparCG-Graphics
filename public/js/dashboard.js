@@ -334,17 +334,14 @@ app.controller('lowerThirdsCGController', ['$scope', 'localStorageService', 'soc
         
         $scope.hidefull = function() {
             socket.emit("lowerthird:hidefull");
-            hideLiveLT($scope)
         };
 
 		$scope.hideleft = function() {
             socket.emit("lowerthird:hideleft");
-            hideLiveLT($scope)
         };
 
 		$scope.hideright = function() {
             socket.emit("lowerthird:hideright");
-            hideLiveLT($scope)
         };
 
         $scope.$on("$destroy", function() {
