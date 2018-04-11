@@ -1228,7 +1228,7 @@ app.controller('tennisCGController', ['$scope', 'socket',
 app.controller('netballCGController', ['$scope', 'localStorageService', 'socket',
     function($scope, localStorageService, socket){
         var storedLancs = localStorageService.get('lancs_netball');
-        var storedYork = localStorageService.get('york_nettball');
+        var storedYork = localStorageService.get('york_netball');
 
         if(storedLancs === null) {
             $scope.lancsPlayers = [];
