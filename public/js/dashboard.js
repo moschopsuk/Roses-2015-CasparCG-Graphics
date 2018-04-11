@@ -673,6 +673,11 @@ app.controller('dartsCGController', ['$scope', 'socket',
     function($scope, socket) {
         socket.on("dart", function (msg) {
             $scope.dart = msg;
+            $scope.menu.forEach(item => {
+                if (item.name === 'Darts') {
+                    item.live = $scope.dart.show
+                }
+            })
         });
 
         $scope.$watch('dart', function() {
