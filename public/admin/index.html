@@ -29,7 +29,7 @@
           <a ng-repeat="section in menu" class="item" ng-href="#{{section.url}}" ng-class="{active:isActive(section.url)}" >
             {{ section.name }}
             <i ng-class="section.icon" class="icon" ></i>
-            {{ section.live }}
+            <div class="ui red horizontal label" ng-show="section.live">Live</div>
           </a>
         </div>
       </aside>

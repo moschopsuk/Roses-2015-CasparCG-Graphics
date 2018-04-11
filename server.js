@@ -6,7 +6,7 @@ var app = express();
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
 
-var bug = {livetext: "Live", locationtext: ''};
+var bug = {livetext: "Live", locationtext: '', showLive: false, showLocation: false};
 var boxing = {lancScore: 0, yorkScore: 0, currRound: ''};
 var score = {totalPoints: 354};
 var football = {homeTeam: "Lancaster", awayTeam: "York", lancScore: 0, yorkScore: 0};

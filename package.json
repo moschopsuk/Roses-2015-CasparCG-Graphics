@@ -1,8 +1,10 @@
 {
 	"name": "la1tv-roses-graphics",
 	"version": "1.0.0",
+	"license": "MIT",
+	"repository": "https://github.com/LA1TV/Roses-CasparCG-Graphics",
 	"scripts": {
-		"start":"nodemon server.js"
+		"start": "nodemon server.js"
 	},
 	"dependencies": {
 		"express": "^4.15.2",
