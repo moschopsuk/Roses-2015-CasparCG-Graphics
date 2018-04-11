@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <title>CG</title>
-        <link rel="stylesheet" href="http://meyerweb.com/eric/tools/css/reset/reset.css" />
-        <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/css/reset.css" />
+        <link href="/css/fonts/montserrat.css" rel="stylesheet" type="text/css">
         <link href="/css/theme.css" rel="stylesheet" type="text/css">
         <link href="/css/animation.css" rel="stylesheet" type="text/css">
     </head>
@@ -12,8 +12,14 @@
     <body>
         <div ng-controller="bugCtrl">
             <div class="wrapper slide-left">
-                 <div class="bug left top scale-fade" ng-show="state.showClock">
-                        <h1 class="black">{{clock | date: "HH:mm"}}</h1><h1 ng-show="state.showLive">Live</h1><h1 ng-show="state.bugText">{{bugText}}</h1>
+                 <div class="bug top scale-fade-in" ng-show="state.showClock">
+                        <h1 class="black">{{clock | date: "HH:mm"}}</h1>
+                 </div>
+                 <div class="bug top scale-fade-in" ng-show="state.showLive">
+                 <h1 ng-show="state.showLive">{{bug.livetext}}</h1>
+                 </div>
+                 <div class="bug top scale-fade-in" ng-show="state.showLocation">
+                 <h1 class="white" ng-show="state.showLocation">{{bug.locationtext}}</h1></div>
                 </div>
 
                 <div class="logo right top toggle" ng-show="state.showLogo">
@@ -23,6 +29,13 @@
         </div>
 
         <div ng-controller="lowerThirdsCtrl">
+        	<div class="lowerthird bottom fullwidth scale-fade" ng-show="showFull">
+                <div class="gradient-overlay">
+                    <h1>{{full.heading}}</h1>
+                </div>
+                <h2 ng-show="full.subHeading">{{full.subHeading}}</h2>
+            </div>
+        
             <div class="lowerthird left bottom slide-left" ng-show="showLeft">
                 <div class="gradient-overlay">
                     <h1>{{left.heading}}</h1>
@@ -41,7 +54,7 @@
         <div ng-controller="boxingCtrl">
             <div ng-show="boxing.showScore" class="boxing-score right bottom scale-fade">
 
-                <div class="bar">
+                <div class="bar" ng-show="boxing.showTime">
                     <div class="gradient-overlay"><span class="timer">{{clock}}</span></div>
                     <div class="moving"></div>
                 </div>
@@ -63,7 +76,7 @@
                     <div class="clearfix"></div>
                 </div>
 
-                <div class="bar red">
+                <div class="bar">
                     <div class="gradient-overlay"><span>{{boxing.currRound}} Round</span></div>
                     <div class="red-moving"></div>
                 </div>
@@ -71,21 +84,23 @@
         </div>
 
         <div ng-controller="scoringCtrl">
-            <div ng-show="showScore" class="center bottom total-score scale-fade" >
-                <h1>Overall Score</h1>
+        		<img ng-src="images/YorkSport250.png" ng-show="showScore" class="bottom leftLogo scale-fade"/>
+				<img ng-src="images/LancasterSport250.png" ng-show="showScore" class="bottom rightLogo scale-fade"/>
+            	<div ng-show="showScore" class="center bottom total-score scale-fade" >
+            		<h1>Overall Score</h1>
 
-                <div class="float-left lanc">
-                LANCS
-                <p>{{lancScore}}</p>
-                </div>
+					<div class="float-left york">
+					YORK
+					<p>{{yorkScore}}</p>
+					</div>
 
-                <div class="float-right york">
-                YORK
-                <p>{{yorkScore}}</p>
-                </div>
+					<div class="float-right lanc">
+					LANCS
+					<p>{{lancScore}}</p>
+					</div>
 
-                <div class="clearfix"></div>
-            </div>
+                	<div class="clearfix"></div>
+            	</div>
         </div>
 
         <div ng-controller="footballCtrl" class="football left top scale-fade" ng-show="football.show">
@@ -94,8 +109,65 @@
                 <div class="score lanc">LANCS {{football.lancScore}}</div>
                 <div class="score york">{{football.yorkScore}} YORK</div>
             </div>
+            	<div ng-show="football.showextratime" class="extratime scale-fade">ET</div>
         </div>
 
+        <div ng-controller="footballCtrl" ng-show="football.showpost">
+        		<img ng-src="images/YorkSport250.png" ng-show="football.showpost" class="bottom leftLogo scale-fade"/>
+				<img ng-src="images/LancasterSport250.png" ng-show="football.showpost" class="bottom rightLogo scale-fade"/>
+            	<div ng-show="football.showpost" class="center bottom football-score scale-fade" >
+            		<div class="footballtop">
+            			<h1 ng-show="football.showtop">{{football.matchname}}</h1>
+					</div>
+					<div class="float-left york">
+						YORK
+						<p>{{football.yorkScore}}</p>
+					</div>
+
+					<div class="float-right lanc">
+						LANCS
+						<p>{{football.lancScore}}</p>
+					</div>
+	              	<div class="clearfix"></div>
+	              	<div class="footballbottom">
+	              		<h1 ng-show="football.showbottom">{{football.starttime}}</h1>
+	              	</div>	
+            	</div>
+        </div>
+        
+        <div ng-controller="footballCtrl" ng-show="football.showpre">
+        		<img ng-src="images/YorkSport250.png" ng-show="football.showpre" class="bottom leftLogo scale-fade"/>
+				<img ng-src="images/LancasterSport250.png" ng-show="football.showpre" class="bottom rightLogo scale-fade"/>
+            	<div ng-show="football.showpre" class="center bottom football-score scale-fade" >
+            		<div class="footballtop">
+            			<h1 class="upper" ng-show="football.showtop">{{football.matchname}}</h1>
+            		</div>
+					<div class="float-left york">
+					YORK
+					</div>
+
+					<div class="float-right lanc">
+					LANCS
+					</div>
+					<div class="clearfix"></div>
+					<div class="footballbottom">
+						<h1 ng-show="football.showbottom">{{football.starttime}}</h1>
+					</div>
+                	<div class="clearfix"></div>
+            	</div>
+        </div>
+                
+        
+        <div ng-controller="rugbyCtrl" class="football left top scale-fade" ng-show="rugby.show">
+            <div class="row">
+                <div class="clock">{{clock}}</div>
+                <div class="score lanc">LANCS {{rugby.lancScore}}</div>
+                <div class="score york">{{rugby.yorkScore}} YORK</div>
+            </div>
+            	<div ng-show="rugby.showextratime" class="extratime scale-fade">ET</div>
+        </div>
+
+        
         <div ng-controller="basketballCtrl" class="basketball left top scale-fade" ng-show="basketball.show">
             <div class="row">
                 <div class="clock">{{clock}}</div>
@@ -133,7 +205,7 @@
 
         <div ng-controller="archeryCtrl" class="left bottom darts scale-fade" ng-show="archery.show" style="width: 50%">
             <div class="row header">
-                <div class="name" style="width: 40%">&nbsp;</div>
+                <div class="name" style="width: 40%">Archery</div>
                 <div class="leg" style="width: 45%">HITS</div>
                 <div class="leg" style="width: 15%">TOTAL</div>
             </div>
@@ -163,14 +235,14 @@
 
         <div ng-controller="gridCtrl">
           <div class="center-page scale-fade" ng-show="show">
-            <div class="grid center center">
+            <div class="grid center" style="margin-top: 20px; position: absolute;" >
               <div class="gradient-overlay">
-                <h1>{{ grid.header }}</h1>
+                <h1 style="background-color: {{grid.headingcolor}} !important;">{{ grid.header }}</h1>
               </div>
 
               <div class="row animate-repeat" ng-repeat="row in grid.rows">
-                <div class="name float-left">{{ row.left }}</div>
-                <div class="time float-right">{{ row.right }}</div>
+                <div style="background-color: {{grid.leftcolor}} !important;" class="gridleft float-left">{{ row.left }}</div>
+                <div style="background-color: {{grid.rightcolor}} !important;" class="gridright float-right">{{ row.right }}</div>
               </div>
             </div>
           </div>
@@ -218,6 +290,83 @@
                     <div class="row {{swimming.lane6team}}" ng-show="swimming.lane6name"><span class="lane">6</span>{{swimming.lane6name}}</div>
                     <div class="row {{swimming.lane7team}}" ng-show="swimming.lane7name"><span class="lane">7</span>{{swimming.lane7name}}</div>
                     <div class="row {{swimming.lane8team}}" ng-show="swimming.lane8name"><span class="lane">8</span>{{swimming.lane8name}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-controller="badmintonCtrl" class="right bottom badminton scale-fade" ng-show="badminton.show">
+            <div class="row header">
+                <div class="name">{{badminton.match}}&nbsp;</div>
+                <div class="game">GAME</div>
+                <div class="match">POINTS</div>
+            </div>
+
+            <div class="row">
+                <div class="name lanc">{{badminton.player1}}</div>
+                <div class="games">{{badminton.game1}}</div>
+                <div class="matches">{{badminton.point1}}</div>
+            </div>
+
+            <div class="row">
+                <div class="name york">{{badminton.player2}}</div>
+                <div class="games">{{badminton.game2}}</div>
+                <div class="matches">{{badminton.point2}}</div>
+            </div>
+
+            <div class="row">
+                 <div class="footer">{{badminton.subtitle}}</div>
+            </div>
+        </div>
+        
+        <div ng-controller="tennisCtrl">
+            <div class="left top tennis tennisScore scale-fade" ng-show="tennisOptions.showScore">
+                <div class="row">
+                    <div class="name lanc">{{tennisOptions.player1}}<div class="server" ng-show="tennisScore.server == 1"></div></div>
+                    <div class="sets">{{tennisScore.set1}}</div>
+                    <div class="games">{{tennisScore.game1}}</div>
+                    <div class="points">{{tennisScore.pointName1}}</div>
+                </div>
+
+                <div class="row">
+                    <div class="name york">{{tennisOptions.player2}}<div class="server" ng-show="tennisScore.server == 2"></div></div>
+                    <div class="sets">{{tennisScore.set2}}</div>
+                    <div class="games">{{tennisScore.game2}}</div>
+                    <div class="points">{{tennisScore.pointName2}}</div>
+                </div>
+                
+                <div class="row" ng-show="tennisScore.gamePoint">
+                    <div class="info">{{tennisScore.gamePoint}}</div>
+                </div>
+            </div>
+            
+            <div class="center bottom tennis tennisSets scale-fade" ng-show="tennisOptions.showSets">
+                <div class="row">
+                    <div class="header">{{tennisOptions.matchName}}</div>
+                </div>
+                <div class="row">
+                    <div class="name lanc">{{tennisOptions.player1}}</div>
+                    <div style="position: absolute; right: 0px;">
+                        <div class="sets">{{tennisScore.sets1[0]}}</div>
+                        <div class="sets">{{tennisScore.sets1[1]}}</div>
+                        <div class="sets">{{tennisScore.sets1[2]}}</div>
+                        <div class="sets" ng-show="tennisOptions.maxSets == 5">{{tennisScore.sets1[3]}}</div>
+                        <div class="sets" ng-show="tennisOptions.maxSets == 5">{{tennisScore.sets1[4]}}</div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="name york">{{tennisOptions.player2}}</div>
+                    <div style="position: absolute; right: 0px;">
+                        <div class="sets">{{tennisScore.sets2[0]}}</div>
+                        <div class="sets">{{tennisScore.sets2[1]}}</div>
+                        <div class="sets">{{tennisScore.sets2[2]}}</div>
+                        <div class="sets" ng-show="tennisOptions.maxSets == 5">{{tennisScore.sets2[3]}}</div>
+                        <div class="sets" ng-show="tennisOptions.maxSets == 5">{{tennisScore.sets2[4]}}</div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="info">Best of {{tennisOptions.maxSets}} sets</div>
                 </div>
             </div>
         </div>

@@ -4,8 +4,21 @@ app.controller('lowerThirdsCtrl', ['$scope', 'socket',
     function($scope, socket){
         $scope.showLeft = false;
 
-        socket.on("lowerthird:hide", function (msg) {
+        socket.on("lowerthird:hideall", function (msg) {
             $scope.showLeft = false;
+            $scope.showRight = false;
+            $scope.showFull = false;
+        });
+        
+        socket.on("lowerthird:hidefull", function (msg) {
+            $scope.showFull = false;
+        });
+        
+        socket.on("lowerthird:hideleft", function (msg) {
+            $scope.showLeft = false;
+        });
+        
+        socket.on("lowerthird:hideright", function (msg) {
             $scope.showRight = false;
         });
 
@@ -23,6 +36,14 @@ app.controller('lowerThirdsCtrl', ['$scope', 'socket',
             }
             $scope.right = msg;
             $scope.showRight = true;
+        });
+        
+        socket.on("lowerthird:full", function (msg) {
+            if($scope.showFull) {
+                $scope.showFull = false;
+            }
+            $scope.full = msg;
+            $scope.showFull = true;
         });
     }
 ]);
@@ -66,17 +87,21 @@ app.controller('bugCtrl', ['$scope', '$timeout', 'socket',
         socket.on("bug", function (state) {
             $scope.state = state;
         });
-
+        
         $scope.$watch('bug', function() {
-            if (!$scope.state) {
+            if (!$scope.bug) {
                 getBugData();
             }
         }, true);
-
+		
+		socket.on("bug", function (msg) {
+            $scope.bug = msg;
+        });
+        
         function getBugData() {
             socket.emit("bug:get");
-        }
-
+        };
+        
         var tick = function () {
             $scope.clock = Date.now(); // get the current time
             $timeout(tick, $scope.tickInterval); // reset the timer
@@ -102,14 +127,27 @@ app.controller('scoringCtrl', ['$scope', '$interval', '$http', 'socket',
 
           $http.get('https://roseslive.co.uk/score.json', config)
             .success(function(data) {
+              if(isNaN(data.york) || isNaN(data.lancs)){
+                console.log("Roses live is giving us nonsense");
+                return;
+              };
+              if(!$scope.manualScore){
                 $scope.yorkScore = data.york;
                 $scope.lancScore = data.lancs;
+              };
+                socket.emit('lancScore', data.lancs);
+                socket.emit('yorkScore', data.york);
             }
           );
         };
 
         socket.on("score", function (state) {
             $scope.showScore = state.showScore;
+            $scope.manualScore = state.manualScore;
+            if(state.manualScore){
+              $scope.yorkScore = state.yorkScore;
+              $scope.lancScore = state.lancScore;
+            };
         });
 
         $scope.$watch('score', function() {
@@ -153,6 +191,30 @@ app.controller('footballCtrl', ['$scope', 'socket',
     }
 ]);
 
+app.controller('rugbyCtrl', ['$scope', 'socket',
+    function($scope, socket){
+
+        socket.on("rugby", function (msg) {
+            $scope.rugby = msg;
+        });
+
+        socket.on("clock:tick", function (msg) {
+            $scope.clock = msg.slice(0, msg.indexOf("."));
+        });
+
+        $scope.$watch('rugby', function() {
+            if (!$scope.rugby) {
+                getRugbyData();
+            }
+        }, true);
+
+        function getRugbyData() {
+            socket.emit("rugby:get");
+            socket.emit("clock:get");
+        }
+    }
+]);
+
 app.controller('dartsCtrl', ['$scope', 'socket',
     function($scope, socket){
         socket.on("dart", function (msg) {
@@ -176,7 +238,7 @@ app.controller('gridCtrl', ['$scope', 'socket',
         socket.on("grid", function (payload) {
             if (payload === "hide") {
                 //We first remove every element with a delay
-                $scope.grid = {};
+                setTimeout(function(){$scope.grid = {};}, 1000);
                 $scope.show = false;
             } else {
                 $scope.show = true;
@@ -235,6 +297,52 @@ app.controller('basketballCtrl', ['$scope', 'socket',
         function getBasketballData() {
             socket.emit("basketball:get");
             socket.emit("clock:get");
+        }
+    }
+]);
+
+app.controller('badmintonCtrl', ['$scope', 'socket',
+    function($scope, socket){
+        socket.on("badminton", function (msg) {
+            $scope.badminton = msg;
+        });
+
+        $scope.$watch('badminton', function() {
+            if (!$scope.badminton) {
+                getBadmintonData();
+            }
+        }, true);
+
+        function getBadmintonData() {
+            socket.emit("badminton:get");
+        }
+    }
+]);
+
+app.controller('tennisCtrl', ['$scope', 'socket',
+    function($scope, socket){
+        socket.on("tennisOptions", function (msg) {
+            $scope.tennisOptions = msg;
+        });
+        
+        socket.on("tennisScore", function (msg) {
+            $scope.tennisScore = msg;
+        });
+
+        $scope.$watch('tennisOptions', function() {
+            if (!$scope.tennisScore) {
+                getTennisData();
+            }
+        }, true);
+        
+        $scope.$watch('tennisScore', function() {
+            if (!$scope.tennisScore) {
+                getTennisData();
+            }
+        }, true);
+
+        function getTennisData() {
+            socket.emit("tennis:get");
         }
     }
 ]);

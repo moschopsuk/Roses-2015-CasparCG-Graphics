@@ -1,9 +1,23 @@
 <div class="ui form segment">
   <h2>Grid</h2>
 
+<div class="ui grid center aligned">
+    	<div class="five wide column">
+    		Heading Color
+    		<div class="field"><input id="headingcolorpicker" ng-model="grid.headingcolor" placeholder="Heading Color #"></div>
+    	</div>
+        <div class="five wide column">
+            Left Col Color
+    		<div class="field"><input id="leftcolorpicker" ng-model="grid.leftcolor" placeholder="Left Col Color #"></div>
+        </div>
+        <div class="five wide column">
+            Right Col Color
+    		<div class="field"><input id="rightcolorpicker" ng-model="grid.rightcolor" placeholder="Right Col Color #"></div>
+        </div>
+    </div>
+
+
   <div class="ui grid center aligned">
-
-
 
     <div class="sixteen wide column">
       <div class="ui divider"></div>
@@ -11,8 +25,9 @@
         <div class="five wide field">
             <div class="ui form">
               <h2>Grid Title</h2>
-              <input name="heading" placeholder="Heading" type="text" ng-model="grid.header" />
+              <input name="heading" placeholder="Heading" type="text" ng-model="grid.header" />             
             </div>
+            <br />
             <button class="ui green button" ng-click="show()" ng-class="grid.rows <= 1 ? 'disabled' : '' ">Show</button>
             <div class="ui red button" ng-click="hide()">Hide</div>
         </div>
@@ -49,3 +64,31 @@
     </div>
   </div>
 </div>
+
+
+<script>
+    $("#headingcolorpicker").spectrum({
+        color: "#cd1d18",
+        preferredFormat: "hex",
+        flat: true,
+    	showInput: true,
+    	allowEmpty:true,
+    	showButtons: false
+    });
+    $("#leftcolorpicker").spectrum({
+        color: "#000000",
+        preferredFormat: "hex",
+        flat: true,
+    	showInput: true,
+    	allowEmpty:true,
+    	showButtons: false
+    });
+    $("#rightcolorpicker").spectrum({
+        color: "#cd1d18",
+        preferredFormat: "hex",
+        flat: true,
+    	showInput: true,
+    	allowEmpty:true,
+    	showButtons: false
+    });
+    </script>
