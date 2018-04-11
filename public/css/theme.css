@@ -1,3 +1,5 @@
+@import '/css/modules/waterpolo.css';
+
 * {
   -webkit-box-sizing: border-box;
   box-sizing:border-box;                                   /* This sets all elements to be the actual set dimensions, disregarding padding and borders */
@@ -123,7 +125,7 @@ h1, h2, h3, h4 {
 .lowerthird.bottom.fullwidth {
     position: absolute;
     left: 50px;
-} 
+}
 
 /**************************************************/
 /*              [Boxing Score]                    */
@@ -218,7 +220,7 @@ h1, h2, h3, h4 {
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
-.white {	
+.white {
 	background-color: #eee !important;
 	color: #000 !important;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
@@ -311,11 +313,11 @@ h1, h2, h3, h4 {
 }
 
 .lanc-progress, .york-progress {
-	position: absolute; 
+	position: absolute;
 	bottom: 0px;
 	width: 29px;
 	text-align: center;
-	background-position: bottom; 
+	background-position: bottom;
 	background-repeat: repeat-y;
 }
 
@@ -404,7 +406,7 @@ h1, h2, h3, h4 {
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
   width: 12%;
   padding: 3px;
-  margin-left: 23px; 
+  margin-left: 23px;
 }
 
 .football .score.lanc {
@@ -748,14 +750,14 @@ h1, h2, h3, h4 {
 }
 
 .tennisScore .server {
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   border-top: 14px solid transparent;
-  border-bottom: 14px solid transparent; 
-  border-right: 14px solid #fff; 
+  border-bottom: 14px solid transparent;
+  border-right: 14px solid #fff;
   border-top: 1vw solid transparent;
-  border-bottom: 1vw solid transparent; 
-  border-right: 1vw solid #fff; 
+  border-bottom: 1vw solid transparent;
+  border-right: 1vw solid #fff;
   float: right;
   margin-top: 6px;
   margin-top: 0.45vw;
@@ -904,7 +906,7 @@ h1, h2, h3, h4 {
     width: 30px;
     width: 2.2vw;
     text-align: center;
-    border-right: 2px solid #eee; 
+    border-right: 2px solid #eee;
     color: #fff;
     background-color: #BC204B;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
@@ -936,7 +938,7 @@ h1, h2, h3, h4 {
     overflow: hidden;
     text-align: center;
     text-transform: uppercase;
-    border-bottom: 3px solid #eee; 
+    border-bottom: 3px solid #eee;
     color: #fff;
     background-color: #1f1a34;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
@@ -966,7 +968,7 @@ h1, h2, h3, h4 {
 .swimminglist .row .lane {
     float: left;
     margin-right: 15px;
-    border-right: 3px solid #eee; 
+    border-right: 3px solid #eee;
     paddding: 15px;
     width: 50px;
     width: 3.8vw;
