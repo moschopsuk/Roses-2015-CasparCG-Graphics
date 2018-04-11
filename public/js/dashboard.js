@@ -488,7 +488,6 @@ app.controller('rosesCGController', ['$scope', 'socket',
     }
 ]);
 
-
 app.controller('footballCGController', ['$scope', 'localStorageService', 'socket',
     function($scope, localStorageService, socket){
         var storedLancs = localStorageService.get('lancs_football');
@@ -551,6 +550,15 @@ app.controller('footballCGController', ['$scope', 'localStorageService', 'socket
 
         socket.on("football", function (msg) {
             $scope.football = msg;
+            $scope.menu.forEach(item => {
+                if (item.name === 'Football') {
+                    if ($scope.football.show === true || $scope.football.showpre === true || $scope.football.showpost === true ) {
+                        item.live = true
+                    } else {
+                        item.live = false
+                    }
+                }
+            })
         });
 
         $scope.$watch('football', function() {
