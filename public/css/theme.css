@@ -975,3 +975,75 @@ h1, h2, h3, h4 {
   background-color: #efbb39;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
+
+/**************************************************/
+/*              [Netball Score]                  */
+/**************************************************/
+
+.netball {
+  width: 40%;
+  border-radius: 3px;
+  background-clip: padding-box;
+  font-size: 30px;
+  font-size: 1.8vw;
+}
+
+.netballquarter {
+    display:inline;
+    white-space: nowrap;
+    clear:none;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-clip: padding-box;
+}
+
+.netballquarter h1 {
+    color: #fff;
+    font-size: 30px;
+    font-size: 1.55vw;
+    line-height: 1.8vw;
+    font-weight: normal;
+    float: left;
+    padding: 3px 10px;
+    margin-right: 0px;
+    background-color: #BC204B;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+.netballquarter h1:empty {
+    display: none;
+}
+
+.netball .clock, .netball .score.lanc, .netball .score.york {
+  padding: 3px;
+  float: left;
+}
+
+.netball .clock {
+  background-color: #eee;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+  width: 18%;
+  text-align: center;
+}
+
+.netball .score.lanc {
+  width: 32%;
+  text-align: right;
+  padding-right:20px;
+  color: #fff;
+  background-color: #cd1d18;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+.netball .score.lanc p {
+    float: right;
+    text-align: center;
+}
+
+.netball .score.york {
+  width: 32%;
+  text-align: left;
+  padding-left: 30px;
+  color: #000;
+  background-color: #efbb39;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
