@@ -779,6 +779,15 @@ app.controller('swimmingCGController', ['$scope', 'socket',
 
         socket.on("swimming", function (msg) {
             $scope.swimming = msg;
+            $scope.menu.forEach(item => {
+                if (item.name === 'Swimming') {
+                    if ($scope.swimming.showlist === true || $scope.swimming.showclock === true) {
+                        item.live = true
+                    } else {
+                        item.live = false
+                    }
+                }
+            })
         });
 
         $scope.$watch('swimming', function() {
