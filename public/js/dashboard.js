@@ -642,6 +642,11 @@ app.controller('rugbyCGController', ['$scope', 'localStorageService', 'socket',
 
         socket.on("rugby", function (msg) {
             $scope.rugby = msg;
+            $scope.menu.forEach(item => {
+                if (item.name === 'Rugby') {
+                    item.live = $scope.rugby.show
+                }
+            })
         });
 
         $scope.$watch('rugby', function() {
