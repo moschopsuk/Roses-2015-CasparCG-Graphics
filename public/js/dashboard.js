@@ -257,6 +257,16 @@ app.controller('generalCGController', ['$scope', 'socket',
     function($scope, socket){
         socket.on("bug", function (msg) {
             $scope.general = msg;
+            $scope.menu.forEach(item => {
+                if (item.name === 'General') {
+                    console.log($scope.archery)
+                    if ($scope.bug.showLive === true || $scope.bug.showLocation === true || $scope.general.showClock === true || $scope.general.showLogo === true) {
+                        item.live = true
+                    } else {
+                        item.live = false
+                    }
+                }
+            })
         });
 
         $scope.$watch('general', function() {
