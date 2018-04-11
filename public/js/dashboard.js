@@ -111,6 +111,13 @@ app.controller('AppCtrl', ['$scope', '$location',
             icon: 'olive circle',
             live: false,
         });
+        
+        $scope.menu.push({
+            name: 'Netball',
+            url: '/netball',
+            type: 'link',
+            icon: 'soccer',
+        });
     }
 ]);
 
@@ -173,6 +180,10 @@ app.config(['$routeProvider', 'localStorageServiceProvider',
             .when("/tennis", {
               templateUrl: '/admin/templates/tennis.tmpl.html',
               controller: 'tennisCGController'
+            })
+            .when("/netball", {
+              templateUrl: '/admin/templates/netball.tmpl.html',
+              controller: 'netballCGController'
             })
             .otherwise({redirectTo: '/general'});
     }
@@ -468,9 +479,11 @@ app.controller('rosesCGController', ['$scope', 'socket',
         socket.on('lancScore', function(msg){
           $scope.rosesLancScore = msg
         });
+        
         socket.on('yorkScore', function(msg){
           $scope.rosesYorkScore = msg
         });
+        
         $scope.$watch('roses', function() {
             if ($scope.roses) {
                 socket.emit("score", $scope.roses);
@@ -1207,6 +1220,94 @@ app.controller('tennisCGController', ['$scope', 'socket',
 
         $scope.resetAll = function() {
             socket.emit("tennis:reset");
+        }
+    }
+]);
+
+app.controller('netballCGController', ['$scope', 'localStorageService', 'socket',
+    function($scope, localStorageService, socket){
+        var storedLancs = localStorageService.get('lancs_netball');
+        var storedYork = localStorageService.get('york_nettball');
+
+        if(storedLancs === null) {
+            $scope.lancsPlayers = [];
+        } else {
+            $scope.lancsPlayers = storedLancs;
+        }
+
+        if(storedYork === null) {
+            $scope.yorksPlayers = [];
+        } else {
+            $scope.yorksPlayers = storedYork;
+        }
+
+        socket.on("clock:tick", function (msg) {
+            $scope.clock = msg.slice(0, msg.indexOf("."));
+        });
+
+        $scope.pauseClock = function() {
+            socket.emit("clock:pause");
+        };
+
+        $scope.resetClock = function() {
+            socket.emit("clock:reset");
+        };
+
+        $scope.setClock = function(val) {
+            socket.emit("clock:set", val);
+        };
+
+        $scope.downClock = function() {
+            socket.emit("clock:down");
+        };
+
+        $scope.upClock = function() {
+            socket.emit("clock:up");
+        };
+
+        $scope.addLancsPlayer = function() {
+            $scope.lancsPlayers.push($scope.lancs);
+            $scope.lancs = {};
+        };
+
+        $scope.addYorksPlayer = function() {
+            $scope.yorksPlayers.push($scope.york);
+            $scope.york = {};
+        };
+
+        $scope.delete = function(team, index) {
+            console.log('delete');
+            if(team === 'york') {
+                $scope.yorksPlayers.splice(index, 1);
+            } else if (team === 'lancs') {
+                $scope.lancsPlayers.splice(index, 1);
+            }
+        };
+
+        socket.on("netball", function (msg) {
+            $scope.netball = msg;
+        });
+        
+        $scope.quarterChanged = function() {
+            console.log("Quarter");
+        };
+
+        $scope.$watch('netball', function() {
+            if ($scope.netball) {
+                socket.emit("netball", $scope.netball);
+            } else {
+                getNetballData();
+            }
+        }, true);
+
+        $scope.$on("$destroy", function() {
+            localStorageService.set('york_netball', $scope.yorksPlayers);
+            localStorageService.set('lancs_netball', $scope.lancsPlayers);
+        });
+
+        function getNetballData() {
+            socket.emit("netball:get");
+            socket.emit("clock:get");
         }
     }
 ]);
