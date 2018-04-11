@@ -114,6 +114,7 @@ app.controller('bugCtrl', ['$scope', '$timeout', 'socket',
 
 app.controller('scoringCtrl', ['$scope', '$interval', '$http', 'socket',
     function($scope, $interval, $http, socket){
+        $scope.toWin = 177.5;
         $scope.tickInterval = 5000;
         $scope.yorkScore = "";
         $scope.lancScore = "";
@@ -149,12 +150,9 @@ app.controller('scoringCtrl', ['$scope', '$interval', '$http', 'socket',
               $scope.yorkScore = state.yorkScore;
               $scope.lancScore = state.lancScore;
             };
-            
-            var available = $scope.yorkScore + $scope.lancScore;
-			var toWin = 177.5;
 			
-			$scope.yorkProgress = (($scope.yorkScore / toWin)*100).toFixed(2);
-			$scope.lancProgress = (($scope.lancScore / toWin)*100).toFixed(2);
+			$scope.yorkProgress = (($scope.yorkScore / $scope.toWin)*100).toFixed(2);
+			$scope.lancProgress = (($scope.lancScore / $scope.toWin)*100).toFixed(2);
             
         });
 
