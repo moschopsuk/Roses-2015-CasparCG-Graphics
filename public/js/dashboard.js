@@ -984,6 +984,11 @@ app.controller('tennisCGController', ['$scope', 'socket',
 
         $scope.$watch('tennisOptions', function() {
             if ($scope.tennisOptions) {
+				if (($scope.tennisOptions.matchName).includes("Mixed")) {
+					$scope.tennisOptions.player1 = "Lancaster";
+					$scope.tennisOptions.player2 = "York";
+				}
+				
                 socket.emit("tennisOptions", $scope.tennisOptions);
             } else {
                 getTennisData();
@@ -1091,13 +1096,20 @@ app.controller('tennisCGController', ['$scope', 'socket',
         function winGame(player) {
             // given the scoring player, get their opponent
             var opponent = (player == 1 ? 2 : 1);
+			
+            if ($scope.tennisScore.tiebreak == false) {
+                if (player == $scope.tennisScore.server) {
+					          // player was serving, and not in a tiebreak, count this as service game win
+					          $scope.tennisScore['servicesWon' + player] ++;
+				        } else {
+					          // opponent was serving, and not in a tiebreak, count this as break point win
+					          $scope.tennisScore['breaksWon' + player] ++;
+                }
 
-            // check if this is a new set, and create new entries in the sets array
-            if (($scope.tennisScore['game' + player] + $scope.tennisScore['game' + opponent]) == 0) {
-                $scope.tennisScore['sets' + player].push(0);
-                $scope.tennisScore['sets' + opponent].push(0);
+                // increment service games for server
+                $scope.tennisScore['serviceGame' + $scope.tennisScore.server] ++;
             }
-
+            
             // update the sets array
             $scope.tennisScore['sets' + player].splice(-1,1,($scope.tennisScore['game' + player] + 1));
 
@@ -1119,14 +1131,17 @@ app.controller('tennisCGController', ['$scope', 'socket',
             // given the scoring player, get their opponent
             var opponent = (player == 1 ? 2 : 1);
 
-            if ($scope.tennisScore['set' + player] == ($scope.tennisOptions.maxSets - 1)/2) {
+            $scope.tennisScore['set' + player] ++;
+            resetGames();
+            
+            if ($scope.tennisScore['set' + player] > ($scope.tennisOptions.maxSets - 1)/2) {
                 // player already won (max - 1) sets, so wins match
-                $scope.tennisScore.show = false;
+                $scope.tennisOptions.disableInput = true;
             } else {
                 // player can't win match yet, so add a set and reset games
-                $scope.tennisScore['set' + player] ++;
+                $scope.tennisScore['sets' + player].push(0);
+                $scope.tennisScore['sets' + opponent].push(0);
 
-                resetGames();
                 $scope.toggleServer();
             }
         }
@@ -1197,6 +1212,11 @@ app.controller('tennisCGController', ['$scope', 'socket',
                     $scope.tennisScore.gamePoint = "Set Point";
                 }
 
+                // check if this is also break point and increment
+                if ($scope.tennisScore.server != player) {
+                    $scope.tennisScore['breakPoint' + player] ++;
+                }
+
             } else if ($scope.tennisScore['game' + opponent] >= 5 && ($scope.tennisScore['game' + opponent] - $scope.tennisScore['game' + player]) >= 1 && $scope.tennisScore['point' + opponent] >= 3 && ($scope.tennisScore['point' + opponent] - $scope.tennisScore['point' + player]) >= 1) {
                 // normal game, not scoring player set/match point, so opponent needs to have at least 5 games, with a 1 game advantage; and at least 40, with a 1 point advantage
 
@@ -1205,16 +1225,23 @@ app.controller('tennisCGController', ['$scope', 'socket',
                 } else {
                     $scope.tennisScore.gamePoint = "Set Point";
                 }
-
+				
+                // check if this is also break point and increment
+                if ($scope.tennisScore.server != opponent) {
+                    $scope.tennisScore['breakPoint' + opponent] ++;
+                }
+              
             } else if ($scope.tennisScore.server != player && $scope.tennisScore['point' + player] >= 3 && ($scope.tennisScore['point' + player] - $scope.tennisScore['point' + opponent]) >= 1) {
                 // normal game, not a set/match point, so player needs be against the serve, have at least 40, with a 1 point advantage
 
                 $scope.tennisScore.gamePoint = "Break Point";
+                $scope.tennisScore['breakPoint' + player] ++;
 
             } else if ($scope.tennisScore.server != opponent && $scope.tennisScore['point' + opponent] >= 3 && ($scope.tennisScore['point' + opponent] - $scope.tennisScore['point' + player]) >= 1) {
                 // normal game, not scoring player set/match point, so opponent needs be against the serve, have at least 40, with a 1 point advantage
 
                 $scope.tennisScore.gamePoint = "Break Point";
+                $scope.tennisScore['breakPoint' + opponent] ++;
 
             } else {
                 // normal game, point isn't special, so no message needed
@@ -1226,6 +1253,7 @@ app.controller('tennisCGController', ['$scope', 'socket',
 
         $scope.undoPoint = function() {
             socket.emit("tennis:undo");
+            $scope.tennisOptions.disableInput = false;
         }
 
         function getTennisData() {
@@ -1234,7 +1262,9 @@ app.controller('tennisCGController', ['$scope', 'socket',
 
         $scope.resetAll = function() {
             socket.emit("tennis:reset");
+            $("input[type='checkbox']").attr("checked", false);
         }
+		
     }
 ]);
 

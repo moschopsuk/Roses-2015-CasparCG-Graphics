@@ -380,6 +380,63 @@
                     <div class="info">Best of {{tennisOptions.maxSets}} sets</div>
                 </div>
             </div>
+			
+			<div class="tennis tennisStats center scale-fade" ng-show="tennisOptions.showStats">
+			   	    <div class="header">
+					    <h1>Match Statistics</h1>
+				    </div>
+					<div class="info" style="width: 100%">{{tennisOptions.matchName}} - After {{tennisScore.sets1.length}} of {{tennisOptions.maxSets}} sets</div>
+
+					<div class="row">
+						<div class="stats names">
+						    <span class="set" ng-repeat="i in tennisScore.sets1 track by $index">{{tennisScore.sets1[$index] + "-" + tennisScore.sets2[$index]}}</span>
+							<span class="float-left">{{tennisOptions.player1}}</span>
+							<span class="float-right">{{tennisOptions.player2}}</span>
+						</div>
+				    </div>
+					
+				    <div class="row">
+						<div class="statsleft lanc">{{tennisScore.ace1}}</div>
+					    <div class="statsright york">{{tennisScore.ace2}}</div>
+						<div class="stats">Aces</div>
+				    </div>
+					
+					<div class="row">
+						<div class="statsleft lanc">{{tennisScore.doubleFault1}}</div>
+					    <div class="statsright york">{{tennisScore.doubleFault2}}</div>
+						<div class="stats">Double Faults</div>
+				    </div>
+					
+					<div class="row">
+						<div class="statsleft lanc">{{tennisScore.firstServeWon1 + " / " + (tennisScore.pointsServed1 - tennisScore.singleFault1 - tennisScore.doubleFault1)}}</div>
+					    <div class="statsright york">{{tennisScore.firstServeWon2 + " / " + (tennisScore.pointsServed2 - tennisScore.singleFault2 - tennisScore.doubleFault2)}}</div>
+						<div class="stats">First Serves Won</div>
+				    </div>
+					
+					<div class="row">
+						<div class="statsleft lanc">{{tennisScore.secondServeWon1 + " / " + (tennisScore.singleFault1 + tennisScore.doubleFault1)}}</div>
+					    <div class="statsright york">{{tennisScore.secondServeWon2 + " / " + (tennisScore.singleFault2 + tennisScore.doubleFault2)}}</div>
+						<div class="stats">Second Serves Won</div>
+				    </div>
+					
+					<div class="row">
+						<div class="statsleft lanc">{{tennisScore.breaksWon1 + " / " + tennisScore.breakPoint1}}</div>
+					    <div class="statsright york">{{tennisScore.breaksWon2 + " / " + tennisScore.breakPoint2}}</div>
+						<div class="stats">Break Points Won</div>
+				    </div>
+					
+					<div class="row">
+						<div class="statsleft lanc">{{tennisScore.servicesWon1}}</div>
+					    <div class="statsright york">{{tennisScore.servicesWon2}}</div>
+						<div class="stats">Service Games Won</div>
+				    </div>
+					
+					<div class="row">
+						<div class="statsleft lanc">{{tennisScore.pointsWon1}}</div>
+					    <div class="statsright york">{{tennisScore.pointsWon2}}</div>
+						<div class="stats">Total Points Won</div>
+				    </div>
+			</div>
         </div>
 
         <div ng-controller="netballCtrl" class="netball left top scale-fade" ng-show="netball.show">

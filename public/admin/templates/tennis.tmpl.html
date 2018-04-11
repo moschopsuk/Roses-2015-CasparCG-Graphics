@@ -69,6 +69,8 @@
     </div>
 
     <div class="ui divider"></div>
+	
+	<div style="position: absolute; margin-top: -16px; right: 24%; height: 195px; border-left: 1px solid rgba(34, 36, 38, 0.15); border-right: 1px solid rgba(255, 255, 255, 0.1);"></div>
     
     <div class="ui grid center aligned">
 
@@ -119,7 +121,7 @@
                 </div>
                 
                 <div class="four wide field">
-                    <input type="text" placeholder="Lancaster Player" ng-model="tennisOptions.player1">
+                    <input type="text" placeholder="Lancaster" ng-model="tennisOptions.player1" ng-disabled="($scope.tennisOptions.matchName).includes("Mixed");">
                 </div>
 
                 <div class="one wide field">
@@ -136,12 +138,12 @@
 
                 <div class="two wide field">
                     <div class="ui icon buttons">
-                        <button class="ui green button" ng-click="scorePoint(1);"><i class="plus icon"></i></button>
+                        <button class="ui green button" ng-click="scorePoint(1);" ng-disabled="tennisOptions.disableInput"><i class="plus icon"></i></button>
                     </div>
                 </div>
                 
                 <div class="four wide field">
-                    <div class="ui green button" ng-click="acePoint()"><i class="plus icon"></i> Ace</div>
+                    <button class="ui green button" ng-click="acePoint()" ng-disabled="tennisOptions.disableInput"><i class="plus icon"></i> Ace</button>
                 </div>
             </div>
 
@@ -160,7 +162,7 @@
                 </div>
                 
                 <div class="four wide field">
-                    <input type="text" placeholder="York Player" ng-model="tennisOptions.player2">
+                    <input type="text" placeholder="York" ng-model="tennisOptions.player2" ng-disabled="($scope.tennisOptions.matchName).includes("Mixed");">
                 </div>
 
                 <div class="one wide field">
@@ -177,12 +179,12 @@
 
                 <div class="two wide field">
                     <div class="ui icon buttons">
-                        <button class="ui green button" ng-click="scorePoint(2);"><i class="plus icon"></i></button>
+                        <button class="ui green button" ng-click="scorePoint(2);" ng-disabled="tennisOptions.disableInput"><i class="plus icon"></i></button>
                     </div>
                 </div>
 
                 <div class="four wide field">
-                    <div class="ui orange button" ng-click="faultPoint()"><i class="remove icon"></i> <span ng-show="tennisScore.firstFault">Double </span>Fault</div>
+                    <button class="ui orange button" ng-click="faultPoint()" ng-disabled="tennisOptions.disableInput"><i class="remove icon"></i> <span ng-show="tennisScore.firstFault">Double </span>Fault</button>
                 </div>
             </div>
 
@@ -307,38 +309,54 @@
 
         <div class="sixteen wide column">
         
-            <h3>Statistics</h3>
+            <h3><checkbox ng-model="tennisOptions.showStats" size="large" type="toggle"></checkbox>Statistics</h3>
             <div class="fields">
 
                 <div class="two wide field">
                   <h3>Player Name</h3>
                 </div>
 
-                <div class="two wide field">
+                <div class="one wide field">
                   <h3>Aces</h3>
                 </div>
                 
-                <div class="two wide field">
+                <div class="one wide field">
                   <h3>Single Faults</h3>
                 </div>
                 
-                <div class="two wide field">
+                <div class="one wide field">
                   <h3>Double Faults</h3>
                 </div>
                 
-                <div class="two wide field">
+                <div class="one wide field">
                   <h3>Points Served</h3>
                 </div>
                 
-                <div class="two wide field">
+                <div class="one wide field">
                   <h3>Total Points Won</h3>
                 </div>
+				
+				<div class="one wide field">
+                  <h3>Break Points</h3>
+                </div>
                 
-                <div class="two wide field">
+                <div class="one wide field">
+                  <h3>Breaks Won</h3>
+                </div>
+				
+				<div class="one wide field">
+                  <h3>Service Games</h3>
+                </div>
+                
+                <div class="one wide field">
+                  <h3>Service Games Won</h3>
+                </div>
+                
+                <div class="one wide field">
                   <h3>First Serves Won</h3>
                 </div>
                 
-                <div class="two wide field">
+                <div class="one wide field">
                   <h3>Second Serves Won</h3>
                 </div>
 
@@ -358,31 +376,47 @@
                   <h3>{{tennisOptions.player1}}</h2>
                 </div>
 
-                <div class="two wide field">
+                <div class="one wide field">
                   <h2>{{tennisScore.ace1}}</h2>
                 </div>
                 
-                <div class="two wide field">
+                <div class="one wide field">
                   <h2>{{tennisScore.singleFault1}}</h2>
                 </div>
                 
-                <div class="two wide field">
+                <div class="one wide field">
                   <h2>{{tennisScore.doubleFault1}}</h2>
                 </div>
                 
-                <div class="two wide field">
+                <div class="one wide field">
                   <h2>{{tennisScore.pointsServed1}}</h2>
                 </div>
                 
-                <div class="two wide field">
+                <div class="one wide field">
                   <h2>{{tennisScore.pointsWon1}}</h2>
                 </div>
+				
+				<div class="one wide field">
+                  <h2>{{tennisScore.breakPoint1}}</h2>
+                </div>
+				
+				<div class="one wide field">
+                  <h2>{{tennisScore.breaksWon1}}</h2>
+                </div>
+				
+				<div class="one wide field">
+                  <h2>{{tennisScore.serviceGame1}}</h2>
+                </div>
+				
+				<div class="one wide field">
+                  <h2>{{tennisScore.servicesWon1}}</h2>
+                </div>
                 
-                <div class="two wide field">
+                <div class="one wide field">
                   <h2>{{tennisScore.firstServeWon1}}</h2>
                 </div>
                 
-                <div class="two wide field">
+                <div class="one wide field">
                   <h2>{{tennisScore.secondServeWon1}}</h2>
                 </div>
 
@@ -402,31 +436,47 @@
                   <h3>{{tennisOptions.player2}}</h2>
                 </div>
 
-                <div class="two wide field">
+                <div class="one wide field">
                   <h2>{{tennisScore.ace2}}</h2>
                 </div>
                 
-                <div class="two wide field">
+                <div class="one wide field">
                   <h2>{{tennisScore.singleFault2}}</h2>
                 </div>
                 
-                <div class="two wide field">
+                <div class="one wide field">
                   <h2>{{tennisScore.doubleFault2}}</h2>
                 </div>
                 
-                <div class="two wide field">
+                <div class="one wide field">
                   <h2>{{tennisScore.pointsServed2}}</h2>
                 </div>
                 
-                <div class="two wide field">
+                <div class="one wide field">
                   <h2>{{tennisScore.pointsWon2}}</h2>
                 </div>
+				
+				<div class="one wide field">
+                  <h2>{{tennisScore.breakPoint2}}</h2>
+                </div>
+				
+				<div class="one wide field">
+                  <h2>{{tennisScore.breaksWon2}}</h2>
+                </div>
+				
+				<div class="one wide field">
+                  <h2>{{tennisScore.serviceGame2}}</h2>
+                </div>
+				
+				<div class="one wide field">
+                  <h2>{{tennisScore.servicesWon2}}</h2>
+                </div>
                 
-                <div class="two wide field">
+                <div class="one wide field">
                   <h2>{{tennisScore.firstServeWon2}}</h2>
                 </div>
                 
-                <div class="two wide field">
+                <div class="one wide field">
                   <h2>{{tennisScore.secondServeWon2}}</h2>
                 </div>
                 

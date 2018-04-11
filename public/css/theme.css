@@ -675,8 +675,7 @@ h1, h2, h3, h4 {
 
 .tennis {
   text-align: center;
-  font-size: 25px;
-  font-size: 1.8vw;
+  font-size: 20px;
 }
 
 .tennisScore {
@@ -694,10 +693,8 @@ h1, h2, h3, h4 {
 .tennis .name, .tennis .points, .tennis .games, .tennis .sets, .tennis .info, .tennisSets .header {
   color: #fff;
   float: left;
-  height: 40px;
-  height: 2.9vw;
-  line-height: 40px;
-  line-height: 2.9vw;
+  height: 35px;
+  line-height: 35px;
   padding-left: 5px;
   padding-right: 5px;
 }
@@ -706,7 +703,7 @@ h1, h2, h3, h4 {
   padding-left: 10px;
 }
 
-.tennisScore .name {
+.tennisScore .name, .tennisScore .info {
   width: 65%;
 }
 
@@ -714,20 +711,23 @@ h1, h2, h3, h4 {
   width: 100%;
 }
 
-.tennis .name.lanc {
+.tennis .lanc {
   background-color: #cd1d18;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
-.tennis .name.york {
+.tennis .york {
   background-color: #efbb39;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
-.tennis .info, .tennisSets .header {
-  width: 100%;
+.tennis .info, .tennis .header {
   background-color: #1f1a34;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+.tennisSets .info, .tennisSets .header {
+  width: 100%;
 }
 
 .tennisScore .points, .tennisScore .games, .tennisScore .sets, .tennisSets .sets {
@@ -746,32 +746,83 @@ h1, h2, h3, h4 {
 
 .tennisSets .sets {
   width: 43px;
-  width: 3vw;
 }
 
 .tennisScore .server {
-  width: 0;
-  height: 0;
-  border-top: 14px solid transparent;
-  border-bottom: 14px solid transparent;
-  border-right: 14px solid #fff;
-  border-top: 1vw solid transparent;
-  border-bottom: 1vw solid transparent;
-  border-right: 1vw solid #fff;
+  width: 0; 
+  height: 0; 
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent; 
+  border-right: 12px solid #fff;
   float: right;
   margin-top: 6px;
-  margin-top: 0.45vw;
   margin-right: 4px;
-  margin-right: 0.3vw;
 }
 
-.tennisSets .info {
-  font-size: 20px;
-  font-size: 1.3vw;
+.tennis .info {
+  font-size: 15px;
   height: 30px;
-  height: 2.2vw;
   line-height: 30px;
-  line-height: 2.2vw;
+}
+
+.tennisStats {
+	width: 70%;
+    text-align: center;
+	position: absolute;
+}
+
+.tennisStats .header {
+	width: 100%;
+	color: #fff;
+	line-height: 50px;
+    background-color: #BC204B;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+	font-size: 35px;
+}
+
+.tennisStats .info {
+	float: none;
+	text-align: center;
+	margin-bottom: 25px;
+}
+
+.tennisStats .statsleft, .tennisStats .stats, .tennisStats .statsright {
+	line-height: 50px;
+	font-size: 25px;
+}
+
+.tennisStats .stats {
+	width: 100%;
+	background-color: #1f1a34;
+	background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+	padding: 0 15px;
+}
+
+.tennisStats .stats .set:not(:first-child) {
+	margin-left: 12px;
+}
+
+.tennisStats .statsleft, .tennisStats .statsright {
+	width: 20%;
+}
+
+.tennisStats .statsleft {
+	float: left;
+	border-right: 3px solid #fff;
+}
+
+.tennisStats .statsright {
+	float: right;
+	border-left: 3px solid #fff;
+}
+
+.tennisStats .row {
+	color: #fff;
+	width: 100%;
+}
+
+.tennisStats .row:last-child {
+	margin-bottom: 5px;
 }
 
 
