@@ -102,7 +102,7 @@
         
         <div ng-controller="scoringCtrl">   		
             	<div ng-show="showProgress" class="bottom progress-bar slide-top" >
-            		<p class="toWin">177.5</p>
+            		<p class="toWin">{{pointsToWin}}</p>
 					<div class="york-progress" style="height:{{yorkProgress}}%">
 						<p ng-if="yorkScore > 0" class="scoreText">{{yorkScore}}</p>
 					</div>

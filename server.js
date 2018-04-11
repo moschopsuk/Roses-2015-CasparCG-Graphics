@@ -8,7 +8,7 @@ var io = require('socket.io').listen(server);
 
 var bug = {livetext: "Live", locationtext: ''};
 var boxing = {lancScore: 0, yorkScore: 0, currRound: ''};
-var score = {};
+var score = {totalPoints: 354};
 var football = {homeTeam: "Lancaster", awayTeam: "York", lancScore: 0, yorkScore: 0};
 var rugby = {homeTeam: "Lancaster", awayTeam: "York", lancScore: 0, yorkScore: 0};
 var basketball = {homeTeam: "Lancaster", awayTeam: "York", lancScore: 0, yorkScore: 0};
@@ -145,7 +145,9 @@ io.on('connection', function(socket) {
 	socket.on("yorkScore", function(msg){
 		io.sockets.emit("yorkScore", msg);
 	});
-
+	socket.on("totalPoints", function(msg){
+		io.sockets.emit("totalPoints", msg);
+	});
     socket.on("score:get", function(msg) {
 		io.sockets.emit("score", score);
 	});

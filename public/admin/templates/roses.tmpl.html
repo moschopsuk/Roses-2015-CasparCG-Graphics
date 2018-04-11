@@ -5,13 +5,16 @@
 		<i class="close icon"></i>
 		<div class="header">Automated Scores</div>
 		<p>Roses scores are pulled from the master score server, but this is subject to crashing.</p>
-		<p>Latest score from Roses Live: York {{rosesYorkScore}}, Lancaster {{rosesLancScore}}.
+		<p>Latest score from Roses Live: York {{rosesYorkScore}}, Lancaster {{rosesLancScore}}.</p>
+		<p>The current number of total number of points available is {{roses.totalPoints}}</p>
 	</div>
 
 	<div class="inline field">
 		<checkbox size="large" ng-model="roses.showScore" type="toggle">Show Overall Score</checkbox>
 	
 		<checkbox size="large" ng-model="roses.showProgress" type="toggle">Show Winning Progress</checkbox>
+		
+		<input id="totalPoints" type="number" ng-model="roses.totalPoints"/>&nbsp Available Points
 	</div>
 	<div class="ui divider"></div>
 	<div class="inline field">
