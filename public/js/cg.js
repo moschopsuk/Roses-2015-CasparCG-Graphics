@@ -138,16 +138,25 @@ app.controller('scoringCtrl', ['$scope', '$interval', '$http', 'socket',
                 socket.emit('lancScore', data.lancs);
                 socket.emit('yorkScore', data.york);
             }
-          );
+          );    
         };
-
+        
         socket.on("score", function (state) {
             $scope.showScore = state.showScore;
             $scope.manualScore = state.manualScore;
+            $scope.showProgress = state.showProgress;           
             if(state.manualScore){
               $scope.yorkScore = state.yorkScore;
               $scope.lancScore = state.lancScore;
             };
+			if(state.totalPoints){
+                $scope.pointsToWin = ((state.totalPoints / 2 ) + 0.5)
+            } else {
+                $scope.pointsToWin = 177.5;
+            } 
+			$scope.yorkProgress = (($scope.yorkScore / $scope.pointsToWin)*100).toFixed(2);
+			$scope.lancProgress = (($scope.lancScore / $scope.pointsToWin)*100).toFixed(2);
+            $scope.pointsToWin = $scope.pointsToWin.toFixed(1);
         });
 
         $scope.$watch('score', function() {

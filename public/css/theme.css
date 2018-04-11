@@ -301,6 +301,49 @@ h1, h2, h3, h4 {
 
 }
 
+.progress-bar {
+	width: 60px;
+	height: 410px;
+	bottom: 50px;
+	position: absolute;
+	border-top: 3px black solid;
+	font-weight: bold;
+}
+
+.lanc-progress, .york-progress {
+	position: absolute; 
+	bottom: 0px;
+	width: 29px;
+	text-align: center;
+	background-position: bottom; 
+	background-repeat: repeat-y;
+}
+
+.lanc-progress {
+	/* background-color: rgba(255, 0, 0, 0.6); */
+	left: 25px;
+	background-image: url("/images/rose_red.png");
+}
+
+.york-progress {
+	/* background-color: rgba(255, 255, 0, 0.6); */
+	background-image: url("/images/rose_white.png");
+}
+
+.scoreText {
+	position: absolute;
+	top: -20px;
+	z-index: 3;
+	text-align: center;
+	font-size: 	12px;
+}
+
+.toWin {
+	position: absolute;
+	top: -12px;
+	left: 65px;
+	font-size: 18px;
+}
 /**************************************************/
 /*              [Football Score]                  */
 /**************************************************/

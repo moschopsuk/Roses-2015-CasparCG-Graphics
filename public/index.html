@@ -84,19 +84,30 @@
         </div>
 
         <div ng-controller="scoringCtrl">
-        		<img ng-src="images/YorkSport250.png" ng-show="showScore" class="bottom leftLogo scale-fade"/>
-				<img ng-src="images/LancasterSport250.png" ng-show="showScore" class="bottom rightLogo scale-fade"/>
+        		<img ng-src="images/LancasterSport250.png" ng-show="showScore" class="bottom leftLogo scale-fade"/>
+				<img ng-src="images/YorkSport250.png" ng-show="showScore" class="bottom rightLogo scale-fade"/>
             	<div ng-show="showScore" class="center bottom total-score scale-fade" >
             		<h1>Overall Score</h1>
-
-					<div class="float-left york">
-					YORK
-					<p>{{yorkScore}}</p>
+					<div class="float-left lanc">
+						LANCS
+						<p>{{lancScore}}</p>
 					</div>
-
-					<div class="float-right lanc">
-					LANCS
-					<p>{{lancScore}}</p>
+					<div class="float-right york">
+						YORK
+						<p>{{yorkScore}}</p>
+					</div>
+                	<div class="clearfix"></div>
+            	</div>
+        </div>
+        
+        <div ng-controller="scoringCtrl">   		
+            	<div ng-show="showProgress" class="bottom progress-bar slide-top" >
+            		<p class="toWin">{{pointsToWin}}</p>
+					<div class="york-progress" style="height:{{yorkProgress}}%">
+						<p ng-if="yorkScore > 0" class="scoreText">{{yorkScore}}</p>
+					</div>
+					<div class="lanc-progress" style="height:{{lancProgress}}%">
+						<p ng-if="lancScore > 0" class="scoreText">{{lancScore}}</p>
 					</div>
 
                 	<div class="clearfix"></div>
