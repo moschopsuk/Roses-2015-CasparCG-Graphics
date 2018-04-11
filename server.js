@@ -6,9 +6,9 @@ var app = express();
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
 
-var bug = {livetext: "Live", locationtext: ''};
+var bug = {livetext: "Live", locationtext: '', showLive: false, showLocation: false};
 var boxing = {lancScore: 0, yorkScore: 0, currRound: ''};
-var score = {};
+var score = {totalPoints: 354};
 var football = {homeTeam: "Lancaster", awayTeam: "York", lancScore: 0, yorkScore: 0};
 var rugby = {homeTeam: "Lancaster", awayTeam: "York", lancScore: 0, yorkScore: 0};
 var basketball = {homeTeam: "Lancaster", awayTeam: "York", lancScore: 0, yorkScore: 0};
@@ -35,6 +35,7 @@ var tennisScore   = [{sets1: [0], sets2: [0],
 					  servicesWon1: 0, servicesWon2: 0,
                       pointsPlayed: 0, server: 1, tiebreak: false, gamePoint: "", firstFault: false}];
 var badminton = {match: "Badminton", subtitle: "Best of 3 Games Wins Match", player1: "Lancaster", player2: "York", game1: 0, game2:0, point1: 0, point2: 0 };
+var netball = {homeTeam: "Lancaster", awayTeam: "York", lancScore: 0, yorkScore: 0};
 
 //Clock Functions
 var stopwatch = new Stopwatch();
@@ -149,7 +150,9 @@ io.on('connection', function(socket) {
 	socket.on("yorkScore", function(msg){
 		io.sockets.emit("yorkScore", msg);
 	});
-
+	socket.on("totalPoints", function(msg){
+		io.sockets.emit("totalPoints", msg);
+	});
     socket.on("score:get", function(msg) {
 		io.sockets.emit("score", score);
 	});
@@ -299,6 +302,18 @@ io.on('connection', function(socket) {
         io.sockets.emit("tennisOptions", tennisOptions);
         io.sockets.emit("tennisScore", tennisScore[0]);
     });
+    
+    /*
+	 * 		Nettball
+	 */
+	socket.on("netball", function(msg) {
+        netball = msg;
+		io.sockets.emit("netball", msg);
+	});
+
+    socket.on("netball:get", function(msg) {
+		io.sockets.emit("netball", netball);
+	});
 
 });
 

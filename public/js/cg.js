@@ -138,16 +138,25 @@ app.controller('scoringCtrl', ['$scope', '$interval', '$http', 'socket',
                 socket.emit('lancScore', data.lancs);
                 socket.emit('yorkScore', data.york);
             }
-          );
+          );    
         };
-
+        
         socket.on("score", function (state) {
             $scope.showScore = state.showScore;
             $scope.manualScore = state.manualScore;
+            $scope.showProgress = state.showProgress;           
             if(state.manualScore){
               $scope.yorkScore = state.yorkScore;
               $scope.lancScore = state.lancScore;
             };
+			if(state.totalPoints){
+                $scope.pointsToWin = ((state.totalPoints / 2 ) + 0.5)
+            } else {
+                $scope.pointsToWin = 177.5;
+            } 
+			$scope.yorkProgress = (($scope.yorkScore / $scope.pointsToWin)*100).toFixed(2);
+			$scope.lancProgress = (($scope.lancScore / $scope.pointsToWin)*100).toFixed(2);
+            $scope.pointsToWin = $scope.pointsToWin.toFixed(1);
         });
 
         $scope.$watch('score', function() {
@@ -343,6 +352,47 @@ app.controller('tennisCtrl', ['$scope', 'socket',
 
         function getTennisData() {
             socket.emit("tennis:get");
+        }
+    }
+]);
+
+app.controller('netballCtrl', ['$scope', 'socket',
+    function($scope, socket){
+
+        socket.on("netball", function (msg) {
+            $scope.netball = msg;
+            
+            if ($scope.netball.firstpasslanc == true) {
+            	$scope.netball.lancoffset = 1; 
+            }
+            
+            if ($scope.netball.firstpasslanc == true & $scope.netball.firstpassyork == true) {
+            	$scope.netball.lancoffset = 0; 
+            }
+         
+            $scope.TotalScore = $scope.netball.yorkScore + $scope.netball.lancScore + $scope.netball.lancoffset;
+			if (($scope.TotalScore % 2) == 1) {
+						$scope.showcurrentlancs = true;
+						$scope.showcurrentyork = false;
+				} else {
+						$scope.showcurrentlancs = false;
+						$scope.showcurrentyork = true;
+					}
+			});
+
+        socket.on("clock:tick", function (msg) {
+            $scope.clock = msg.slice(0, msg.indexOf("."));
+        });
+
+        $scope.$watch('netball', function() {
+            if (!$scope.netball) {
+                getNetballData();
+            }
+        }, true);
+
+        function getNetballData() {
+            socket.emit("netball:get");
+            socket.emit("clock:get");
         }
     }
 ]);
