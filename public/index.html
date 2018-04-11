@@ -35,7 +35,7 @@
                 </div>
                 <h2 ng-show="full.subHeading">{{full.subHeading}}</h2>
             </div>
-        
+
             <div class="lowerthird left bottom slide-left" ng-show="showLeft">
                 <div class="gradient-overlay">
                     <h1>{{left.heading}}</h1>
@@ -85,7 +85,7 @@
 
         <div ng-controller="scoringCtrl">
         		<img ng-src="images/LancasterSport250.png" ng-show="showScore" class="bottom leftLogo scale-fade"/>
-				<img ng-src="images/YorkSport250.png" ng-show="showScore" class="bottom rightLogo scale-fade"/>
+				        <img ng-src="images/YorkSport250.png" ng-show="showScore" class="bottom rightLogo scale-fade"/>
             	<div ng-show="showScore" class="center bottom total-score scale-fade" >
             		<h1>Overall Score</h1>
 					<div class="float-left lanc">
@@ -99,8 +99,8 @@
                 	<div class="clearfix"></div>
             	</div>
         </div>
-        
-        <div ng-controller="scoringCtrl">   		
+
+        <div ng-controller="scoringCtrl">
             	<div ng-show="showProgress" class="bottom progress-bar slide-top" >
             		<p class="toWin">{{pointsToWin}}</p>
 					<div class="york-progress" style="height:{{yorkProgress}}%">
@@ -125,7 +125,7 @@
 
         <div ng-controller="footballCtrl" ng-show="football.showpost">
         		<img ng-src="images/YorkSport250.png" ng-show="football.showpost" class="bottom leftLogo scale-fade"/>
-				<img ng-src="images/LancasterSport250.png" ng-show="football.showpost" class="bottom rightLogo scale-fade"/>
+				   <img ng-src="images/LancasterSport250.png" ng-show="football.showpost" class="bottom rightLogo scale-fade"/>
             	<div ng-show="football.showpost" class="center bottom football-score scale-fade" >
             		<div class="footballtop">
             			<h1 ng-show="football.showtop">{{football.matchname}}</h1>
@@ -142,13 +142,13 @@
 	              	<div class="clearfix"></div>
 	              	<div class="footballbottom">
 	              		<h1 ng-show="football.showbottom">{{football.starttime}}</h1>
-	              	</div>	
+	              	</div>
             	</div>
         </div>
-        
+
         <div ng-controller="footballCtrl" ng-show="football.showpre">
         		<img ng-src="images/YorkSport250.png" ng-show="football.showpre" class="bottom leftLogo scale-fade"/>
-				<img ng-src="images/LancasterSport250.png" ng-show="football.showpre" class="bottom rightLogo scale-fade"/>
+				    <img ng-src="images/LancasterSport250.png" ng-show="football.showpre" class="bottom rightLogo scale-fade"/>
             	<div ng-show="football.showpre" class="center bottom football-score scale-fade" >
             		<div class="footballtop">
             			<h1 class="upper" ng-show="football.showtop">{{football.matchname}}</h1>
@@ -167,8 +167,8 @@
                 	<div class="clearfix"></div>
             	</div>
         </div>
-                
-        
+
+
         <div ng-controller="rugbyCtrl" class="football left top scale-fade" ng-show="rugby.show">
             <div class="row">
                 <div class="clock">{{clock}}</div>
@@ -178,7 +178,7 @@
             	<div ng-show="rugby.showextratime" class="extratime scale-fade">ET</div>
         </div>
 
-        
+
         <div ng-controller="basketballCtrl" class="basketball left top scale-fade" ng-show="basketball.show">
             <div class="row">
                 <div class="clock">{{clock}}</div>
@@ -328,7 +328,7 @@
                  <div class="footer">{{badminton.subtitle}}</div>
             </div>
         </div>
-        
+
         <div ng-controller="tennisCtrl">
             <div class="left top tennis tennisScore scale-fade" ng-show="tennisOptions.showScore">
                 <div class="row">
@@ -344,12 +344,12 @@
                     <div class="games">{{tennisScore.game2}}</div>
                     <div class="points">{{tennisScore.pointName2}}</div>
                 </div>
-                
+
                 <div class="row" ng-show="tennisScore.gamePoint">
                     <div class="info">{{tennisScore.gamePoint}}</div>
                 </div>
             </div>
-            
+
             <div class="center bottom tennis tennisSets scale-fade" ng-show="tennisOptions.showSets">
                 <div class="row">
                     <div class="header">{{tennisOptions.matchName}}</div>
@@ -375,19 +375,28 @@
                         <div class="sets" ng-show="tennisOptions.maxSets == 5">{{tennisScore.sets2[4]}}</div>
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="info">Best of {{tennisOptions.maxSets}} sets</div>
                 </div>
             </div>
         </div>
-        
+
         <div ng-controller="netballCtrl" class="netball left top scale-fade" ng-show="netball.show">
-            <div class="row">    	
+            <div class="row">
                 <div class="score lanc"><span ng-show="netball.showcurrent"><span ng-show="showcurrentlancs">&diams;</span></span>LANCS {{netball.lancScore}}</div>
                 <div class="score york">{{netball.yorkScore}} YORK<span ng-show="netball.showcurrent"><span ng-show="showcurrentyork">&diams;</span></span></div>
                 <div class="clock">{{clock}}</div>
                 <div class="netballquarter fade" ng-show="netball.showquarter"><h1>{{netball.currQuarter}}</h1></div>
+            </div>
+        </div>
+
+        <div ng-controller="waterpoloCtrl" class="waterpolo left top scale-fade" ng-show="waterpolo.show">
+            <div class="row">
+                <div class="score lanc"><span ng-show="waterpolo.showcurrent"><span ng-show="showcurrentlancs">&diams;</span></span>LANCS {{waterpolo.lancScore}}</div>
+                <div class="score york">{{waterpolo.yorkScore}} YORK<span ng-show="waterpolo.showcurrent"><span ng-show="showcurrentyork">&diams;</span></span></div>
+                <div class="clock">{{clock}}</div>
+                <div class="netballquarter fade" ng-show="waterpolo.showquarter"><h1>{{waterpolo.currentQuarter}}</h1></div>
             </div>
         </div>
 
