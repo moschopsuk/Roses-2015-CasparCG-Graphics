@@ -902,6 +902,11 @@ app.controller('badmintonCGController', ['$scope', 'socket',
     function($scope, socket) {
         socket.on("badminton", function (msg) {
             $scope.badminton = msg;
+            $scope.menu.forEach(item => {
+                if (item.name === 'Badminton') {
+                    item.live = $scope.badminton.show
+                }
+            })
         });
 
         $scope.resetGame1 = function() {
