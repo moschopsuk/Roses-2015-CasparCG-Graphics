@@ -871,6 +871,11 @@ app.controller('basketballCGController', ['$scope', 'localStorageService', 'sock
 
         socket.on("basketball", function (msg) {
             $scope.basketball = msg;
+            $scope.menu.forEach(item => {
+                if (item.name === 'Basketball') {
+                    item.live = $scope.basketball.show
+                }
+            })
         });
 
         $scope.$watch('basketball', function() {
