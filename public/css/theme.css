@@ -123,7 +123,7 @@ h1, h2, h3, h4 {
 .lowerthird.bottom.fullwidth {
     position: absolute;
     left: 50px;
-} 
+}
 
 /**************************************************/
 /*              [Boxing Score]                    */
@@ -218,7 +218,7 @@ h1, h2, h3, h4 {
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
-.white {	
+.white {
 	background-color: #eee !important;
 	color: #000 !important;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
@@ -311,11 +311,11 @@ h1, h2, h3, h4 {
 }
 
 .lanc-progress, .york-progress {
-	position: absolute; 
+	position: absolute;
 	bottom: 0px;
 	width: 29px;
 	text-align: center;
-	background-position: bottom; 
+	background-position: bottom;
 	background-repeat: repeat-y;
 }
 
@@ -404,7 +404,7 @@ h1, h2, h3, h4 {
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
   width: 12%;
   padding: 3px;
-  margin-left: 23px; 
+  margin-left: 23px;
 }
 
 .football .score.lanc {
@@ -500,14 +500,14 @@ h1, h2, h3, h4 {
 .darts .header .name {
   background-color: #1f1a34;
   color: #fff;
-  width: 57%%;
+  width: 57%;
   line-height: 30px;
   line-height: 2.5vw;
 }
 .darts .header .name2 {
   background-color: #1f1a34;
   color: #fff;
-  width: 17%%;
+  width: 17%;
   line-height: 30px;
   line-height: 2.5vw;
 }
@@ -630,7 +630,7 @@ h1, h2, h3, h4 {
 .badminton .header .name {
   color: #fff;
   background-color: #1f1a34;
-  width: 57%%;
+  width: 57%;
   line-height: 30px;
   line-height: 2.5vw;
 }
@@ -955,7 +955,7 @@ h1, h2, h3, h4 {
     width: 30px;
     width: 2.2vw;
     text-align: center;
-    border-right: 2px solid #eee; 
+    border-right: 2px solid #eee;
     color: #fff;
     background-color: #BC204B;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
@@ -987,7 +987,7 @@ h1, h2, h3, h4 {
     overflow: hidden;
     text-align: center;
     text-transform: uppercase;
-    border-bottom: 3px solid #eee; 
+    border-bottom: 3px solid #eee;
     color: #fff;
     background-color: #1f1a34;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
@@ -1017,7 +1017,7 @@ h1, h2, h3, h4 {
 .swimminglist .row .lane {
     float: left;
     margin-right: 15px;
-    border-right: 3px solid #eee; 
+    border-right: 3px solid #eee;
     paddding: 15px;
     width: 50px;
     width: 3.8vw;
@@ -1134,6 +1134,78 @@ h1, h2, h3, h4 {
 }
 
 .netball .score.york {
+  width: 32%;
+  text-align: left;
+  padding-left: 30px;
+  color: #000;
+  background-color: #efbb39;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+/**************************************************/
+/*              [Waterpolo Score]                  */
+/**************************************************/
+
+.waterpolo {
+  width: 40%;
+  border-radius: 3px;
+  background-clip: padding-box;
+  font-size: 30px;
+  font-size: 1.8vw;
+}
+
+.waterpoloquarter {
+    display:inline;
+    white-space: nowrap;
+    clear:none;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-clip: padding-box;
+}
+
+.waterpoloquarter h1 {
+    color: #fff;
+    font-size: 30px;
+    font-size: 1.55vw;
+    line-height: 1.8vw;
+    font-weight: normal;
+    float: left;
+    padding: 3px 10px;
+    margin-right: 0px;
+    background-color: #BC204B;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+.waterpoloquarter h1:empty {
+    display: none;
+}
+
+.waterpolo .clock, .waterpolo .score.lanc, .waterpolo .score.york {
+  padding: 3px;
+  float: left;
+}
+
+.waterpolo .clock {
+  background-color: #eee;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+  width: 18%;
+  text-align: center;
+}
+
+.waterpolo .score.lanc {
+  width: 32%;
+  text-align: right;
+  padding-right:20px;
+  color: #fff;
+  background-color: #cd1d18;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+.waterpolo .score.lanc p {
+    float: right;
+    text-align: center;
+}
+
+.waterpolo .score.york {
   width: 32%;
   text-align: left;
   padding-left: 30px;
