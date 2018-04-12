@@ -1,5 +1,3 @@
-@import '/css/modules/waterpolo.css';
-
 * {
   -webkit-box-sizing: border-box;
   box-sizing:border-box;                                   /* This sets all elements to be the actual set dimensions, disregarding padding and borders */
