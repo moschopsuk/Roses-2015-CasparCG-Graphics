@@ -52,7 +52,7 @@
         <div class="or"></div>
         <div class="ui positive button" ng-click="show('full', third)" >Full Width</div>
       </div>
-      <div class="ui icon blue small button" ng-click='edit($index)'>
+      <div  ng-class="third.edit ? 'green' : 'blue' "class="ui icon small button" ng-click='edit($index)'>
         <i ng-class="third.edit ? 'save icon' : 'edit icon'"></i>
       </div>
 

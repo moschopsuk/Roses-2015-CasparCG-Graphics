@@ -342,7 +342,7 @@ app.controller('lowerThirdsCGController', ['$scope', 'localStorageService', 'soc
         $scope.edit = function(index) {
             if (!$scope.queuedThirds[index].edit) {
                 $scope.queuedThirds[index].edit = true;
-            } else {
+            } else if ($scope.queuedThirds[index].heading || $scope.queuedThirds[index].subHeading) {
                 $scope.queuedThirds[index].edit = !$scope.queuedThirds[index].edit
             }
         }
