@@ -40,11 +40,15 @@ var waterpolo = {homeTeam: "Lancaster", awayTeam: "York", lancScore: 0, yorkScor
 
 //Clock Functions
 var stopwatch = new Stopwatch();
+var shotwatch = new Stopwatch();
 
 stopwatch.on('tick:stopwatch', function(time) {
 	io.sockets.emit("clock:tick", time);
 });
 
+shotwatch.on('tick:stopwatch', function(time) {
+	io.sockets.emit("shotclock:tick", time);
+});
 
 
 io.on('connection', function(socket) {
@@ -73,9 +77,36 @@ io.on('connection', function(socket) {
 		stopwatch.setValue(msg);
 	});
 
-    socket.on("clock:get", function() {
-        io.sockets.emit("clock:tick", stopwatch.getTime());
-    });
+  socket.on("clock:get", function() {
+      io.sockets.emit("clock:tick", stopwatch.getTime());
+  });
+
+	/*
+	 * 		shotClock functions
+	 */
+	socket.on("shotclock:pause", function() {
+		shotwatch.pause();
+	});
+
+	socket.on("shotclock:reset", function() {
+		shotwatch.reset();
+	});
+
+	socket.on("shotclock:up", function() {
+		shotwatch.countUp();
+	});
+
+	socket.on("shotclock:down", function() {
+		shotwatch.countDown();
+	});
+
+	socket.on("shotclock:set", function(msg) {
+		shotwatch.setValue(msg);
+	});
+
+	socket.on("shotclock:get", function() {
+		io.sockets.emit("shotclock:tick", shotwatch.getTime());
+	});
 
 		socket.on("grid", function(payload) {
         grid = payload;
