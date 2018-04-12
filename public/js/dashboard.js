@@ -351,10 +351,12 @@ app.controller('lowerThirdsCGController', ['$scope', 'localStorageService', 'soc
         }
 
         $scope.add = function(item) {
-            $scope.queuedThirds.push(item);
+            if (item.heading) {
+                $scope.queuedThirds.push(item);
 
-            $scope.lowerThirdsForm.$setPristine();
-            $scope.lowerThird = {};
+                $scope.lowerThirdsForm.$setPristine();
+                $scope.lowerThird = {};
+            }
         };
 
         $scope.remove = function(index){
@@ -365,6 +367,14 @@ app.controller('lowerThirdsCGController', ['$scope', 'localStorageService', 'soc
             socket.emit("lowerthird:" + side, item);
             showLiveLowerThird($scope)
         };
+
+        $scope.edit = function(index) {
+            if (!$scope.queuedThirds[index].edit) {
+                $scope.queuedThirds[index].edit = true;
+            } else if ($scope.queuedThirds[index].heading) {
+                $scope.queuedThirds[index].edit = !$scope.queuedThirds[index].edit
+            }
+        }
 
         $scope.hideall = function() {
             socket.emit("lowerthird:hideall");
