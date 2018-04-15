@@ -997,7 +997,11 @@ app.controller('tennisCGController', ['$scope', 'socket',
             $scope.tennisOptions = msg;
             $scope.menu.forEach(item => {
                 if (item.name === 'Tennis') {
-                    item.live = $scope.tennisOptions.showScore
+                    if ($scope.tennisOptions.showScore === true || $scope.tennisOptions.showSets === true || $scope.tennisOptions.showStats === true) {
+                        item.live = true
+                    } else {
+                        item.live = false
+                    }
                 }
             })
         });
