@@ -1132,13 +1132,6 @@ app.controller('tennisCGController', ['$scope', 'socket',
         function winGame(player) {
             // given the scoring player, get their opponent
             var opponent = (player == 1 ? 2 : 1);
-<<<<<<< HEAD
-
-            // check if this is a new set, and create new entries in the sets array
-            if (($scope.tennisScore['game' + player] + $scope.tennisScore['game' + opponent]) == 0) {
-                $scope.tennisScore['sets' + player].push(0);
-                $scope.tennisScore['sets' + opponent].push(0);
-=======
 
             if ($scope.tennisScore.tiebreak == false) {
                 if (player == $scope.tennisScore.server) {
@@ -1151,7 +1144,6 @@ app.controller('tennisCGController', ['$scope', 'socket',
 
                 // increment service games for server
                 $scope.tennisScore['serviceGame' + $scope.tennisScore.server] ++;
->>>>>>> origin/master
             }
 
             // update the sets array
