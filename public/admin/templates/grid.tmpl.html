@@ -1,23 +1,61 @@
 <div class="ui form segment">
   <h2>Grid</h2>
 
-<div class="ui grid center aligned">
-    	<div class="five wide column">
-    		Heading Color
-    		<div class="field"><input id="headingcolorpicker" ng-model="grid.headingcolor" placeholder="Heading Color #"></div>
-    	</div>
-        <div class="five wide column">
-            Left Col Color
-    		<div class="field"><input id="leftcolorpicker" ng-model="grid.leftcolor" placeholder="Left Col Color #"></div>
+<div class="sixteen wide  column">
+
+			<div class="fields">
+
+				<div class="four wide field">
+						<label>Grid Position</label>
+						 <dropdown title="Grid Position"  ng-model="grid.position" value="top center">
+							<dropdown-group>bottom left</dropdown-group>
+							<dropdown-group>bottom right</dropdown-group>
+							<dropdown-group>bottom center</dropdown-group>
+							<dropdown-group>top center</dropdown-group>
+							<dropdown-group>top left</dropdown-group>
+							<dropdown-group>top right</dropdown-group>
+						  </dropdown>
+				</div>
+
+				<div class="four wide field">
+						<label>Grid Type</label>
+						 <dropdown title="Grid Sizes"  ng-model="grid.split">
+							<dropdown-group>halves</dropdown-group>
+							<dropdown-group>sporttimes</dropdown-group>
+							<dropdown-group>onebar</dropdown-group>
+						  </dropdown>
+				</div>
+
+				<div class="four wide field">
+				<label>Show Color Options</label>
+				<div class="ui green button" ng-click="showColorOptions()">Show</div>
+				</div>
+				<div class="four wide field">
+				<label>Hide Color Options</label>
+				<div class="ui red button" ng-click="hideColorOptions()">Hide</div>
+				</div>
+			</div>
+		</div>
+    <div id="colorOptions" style="display:block;">
+      <div class="content" ng-if="grid.colorShow">
+      	<div class="ui divider"></div>
+        <div class="ui grid center aligned">
+      		<div class="five wide column">
+      			Heading Color
+      			<div class="field"><input id="headingcolorpicker" ng-model="grid.headingcolor" placeholder="Heading Color #"></div>
+      		</div>
+      		<div class="five wide column">
+      			Left Col Color
+      			<div class="field"><input id="leftcolorpicker" ng-model="grid.leftcolor" placeholder="Left Col Color #"></div>
+      		</div>
+      		<div class="five wide column">
+      			Right Col Color
+      			<div class="field"><input id="rightcolorpicker" ng-model="grid.rightcolor" placeholder="Right Col Color #"></div>
+       	  </div>
         </div>
-        <div class="five wide column">
-            Right Col Color
-    		<div class="field"><input id="rightcolorpicker" ng-model="grid.rightcolor" placeholder="Right Col Color #"></div>
-        </div>
+      </div>
     </div>
-
-
-  <div class="ui grid center aligned">
+    <div class="ui grid center aligned">
 
     <div class="sixteen wide column">
       <div class="ui divider"></div>
@@ -25,7 +63,7 @@
         <div class="five wide field">
             <div class="ui form">
               <h2>Grid Title</h2>
-              <input name="heading" placeholder="Heading" type="text" ng-model="grid.header" />             
+              <input name="heading" placeholder="Heading" type="text" ng-model="grid.header" />
             </div>
             <br />
             <button class="ui green button" ng-click="show()" ng-class="grid.rows <= 1 ? 'disabled' : '' ">Show</button>
@@ -91,4 +129,4 @@
     	allowEmpty:true,
     	showButtons: false
     });
-    </script>
+</script>
