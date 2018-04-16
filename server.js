@@ -320,12 +320,12 @@ io.on('connection', function(socket) {
  * 		Waterpolo
  */
 socket.on("waterpolo", function(msg) {
-			netball = msg;
+			waterpolo = msg;
 	io.sockets.emit("waterpolo", msg);
 });
 
 	socket.on("waterpolo:get", function(msg) {
-	io.sockets.emit("waterpolo", netball);
+	io.sockets.emit("waterpolo", waterpolo);
 });
 
 });
