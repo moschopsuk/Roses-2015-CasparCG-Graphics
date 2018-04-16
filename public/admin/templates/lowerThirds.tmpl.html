@@ -25,9 +25,13 @@
     <div class="six wide column">
       <h2 class="left aligned ui header">
           <i class="list layout icon"></i>
-          <div class="content">
-              {{third.heading}}
+          <div class="content" ng-if="!third.edit">
+              <div>{{third.heading}}</div>
               <div class="sub header">{{third.subHeading}}</div>
+          </div>
+          <div class="content" ng-if="third.edit">
+            <div><input type="text" class="lt-edit-input" ng-model="third.heading"></div>
+            <div><input type="text" class="sub header lt-edit-input" ng-model="third.subHeading"></div>
           </div>
         </h2>
     </div>
@@ -48,8 +52,8 @@
         <div class="or"></div>
         <div class="ui positive button" ng-click="show('full', third)" >Full Width</div>
       </div>
-      <div class="ui icon red small button">
-        <i class="delete icon" ng-click='remove($index)'></i>
+      <div  ng-class="third.edit ? 'green' : 'blue' "class="ui icon small button" ng-click='edit($index)'>
+        <i ng-class="third.edit ? 'save icon' : 'edit icon'"></i>
       </div>
 
       <div class="ui small buttons">
@@ -59,10 +63,10 @@
         <div class="or"></div>
         <div class="ui negative button" ng-click="hidefull()" >Full Width</div>
       </div>
-
-      <div class="ui icon red small button">
-        <i class="delete icon" ng-click='remove($index)'></i>
+      <div class="ui icon red small button" ng-click='remove($index)'>
+        <i class="delete icon"></i>
       </div>
+
     </div>
   </div>
 </div>

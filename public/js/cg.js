@@ -9,15 +9,15 @@ app.controller('lowerThirdsCtrl', ['$scope', 'socket',
             $scope.showRight = false;
             $scope.showFull = false;
         });
-        
+
         socket.on("lowerthird:hidefull", function (msg) {
             $scope.showFull = false;
         });
-        
+
         socket.on("lowerthird:hideleft", function (msg) {
             $scope.showLeft = false;
         });
-        
+
         socket.on("lowerthird:hideright", function (msg) {
             $scope.showRight = false;
         });
@@ -37,7 +37,7 @@ app.controller('lowerThirdsCtrl', ['$scope', 'socket',
             $scope.right = msg;
             $scope.showRight = true;
         });
-        
+
         socket.on("lowerthird:full", function (msg) {
             if($scope.showFull) {
                 $scope.showFull = false;
@@ -87,21 +87,21 @@ app.controller('bugCtrl', ['$scope', '$timeout', 'socket',
         socket.on("bug", function (state) {
             $scope.state = state;
         });
-        
+
         $scope.$watch('bug', function() {
             if (!$scope.bug) {
                 getBugData();
             }
         }, true);
-		
+
 		socket.on("bug", function (msg) {
             $scope.bug = msg;
         });
-        
+
         function getBugData() {
             socket.emit("bug:get");
         };
-        
+
         var tick = function () {
             $scope.clock = Date.now(); // get the current time
             $timeout(tick, $scope.tickInterval); // reset the timer
@@ -144,10 +144,19 @@ app.controller('scoringCtrl', ['$scope', '$interval', '$http', 'socket',
         socket.on("score", function (state) {
             $scope.showScore = state.showScore;
             $scope.manualScore = state.manualScore;
+            $scope.showProgress = state.showProgress;
             if(state.manualScore){
               $scope.yorkScore = state.yorkScore;
               $scope.lancScore = state.lancScore;
             };
+			if(state.totalPoints){
+                $scope.pointsToWin = ((state.totalPoints / 2 ) + 0.5)
+            } else {
+                $scope.pointsToWin = 177.5;
+            }
+			$scope.yorkProgress = (($scope.yorkScore / $scope.pointsToWin)*100).toFixed(2);
+			$scope.lancProgress = (($scope.lancScore / $scope.pointsToWin)*100).toFixed(2);
+            $scope.pointsToWin = $scope.pointsToWin.toFixed(1);
         });
 
         $scope.$watch('score', function() {
@@ -324,7 +333,7 @@ app.controller('tennisCtrl', ['$scope', 'socket',
         socket.on("tennisOptions", function (msg) {
             $scope.tennisOptions = msg;
         });
-        
+
         socket.on("tennisScore", function (msg) {
             $scope.tennisScore = msg;
         });
@@ -334,7 +343,7 @@ app.controller('tennisCtrl', ['$scope', 'socket',
                 getTennisData();
             }
         }, true);
-        
+
         $scope.$watch('tennisScore', function() {
             if (!$scope.tennisScore) {
                 getTennisData();
@@ -343,6 +352,71 @@ app.controller('tennisCtrl', ['$scope', 'socket',
 
         function getTennisData() {
             socket.emit("tennis:get");
+        }
+    }
+]);
+
+app.controller('netballCtrl', ['$scope', 'socket',
+    function($scope, socket){
+
+        socket.on("netball", function (msg) {
+            $scope.netball = msg;
+
+            if ($scope.netball.firstpasslanc == true) {
+            	$scope.netball.lancoffset = 1;
+            }
+
+            if ($scope.netball.firstpasslanc == true & $scope.netball.firstpassyork == true) {
+            	$scope.netball.lancoffset = 0;
+            }
+
+            $scope.TotalScore = $scope.netball.yorkScore + $scope.netball.lancScore + $scope.netball.lancoffset;
+			if (($scope.TotalScore % 2) == 1) {
+						$scope.showcurrentlancs = true;
+						$scope.showcurrentyork = false;
+				} else {
+						$scope.showcurrentlancs = false;
+						$scope.showcurrentyork = true;
+					}
+			});
+
+        socket.on("clock:tick", function (msg) {
+            $scope.clock = msg.slice(0, msg.indexOf("."));
+        });
+
+        $scope.$watch('netball', function() {
+            if (!$scope.netball) {
+                getNetballData();
+            }
+        }, true);
+
+        function getNetballData() {
+            socket.emit("netball:get");
+            socket.emit("clock:get");
+        }
+    }
+]);
+
+app.controller('waterpoloCtrl', ['$scope', 'socket',
+    function($scope, socket){
+
+        socket.on("waterpolo", function (msg) {
+            $scope.waterpolo = msg;
+			});
+
+        socket.on("clock:tick", function (msg) {
+            $scope.clock = msg.slice(0, msg.indexOf("."));
+        });
+
+        $scope.$watch('waterpolo', function() {
+            if (!$scope.waterpolo) {
+                getWaterpoloData();
+            }
+        }, true);
+
+        function getWaterpoloData() {
+            socket.emit("waterpolo:get");
+            socket.emit("clock:get");
         }
     }
 ]);
