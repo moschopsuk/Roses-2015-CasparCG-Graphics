@@ -829,77 +829,94 @@ h1, h2, h3, h4 {
  *         Grid
  *===================================
  */
-.grid {
-
-width: 650px;
-background-clip: padding-box;
-}
-.grid h1 {
+  .grid {
+    margin-top: 20px;
+    position: absolute;
+    width: 650px;
+    text-align: center;
+    background-clip: padding-box;
+    overflow: hidden;
+  }
+  .grid h1 {
     color:  #ffffff;
     font-size: 40px;
     font-size: 2.5vw;
     font-weight: normal;
     padding: 5px;
+    position: relative;
+    z-index: 1;
     background-color: #BC204B;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
-}
+  }
 
-.grid .gridleft, .grid .gridright {
+  .grid .gridleft, .grid .gridright {
+    float: left;
     line-height: 40px;
     background-color: #1f1a34;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
-    font-size: 22px;
-}
+    font-size: 25px;
+  }
 
-.grid .gridleft {
+  .grid .gridleft {
     padding-left: 10px;
     text-align: left;
     float: left;
     width: 50%;
-}
-
-.grid .gridright {
+  }
+    
+  .grid .gridright {
     border-left: 3px solid #fff;
     float: right; 
     width: 50%;
-}
+  }
 
-.sporttimesgridright {
+  .sporttimesgridright {
     width: 20% !important;
     text-align: center;
-}
+  }
 
-.sporttimesgridleft {
+  .sporttimesgridleft {
     width: 80% !important;
-}
- 
-.halvesgridleft {
+  }
+  
+  .halvesgridleft {
     width: 50%;
     text-align: left;
     padding-left: 10px;
-}
-.halvesgridright {
+  }
+  .halvesgridright {
     width: 50%;
     text-align: left;
     padding-left: 10px;
-}
+  }
 
-.onebargridleft {
-    width:100% !important;
-}
+  .onebargridleft {
+    width: 100% !important;
+  }
 
-.onebargridright {
-    display:none;
-}
+  .onebargridright {
+    display: none;
+  }
 
-.grid .row {
+  .grid .row {
+    display: flex;
     color: #fff;
     border-top: 3px solid #fff;
-}
+    position: relative;
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 0.8s, opacity 0.8s;
+  }
 
-.grid .row:last-child {
+  .grid.ng-hide-remove .row {
+    transform: translateY(-5.5vw);
+    opacity: 0;
+    transition-duration: 0;
+  }
+
+  .grid .row:last-child {
     margin-bottom: 5px;
-}
+  }
 
 
 /**************************************************/
