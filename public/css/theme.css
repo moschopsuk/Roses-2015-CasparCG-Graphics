@@ -854,7 +854,7 @@ h1, h2, h3, h4 {
     line-height: 40px;
     background-color: #1f1a34;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
-    font-size: 25px;
+    font-size: 22px;
   }
 
   .grid .gridleft {
