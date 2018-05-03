@@ -89,35 +89,41 @@ h1, h2, h3, h4 {
 .row:after {
   clear: both;
 }
+
+
 /**************************************************/
 /*              [Lower Third]                     */
 /**************************************************/
 
 .lowerthird {
-    min-width: 20%;
-    border-radius: 5px;
+    min-width: 17.5%;
     background-clip: padding-box;
 }
 
 .lowerthird h1 {
     color: #fff;
-    font-size: 40px;
-    font-size: 2.5vw;
-    font-weight: normal;
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 600;
     padding: 5px 8px;
-    background-color: #BC204B;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+    background-color: #1f1a34;
+}
+
+.lowerthird h1:empty {
+    display: none;
 }
 
 .lowerthird h2 {
-    color: #fff;
-    font-size: 35px;
-    font-size: 2vw;
+    color: #1f1a34;
+    font-size: 18px;
     font-weight: normal;
     padding: 5px 8px;
+    background-color: #f2f2f2;
+    border-bottom: 3px solid #1f1a34;
+}
 
-    background-color: #1f1a34;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+.lowerthird h2:empty {
+    display: none;
 }
 
 .lowerthird.bottom.fullwidth {
@@ -136,12 +142,12 @@ h1, h2, h3, h4 {
 .score-inner {
     color: #fff;
     text-align: center;
-    padding: 15px 60px 15px 60px;
+    padding: 15px 30px 15px 30px;
 }
 
 .timer {
     top: -2px;
-    font-size: 30px !important;
+    font-size: 28px !important;
 }
 
 .score-inner h1 {
@@ -151,8 +157,6 @@ h1, h2, h3, h4 {
 .red-moving, .moving {
     height: 40px;
     width: 500%;
-
-    background: linear-gradient(to left, rgba(31,26,52,1) 0%, rgba(31,26,52,1) 71%, rgba(75,64,127,1) 85%, rgba(31,26,52,1) 98%, rgba(31,26,52,1) 100%) repeat;
 }
 
 .bar {
@@ -167,8 +171,6 @@ h1, h2, h3, h4 {
     width: inherit;
     height: 40px;
 	background-color: #1f1a34;
-	background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
-
 }
 
 .gradient-overlay > span {
@@ -180,10 +182,17 @@ h1, h2, h3, h4 {
     z-index:1;
     display:block;
     color:#fff;
-    font-size:23px;
+    font-size:22px;
     text-shadow:1px -1px 0px #000;
 }
 
+.lancLight {
+  background-color: #f4a6a4;
+}
+
+.yorkLight {
+  background-color: #f7dfa1;
+}
 
 /**************************************************/
 /*              [Live Bug]                        */
@@ -192,21 +201,17 @@ h1, h2, h3, h4 {
     display:inline;
     white-space: nowrap;
     clear:none;
-    background-color: rgba(0, 0, 0, 0.5);
-    background-clip: padding-box;
+    background-color: #1f1a34;
 }
 
 .bug h1 {
     color: #fff;
-    font-size: 30px;
-    font-size: 1.55vw;
-    line-height: 1.8vw;
-    font-weight: normal;
+    font-size: 18px;
+    line-height: 20px;
     float: left;
     padding: 3px 10px;
     margin-right: 0px;
     background-color: #BC204B;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .bug h1:empty {
@@ -215,13 +220,11 @@ h1, h2, h3, h4 {
 
 .black {
     background-color: #1f1a34 !important;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
-.white {
-	background-color: #eee !important;
-	color: #000 !important;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+.white {	
+	background-color: #f2f2f2 !important;
+	color: #1f1a34 !important;
 }
 /**************************************************/
 /*              [Logo]                            */
@@ -251,35 +254,33 @@ h1, h2, h3, h4 {
 }
 
 .total-score h1 {
-    color: #000;
-    font-size: 35px;
-    font-size: 2vw;
+    color: #1f1a34;
+    font-size: 20px;
     padding: 6px;
     text-transform: uppercase;
-    background-color: #eee !important;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+    background-color: #f2f2f2 !important;
 }
 
 .total-score .lanc, .football-score .lanc {
     display: block;
     width: 50%;
-    font-size: 40px;
-    font-size: 2.5vw;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 50px;
     color: #fff;
     padding: 6px;
     background-color: #cd1d18;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .total-score .york, .football-score .york {
     display: block;
     width: 50%;
-    font-size: 40px;
-    font-size: 2.5vw;
-    color: #000 ;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 50px;
+    color: #000;
     padding: 6px;
     background-color: #efbb39 !important;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 
@@ -349,27 +350,24 @@ h1, h2, h3, h4 {
 /**************************************************/
 
 .football {
-  width: 30%;
-  border-radius: 3px;
+  width: 25%;
   background-clip: padding-box;
-  font-size: 30px;
-  font-size: 1.8vw;
+  font-size: 20px;
   text-align: center;
+  line-height: 24px;
 }
 
 .football-score h1 {
-    font-size: 18px;
     padding: 6px;
     padding-left: 58px !important;
     padding-right: 44px !important;
     text-transform: uppercase;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .footballtop h1 {
 	color: #000;
-	border-bottom: 3px solid white;
-	background-color: #eee !important;
+	background-color: #f2f2f2 !important;
+	line-height: 24px;
 }
 
 .footballtop h1:empty {
@@ -378,8 +376,8 @@ h1, h2, h3, h4 {
 
 .footballbottom h1 {
 	color: #fff;
-	border-top: 3px solid white;
 	background-color: #1f1a34 !important;
+	line-height: 24px;
 }
 
 .footballbottom h1:empty {
@@ -387,31 +385,35 @@ h1, h2, h3, h4 {
 }
 
 
-.football .clock, .football .score.lanc, .football .score.york {
+.football .clock, .football .score.lanc, .football .score.york, .football .scoreNumber {
   padding: 3px;
   float: left;
 }
 
+.football .scoreNumber {
+  color: white;
+  background-color: #1f1a34;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
 .football .clock {
   background-color: #eee;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
   width: 24%;
 }
 
 .football .extratime {
   background-color: #bc204b;;
-  color: #fff;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+  color: #fff;;
   width: 12%;
   padding: 3px;
   margin-left: 23px;
 }
 
 .football .score.lanc {
-  width: 38%;
+  width: 22%;
   color: #fff;
   background-color: #cd1d18;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .football .score.lanc p {
@@ -419,10 +421,9 @@ h1, h2, h3, h4 {
 }
 
 .football .score.york {
-  width: 38%;
+  width: 22%;
   color: #000;
   background-color: #efbb39;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 /**************************************************/
@@ -433,8 +434,7 @@ h1, h2, h3, h4 {
   width: 35%;
   background-color: #1f1a34;
   text-align: center;
-  font-size: 25px;
-  font-size: 1.8vw;
+  font-size: 20px;
   border-radius: 5px;
   background-clip: padding-box;
 }
@@ -446,8 +446,7 @@ h1, h2, h3, h4 {
 
 .darts .name, .darts .legs, .darts .score, .darts .leg, .darts .footer, .darts .set, .darts .sets {
   float: left;
-  line-height: 40px;
-  line-height: 2.9vw;
+  line-height: 28px;
 
   padding-left: 5px;
   padding-right: 5px;
@@ -460,37 +459,27 @@ h1, h2, h3, h4 {
 .darts .name.lanc {
   color: #fff;
   background-color: #cd1d18;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .darts .name.york {
   color: #fff;
   background-color: #efbb39;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .darts .legs {
   width: 13%;
-  color: #fff;
-  background-color: #BC204B;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
-  border-left: 2px solid #fff;
+  color: #1f1a34;
 }
 
 .darts .sets {
   width: 13%;
-  color: #fff;
-  background-color: #BC204B;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
-  border-left: 2px solid #fff;
+  color: #1f1a34;
 }
 
 .darts .score {
   width: 17%;
   color: #fff;
-  background-color: #BC204B;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
-  border-left: 2px solid #fff;
+  background-color: #1f1a34;
 }
 
 .darts .footer {
@@ -549,22 +538,41 @@ h1, h2, h3, h4 {
 .archery-score {
   color: #fff;
   background-color: #000;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
   border-left: 2px solid #fff;
 }
 
 .archery-hit {
   color: #fff;
   background-color: #ffd232;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+  width: 12px;
 }
 
 .archery-miss {
   color: #fff;
   background-color: #ff3216;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+  width: 12px;
+}
+.archery {
+    background-color: #f2f2f2;
 }
 
+.archery .name {
+    line-height: 40px;
+}
+.archery .name:empty {
+    display: none;
+}
+
+.archery .score {
+    background-color: #f2f2f2 !important;
+}
+
+.archery .totalScore {
+    color: #1f1a34;
+    width: 15%;
+    line-height: 40px;
+    display: inline-block;
+}
 
 /**************************************************/
 /*                [Badminton]                     */
@@ -574,10 +582,6 @@ h1, h2, h3, h4 {
   width: 35%;
   background-color: #1f1a34;
   text-align: center;
-  font-size: 25px;
-  font-size: 1.8vw;
-
-  border-radius: 5px;
   background-clip: padding-box;
 }
 
@@ -588,9 +592,8 @@ h1, h2, h3, h4 {
 
 .badminton .name, .badminton .matches, .badminton .score, .badminton .match, .badminton .footer, .badminton .game, .badminton .games {
   float: left;
-  line-height: 40px;
-  line-height: 2.9vw;
-
+  font-size: 20px;
+  line-height: 28px;
   padding-left: 5px;
   padding-right: 5px;
 }
@@ -602,56 +605,38 @@ h1, h2, h3, h4 {
 .badminton .name.lanc {
   color: #fff;
   background-color: #cd1d18;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .badminton .name.york {
   color: #fff;
   background-color: #efbb39;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .badminton .matches {
   width: 21%;
-  color: #fff;
-  background-color: #BC204B;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
-  border-left: 2px solid #fff;
+  color: #1f1a34;
 }
 
 .badminton .games {
   width: 22%;
-  color: #fff;
-  background-color: #BC204B;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
-  border-left: 2px solid #fff;
+  color: #1f1a34;
 }
 
 .badminton .header .name {
   color: #fff;
   background-color: #1f1a34;
   width: 57%;
-  line-height: 30px;
-  line-height: 2.5vw;
 }
 
 .badminton .header .match {
   color: #fff;
   background-color: #1f1a34;
   width: 21%;
-  font-size: 20px;
-  font-size: 1.3vw;
-  line-height: 30px;
-  line-height: 2.5vw;
 }
 .badminton .header .game {
   color: #fff;
   background-color: #1f1a34;
   width: 22%;
-  font-size: 20px;
-  font-size: 1.3vw;
-  line-height: 30px;
-  line-height: 2.5vw;
 }
 
 .badminton .footer {
@@ -660,20 +645,19 @@ h1, h2, h3, h4 {
   text-align: left;
   text-transform: uppercase;
   width: 100%;
-  font-size: 20px;
-  font-size: 1.3vw;
+  font-size: 16px;
   line-height: 30px;
-  line-height: 2.2vw;
 }
 
 /**************************************************/
-/*                [Tennis]                     */
+/*                [Tennis]                        */
 /**************************************************/
 
 
 .tennis {
   text-align: center;
   font-size: 20px;
+  line-height: 40px;
 }
 
 .tennisScore {
@@ -691,8 +675,6 @@ h1, h2, h3, h4 {
 .tennis .name, .tennis .points, .tennis .games, .tennis .sets, .tennis .info, .tennisSets .header {
   color: #fff;
   float: left;
-  height: 35px;
-  line-height: 35px;
   padding-left: 5px;
   padding-right: 5px;
 }
@@ -711,17 +693,14 @@ h1, h2, h3, h4 {
 
 .tennis .lanc {
   background-color: #cd1d18;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .tennis .york {
   background-color: #efbb39;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .tennis .info, .tennis .header {
   background-color: #1f1a34;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .tennisSets .info, .tennisSets .header {
@@ -729,9 +708,8 @@ h1, h2, h3, h4 {
 }
 
 .tennisScore .points, .tennisScore .games, .tennisScore .sets, .tennisSets .sets {
-  background-color: #BC204B;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
-  border-left: 2px solid #fff;
+  background-color: #f2f2f2;
+  color: #1f1a34;
 }
 
 .tennisScore .points {
@@ -757,6 +735,9 @@ h1, h2, h3, h4 {
   margin-right: 4px;
 }
 
+.tennisSets .info {
+  font-size: 16px;
+}
 .tennis .info {
   font-size: 15px;
   height: 30px;
@@ -828,9 +809,9 @@ h1, h2, h3, h4 {
  *===================================
  *         Grid
  *===================================
- */
-  .grid {
-    margin-top: 20px;
+ */ 
+ .grid {
+    margin-top: 40px;
     position: absolute;
     width: 650px;
     text-align: center;
@@ -839,22 +820,19 @@ h1, h2, h3, h4 {
   }
   .grid h1 {
     color:  #ffffff;
-    font-size: 40px;
-    font-size: 2.5vw;
+    font-size: 22px;
     font-weight: normal;
     padding: 5px;
     position: relative;
     z-index: 1;
     background-color: #BC204B;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
-  }
+    }
 
   .grid .gridleft, .grid .gridright {
     float: left;
-    line-height: 40px;
-    background-color: #1f1a34;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
-    font-size: 22px;
+    line-height: 24px;
+    background-color: #1f1a34;    
+    font-size: 18px;
   }
 
   .grid .gridleft {
@@ -880,12 +858,12 @@ h1, h2, h3, h4 {
   }
   
   .halvesgridleft {
-    width: 50%;
+    width: 50% !important;
     text-align: left;
     padding-left: 10px;
   }
   .halvesgridright {
-    width: 50%;
+    width: 50% !important;
     text-align: left;
     padding-left: 10px;
   }
@@ -917,6 +895,41 @@ h1, h2, h3, h4 {
   .grid .row:last-child {
     margin-bottom: 5px;
   }
+.grid h1 {
+    color:  #ffffff;
+    font-size: 24px;
+    font-weight: normal;
+    padding: 5px;
+    background-color: #1f1a34;
+}
+
+.grid .gridleft, .grid .gridright {
+    float: left;
+    line-height: 24px;
+    background-color: #f2f2f2;
+    font-size: 18px;
+    color: #1f1a34;
+}
+
+.grid .gridleft {
+    padding-left: 10px;
+    text-align: left;
+    width: 80%;
+}
+
+.grid .gridright {
+    width: 20%;
+    border-left: 3px solid #fff;
+}
+
+.grid .row {
+    color: #fff;
+    border-top: 3px solid #fff;
+}
+
+.grid .row:last-child {
+    border-bottom: 3px solid #1f1a34;
+}
 
 
 /**************************************************/
@@ -1063,7 +1076,7 @@ h1, h2, h3, h4 {
     float: left;
     margin-right: 15px;
     border-right: 3px solid #eee;
-    paddding: 15px;
+    padding: 15px;
     width: 50px;
     width: 3.8vw;
     text-align: center;
@@ -1077,13 +1090,12 @@ h1, h2, h3, h4 {
 /**************************************************/
 
 .basketball {
-  width: 30%;
-  border-radius: 3px;
+  width: 25%;
   background-clip: padding-box;
-  background-color: #eee;
-  font-size: 30px;
-  font-size: 1.8vw;
+  background-color: #f2f2f2;
+  font-size: 20px;
   text-align: center;
+  line-height: 24px;
 }
 
 .basketball .clock, .basketball .score.lanc, .basketball .score.york {
@@ -1092,8 +1104,7 @@ h1, h2, h3, h4 {
 }
 
 .basketball .clock {
-  background-color: #eee;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+  background-color: #f2f2f2;
   width: 24%;
 }
 
@@ -1101,7 +1112,6 @@ h1, h2, h3, h4 {
   width: 38%;
   color: #fff;
   background-color: #cd1d18;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .basketball .score.lanc p {
@@ -1112,7 +1122,6 @@ h1, h2, h3, h4 {
   width: 38%;
   color: #000;
   background-color: #efbb39;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 /**************************************************/
@@ -1120,11 +1129,10 @@ h1, h2, h3, h4 {
 /**************************************************/
 
 .netball {
-  width: 40%;
+  width: 35%;
   border-radius: 3px;
   background-clip: padding-box;
-  font-size: 30px;
-  font-size: 1.8vw;
+  font-size: 20px;
 }
 
 .netballquarter {
@@ -1137,15 +1145,12 @@ h1, h2, h3, h4 {
 
 .netballquarter h1 {
     color: #fff;
-    font-size: 30px;
-    font-size: 1.55vw;
-    line-height: 1.8vw;
+    font-size: 20px;
     font-weight: normal;
     float: left;
     padding: 3px 10px;
     margin-right: 0px;
     background-color: #BC204B;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .netballquarter h1:empty {
@@ -1159,8 +1164,7 @@ h1, h2, h3, h4 {
 
 .netball .clock {
   background-color: #eee;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
-  width: 18%;
+    width: 18%;
   text-align: center;
 }
 
@@ -1170,7 +1174,6 @@ h1, h2, h3, h4 {
   padding-right:20px;
   color: #fff;
   background-color: #cd1d18;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .netball .score.lanc p {
@@ -1184,7 +1187,6 @@ h1, h2, h3, h4 {
   padding-left: 30px;
   color: #000;
   background-color: #efbb39;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 /**************************************************/
@@ -1217,7 +1219,6 @@ h1, h2, h3, h4 {
     padding: 3px 10px;
     margin-right: 0px;
     background-color: #BC204B;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .waterpoloquarter h1:empty {
@@ -1231,7 +1232,6 @@ h1, h2, h3, h4 {
 
 .waterpolo .clock {
   background-color: #eee;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
   width: 18%;
   text-align: center;
 }
@@ -1242,7 +1242,6 @@ h1, h2, h3, h4 {
   padding-right:20px;
   color: #fff;
   background-color: #cd1d18;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .waterpolo .score.lanc p {
@@ -1256,5 +1255,4 @@ h1, h2, h3, h4 {
   padding-left: 30px;
   color: #000;
   background-color: #efbb39;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }

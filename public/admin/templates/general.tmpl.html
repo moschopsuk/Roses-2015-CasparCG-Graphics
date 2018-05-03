@@ -4,10 +4,18 @@
 <div class="ui divider"></div>
   <div class="inline field">
     <checkbox size="large" ng-model="general.showLogo" type="toggle">Show Logo</checkbox>
-    <checkbox size="large" ng-model="general.showClock" type="toggle">Show Clock</checkbox>
+    <checkbox size="large" ng-model="general.showGeneral" type="toggle">Show General</checkbox>
   </div>
 
 <div class="ui divider"></div>
+    <div class="sixteen wide column">
+        <div class="inline fields">
+        <div class="five wide field">
+          </div>  
+          <div class="five wide field">
+            <checkbox size="large" ng-model="bug.showClock" type="toggle">Show Clock</checkbox>
+          </div>
+    </div>  
     <div class="sixteen wide column">
       <div class="inline fields">
   		<div class="five wide field">
@@ -16,7 +24,7 @@
         <div class="five wide field">
           <checkbox size="large" ng-model="bug.showLive" type="toggle">Show Live</checkbox>
         </div>
-	</div>   
+  </div>    
     <div class="sixteen wide column">
       <div class="inline fields">
   		<div class="five wide field">

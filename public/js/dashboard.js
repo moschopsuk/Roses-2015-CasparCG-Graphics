@@ -699,7 +699,7 @@ app.controller('rugbyCGController', ['$scope', 'localStorageService', 'socket',
         socket.on("rugby", function (msg) {
             $scope.rugby = msg;
             $scope.menu.forEach(item => {
-                if (item.name === 'Rugby') {
+                if (item.name === 'rugby') {
                     item.live = $scope.rugby.show
                 }
             })
@@ -714,12 +714,12 @@ app.controller('rugbyCGController', ['$scope', 'localStorageService', 'socket',
         }, true);
 
         $scope.$on("$destroy", function() {
-            localStorageService.set('york_Rugby', $scope.yorksPlayers);
-            localStorageService.set('lancs_Rugby', $scope.lancsPlayers);
+            localStorageService.set('york_rugby', $scope.yorksPlayers);
+            localStorageService.set('lancs_rugby', $scope.lancsPlayers);
         });
 
         function getRugbyData() {
-            socket.emit("Rugby:get");
+            socket.emit("rugby:get");
             socket.emit("clock:get");
         }
     }

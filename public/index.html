@@ -11,42 +11,35 @@
 
     <body>
         <div ng-controller="bugCtrl">
-            <div class="wrapper slide-left">
-                 <div class="bug top scale-fade-in" ng-show="state.showClock">
-                        <h1 class="black">{{clock | date: "HH:mm"}}</h1>
-                 </div>
-                 <div class="bug top scale-fade-in" ng-show="state.showLive">
-                 <h1 ng-show="state.showLive">{{bug.livetext}}</h1>
-                 </div>
-                 <div class="bug top scale-fade-in" ng-show="state.showLocation">
-                 <h1 class="white" ng-show="state.showLocation">{{bug.locationtext}}</h1></div>
+            <div class="logo right top toggle" ng-show="state.showLogo">
+                <img src="/images/roses2018logo.png" />
+            </div>
+            <div class="toggle" ng-show="state.showGeneral"> 
+                <div class="bug top slide-left" ng-show="state.showClock">
+                    <h1 class="black">{{clock | date: "HH:mm"}}</h1>
                 </div>
-
-                <div class="logo right top toggle" ng-show="state.showLogo">
-                    <img src="/images/roses2018logo.png" />
+                <div class="bug top slide-left" ng-show="state.showLive">
+                    <h1 ng-show="state.showLive">{{bug.livetext}}</h1>
+                </div>
+                <div class="bug top slide-left" ng-show="state.showLocation">
+                    <h1 class="white" ng-show="state.showLocation">{{bug.locationtext}}</h1>
                 </div>
             </div>
         </div>
 
         <div ng-controller="lowerThirdsCtrl">
         	<div class="lowerthird bottom fullwidth scale-fade" ng-show="showFull">
-                <div class="gradient-overlay">
                     <h1>{{full.heading}}</h1>
-                </div>
                 <h2 ng-show="full.subHeading">{{full.subHeading}}</h2>
             </div>
 
             <div class="lowerthird left bottom slide-left" ng-show="showLeft">
-                <div class="gradient-overlay">
-                    <h1>{{left.heading}}</h1>
-                </div>
+                <h1>{{left.heading}}</h1>
                 <h2 ng-show="left.subHeading">{{left.subHeading}}</h2>
             </div>
 
             <div class="lowerthird right bottom slide-right" ng-show="showRight">
-                <div class="gradient-overlay">
-                    <h1>{{right.heading}}</h1>
-                </div>
+                <h1>{{right.heading}}</h1>
                 <h2 ng-show="right.subHeading">{{right.subHeading}}</h2>
             </div>
         </div>
@@ -61,10 +54,10 @@
 
                 <div class="score-inner">
 
-                    <div class="float-left">
+                    <div class="float-left" style="padding-bottom: 12px;">
                         <h4>{{boxing.name1}}</h4>
                         <h1>{{boxing.lancScore}}</h1>
-                        <h2>LANC</h2>
+                        <h2>LAN</h2>
                     </div>
 
                     <div class="float-right">
@@ -85,18 +78,16 @@
 
         <div ng-controller="scoringCtrl">
         		<img ng-src="images/LancasterSport250.png" ng-show="showScore" class="bottom leftLogo scale-fade"/>
-				        <img ng-src="images/YorkSport250.png" ng-show="showScore" class="bottom rightLogo scale-fade"/>
-            	<div ng-show="showScore" class="center bottom total-score scale-fade" >
-            		<h1>Overall Score</h1>
-					<div class="float-left lanc">
-						LANCS
-						<p>{{lancScore}}</p>
-					</div>
-					<div class="float-right york">
-						YORK
-						<p>{{yorkScore}}</p>
-					</div>
-                	<div class="clearfix"></div>
+				    <img ng-src="images/YorkSport250.png" ng-show="showScore" class="bottom rightLogo scale-fade"/>
+            	<div ng-show="showScore" class="center bottom total-score scale-fade">
+                    <h1>Roses 2018</h1>
+                    <div class="float-left lanc">
+                        <p>{{lancScore}}</p>
+                    </div>
+                    <div class="float-right york">
+                        <p>{{yorkScore}}</p>
+                    </div>
+                <div class="clearfix"></div>
             	</div>
         </div>
 
@@ -109,7 +100,6 @@
 					<div class="lanc-progress" style="height:{{lancProgress}}%">
 						<p ng-if="lancScore > 0" class="scoreText">{{lancScore}}</p>
 					</div>
-
                 	<div class="clearfix"></div>
             	</div>
         </div>
@@ -117,27 +107,26 @@
         <div ng-controller="footballCtrl" class="football left top scale-fade" ng-show="football.show">
             <div class="row">
                 <div class="clock">{{clock}}</div>
-                <div class="score lanc">LANCS {{football.lancScore}}</div>
-                <div class="score york">{{football.yorkScore}} YORK</div>
+                <div class="score lanc">LAN</div>
+                <div class="score scoreNumber">{{football.lancScore}} - {{football.yorkScore}}</div>
+                <div class="score york">YRK</div>
             </div>
             	<div ng-show="football.showextratime" class="extratime scale-fade">ET</div>
         </div>
 
         <div ng-controller="footballCtrl" ng-show="football.showpost">
-        		<img ng-src="images/YorkSport250.png" ng-show="football.showpost" class="bottom leftLogo scale-fade"/>
-				   <img ng-src="images/LancasterSport250.png" ng-show="football.showpost" class="bottom rightLogo scale-fade"/>
+        		<img ng-src="images/LancasterSport250.png" ng-show="football.showpost" class="bottom leftLogo scale-fade"/>
+				<img ng-src="images/YorkSport250.png" ng-show="football.showpost" class="bottom rightLogo scale-fade"/>
             	<div ng-show="football.showpost" class="center bottom football-score scale-fade" >
             		<div class="footballtop">
             			<h1 ng-show="football.showtop">{{football.matchname}}</h1>
 					</div>
-					<div class="float-left york">
-						YORK
-						<p>{{football.yorkScore}}</p>
+					<div class="float-left lanc">
+						<p>{{football.lancScore}}</p>
 					</div>
 
-					<div class="float-right lanc">
-						LANCS
-						<p>{{football.lancScore}}</p>
+					<div class="float-right york">
+						<p>{{football.yorkScore}}</p>
 					</div>
 	              	<div class="clearfix"></div>
 	              	<div class="footballbottom">
@@ -147,18 +136,18 @@
         </div>
 
         <div ng-controller="footballCtrl" ng-show="football.showpre">
-        		<img ng-src="images/YorkSport250.png" ng-show="football.showpre" class="bottom leftLogo scale-fade"/>
-				    <img ng-src="images/LancasterSport250.png" ng-show="football.showpre" class="bottom rightLogo scale-fade"/>
+        		<img ng-src="images/LancasterSport250.png" ng-show="football.showpre" class="bottom leftLogo scale-fade"/>
+				<img ng-src="images/YorkSport250.png" ng-show="football.showpre" class="bottom rightLogo scale-fade"/>
             	<div ng-show="football.showpre" class="center bottom football-score scale-fade" >
             		<div class="footballtop">
             			<h1 class="upper" ng-show="football.showtop">{{football.matchname}}</h1>
             		</div>
-					<div class="float-left york">
-					YORK
+					<div class="float-left lanc">
+					LANCS
 					</div>
 
-					<div class="float-right lanc">
-					LANCS
+					<div class="float-right york">
+					YORK
 					</div>
 					<div class="clearfix"></div>
 					<div class="footballbottom">
@@ -166,24 +155,24 @@
 					</div>
                 	<div class="clearfix"></div>
             	</div>
-        </div>
-
-
+        </div>             
+        
         <div ng-controller="rugbyCtrl" class="football left top scale-fade" ng-show="rugby.show">
             <div class="row">
                 <div class="clock">{{clock}}</div>
-                <div class="score lanc">LANCS {{rugby.lancScore}}</div>
-                <div class="score york">{{rugby.yorkScore}} YORK</div>
+                <div class="score lanc">LAN </div>
+                <div ng-if="rugby.lancScore > -1 || rugby.yorkScore > -1" class="score scoreNumber">{{rugby.lancScore}} - {{rugby.yorkScore}}</div>
+                <div class="score york">YRK</div>
             </div>
             	<div ng-show="rugby.showextratime" class="extratime scale-fade">ET</div>
         </div>
 
-
+        
         <div ng-controller="basketballCtrl" class="basketball left top scale-fade" ng-show="basketball.show">
             <div class="row">
                 <div class="clock">{{clock}}</div>
-                <div class="score lanc">LANCS {{basketball.lancScore}}</div>
-                <div class="score york">{{basketball.yorkScore}} YORK</div>
+                <div class="score lanc">LAN {{basketball.lancScore}}</div>
+                <div class="score york">{{basketball.yorkScore}} YRK</div>
             </div>
         </div>
 
@@ -192,20 +181,19 @@
                 <div class="name">{{darts.match}}&nbsp;</div>
                 <div class="set">SETS</div>
                 <div class="leg">LEGS</div>
-                <div class="name2">&nbsp;</div>
             </div>
 
             <div class="row">
                 <div class="name lanc">{{darts.player1}}</div>
-                <div class="sets">{{darts.set1}}</div>
-                <div class="legs">{{darts.leg1}}</div>
+                <div class="sets lancLight">{{darts.set1}}</div>
+                <div class="legs lancLight">{{darts.leg1}}</div>
                 <div class="score">{{darts.score1}}</div>
             </div>
 
             <div class="row">
                 <div class="name york">{{darts.player2}}</div>
-                <div class="sets">{{darts.set2}}</div>
-                <div class="legs">{{darts.leg2}}</div>
+                <div class="sets yorkLight">{{darts.set2}}</div>
+                <div class="legs yorkLight">{{darts.leg2}}</div>
                 <div class="score">{{darts.score2}}</div>
             </div>
 
@@ -214,7 +202,7 @@
             </div>
         </div>
 
-        <div ng-controller="archeryCtrl" class="left bottom darts scale-fade" ng-show="archery.show" style="width: 50%">
+        <div ng-controller="archeryCtrl" class="left bottom darts archery scale-fade" ng-show="archery.show" style="width: 50%">
             <div class="row header">
                 <div class="name" style="width: 40%">Archery</div>
                 <div class="leg" style="width: 45%">HITS</div>
@@ -222,25 +210,25 @@
             </div>
 
             <div class="row">
-                <div class="name lanc" style="width: 40%; height: 3.2vw">{{archery.team1}}</div>
-                <div class="score" style="width: 45%; height: 3.2vw; padding: 0px; background-color: #ffffff">
-                  <div ng-repeat="letter in archery.shots1.split('')  track by $index" style="width: 16.66%; height: 3.2vw; display: inline-block; padding: 2px">
+                <div class="name lanc" style="width: 40%;">{{archery.team1}}</div>
+                <div class="score" style="width: 45%; padding: 0px;">
+                  <div ng-repeat="letter in archery.shots1.split('')  track by $index" style="width: 16.66%; display: inline-block; padding: 2px">
                     <div ng-if="letter == 'H'" class="archery-hit" style="width: 100%; height: 100%;"></div>
                     <div ng-if="letter == 'M'" class="archery-miss" style="width: 100%; height: 100%;"></div>
                   </div>
                 </div>
-                <div class="score" style="width: 15%;">{{archery.score1}}</div>
+                <div class="totalScore">{{archery.score1}}</div>
             </div>
 
             <div class="row">
                 <div class="name york" style="width: 40%; height: 3.2vw">{{archery.team2}}</div>
-                <div class="score" style="width: 45%; height: 3.2vw; padding: 0px; background-color: #ffffff">
-                  <div ng-repeat="letter in archery.shots2.split('')  track by $index" style="width: 16.66%; height: 3.2vw; display: inline-block; padding: 2px">
+                <div class="score" style="width: 45%; padding: 0px;">
+                  <div ng-repeat="letter in archery.shots2.split('')  track by $index" style="width: 16.66%; display: inline-block; padding: 2px">
                     <div ng-if="letter == 'H'" class="archery-hit" style="width: 100%; height: 100%;"></div>
                     <div ng-if="letter == 'M'" class="archery-miss" style="width: 100%; height: 100%;"></div>
                   </div>
                 </div>
-                <div class="score" style="width: 15%;">{{archery.score2}}</div>
+                <div class="totalScore">{{archery.score2}}</div>
             </div>
         </div>
 
@@ -311,14 +299,14 @@
 
             <div class="row">
                 <div class="name lanc">{{badminton.player1}}</div>
-                <div class="games">{{badminton.game1}}</div>
-                <div class="matches">{{badminton.point1}}</div>
+                <div class="games lancLight">{{badminton.game1}}</div>
+                <div class="matches lancLight">{{badminton.point1}}</div>
             </div>
 
             <div class="row">
                 <div class="name york">{{badminton.player2}}</div>
-                <div class="games">{{badminton.game2}}</div>
-                <div class="matches">{{badminton.point2}}</div>
+                <div class="games yorkLight">{{badminton.game2}}</div>
+                <div class="matches yorkLight">{{badminton.point2}}</div>
             </div>
 
             <div class="row">
@@ -346,7 +334,7 @@
                     <div class="info">{{tennisScore.gamePoint}}</div>
                 </div>
             </div>
-
+            
             <div class="center bottom tennis tennisSets scale-fade" ng-show="tennisOptions.showSets">
                 <div class="row">
                     <div class="header">{{tennisOptions.matchName}}</div>
@@ -377,7 +365,7 @@
                     <div class="info">Best of {{tennisOptions.maxSets}} sets</div>
                 </div>
             </div>
-
+			
 			<div class="tennis tennisStats center scale-fade" ng-show="tennisOptions.showStats">
 			   	    <div class="header">
 					    <h1>Match Statistics</h1>
@@ -391,43 +379,43 @@
 							<span class="float-right">{{tennisOptions.player2}}</span>
 						</div>
 				    </div>
-
+					
 				    <div class="row">
 						<div class="statsleft lanc">{{tennisScore.ace1}}</div>
 					    <div class="statsright york">{{tennisScore.ace2}}</div>
 						<div class="stats">Aces</div>
 				    </div>
-
+					
 					<div class="row">
 						<div class="statsleft lanc">{{tennisScore.doubleFault1}}</div>
 					    <div class="statsright york">{{tennisScore.doubleFault2}}</div>
 						<div class="stats">Double Faults</div>
 				    </div>
-
+					
 					<div class="row">
 						<div class="statsleft lanc">{{tennisScore.firstServeWon1 + " / " + (tennisScore.pointsServed1 - tennisScore.singleFault1 - tennisScore.doubleFault1)}}</div>
 					    <div class="statsright york">{{tennisScore.firstServeWon2 + " / " + (tennisScore.pointsServed2 - tennisScore.singleFault2 - tennisScore.doubleFault2)}}</div>
 						<div class="stats">First Serves Won</div>
 				    </div>
-
+					
 					<div class="row">
 						<div class="statsleft lanc">{{tennisScore.secondServeWon1 + " / " + (tennisScore.singleFault1 + tennisScore.doubleFault1)}}</div>
 					    <div class="statsright york">{{tennisScore.secondServeWon2 + " / " + (tennisScore.singleFault2 + tennisScore.doubleFault2)}}</div>
 						<div class="stats">Second Serves Won</div>
 				    </div>
-
+					
 					<div class="row">
 						<div class="statsleft lanc">{{tennisScore.breaksWon1 + " / " + tennisScore.breakPoint1}}</div>
 					    <div class="statsright york">{{tennisScore.breaksWon2 + " / " + tennisScore.breakPoint2}}</div>
 						<div class="stats">Break Points Won</div>
 				    </div>
-
+					
 					<div class="row">
 						<div class="statsleft lanc">{{tennisScore.servicesWon1}}</div>
 					    <div class="statsright york">{{tennisScore.servicesWon2}}</div>
 						<div class="stats">Service Games Won</div>
 				    </div>
-
+					
 					<div class="row">
 						<div class="statsleft lanc">{{tennisScore.pointsWon1}}</div>
 					    <div class="statsright york">{{tennisScore.pointsWon2}}</div>
