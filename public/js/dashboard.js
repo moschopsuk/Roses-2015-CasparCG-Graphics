@@ -928,7 +928,7 @@ app.controller('basketballCGController', ['$scope', 'localStorageService', 'sock
         socket.on("basketball", function (msg) {
             $scope.basketball = msg;
             $scope.menu.forEach(item => {
-                if (item.name === 'Basketball') {
+                if (item.name === 'basketball') {
                     item.live = $scope.basketball.show
                 }
             })
@@ -948,7 +948,7 @@ app.controller('basketballCGController', ['$scope', 'localStorageService', 'sock
         });
 
         function getBasketballData() {
-            socket.emit("football:get");
+            socket.emit("basketball:get");
             socket.emit("clock:get");
         }
     }
