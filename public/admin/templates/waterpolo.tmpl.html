@@ -1,0 +1,237 @@
+<div class="ui form segment">
+    <h2>Waterpolo</h2>
+
+    <div class="ui grid center aligned">
+        <div class="ten wide column">
+            <div class="inline field">
+                <checkbox ng-model="waterpolo.show" size="large" type="toggle">Show Score Bar</checkbox>
+           		<checkbox ng-model="waterpolo.showquarter" size="large" type="toggle">Show Quarter</checkbox>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui divider"></div>
+
+    <div class="ui grid">
+        <div class="five wide column center aligned">
+          <h2 class="ui header">{{clock}}</h2>
+          <dropdown title="Current Quarter" ng-model="waterpolo.currentQuarter" on-change="quarterChanged()">
+            <dropdown-group>1st</dropdown-group>
+            <dropdown-group>2nd</dropdown-group>
+            <dropdown-group>3rd</dropdown-group>
+            <dropdown-group>4th</dropdown-group>
+          </dropdown>
+        </div>
+
+        <div class="five wide column">
+            <div class="ui action input">
+                <input type="text" placeholder="mm:ss" ng-model="time" size="10">
+                <div class="ui button" ng-click="setClock(time)">Set</div>
+            </div>
+        </div>
+
+        <div class="five wide column">
+          <div class="ui">
+            <div class="ui icon blue button" ng-click="waterpoloClock()">
+              <i class="pause icon"></i>
+            </div>
+            <div class="ui button" ng-click="resetClock()">Reset</div>
+          </div>
+        </div>
+    </div>
+
+    <div class="ui divider"></div>
+
+    <div class="ui grid center aligned">
+        <div class="eight wide column">
+            <h3>Lancaster</h3>
+            <h1>{{waterpolo.lancScore}}</h1>
+            <div class="ui icon buttons">
+                <button class="ui green button" ng-click="waterpolo.lancScore = waterpolo.lancScore + 1;">
+                    <i class="plus icon"></i>
+                </button>
+                <button class="ui red button" ng-click="waterpolo.lancScore = waterpolo.lancScore - 1;" ng-disabled="waterpolo.lancScore == 0">
+                    <i class="minus icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="eight wide column">
+            <h3>York</h3>
+            <h1>{{waterpolo.yorkScore}}</h1>
+            <div class="ui icon buttons">
+                <button class="ui green button" ng-click="waterpolo.yorkScore = waterpolo.yorkScore + 1;">
+                    <i class="plus icon"></i>
+                </button>
+                <button class="ui red button" ng-click="waterpolo.yorkScore = waterpolo.yorkScore - 1;" ng-disabled="waterpolo.yorkScore == 0">
+                    <i class="minus icon"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui divider"></div>
+
+    <div class="ui top attached tabular menu">
+        <a class="active item" data-tab="teams">Teams</a>
+        <a class="item" data-tab="settings">Settings</a>
+    </div>
+
+    <div class="ui bottom attached active tab segment" data-tab="teams">
+        <div class="ui two column grid">
+            <div class="column">
+                <table class="ui striped table">
+                    <thead>
+                        <th colspan="2">Lancaster</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="player in lancsPlayers">
+                            <td>{{player.name}} <strong>({{player.number}})</strong></td>
+                            <td>
+                                <div class="mini ui yellow button" ng-click="yellowCard('york', $index)" >Y</div>
+                                <div class="mini ui red button" ng-click="redCard('york', $index)" >R</div>
+                                <div class="mini ui green button" ng-click="scored('york', $index)" >G</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="column">
+                <table class="ui striped table">
+                    <thead>
+                        <th colspan="2">York</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="player in yorksPlayers">
+                            <td>{{player.name}} <strong>({{player.number}})</strong></td>
+                            <td>
+                                <div class="mini ui yellow button" ng-click="yellowCard('york', $index)" >Y</div>
+                                <div class="mini ui red button" ng-click="redCard('york', $index)" >R</div>
+                                <div class="mini ui green button" ng-click="scored('york', $index)" >G</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui bottom attached tab segment" data-tab="settings">
+        <div class="ui two column grid">
+            <div class="column">
+                <h2>Lancaster</h2>
+                <form class="ui form">
+                    <div class="field">
+                        <label></label>
+                        <input ng-model="lancs.name" placeholder="Player Name" type="text"/>
+                    </div>
+                    <div class="six wide field">
+                        <label></label>
+                        <input ng-model="lancs.number" placeholder="Player Number" type="text"/>
+                    </div>
+                    <div class="field">
+                        <label></label>
+                        <input ng-model="lancs.position" placeholder="Player Position" type="text"/>
+                    </div>
+                </form>
+
+                <div class="ui icon green button" ng-click="addLancsPlayer()">
+                    <i class="plus icon"></i> Add Player
+                </div>
+
+                <div class="ui divider"></div>
+
+                <table class="ui very basic padded celled table">
+                    <thead>
+                        <tr>
+                            <th>Player</th>
+                            <th>#</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="player in lancsPlayers">
+                        <tr>
+                            <td>
+                                <h4 class="ui header">
+                                    <div class="content">
+                                        {{player.name}}
+                                        <div class="sub header">{{player.position}}
+                                        </div>
+                                    </div>
+                                </h4>
+                            </td>
+                            <td class="collapsing">
+                                {{player.number}}
+                            </td>
+                            <td class="collapsing">
+                                <div class="mini ui negative icon button" ng-click="delete('lancs', $index)" >
+                                    <i class="delete icon"></i>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="column">
+                <h2>York</h2>
+                <form class="ui form">
+                    <div class="field">
+                        <label></label>
+                        <input ng-model="york.name" placeholder="Player Name" type="text"/>
+                    </div>
+                    <div class="six wide field">
+                        <label></label>
+                        <input ng-model="york.number" placeholder="Player Number" type="text"/>
+                    </div>
+                    <div class="field">
+                        <label></label>
+                        <input ng-model="york.position" placeholder="Player Position" type="text"/>
+                    </div>
+                </form>
+
+                <div class="ui icon green button" ng-click="addYorksPlayer()">
+                    <i class="plus icon"></i> Add Player
+                </div>
+
+                <div class="ui divider"></div>
+
+                <table class="ui very basic padded celled table">
+                    <thead>
+                        <tr>
+                            <th>Player</th>
+                            <th>#</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="player in yorksPlayers">
+                        <tr>
+                            <td>
+                                <h4 class="ui header">
+                                    <div class="content">
+                                        {{player.name}}
+                                        <div class="sub header">{{player.position}}
+                                        </div>
+                                    </div>
+                                </h4>
+                            </td>
+                            <td class="collapsing">
+                                {{player.number}}
+                            </td>
+                            <td class="collapsing">
+                                <div class="mini ui negative icon button" ng-click="delete('york', $index)" >
+                                    <i class="delete icon"></i>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('.menu .item').tab();
+    </script>
+</div>

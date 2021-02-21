@@ -19,59 +19,6 @@ body {
     100% { background-position: right bottom; }
 }
 
-.moving {
-    height: 40px;
-    width: 500%;
-
-    background: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 71%, rgba(125,125,125,1) 85%, rgba(0,0,0,1) 98%, rgba(0,0,0,1) 100%) repeat;
-
-    -webkit-background-size: 50% 100%;
-    -webkit-animation-name: moving-gradient;
-    -webkit-animation-duration: 20s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
-}
-
-.bar {
-  overflow-x: hidden;
-  overflow-y:hidden;
-  width: 100%;
-  border-radius: 2px;
-
-  box-shadow: inset 0px 1px 0px #666, 0px 5px 0px 0px #000;
-}
-
-.bar .gradient-overlay {
-    position: absolute;
-    width: inherit;
-    height: 40px;
-
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, .2) 0%,
-        rgba(255, 255, 255, .4) 50%,
-        rgba(255, 255, 255, 0) 50%,
-        rgba(255, 255, 255, .2) 100%
-    );
-}
-
-.bar.red {
-    box-shadow: inset 0px 1px 0px #666, 0px 5px 0px 0px #600;
-}
-
-.gradient-overlay > span {
-    position:relative;
-    padding-top: 8px;
-    padding-left: 8px;
-    text-align: center;
-    text-transform:uppercase;
-    z-index:1;
-    display:block;
-    color:#fff;
-    font-size:23px;
-    text-shadow:1px -1px 0px #000;
-}
-
 h1, h2, h3, h4 {
     margin:0;
     padding:0;
@@ -99,6 +46,10 @@ h1, h2, h3, h4 {
 .bottom {
     bottom: 50px;
 }
+
+.fullwidth {
+	width: 1180px;
+	}
 
 .top {
     top: 50px;
@@ -138,78 +89,110 @@ h1, h2, h3, h4 {
 .row:after {
   clear: both;
 }
+
+
 /**************************************************/
 /*              [Lower Third]                     */
 /**************************************************/
 
 .lowerthird {
-    min-width: 30%;
-    width: 40%;
-
-    border-radius: 5px;
-    border: 8px solid rgba(0, 0, 0, 0.5);
+    min-width: 17.5%;
     background-clip: padding-box;
 }
 
 .lowerthird h1 {
     color: #fff;
-    font-size: 40px;
-    font-size: 2.5vw;
-    font-weight: normal;
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 600;
     padding: 5px 8px;
+    background-color: #1f1a34;
+}
 
-    background-color: #cd1d18;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+.lowerthird h1:empty {
+    display: none;
 }
 
 .lowerthird h2 {
-    color: #fff;
-    font-size: 35px;
-    font-size: 2vw;
+    color: #1f1a34;
+    font-size: 18px;
     font-weight: normal;
     padding: 5px 8px;
+    background-color: #f2f2f2;
+    border-bottom: 3px solid #1f1a34;
+}
 
-    background-color: #000;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+.lowerthird h2:empty {
+    display: none;
+}
+
+.lowerthird.bottom.fullwidth {
+    position: absolute;
+    left: 50px;
 }
 
 /**************************************************/
 /*              [Boxing Score]                    */
 /**************************************************/
 .boxing-score {
-    background-color: rgba(0,0,0,0.5);
+    background-color: #BC204B;
     width: 15%;
 }
 
 .score-inner {
     color: #fff;
-    text-shadow:1px -1px 0px #000;
     text-align: center;
-    padding: 15px 60px 15px 60px;
+    padding: 15px 30px 15px 30px;
 }
 
 .timer {
     top: -2px;
-    font-size: 30px !important;
+    font-size: 28px !important;
 }
 
 .score-inner h1 {
     font-size: 35px;
 }
 
-.red-moving {
+.red-moving, .moving {
     height: 40px;
     width: 500%;
-
-    background: linear-gradient(to left, rgba(225,0,0,1) 0%, rgba(225,0,0,1) 71%, rgba(225,25,25,1) 85%, rgba(225,0,0,1) 98%, rgba(225,0,0,1) 100%) repeat;
-
-    -webkit-background-size: 50% 100%;
-    -webkit-animation-name: moving-gradient;
-    -webkit-animation-duration: 20s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
 }
 
+.bar {
+  overflow-x: hidden;
+  overflow-y:hidden;
+  width: 100%;
+  border-radius: 2px;
+}
+
+.bar .gradient-overlay {
+    position: absolute;
+    width: inherit;
+    height: 40px;
+	background-color: #1f1a34;
+}
+
+.gradient-overlay > span {
+    position:relative;
+    padding-top: 8px;
+    padding-left: 8px;
+    text-align: center;
+    text-transform:uppercase;
+    z-index:1;
+    display:block;
+    color:#fff;
+    font-size:22px;
+    text-shadow:1px -1px 0px #000;
+}
+
+.lancLight {
+  background-color: #f4a6a4;
+}
+
+.yorkLight {
+  background-color: #f7dfa1;
+}
 
 /**************************************************/
 /*              [Live Bug]                        */
@@ -218,31 +201,31 @@ h1, h2, h3, h4 {
     display:inline;
     white-space: nowrap;
     clear:none;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 3px;
-    border: 5px solid rgba(0, 0, 0, 0.5);
-    background-clip: padding-box;
+    background-color: #1f1a34;
 }
 
 .bug h1 {
     color: #fff;
-    font-size: 30px;
-    font-size: 1.55vw;
-    line-height: 1.8vw;
-    font-weight: normal;
+    font-size: 18px;
+    line-height: 20px;
     float: left;
     padding: 3px 10px;
     margin-right: 0px;
+    background-color: #BC204B;
+}
 
-    background-color: #cd1d18;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+.bug h1:empty {
+    display: none;
 }
 
 .black {
-    background-color: #000 !important;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+    background-color: #1f1a34 !important;
 }
 
+.white {	
+	background-color: #f2f2f2 !important;
+	color: #1f1a34 !important;
+}
 /**************************************************/
 /*              [Logo]                            */
 /**************************************************/
@@ -263,75 +246,174 @@ h1, h2, h3, h4 {
 /*              [Total Score]                     */
 /**************************************************/
 
-.total-score {
-    width: 30%;
+.total-score, .football-score {
+    width: 35%;
     text-align: center;
     border-radius: 8px;
-    border: 8px solid rgba(0, 0, 0, 0.5);
     background-clip: padding-box;
 }
 
 .total-score h1 {
-    color: #000;
-    font-size: 35px;
-    font-size: 2vw;
+    color: #1f1a34;
+    font-size: 20px;
     padding: 6px;
     text-transform: uppercase;
-    background-color: #fff !important;
+    background-color: #f2f2f2 !important;
 }
 
-.total-score .lanc {
+.total-score .lanc, .football-score .lanc {
     display: block;
     width: 50%;
-    font-size: 40px;
-    font-size: 2.5vw;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 50px;
     color: #fff;
     padding: 6px;
     background-color: #cd1d18;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
-.total-score .york {
+.total-score .york, .football-score .york {
     display: block;
     width: 50%;
-    font-size: 40px;
-    font-size: 2.5vw;
-    color: #efbb39;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 50px;
+    color: #000;
     padding: 6px;
-    background-color: #000 !important;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+    background-color: #efbb39 !important;
 }
 
+
+.leftLogo, .rightLogo {
+    height: 175px;
+    width: 175px;
+    z-index: 100;
+    bottom: 30px;
+}
+
+.leftLogo {
+	position: absolute;
+	left: 300px;
+}
+
+.rightLogo {
+	position: absolute;
+	right: 300px;
+
+}
+
+.progress-bar {
+	width: 60px;
+	height: 410px;
+	bottom: 50px;
+	position: absolute;
+	border-top: 3px black solid;
+	font-weight: bold;
+}
+
+.lanc-progress, .york-progress {
+	position: absolute;
+	bottom: 0px;
+	width: 29px;
+	text-align: center;
+	background-position: bottom;
+	background-repeat: repeat-y;
+}
+
+.lanc-progress {
+	/* background-color: rgba(255, 0, 0, 0.6); */
+	left: 25px;
+	background-image: url("/images/rose_red.png");
+}
+
+.york-progress {
+	/* background-color: rgba(255, 255, 0, 0.6); */
+	background-image: url("/images/rose_white.png");
+}
+
+.scoreText {
+	position: absolute;
+	top: -20px;
+	z-index: 3;
+	text-align: center;
+	font-size: 	12px;
+}
+
+.toWin {
+	position: absolute;
+	top: -12px;
+	left: 65px;
+	font-size: 18px;
+}
 /**************************************************/
 /*              [Football Score]                  */
 /**************************************************/
 
 .football {
-  width: 30%;
-  border-radius: 3px;
-  border: 5px solid rgba(0, 0, 0, 0.5);
+  width: 25%;
   background-clip: padding-box;
-  background-color: rgba(0, 0, 0, 0.5);
-  font-size: 30px;
-  font-size: 1.8vw;
+  font-size: 20px;
   text-align: center;
+  line-height: 24px;
 }
 
-.football .clock, .football .score.lanc, .football .score.york {
+.football-score h1 {
+    padding: 6px;
+    padding-left: 58px !important;
+    padding-right: 44px !important;
+    text-transform: uppercase;
+}
+
+.footballtop h1 {
+	color: #000;
+	background-color: #f2f2f2 !important;
+	line-height: 24px;
+}
+
+.footballtop h1:empty {
+    display: none;
+}
+
+.footballbottom h1 {
+	color: #fff;
+	background-color: #1f1a34 !important;
+	line-height: 24px;
+}
+
+.footballbottom h1:empty {
+    display: none;
+}
+
+
+.football .clock, .football .score.lanc, .football .score.york, .football .scoreNumber {
   padding: 3px;
   float: left;
 }
 
+.football .scoreNumber {
+  color: white;
+  background-color: #1f1a34;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
 .football .clock {
-  background-color: #fff;
+  background-color: #eee;
   width: 24%;
 }
 
+.football .extratime {
+  background-color: #bc204b;;
+  color: #fff;;
+  width: 12%;
+  padding: 3px;
+  margin-left: 23px;
+}
+
 .football .score.lanc {
-  width: 38%;
+  width: 22%;
   color: #fff;
   background-color: #cd1d18;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .football .score.lanc p {
@@ -339,10 +421,9 @@ h1, h2, h3, h4 {
 }
 
 .football .score.york {
-  width: 38%;
-  color: #efbb39;
-  background-color: #000;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+  width: 22%;
+  color: #000;
+  background-color: #efbb39;
 }
 
 /**************************************************/
@@ -350,69 +431,89 @@ h1, h2, h3, h4 {
 /**************************************************/
 
 .darts {
-  width: 25%;
-  background-color: rgba(0, 0, 0, 0.5);
-  text-align: left;
-  font-size: 25px;
-  font-size: 1.8vw;
-
+  width: 35%;
+  background-color: #1f1a34;
+  text-align: center;
+  font-size: 20px;
   border-radius: 5px;
-  border: 8px solid rgba(0, 0, 0, 0.5);
   background-clip: padding-box;
 }
 
-.darts .name, .darts .legs, .darts .score, .darts .leg, .darts .footer {
+.darts .name {
+  text-align: left;
+}
+
+
+.darts .name, .darts .legs, .darts .score, .darts .leg, .darts .footer, .darts .set, .darts .sets {
   float: left;
-  line-height: 45px;
-  line-height: 3.2vw;
+  line-height: 28px;
 
   padding-left: 5px;
+  padding-right: 5px;
 }
 
 .darts .name {
-  width: 64%;
+  width: 57%;
 }
 
 .darts .name.lanc {
   color: #fff;
   background-color: #cd1d18;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .darts .name.york {
-  color: #efbb39;
-  background-color: #000;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+  color: #fff;
+  background-color: #efbb39;
 }
 
 .darts .legs {
-  width: 17%;
-  color: #fff;
-  background-color: #00d;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
-  border-left: 2px solid #fff;
+  width: 13%;
+  color: #1f1a34;
+}
+
+.darts .sets {
+  width: 13%;
+  color: #1f1a34;
 }
 
 .darts .score {
-  width: 19%;
+  width: 17%;
   color: #fff;
-  background-color: #00d;
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
-  border-left: 2px solid #fff;
+  background-color: #1f1a34;
+}
+
+.darts .footer {
+  text-align: left;
 }
 
 .darts .header .name {
-  background-color: #fff;
-  color: #000;
-  width: 64%;
+  background-color: #1f1a34;
+  color: #fff;
+  width: 57%;
+  line-height: 30px;
+  line-height: 2.5vw;
+}
+.darts .header .name2 {
+  background-color: #1f1a34;
+  color: #fff;
+  width: 17%;
   line-height: 30px;
   line-height: 2.5vw;
 }
 
 .darts .header .leg {
-  color: #000;
-  background-color: #fff;
-  width: 36%;
+  color: #fff;
+  background-color: #1f1a34;
+  width: 13%;
+  font-size: 20px;
+  font-size: 1.3vw;
+  line-height: 30px;
+  line-height: 2.5vw;
+}
+.darts .header .set {
+  color: #fff;
+  background-color: #1f1a34;
+  width: 13%;
   font-size: 20px;
   font-size: 1.3vw;
   line-height: 30px;
@@ -420,8 +521,8 @@ h1, h2, h3, h4 {
 }
 
 .darts .footer {
-  background-color: #fff;
-  color: #000;
+  background-color: #1f1a34;
+  color: #fff;
   text-transform: uppercase;
   width: 100%;
   font-size: 20px;
@@ -430,61 +531,405 @@ h1, h2, h3, h4 {
   line-height: 2.2vw;
 }
 
+/**************************************************/
+/*              [Archery]                         */
+/**************************************************/
+
+.archery-score {
+  color: #fff;
+  background-color: #000;
+  border-left: 2px solid #fff;
+}
+
+.archery-hit {
+  color: #fff;
+  background-color: #ffd232;
+  width: 12px;
+}
+
+.archery-miss {
+  color: #fff;
+  background-color: #ff3216;
+  width: 12px;
+}
+.archery {
+    background-color: #f2f2f2;
+}
+
+.archery .name {
+    line-height: 40px;
+}
+.archery .name:empty {
+    display: none;
+}
+
+.archery .score {
+    background-color: #f2f2f2 !important;
+}
+
+.archery .totalScore {
+    color: #1f1a34;
+    width: 15%;
+    line-height: 40px;
+    display: inline-block;
+}
+
+/**************************************************/
+/*                [Badminton]                     */
+/**************************************************/
+
+.badminton {
+  width: 35%;
+  background-color: #1f1a34;
+  text-align: center;
+  background-clip: padding-box;
+}
+
+.badminton .name {
+  text-align: left;
+}
+
+
+.badminton .name, .badminton .matches, .badminton .score, .badminton .match, .badminton .footer, .badminton .game, .badminton .games {
+  float: left;
+  font-size: 20px;
+  line-height: 28px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.badminton .name {
+  width: 57%;
+}
+
+.badminton .name.lanc {
+  color: #fff;
+  background-color: #cd1d18;
+}
+
+.badminton .name.york {
+  color: #fff;
+  background-color: #efbb39;
+}
+
+.badminton .matches {
+  width: 21%;
+  color: #1f1a34;
+}
+
+.badminton .games {
+  width: 22%;
+  color: #1f1a34;
+}
+
+.badminton .header .name {
+  color: #fff;
+  background-color: #1f1a34;
+  width: 57%;
+}
+
+.badminton .header .match {
+  color: #fff;
+  background-color: #1f1a34;
+  width: 21%;
+}
+.badminton .header .game {
+  color: #fff;
+  background-color: #1f1a34;
+  width: 22%;
+}
+
+.badminton .footer {
+  background-color: #1f1a34;
+  color: #fff;
+  text-align: left;
+  text-transform: uppercase;
+  width: 100%;
+  font-size: 16px;
+  line-height: 30px;
+}
+
+/**************************************************/
+/*                [Tennis]                        */
+/**************************************************/
+
+
+.tennis {
+  text-align: center;
+  font-size: 20px;
+  line-height: 40px;
+}
+
+.tennisScore {
+  width: 30%;
+}
+
+.tennisSets {
+  width: 40%;
+}
+
+.tennis .name, .tennis .info, .tennisSets .header {
+  text-align: left;
+}
+
+.tennis .name, .tennis .points, .tennis .games, .tennis .sets, .tennis .info, .tennisSets .header {
+  color: #fff;
+  float: left;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.tennisSets .name, .tennisSets .header, .tennisSets .info {
+  padding-left: 10px;
+}
+
+.tennisScore .name, .tennisScore .info {
+  width: 65%;
+}
+
+.tennisSets .name {
+  width: 100%;
+}
+
+.tennis .lanc {
+  background-color: #cd1d18;
+}
+
+.tennis .york {
+  background-color: #efbb39;
+}
+
+.tennis .info, .tennis .header {
+  background-color: #1f1a34;
+}
+
+.tennisSets .info, .tennisSets .header {
+  width: 100%;
+}
+
+.tennisScore .points, .tennisScore .games, .tennisScore .sets, .tennisSets .sets {
+  background-color: #f2f2f2;
+  color: #1f1a34;
+}
+
+.tennisScore .points {
+  width: 15%;
+}
+
+.tennisScore .games, .tennisScore .sets {
+  width: 10%;
+}
+
+.tennisSets .sets {
+  width: 43px;
+}
+
+.tennisScore .server {
+  width: 0; 
+  height: 0; 
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent; 
+  border-right: 12px solid #fff;
+  float: right;
+  margin-top: 6px;
+  margin-right: 4px;
+}
+
+.tennisSets .info {
+  font-size: 16px;
+}
+.tennis .info {
+  font-size: 15px;
+  height: 30px;
+  line-height: 30px;
+}
+
+.tennisStats {
+	width: 70%;
+    text-align: center;
+	position: absolute;
+}
+
+.tennisStats .header {
+	width: 100%;
+	color: #fff;
+	line-height: 50px;
+    background-color: #BC204B;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+	font-size: 35px;
+}
+
+.tennisStats .info {
+	float: none;
+	text-align: center;
+	margin-bottom: 25px;
+}
+
+.tennisStats .statsleft, .tennisStats .stats, .tennisStats .statsright {
+	line-height: 50px;
+	font-size: 25px;
+}
+
+.tennisStats .stats {
+	width: 100%;
+	background-color: #1f1a34;
+	background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+	padding: 0 15px;
+}
+
+.tennisStats .stats .set:not(:first-child) {
+	margin-left: 12px;
+}
+
+.tennisStats .statsleft, .tennisStats .statsright {
+	width: 20%;
+}
+
+.tennisStats .statsleft {
+	float: left;
+	border-right: 3px solid #fff;
+}
+
+.tennisStats .statsright {
+	float: right;
+	border-left: 3px solid #fff;
+}
+
+.tennisStats .row {
+	color: #fff;
+	width: 100%;
+}
+
+.tennisStats .row:last-child {
+	margin-bottom: 5px;
+}
+
+
 /*
  *===================================
  *         Grid
  *===================================
- */
+ */ 
  .grid {
-
+    margin-top: 40px;
+    position: absolute;
     width: 650px;
     text-align: center;
-
-    border-radius: 5px;
-    border: 8px solid rgba(0, 0, 0, 0.4);
-    background: rgba(0, 0, 0, 0.4);
     background-clip: padding-box;
+    overflow: hidden;
   }
-    .grid h1 {
-        color:  #ffffff;
-        text-shadow:1px -1px 0px #000;
-        font-size: 40px;
-        font-size: 2.5vw;
-        font-weight: normal;
-        padding: 5px;
-
-        background-color: #00d;
-        background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+  .grid h1 {
+    color:  #ffffff;
+    font-size: 22px;
+    font-weight: normal;
+    padding: 5px;
+    position: relative;
+    z-index: 1;
+    background-color: #BC204B;
     }
 
-    .grid .name, .grid .time {
-        float: left;
-        line-height: 40px;
-        padding-left: 5px;
-        background-color: #00d;
-        background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
-        font-size: 25px;
-    }
+  .grid .gridleft, .grid .gridright {
+    float: left;
+    line-height: 24px;
+    background-color: #1f1a34;    
+    font-size: 18px;
+  }
 
-    .grid .name {
-        padding-left: 10px;
-        text-align: left;
-        width: 498px;
-    }
+  .grid .gridleft {
+    padding-left: 10px;
+    text-align: left;
+    float: left;
+    width: 50%;
+  }
+    
+  .grid .gridright {
+    border-left: 3px solid #fff;
+    float: right; 
+    width: 50%;
+  }
 
-    .grid .time {
-        width: 130px;
-        margin-left: 5px;
-    }
+  .sporttimesgridright {
+    width: 20% !important;
+    text-align: center;
+  }
 
-    .grid .row {
-        color: #fff;
-        margin-top: 5px;
-    }
+  .sporttimesgridleft {
+    width: 80% !important;
+  }
+  
+  .halvesgridleft {
+    width: 50% !important;
+    text-align: left;
+    padding-left: 10px;
+  }
+  .halvesgridright {
+    width: 50% !important;
+    text-align: left;
+    padding-left: 10px;
+  }
 
-    .grid .row:last-child {
-        margin-bottom: 5px;
-    }
+  .onebargridleft {
+    width: 100% !important;
+  }
+
+  .onebargridright {
+    display: none;
+  }
+
+  .grid .row {
+    display: flex;
+    color: #fff;
+    border-top: 3px solid #fff;
+    position: relative;
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform 0.8s, opacity 0.8s;
+  }
+
+  .grid.ng-hide-remove .row {
+    transform: translateY(-5.5vw);
+    opacity: 0;
+    transition-duration: 0;
+  }
+
+  .grid .row:last-child {
+    margin-bottom: 5px;
+  }
+.grid h1 {
+    color:  #ffffff;
+    font-size: 24px;
+    font-weight: normal;
+    padding: 5px;
+    background-color: #1f1a34;
+}
+
+.grid .gridleft, .grid .gridright {
+    float: left;
+    line-height: 24px;
+    background-color: #f2f2f2;
+    font-size: 18px;
+    color: #1f1a34;
+}
+
+.grid .gridleft {
+    padding-left: 10px;
+    text-align: left;
+    width: 80%;
+}
+
+.grid .gridright {
+    width: 20%;
+    border-left: 3px solid #fff;
+}
+
+.grid .row {
+    color: #fff;
+    border-top: 3px solid #fff;
+}
+
+.grid .row:last-child {
+    border-bottom: 3px solid #1f1a34;
+}
 
 
 /**************************************************/
@@ -493,10 +938,9 @@ h1, h2, h3, h4 {
 
 .swimmingclock {
   width: 20%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #BC204B;
   text-align: left;
   border-radius: 5px;
-  border: 8px solid rgba(0, 0, 0, 0.5);
   background-clip: padding-box;
 }
 
@@ -513,7 +957,7 @@ h1, h2, h3, h4 {
   line-height: 45px;
   line-height: 3.3vw;
   color: #fff;
-  background-color: #00d;
+  background-color: #BC204B;
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
@@ -526,7 +970,7 @@ h1, h2, h3, h4 {
 }
 
 .swimmingclock .footer {
-  background-color: #fff;
+  background-color: #eee;
   color: #000;
   font-size: 20px;
   font-size: 1.5vw;
@@ -538,7 +982,6 @@ h1, h2, h3, h4 {
 .swimmingsplits {
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 3px;
-    border: 5px solid rgba(0, 0, 0, 0.5);
     background-clip: padding-box;
     width: 25%;
 }
@@ -559,8 +1002,8 @@ h1, h2, h3, h4 {
 }
 
 .swimmingsplits .row.york {
-    color: #efbb39;
-    background-color: #000;
+    color: #fff;
+    background-color: #efbb39;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
@@ -570,8 +1013,9 @@ h1, h2, h3, h4 {
     width: 30px;
     width: 2.2vw;
     text-align: center;
+    border-right: 2px solid #eee;
     color: #fff;
-    background-color: #00d;
+    background-color: #BC204B;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
@@ -589,7 +1033,6 @@ h1, h2, h3, h4 {
     width: 60%;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 5px;
-    border: 8px solid rgba(0, 0, 0, 0.5);
     background-clip: padding-box;
 }
 
@@ -602,8 +1045,9 @@ h1, h2, h3, h4 {
     overflow: hidden;
     text-align: center;
     text-transform: uppercase;
-    color: #000;
-    background-color: #fff;
+    border-bottom: 3px solid #eee;
+    color: #fff;
+    background-color: #1f1a34;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
@@ -618,24 +1062,197 @@ h1, h2, h3, h4 {
 
 .swimminglist .row.lanc {
     color: #fff;
-    background-color: #cd1d18;
+	background-color: #cd1d18;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .swimminglist .row.york {
-    color: #efbb39;
-    background-color: #000;
+    color: #fff;
+    background-color: #efbb39;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
 }
 
 .swimminglist .row .lane {
     float: left;
     margin-right: 15px;
-    paddding: 15px;
+    border-right: 3px solid #eee;
+    padding: 15px;
     width: 50px;
     width: 3.8vw;
     text-align: center;
     color: #fff;
-    background-color: #00d;
+    background-color: #BC204B;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
+
+/**************************************************/
+/*              [Basketball Score]                  */
+/**************************************************/
+
+.basketball {
+  width: 25%;
+  background-clip: padding-box;
+  background-color: #f2f2f2;
+  font-size: 20px;
+  text-align: center;
+  line-height: 24px;
+}
+
+.basketball .clock, .basketball .score.lanc, .basketball .score.york {
+  padding: 3px;
+  float: left;
+}
+
+.basketball .clock {
+  background-color: #f2f2f2;
+  width: 24%;
+}
+
+.basketball .score.lanc {
+  width: 38%;
+  color: #fff;
+  background-color: #cd1d18;
+}
+
+.basketball .score.lanc p {
+    float: right;
+}
+
+.basketball .score.york {
+  width: 38%;
+  color: #000;
+  background-color: #efbb39;
+}
+
+/**************************************************/
+/*              [Netball Score]                  */
+/**************************************************/
+
+.netball {
+  width: 35%;
+  border-radius: 3px;
+  background-clip: padding-box;
+  font-size: 20px;
+}
+
+.netballquarter {
+    display:inline;
+    white-space: nowrap;
+    clear:none;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-clip: padding-box;
+}
+
+.netballquarter h1 {
+    color: #fff;
+    font-size: 20px;
+    font-weight: normal;
+    float: left;
+    padding: 3px 10px;
+    margin-right: 0px;
+    background-color: #BC204B;
+}
+
+.netballquarter h1:empty {
+    display: none;
+}
+
+.netball .clock, .netball .score.lanc, .netball .score.york {
+  padding: 3px;
+  float: left;
+}
+
+.netball .clock {
+  background-color: #eee;
+    width: 18%;
+  text-align: center;
+}
+
+.netball .score.lanc {
+  width: 32%;
+  text-align: right;
+  padding-right:20px;
+  color: #fff;
+  background-color: #cd1d18;
+}
+
+.netball .score.lanc p {
+    float: right;
+    text-align: center;
+}
+
+.netball .score.york {
+  width: 32%;
+  text-align: left;
+  padding-left: 30px;
+  color: #000;
+  background-color: #efbb39;
+}
+
+/**************************************************/
+/*              [Waterpolo Score]                  */
+/**************************************************/
+
+.waterpolo {
+  width: 40%;
+  border-radius: 3px;
+  background-clip: padding-box;
+  font-size: 30px;
+  font-size: 1.8vw;
+}
+
+.waterpoloquarter {
+    display:inline;
+    white-space: nowrap;
+    clear:none;
+    background-color: rgba(0, 0, 0, 0.5);
+    background-clip: padding-box;
+}
+
+.waterpoloquarter h1 {
+    color: #fff;
+    font-size: 30px;
+    font-size: 1.55vw;
+    line-height: 1.8vw;
+    font-weight: normal;
+    float: left;
+    padding: 3px 10px;
+    margin-right: 0px;
+    background-color: #BC204B;
+}
+
+.waterpoloquarter h1:empty {
+    display: none;
+}
+
+.waterpolo .clock, .waterpolo .score.lanc, .waterpolo .score.york {
+  padding: 3px;
+  float: left;
+}
+
+.waterpolo .clock {
+  background-color: #eee;
+  width: 18%;
+  text-align: center;
+}
+
+.waterpolo .score.lanc {
+  width: 32%;
+  text-align: right;
+  padding-right:20px;
+  color: #fff;
+  background-color: #cd1d18;
+}
+
+.waterpolo .score.lanc p {
+    float: right;
+    text-align: center;
+}
+
+.waterpolo .score.york {
+  width: 32%;
+  text-align: left;
+  padding-left: 30px;
+  color: #000;
+  background-color: #efbb39;
 }
